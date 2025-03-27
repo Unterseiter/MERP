@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    import React, { useEffect } from "react";
+    import { useNotificationCenter } from "react-toastify/addons/use-notification-center";
+    import { toast, ToastContainer } from "react-toastify";
+    import "react-toastify/dist/ReactToastify.css";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+    const Dash = () => {
+    const { clear, markAllAsRead, markAsRead } = useNotificationCenter();
+    const { notifications } = useNotificationCenter({
+    data: JSON.parse(localStorage.getItem("notifications")),
+    });
+    const { unreadCount } = useNotificationCenter(
+    JSON.parse(localStorage.getItem("unreadCount"))
+    );
+    const showToast = () => {
+    toast("Hello World", {
+    data: {
+    title: "Hello World Again",
+    text: "We are here again with another article",
+    },
+    });
+    };
+
+    const showErrorToast = () => {
+    toast.error("Hello World", {
+    data: {
+    title: "Error toast",
+    text: "This is an error message",
+    },
+    });
+    };
+
+    useEffect(() => {
+    if (notifications.length !== 0) {
+    localStorage.setItem("notifications", JSON.stringify(notifications));
+    }
+    }, [notifications]);
+
+    useEffect(() => {
+    if (unreadCount !== 0) {
+    localStorage.setItem("unreadCount", String(unreadCount));
+    }
+    }, [unreadCount]);
+
+    return (
+    <div>
+        <p>{notifications.length}</p>
+        <button onClick={showToast}>Default</button>
+        <button onClick={showErrorToast}>Error</button>
+        <br />
+        <br />
+        <button onClick={clear}>Clear Notifications</button>
+        <button onClick={()=> markAllAsRead()}>Mark all as read</button>
+        <ul>
+            {notifications.map((notification: any) => (
+            <li onClick={()=> markAsRead(notification.id)}
+                key={notification.id}
+                style={
+                notification.read
+                ? { background: "green", color: "silver", padding: "0 20px" }
+                : {
+                border: "1px solid black",
+                background: "navy",
+                color: "#fff",
+                marginBottom: 20,
+                cursor: "pointer",
+                padding: "0 20px",
+                }
+                }
+                >
+                <span>id: {notification.id}</span>
+                <p>title: {notification.data.title}</p>
+                <p>text: {notification.data.text}</p>
+                <p>unreadCount: {unreadCount}</p>
+            </li>
+            ))}
+        </ul>
+        <ToastContainer />
+    </div>
+    );
+    };
+    export default Dash;
+</body>
+
+</html>
