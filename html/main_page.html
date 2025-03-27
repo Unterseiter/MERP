@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="../styles/main_functional.css">
     <link rel="stylesheet" href="../styles/main_authorisation.css">
 
-    <!-- Scripts -->
-    <script src="../js/main.js" defer></script>
-
+    
     <title>МЕРП - Поиск компании</title>
 </head>
 
@@ -24,15 +22,15 @@
             <img src="#" alt="Логотип МЕРП">
             <h1>МЕРП</h1>
         </div>
-
+        
         <nav class="main-nav">
             <button onclick="openCreatorsPage()">Создать запись</button>
-            <button>Уведомления</button>
+            <button id="notices-btn">Уведомления</button>
             <button>Чат</button>
             <button onclick="openWindowAuthorisation()">Авторизоваться</button>
         </nav>
     </header>
-
+    
     <!-- Модальное окно авторизации -->
     <div id="shadow" class="modal-shadow"></div>
     <div id="authorisation" class="auth-modal">
@@ -44,7 +42,7 @@
         <div id="auth-error" class="error-message"></div>
         <button onclick="handleLogin()" class="auth-button">Войти</button>
     </div>
-
+    
     <!-- Блок глобальных мероприятий -->
     <main>
         <section class="carousel-section">
@@ -52,28 +50,28 @@
             <div class="carousel-container">
                 <button class="carousel-button prev">←</button>
                 <button class="carousel-button next">→</button>
-
+                
                 <!-- Слайды -->
                 <article class="carousel-slide active">
                     <img src="../img/main_corp.png" alt="Масленица в КубГАУ"
-                        style="width: 80%; height: 250px; object-fit: cover; border-radius: 15px; opacity: 80%;">
+                    style="width: 80%; height: 250px; object-fit: cover; border-radius: 15px; opacity: 80%;">
                     <h3>Масленица в КубГАУ</h3>
                     <p style="width: 80%; text-align: center;">Описание праздника и детали мероприятия...</p>
                 </article>
-
+                
                 <article class="carousel-slide">
                     <img src="../img/gallery_KRD.jpg" alt="Новый год в Галерее"
-                        style="width: 80%; height: 250px; object-fit: cover; border-radius: 15px; opacity: 80%;">
+                    style="width: 80%; height: 250px; object-fit: cover; border-radius: 15px; opacity: 80%;">
                     <h3>Новый год в Галерее</h3>
                     <p style="width: 80%; text-align: center;">Описание новогоднего мероприятия...</p>
                 </article>
-
+                
             </div>
         </section>
 
-
+        
         <!-- Блок локальных событий -->
-
+        
         <header>
             <h2>Частные объявления</h2>
             <input type="text" name="searching" placeholder="Поиск" style="width: 500px;">
@@ -88,7 +86,7 @@
                         <a>2</a>
                     </div>
                 </div>
-
+                
                 <div class="dropdown">
                     <button onclick="sorting()" class="dropbtn">
                         Сортировка
@@ -98,13 +96,13 @@
                         <a>2</a>
                     </div>
                 </div>
-
+                
             </nav>
         </header>
 
         <section class="event-selection">
             <div class="events-container">
-
+                
                 <article class="event-card">
                     <div class="event-content">
                         <img src="../img/D&D_d20.png" alt="DnD группа" class="event-image">
@@ -114,7 +112,7 @@
                         </div>
                     </div>
                 </article>
-
+                
                 <article class="event-card">
                     <div class="event-content">
                         <img src="../img/club.jpg" alt="Клубная вечеринка" class="event-image">
@@ -125,7 +123,7 @@
                     </div>
                 </article>
 
-
+                
                 <article class="event-card">
                     <div class="event-content">
                         <img src="../img/army.jpg" alt="Армия" class="event-image">
@@ -135,7 +133,7 @@
                         </div>
                     </div>
                 </article>
-
+                
                 <!-- Пагинация -->
                 <div style="text-align: center;">
                     <button class="page-btn" onclick="openFunctionPage()">Больше</button>
@@ -143,13 +141,16 @@
             </div>
         </section>
     </main>
-
+    
     <!-- Подвал сайта -->
     <footer>
         <p>Контакты: contact@merp.ru</p>
         <p>Политика конфиденциальности</p>
         <p>© МЕРП 2024</p>
     </footer>
+    <!-- Scripts -->
+    <script src="../js/notices.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

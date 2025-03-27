@@ -1,3 +1,10 @@
+const BuildNotices = require('./notices.js');
+const noticesModule = BuildNotices();
+
+document.addEventListener('DOMContentLoaded', () => {
+  noticesModule.init();
+});
+
 // карусель
 document.addEventListener('DOMContentLoaded', () => {
     // Карусель
