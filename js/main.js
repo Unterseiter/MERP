@@ -1,9 +1,3 @@
-const BuildNotices = require('./notices.js');
-const noticesModule = BuildNotices();
-
-document.addEventListener('DOMContentLoaded', () => {
-  noticesModule.init();
-});
 
 // карусель
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Логика переключения страниц
             console.log('Переход на страницу:', e.target.textContent);
         });
+    });
+
+    document.getElementById('notices-btn').addEventListener('click', () => {
+        const notice = document.createElement('div');
+        notice.className = 'custom-notice';
+        notice.innerHTML = "dcwfwwf";
+        document.querySelector(".main-nav").appendChild(notice);
     });
 });
 
@@ -102,6 +103,7 @@ function openCreatorsPage() {
 }
 
 // кнопка уведомления
+
 
 // кнопка чат
 
