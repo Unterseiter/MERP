@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Footer from './components/footer/footer';
+import Home from './Page/Home.page/Home.page';
+import Func from './Page/Func.page/Func.page';
+import ROUTER_PATH from './navigation/path';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={<Navigate to={ROUTER_PATH.main_page} replace />}
+          />
+          <Route path={ROUTER_PATH.main_page} element={<Home />} />
+          <Route path={ROUTER_PATH.func} element={<Func />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
