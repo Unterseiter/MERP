@@ -38,7 +38,7 @@ const Carousel = () => {
           Главные события города
         </h2>
         
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           <button 
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition z-10"

@@ -53,6 +53,7 @@ export const EventsList = ({eventList, isVisibleSearth = false}) => {
               title={event.title}
               description={event.description}
               imageUrl={event.imageUrl}
+              id={event.id}
             />
           ))}
         </div>
