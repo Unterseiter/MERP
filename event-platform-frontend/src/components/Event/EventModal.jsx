@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useState } from 'react';
 
 const customStyles = {
     overlay: {
@@ -13,7 +12,8 @@ const customStyles = {
         bottom: 0,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        transition: 'background-color 0.3s'
     },
     content: {
         backgroundColor: 'rgb(255, 255, 255)',
@@ -24,9 +24,9 @@ const customStyles = {
         maxWidth: '600px',
         width: '90%',
         maxHeight: '90vh',
-        overflow: 'auto',
+        overflow: 'hidden',
         margin: '0 auto',
-        transition: 'all 0.3s ease-out'
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
     }
 };
 
@@ -47,21 +47,24 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                 ...customStyles,
                 content: {
                     ...customStyles.content,
-                    maxWidth: isExpanded ? '900px' : '600px',
+                    maxWidth: isExpanded ? '1200px' : '600px',
                     width: isExpanded ? '95%' : '90%'
                 }
             }}
             overlayClassName="modal-overlay"
         >
             {event && (
-                <div className={`flex ${isExpanded ? 'flex-row gap-6' : 'flex-col'}`}>
+                <div className="relative flex h-full">
                     {/* Основная секция */}
-                    <div className="flex-1">
+                    <div 
+                        className={`transition-all duration-300 ${isExpanded ? 'w-1/2 pr-4' : 'w-full'}`}
+                        style={{ minWidth: isExpanded ? '300px' : 'auto' }}
+                    >
                         {event.imageUrl && (
                             <img
                                 src={event.imageUrl}
                                 alt={event.title}
-                                className="w-full h-auto object-cover mb-4 rounded-lg"
+                                className="w-full min-h-96 h-auto object-cover mb-4 rounded-lg"
                             />
                         )}
                         <h1 className="text-2xl font-bold mb-2">{event.title}</h1>
@@ -86,8 +89,12 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                     </div>
 
                     {/* Расширенная секция */}
-                    {isExpanded && (
-                        <div className="flex-1 pl-6 border-l-2 border-gray-200">
+                    <div 
+                        className={`absolute right-0 top-0 h-full w-1/2 bg-white transition-transform duration-300 ${
+                            isExpanded ? 'translate-x-0' : 'translate-x-full'
+                        } pl-6 border-l-2 border-gray-200`}
+                    >
+                        <div className="h-full overflow-y-auto">
                             <h2 className="text-xl font-bold mb-4">Детали участия</h2>
                             <div className="space-y-3">
                                 <div>
@@ -123,7 +130,7 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                                 </button>
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
             )}
         </Modal>
