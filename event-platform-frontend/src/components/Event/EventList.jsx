@@ -59,7 +59,7 @@ export const EventsList = ({eventList = [], isVisibleSearth = false, handleMoreC
         <div className="text-center mt-8">
           <button
             onClick={handleMoreClick}
-            className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition">
+            className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition w-80">
             Больше
           </button>
         </div>

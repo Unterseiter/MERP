@@ -46,7 +46,7 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                         <img
                             src={event.imageUrl}
                             alt={event.title}
-                            className="w-full h-48 object-cover mb-4"
+                            className="w-full h-auto object-cover mb-4"
                         />
                     )}
                     <h1 className="text-2xl font-bold mb-2">{event.title}</h1>
