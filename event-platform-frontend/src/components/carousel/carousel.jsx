@@ -1,50 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-  const slides = [
-    {
-      id: 1,
-      title: "Масленица в КубГАУ",
-      description: "Описание праздника и детали мероприятия...",
-      imageUrl: "https://images.unsplash.com/photo-1551918120-9739cb430c6d?auto=format&fit=crop&q=80&w=1000",
-    },
-    {
-      id: 2,
-      title: "Новый год в Галерее",
-      description: "Описание новогоднего мероприятия...",
-      imageUrl: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?auto=format&fit=crop&q=80&w=1000",
-    },
-    {
-      id: 3,
-      title: "Детский дом ищет детей",
-      description: "Супер детский дом, кормят бесплатно",
-      imageUrl: "https://avatars.mds.yandex.net/i?id=a8d7a36e2b416aa525797979c42327fe04aa9a67-8497409-images-thumbs&n=13",
-    },
-  ];
+import SLIDES from './carouselData';
+  
 
 const Carousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-  
-    const nextSlide = () => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    };
-  
-    const prevSlide = () => {
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    };
+    const [autoPlay, setAutoPlay] = useState(true);
+
+    const nextSlide = useCallback(() =>{
+      setCurrentSlide(prev => (prev + 1) % SLIDES.length);
+    }, [SLIDES.length]);
+    
+    const prevSlide = useCallback(() => {
+      setCurrentSlide(prev => (prev - 1 + SLIDES.length) % SLIDES.length);
+    },[SLIDES.length]);
   
     useEffect(() => {
-      const timer = setInterval(nextSlide, 5000);
-      return () => clearInterval(timer);
-    }, []);
-  
+      let interval;
+      if (autoPlay) {
+        interval = setInterval (nextSlide, 7000);
+      }
+      return () => {
+        if (interval) clearInterval(interval); 
+      };
+    },[autoPlay, nextSlide]);
+
     return (
       <section className="py-12 px-6">
         <h2 className="text-3xl font-bold text-center text-[#5A4A42] mb-8">
           Главные события города
         </h2>
         
-        <div className="relative max-w-7xl mx-auto">
+        <div 
+          className="relative max-w-7xl mx-auto"
+          onMouseEnter={() => setAutoPlay(false)}
+          onMouseLeave={() => setAutoPlay(true)}
+        >
           <button 
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition z-10"
@@ -64,20 +55,20 @@ const Carousel = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {slides.map((slide) => (
+              {SLIDES.map((SLIDE) => (
                 <div 
-                  key={slide.id}
+                  key={SLIDE.id}
                   className="min-w-full"
                 >
                   <div className="relative aspect-[16/9]">
                     <img 
-                      src={slide.imageUrl}
-                      alt={slide.title}
+                      src={SLIDE.imageUrl}
+                      alt={SLIDE.title}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-6">
-                      <h3 className="text-2xl font-bold mb-2">{slide.title}</h3>
-                      <p>{slide.description}</p>
+                      <h3 className="text-2xl font-bold mb-2">{SLIDE.title}</h3>
+                      <p>{SLIDE.description}</p>
                     </div>
                   </div>
                 </div>

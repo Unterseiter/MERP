@@ -2,13 +2,13 @@ import React from 'react';
 import { Search, Filter, SortAsc } from 'lucide-react';
 import { EventCard } from './EventCard';
 import { useNavigate } from 'react-router-dom';
-import ROUTER_PATH from '../../navigation/path';
+// import ROUTER_PATH from '../../navigation/path';
 
 
 export const EventsList = ({eventList = [], isVisibleSearth = false, handleMoreClick}) => {
 
   const events = eventList || [];
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   /*handleMoreClick = () => {
     navigate(ROUTER_PATH.func);

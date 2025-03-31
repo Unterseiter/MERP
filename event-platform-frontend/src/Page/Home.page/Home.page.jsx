@@ -13,6 +13,7 @@ function Home() {
                 handleMoreClick={() => {
                     navigate(ROUTER_PATH.func);
                 }} />
+
             <EventsList eventList={events2}
                 handleMoreClick={() => {
                     navigate(ROUTER_PATH.func);
