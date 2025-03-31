@@ -1,9 +1,17 @@
+import EventsList from '../../components/Event/EventList';
+import { useNavigate } from 'react-router-dom';
+import ROUTER_PATH from '../../navigation/path';
+import { events } from '../../components/date/test-date';
 
 function Func(){
-    console.log("Hello");
+    const navigate = useNavigate();
     return(
         <div>
-            <h1>Тестовая страница</h1>
+            <EventsList handleMoreClick={() => {
+                navigate(ROUTER_PATH.func);
+              }}
+              isVisibleSearth={true}
+              eventList={events} />
         </div>
     )
 }

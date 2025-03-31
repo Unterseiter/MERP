@@ -5,16 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import ROUTER_PATH from '../../navigation/path';
 
 
-export const EventsList = ({eventList, isVisibleSearth = false}) => {
+export const EventsList = ({eventList = [], isVisibleSearth = false, handleMoreClick}) => {
 
-  console.log(eventList);
   const events = eventList || [];
   const navigate = useNavigate();
 
-  const handleAuthClick = () => {
-    console.log("GHbskdmlafwem");
+  /*handleMoreClick = () => {
     navigate(ROUTER_PATH.func);
-  }
+  }*/
   return (
     <section className="px-6 py-12">
       <div className="max-w-6xl mx-auto">
@@ -60,7 +58,7 @@ export const EventsList = ({eventList, isVisibleSearth = false}) => {
 
         <div className="text-center mt-8">
           <button
-            onClick={handleAuthClick}
+            onClick={handleMoreClick}
             className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition">
             Больше
           </button>
@@ -69,3 +67,4 @@ export const EventsList = ({eventList, isVisibleSearth = false}) => {
     </section>
   );
 }
+export default EventsList;
