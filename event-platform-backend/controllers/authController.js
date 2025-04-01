@@ -9,7 +9,7 @@ const authController = {
   // Регистрация нового пользователя
   async signup(req, res) {
     try {
-      const { tag_name, name, email, password } = req.body;
+      const { tag_name, name, email, password, privilege, city} = req.body;
 
       // Проверяем, существует ли пользователь с таким email
       const existingUser = await User.findOne({ where: { email } });
@@ -25,12 +25,12 @@ const authController = {
       // Хешируем пароль
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      console.log({ tag_name: tag_name, name: name, email: email, password: hashedPassword });
+      console.log(req.body);
 
       // Создаем нового пользователя
-      userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword });
+      const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege:privilege, city:city });
 
-      res.status(201).json({ message: 'Пользователь успешно зарегистрирован' });
+      res.status(201).json({ message: 'Пользователь успешно зарегистрирован', created: Created });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
     },{
-        tableName: 'Event',
+        tableName: 'event',
         validate: {
             dateValidation() {
               if (this.start_date > this.end_date) {

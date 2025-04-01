@@ -4,23 +4,31 @@ const userService = {
   // Создание пользователя
   async createUser(userData) {
     try {
+
       const { tag_name, email } = userData;
-      const emailCheck = await User.findAll({
+      const emailCheck = await User.findOne({
         where: {
           email: email
         }
-      })
-      const userCheck = await User.findAll({
+      });
+      const userCheck = await User.findOne({
         where: {
           tag_name: tag_name
         }
-      })
-      if (emailCheck || userCheck) {
+      });
+      const resulst = {
+        created_load: userData,
+        emailCheck: emailCheck ? "Ok" : "No",
+        userCheck: userCheck ? "Ok" : "No"
+      };
+      if (resulst.emailCheck == "Ok" || resulst.userCheck == "Ok") {
+        console.log(resulst);
         return { error: 'Пользователь c такими данными уже существует' };
-      }
+      };
+
       const user = await User.create(userData);
-      console.log(user);
-      return user;
+
+      return resulst;
     } catch (error) {
       throw error;
     }

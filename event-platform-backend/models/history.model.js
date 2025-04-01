@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    const History = sequelize.define('History', {
+    const History = sequelize.define('history', {
         history_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -12,11 +12,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        event_id: {
-
+        history_event_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Event', // Name of the referenced model
+                model: 'event', // Name of the referenced model
                 key: 'event_id', // Key in the referenced model
             },
         },
@@ -29,6 +28,8 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM('block', 'good'),
             defaultValue: 'good',
         },
+    },{
+        tableName: 'history'
     });
 
     return History;

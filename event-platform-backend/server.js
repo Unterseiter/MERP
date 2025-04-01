@@ -11,11 +11,10 @@ server.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
 })
 
-//Синхронизация с базой данных
-/*sequelize.sync({ force: true })
+sequelize.sync({ force: true })
     .then(() => {
         console.log('База данных синхронизирована');
     })
     .catch((err) => {
         console.error('Ошибка синхронизации:', err);
-    });*/
+    });
