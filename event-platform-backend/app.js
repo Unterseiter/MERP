@@ -3,8 +3,14 @@ const cors = require('cors');
 const app = express();
 
 //Middleware(Промежуточные обработчики)
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json());
+
+app.get('/api/test', (req, res) => {
+    res.json({ message: 'API работает!' });
+  });
 
 //Подключение маршрутов
 const authRoutes = require('./routes/auth');
