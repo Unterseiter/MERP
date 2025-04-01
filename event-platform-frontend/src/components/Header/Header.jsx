@@ -17,7 +17,7 @@ function Header() {
             <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-[#bb916f] rounded-full" 
                 onClick={handleHomeClick}/>
-                <h1 className="text-[#5A4A42] text-3xl font-bold">МЕРП</h1>
+                <h1 className=" text-[#5A4A42] text-3xl font-bold">МЕРП</h1>
             </div>
 
             <nav className="flex items-center gap-4">
