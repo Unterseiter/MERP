@@ -92,7 +92,7 @@ const Carousel = () => {
                         <h3 className='text-2xl md:text-4xl font-bold mb-2'>
                           {SLIDE.title}
                         </h3>
-                        <p className='text-sm md:text-lg max-w-2xl'>
+                        <p className='text-sm md:text-lg max-w-2xl whitespace-pre-line'>
                           {SLIDE.description}
                         </p>
                       </div>
