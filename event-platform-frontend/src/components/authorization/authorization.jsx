@@ -1,7 +1,13 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPopup = ({ onClose }) => {
   const popupRef = useRef(null)
+  const navigate = useNavigate()
+
+  const handleRegistClick = () => {
+    navigate('registr');
+}
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -42,7 +48,7 @@ const AuthPopup = ({ onClose }) => {
         <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
           Войти
         </button>
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+        <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold" onClick={handleRegistClick}>
           Регистрация
         </button>
       </div>
