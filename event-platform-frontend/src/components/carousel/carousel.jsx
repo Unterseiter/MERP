@@ -60,7 +60,7 @@ const Carousel = () => {
             <ChevronRight size={24} />
           </button>
   
-          <div className="relative h-[425px] w-[100%]">
+          <div className="relative h-[475px] w-[100%]">
             <div 
               className="flex transition-transform duration-500 ease-in-out gap-8" // Добавляем промежутки
               style={{ 

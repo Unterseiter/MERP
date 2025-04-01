@@ -1,22 +1,19 @@
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react'; // Добавляем useState
+import AuthPopup from '../authorization/authorization'; // Путь должен быть правильным
 
 function Header() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [showAuthPopup, setShowAuthPopup] = useState(false)
 
-    const handleAuthClick = () => {
-        console.log("GHbskdmlafwem");
-        navigate('func');
-    }
     const handleHomeClick = () => {
         navigate('home');
     }
 
     return (
         <header className="bg-[#E3D5CA] px-8 py-4 flex justify-between items-center shadow-md">
-            <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#bb916f] rounded-full" 
-                onClick={handleHomeClick}/>
+            <div className="flex items-center gap-4" onClick={handleHomeClick}>
+                <div className="w-12 h-12 bg-[#bb916f] rounded-full" />
                 <h1 className=" text-[#5A4A42] text-3xl font-bold">МЕРП</h1>
             </div>
 
@@ -33,15 +30,25 @@ function Header() {
 
                 <div className="relative">
                     <button
-                        onClick={handleAuthClick}
-                        className="bg-[#CAA07D] text-white px-6 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                        className={`bg-[#CAA07D] text-white px-6 py-2 rounded-full transition-all duration-300
+                        ${showAuthPopup
+                                ? "bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50"
+                                : "hover:bg-[#B08F6E] hover:shadow-md"
+                            }`}
+                        onClick={() => setShowAuthPopup(!showAuthPopup)}
                     >
-                        <span>Авторизоваться</span>
+                        Вход
                     </button>
 
+                    {showAuthPopup && (
+                        <AuthPopup
+                            onClose={() => setShowAuthPopup(false)}
+                        />
+                    )}
                 </div>
             </nav>
         </header>
     )
 }
-export default Header;
+
+export default Header
