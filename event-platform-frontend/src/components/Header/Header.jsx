@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import AuthPopup from '../authorization/authorization';
 import { Bell, MessageSquare, Plus, ChevronDown, User } from 'lucide-react';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 function Header() {
     const navigate = useNavigate()
@@ -14,7 +15,11 @@ function Header() {
     return (
         <header className="bg-[#dec3ae] px-8 py-4 flex justify-between items-center shadow-md">
             <div className="flex items-center gap-4 cursor-pointer" onClick={handleHomeClick}>
-                <div className="w-12 h-12 bg-[#bb916f] rounded-full shadow-md" />
+                <div className="relative w-12 h-12 bg-[#bb916f] rounded-full shadow-md flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center transform scale-75">
+                        <Logo className="logo-style" />
+                    </div>
+                </div>
                 <h1 className="text-[#5A4A42] text-3xl font-bold drop-shadow-md">МЕРП</h1>
             </div>
 
