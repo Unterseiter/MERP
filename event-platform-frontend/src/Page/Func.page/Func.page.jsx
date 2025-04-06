@@ -6,7 +6,7 @@ import { events } from '../../components/date/test-date';
 function Func(){
     const navigate = useNavigate();
     return(
-        <div>
+        <div className="bg-[#fef6f1]">
             <EventsList handleMoreClick={() => {
                 navigate(ROUTER_PATH.func);
               }}

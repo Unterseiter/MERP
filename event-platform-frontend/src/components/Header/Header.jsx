@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react'; // Добавляем useState
-import AuthPopup from '../authorization/authorization'; // Путь должен быть правильным
+import { useEffect, useState } from 'react';
+import AuthPopup from '../authorization/authorization';
+import { Bell, MessageSquare, Plus, ChevronDown, User } from 'lucide-react';
 
 function Header() {
     const navigate = useNavigate()
@@ -11,33 +12,36 @@ function Header() {
     }
 
     return (
-        <header className="bg-[#E3D5CA] px-8 py-4 flex justify-between items-center shadow-md">
-            <div className="flex items-center gap-4" onClick={handleHomeClick}>
-                <div className="w-12 h-12 bg-[#bb916f] rounded-full" />
-                <h1 className=" text-[#5A4A42] text-3xl font-bold">МЕРП</h1>
+        <header className="bg-[#dec3ae] px-8 py-4 flex justify-between items-center shadow-md">
+            <div className="flex items-center gap-4 cursor-pointer" onClick={handleHomeClick}>
+                <div className="w-12 h-12 bg-[#bb916f] rounded-full shadow-md" />
+                <h1 className="text-[#5A4A42] text-3xl font-bold drop-shadow-md">МЕРП</h1>
             </div>
 
             <nav className="flex items-center gap-4">
-                <button className="bg-[#CAA07D] text-white px-6 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2">
+                <button className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner">
+                    <Plus size={20} />
                     <span>Создать запись</span>
                 </button>
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition">
-                    Уведомления
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
+                    <Bell size={20} />
                 </button>
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition">
-                    Чат
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
+                    <MessageSquare size={20} />
                 </button>
 
                 <div className="relative">
                     <button
-                        className={`bg-[#CAA07D] text-white px-6 py-2 rounded-full transition-all duration-300
+                        className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
                         ${showAuthPopup
                                 ? "bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50"
-                                : "hover:bg-[#B08F6E] hover:shadow-md"
-                            }`}
+                                : "hover:bg-[#B08F6E] hover:shadow-lg"
+                            } active:shadow-inner`}
                         onClick={() => setShowAuthPopup(!showAuthPopup)}
                     >
-                        Вход
+                        <User size={20} />
+                        <span>Вход</span>
+                        <ChevronDown size={16} className={`transition-transform duration-200 ${showAuthPopup ? 'rotate-180' : ''}`} />
                     </button>
 
                     {showAuthPopup && (

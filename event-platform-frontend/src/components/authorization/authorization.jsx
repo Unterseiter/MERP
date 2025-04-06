@@ -38,17 +38,17 @@ const AuthPopup = ({ onClose }) => {
         <input
           type="email"
           placeholder="Ваш email"
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-[#B08F6E] focus:border-transparent"
         />
         <input
           type="password"
           placeholder="Пароль"
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-[#B08F6E] focus:border-transparent"
         />
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+        <button className="w-full bg-[#CAA07D] text-white py-3 rounded-lg hover:bg-[#B08F6E] transition font-semibold">
           Войти
         </button>
-        <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold" onClick={handleRegistClick}>
+        <button className="w-full bg-[#CAA07D] text-white py-3 rounded-lg hover:bg-[#B08F6E] transition font-semibold" onClick={handleRegistClick}>
           Регистрация
         </button>
       </div>
