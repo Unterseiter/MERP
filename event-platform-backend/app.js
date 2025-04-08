@@ -3,14 +3,17 @@ const cors = require('cors');
 const app = express();
 
 //Middleware(Промежуточные обработчики)
-app.use(cors({
-    origin: '*'
-}));
+const corsOptions = {
+    origin: '*',
+    allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/api/test', (req, res) => {
     res.json({ message: 'API работает!' });
-  });
+});
 
 //Подключение маршрутов
 const authRoutes = require('./routes/auth');
