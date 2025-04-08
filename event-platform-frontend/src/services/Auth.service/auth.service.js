@@ -5,11 +5,27 @@ export default class AuthService {
     static apiUrl = '/api';
 
     static async login(body) {
-        const res = await instanceAxios.post(this.apiUrl + "/login", body);
-        return res.data;
+        try {
+            const res = await instanceAxios.post("/login", body);
+            const token = res.data.token;
+      
+            // Сохраняем токен
+            localStorage.setItem("authToken", token);
+      
+            // Обновляем заголовки Axios
+            instanceAxios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      
+            return res.data;
+          } catch (error) {
+            throw new Error("Ошибка авторизации: " + error.message);
+          }
     }
     static async register(body) {
         const res = await instanceAxios.post(this.apiUrl + "/register", body);
         return res.data;
+    }
+    static logout() {
+        localStorage.removeItem("authToken");
+        delete instanceAxios.defaults.headers.common["Authorization"];
     }
 }

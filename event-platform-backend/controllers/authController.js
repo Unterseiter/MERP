@@ -58,7 +58,7 @@ const authController = {
       const token = jwt.sign({ tag_name: user.tag_name }, process.env.JWT_SECRET, { expiresIn: '1h' });
       console.log(token);
 
-      res.json({ token });
+      res.json({ token: token });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
