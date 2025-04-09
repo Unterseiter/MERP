@@ -5,16 +5,18 @@ export default class EventService {
     static apiUrl = '/api/events';
 //получения всех событий 
 static async getAllRecords(filters = {}) {
+    console.log("filter");
+    console.log(filters);
     const params = {
       ...filters,
-      limited: filters.limit || 0,
+      limited: filters.limited || 10,
     };
 
     const res = await instanceAxios.get(this.apiUrl, {
       params: {
         ...params,
-        startDate: filters.startDate?.toISOString(),
-        endDate: filters.endDate?.toISOString(),
+        start_date: filters.start_date?.toISOString(),
+        end_date: filters.end_date?.toISOString(),
       },
     });
     return res.data;

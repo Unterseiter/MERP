@@ -9,7 +9,7 @@ const EventTester = () => {
   const [newEvent, setNewEvent] = useState({ 
     name: '', 
     description: '',
-    limited:0,
+    limited:1,
     start_date: new Date(),
     end_date: new Date()
   });
@@ -17,13 +17,12 @@ const EventTester = () => {
     page: 1,
     limited: 10,
     search: '',
-    startDate: null,
-    endDate: null,
+    start_date: null,
+    end_date: null,
     sortBy: 'start_date',
     sortOrder: 'ASC',
-    creatorTag: '',
-    minViews: '',
-    maxViews: ''
+    minViews: 0,
+    maxViews: 0
   });
   const [currentUser, setCurrentUser] = useState('');
   const [loading, setLoading] = useState(false);
@@ -35,10 +34,11 @@ const EventTester = () => {
       setLoading(true);
       const params = {
         ...filters,
-        startDate: filters.startDate?.toISOString(),
-        endDate: filters.endDate?.toISOString()
+        start_date: filters.start_date?.toISOString(),
+        end_date: filters.end_date?.toISOString()
       };
-      
+      console.log("validteststart");
+      console.log(params);
       const data = await EventService.getAllRecords(params);
       setEvents(data.rows || []);
       setError('');
@@ -116,22 +116,15 @@ const EventTester = () => {
             value={filters.search}
             onChange={e => setFilters({ ...filters, search: e.target.value })}
           />
-          <input
-            type="text"
-            placeholder="Creator Tag"
-            className="p-2 border rounded"
-            value={filters.creatorTag}
-            onChange={e => setFilters({ ...filters, creatorTag: e.target.value })}
-          />
           <div className="flex gap-2">
             <DatePicker
-              selected={filters.startDate}
+              selected={filters.start_date}
               onChange={date => setFilters({ ...filters, startDate: date })}
               placeholderText="Start Date"
               className="p-2 border rounded w-full"
             />
             <DatePicker
-              selected={filters.endDate}
+              selected={filters.end_date}
               onChange={date => setFilters({ ...filters, endDate: date })}
               placeholderText="End Date"
               className="p-2 border rounded w-full"
@@ -239,27 +232,6 @@ const EventTester = () => {
             className="p-2 border rounded"
             showTimeSelect
             dateFormat="Pp"
-          />
-          <input
-            type="number"
-            placeholder="Views"
-            className="p-2 border rounded"
-            value={newEvent.views}
-            onChange={e => setNewEvent({ ...newEvent, views: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Creator Tag"
-            className="p-2 border rounded"
-            value={newEvent.creator_tag}
-            onChange={e => setNewEvent({ ...newEvent, creator_tag: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Your User Tag"
-            className="p-2 border rounded"
-            value={currentUser}
-            onChange={e => setCurrentUser(e.target.value)}
           />
           <div className="flex gap-2">
             <button

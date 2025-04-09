@@ -14,6 +14,18 @@ const eventSchema = Joi.object({
   views: Joi.number().forbidden() // Запрещаем ручную установку
 });
 
+const getEventsSchema = Joi.object({
+  page: Joi.number().min(1).default(1),
+  limited: Joi.number().min(1).max(100).default(10),
+  search: Joi.string().allow('').max(100),
+  sortBy: Joi.string().valid('start_date', 'end_date', 'views').default('start_date'),
+  sortOrder: Joi.string().valid('ASC', 'DESC').default('ASC'),
+  minViews: Joi.number().min(0).default(0),
+  maxViews: Joi.number().min(0).default(0),
+  startDate: Joi.date().iso().optional(),
+  endDate: Joi.date().iso().optional()
+});
+
 const eventUpdateSchema = Joi.object({
   name: Joi.string().min(3).max(100),
   description: Joi.string().max(1000),
@@ -49,27 +61,60 @@ const eventController = {
   // Получение мероприятий с фильтрацией
   async getEvents(req, res, next) {
     try {
-      console.log(req.query);
-      // Схема валидации параметров запроса
-      const { error, value } = Joi.object({
-        page: Joi.number().min(1).default(1),
-        limited: Joi.number().min(1).max(100).default(10),
-        search: Joi.string().max(100), // Параметр для поиска по тексту
-        startDate: Joi.date().iso(),   // Фильтр по дате начала
-        endDate: Joi.date().iso(),     // Фильтр по дате окончания
-        sortBy: Joi.string().valid('start_date', 'end_date', 'views').default('start_date'),
-        sortOrder: Joi.string().valid('ASC', 'DESC').default('ASC')
-      }).validate(req.query);
+      // Валидация и преобразование параметров
+      console.log("validstart");
+    console.log(req.query);
 
-      if (error) throw new ValidationError(error.details);
+    // Преобразование параметров
+    const processedQuery = {
+      ...req.query,
+      page: Number(req.query.page) || 1,
+      limited: Number(req.query.limited) || 10,
+      minViews: Number(req.query.minViews) || 0,
+      maxViews: Number(req.query.maxViews) || 0
+    };
 
-      // Передаем параметры в сервис
-      const result = await eventService.getEvents({
+    // Валидация
+    const { error, value } = getEventsSchema.validate(processedQuery, {
+      abortEarly: false
+    });
+
+    if (error) {
+      const details = error.details.map(d => ({
+        field: d.path[0],
+        message: d.message
+      }));
+      throw new ValidationError(details);
+    }
+
+    console.log("validend");
+      // Преобразование дат в объекты Date
+      const processedParams = {
         ...value,
+        startDate: value.startDate ? new Date(value.startDate) : null,
+        endDate: value.endDate ? new Date(value.endDate) : null
+      };
+  
+      // Проверка корректности дат
+      if (processedParams.startDate && isNaN(processedParams.startDate.getTime())) {
+        throw new ValidationError([{
+          message: 'Invalid startDate format',
+          path: ['startDate']
+        }]);
+      }
+  
+      if (processedParams.endDate && isNaN(processedParams.endDate.getTime())) {
+        throw new ValidationError([{
+          message: 'Invalid endDate format',
+          path: ['endDate']
+        }]);
+      }
+  
+      const result = await eventService.getEvents({
+        ...processedParams,
         creatorTag: req.user.tag_name
       });
-
-      // Формируем ответ
+  
       res.json({
         data: result.rows,
         meta: {
