@@ -2,11 +2,11 @@ import { instanceAxios } from "../axios-config";
 
 export default class AuthService {
 
-    static apiUrl = '/api';
+    static apiUrl = '/api/auth';
 
     static async login(body) {
         try {
-            const res = await instanceAxios.post("/login", body);
+            const res = await instanceAxios.post(this.apiUrl + "/login", body);
             const token = res.data.token;
       
             // Сохраняем токен

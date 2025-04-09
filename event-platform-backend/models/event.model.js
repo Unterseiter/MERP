@@ -32,19 +32,26 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE,
             allowNull: false,
         },
-    },{
+        creator_tag: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'User', // Name of the referenced model
+                key: 'tag_name', // Key in the referenced model
+            },
+        },
+    }, {
         tableName: 'event',
         validate: {
             dateValidation() {
-              if (this.start_date > this.end_date) {
-                throw new Error('Дата окончания должна быть после даты начала');
-              }
+                if (this.start_date > this.end_date) {
+                    throw new Error('Дата окончания должна быть после даты начала');
+                }
             }
-          }
+        }
     });
 
     Event.associate = (models) => {
-        Event.belongsTo(models.User, { foreignKey: 'creator_tag' });
         Event.belongsToMany(models.User, { through: models.RequestEvent, foreignKey: 'event_id' });
         Event.hasMany(models.Message, {
             foreignKey: 'event_id',

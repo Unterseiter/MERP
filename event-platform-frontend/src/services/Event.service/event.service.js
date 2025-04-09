@@ -7,7 +7,7 @@ export default class EventService {
 static async getAllRecords(filters = {}) {
     const params = {
       ...filters,
-      limited: filters.limit || 10,
+      limited: filters.limit || 0,
     };
 
     const res = await instanceAxios.get(this.apiUrl, {

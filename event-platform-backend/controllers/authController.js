@@ -9,7 +9,7 @@ const authController = {
   // Регистрация нового пользователя
   async signup(req, res) {
     try {
-      const { tag_name, name, email, password, privilege, city} = req.body;
+      const { tag_name, name, email, password, city} = req.body;
 
       // Проверяем, существует ли пользователь с таким email
       const existingUser = await User.findOne({ where: { email } });
@@ -28,7 +28,7 @@ const authController = {
       console.log(req.body);
 
       // Создаем нового пользователя
-      const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege:privilege, city:city });
+      const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege:"user", city:city });
 
       res.status(201).json({ message: 'Пользователь успешно зарегистрирован', created: Created });
     } catch (error) {
@@ -40,9 +40,10 @@ const authController = {
   async login(req, res) {
     try {
       const { tag_name, password } = req.body;
-
+      console.log(req.body);
       // Ищем пользователя по tag_name
       const user = await User.findOne({ where: { tag_name } });
+      console.log(user);
       if (!user) {
         return res.status(401).json({ message: 'Неверный tag_name или пароль' });
       }

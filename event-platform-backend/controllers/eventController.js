@@ -35,7 +35,8 @@ const eventController = {
 
       const eventData = {
         ...value,
-        creator_tag: req.user.tag_name
+        creator_tag: req.user.tag_name,
+        views:0
       };
 
       const event = await eventService.createEvent(eventData);
@@ -48,6 +49,7 @@ const eventController = {
   // Получение мероприятий с фильтрацией
   async getEvents(req, res, next) {
     try {
+      console.log(req.query);
       // Схема валидации параметров запроса
       const { error, value } = Joi.object({
         page: Joi.number().min(1).default(1),

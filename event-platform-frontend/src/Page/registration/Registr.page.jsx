@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import ROUTER_PATH from '../../navigation/path';
 import { useState } from "react";
+import EventTester from "../../test/test"
+import AuthTestPage from "../../test/test-auth"
 
 function Registr(){
     const navigate = useNavigate();
@@ -36,6 +38,14 @@ function Registr(){
 
     return (
         <div>
+            <AuthTestPage />
+            <EventTester  />
+        </div>
+    );
+}
+
+export default Registr;
+/*<div>
             <h1>
                 Регистрация
             </h1>
@@ -96,8 +106,4 @@ function Registr(){
             </div>
             <button className="bg-cyan-100">Зарегистрироваться</button>
             </form>
-        </div>
-    );
-}
-
-export default Registr;
+        </div>*/

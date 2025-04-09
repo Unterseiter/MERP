@@ -66,12 +66,54 @@ const eventService = {
   },
 
   // Создание нового мероприятия
-  async createEvent(eventData, organizerId) {
+  async createEvent(eventData) {
     try {
-      const event = await Event.create({ ...eventData, organizerId });
+      // 1. Валидация и преобразование дат
+      if (!eventData.start_date || !eventData.end_date) {
+        throw new Error('Missing required date fields');
+      }
+  
+      // 2. Преобразуем даты в объекты Date
+      const startDate = new Date(eventData.start_date);
+      const endDate = new Date(eventData.end_date); // Исправлено с end_date на eventData.end_date
+  
+      // 3. Валидация корректности дат
+      if (isNaN(startDate.getTime())) {
+        throw new Error('Invalid start_date format');
+      }
+      
+      if (isNaN(endDate.getTime())) {
+        throw new Error('Invalid end_date format');
+      }
+  
+      // 4. Проверка логики дат
+      if (startDate >= endDate) {
+        throw new Error('end_date must be greater than start_date');
+      }
+  
+      // 5. Логирование для отладки
+      console.log('Processed dates:', {
+        originalStart: eventData.start_date,
+        convertedStart: startDate,
+        originalEnd: eventData.end_date,
+        convertedEnd: endDate
+      });
+  
+      // 6. Создаем событие с преобразованными датами
+      const event = await Event.create({ 
+        ...eventData,
+        start_date: startDate,
+        end_date: endDate
+      });
+  
       return event;
     } catch (error) {
-      throw error;
+      // 7. Улучшенная обработка ошибок
+      console.error('Error creating event:', {
+        error: error.message,
+        inputData: eventData
+      });
+      throw new Error(`Event creation failed: ${error.message}`);
     }
   },
 
