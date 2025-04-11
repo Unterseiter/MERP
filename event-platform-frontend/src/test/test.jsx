@@ -37,10 +37,8 @@ const EventTester = () => {
         start_date: filters.start_date?.toISOString(),
         end_date: filters.end_date?.toISOString()
       };
-      console.log("validteststart");
-      console.log(params);
       const data = await EventService.getAllRecords(params);
-      setEvents(data.rows || []);
+      setEvents(data.data || []);
       setError('');
     } catch (err) {
       setError(err.message);
@@ -88,7 +86,7 @@ const EventTester = () => {
   const handleDelete = async (id) => {
     try {
       setLoading(true);
-      await EventService.removeRecord(id, currentUser);
+      await EventService.removeRecord(id);
       setEvents(events.filter(e => e.event_id !== id));
       setError('');
     } catch (err) {
@@ -179,7 +177,11 @@ const EventTester = () => {
         {events.map(event => (
           <div key={event.event_id} className="mb-4 p-4 border rounded">
             <h3 className="text-lg font-semibold">{event.name}</h3>
+            <p className="text-gray-600">{event.limited}</p>
+            <p className="text-gray-600">{event.views}</p>
             <p className="text-gray-600">{event.description}</p>
+            <p className="text-gray-600">{event.start_date}</p>
+            <p className="text-gray-600">{event.end_date}</p>
             <div className="mt-2 flex gap-2">
               <button
                 onClick={() => handleDelete(event.event_id)}

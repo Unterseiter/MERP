@@ -177,7 +177,7 @@ const eventController = {
       }
 
       // Удаление
-      await eventService.deleteEvent(req.params.id);
+      await eventService.deleteEvent(req.params.id, req.user.tag_name);
       res.status(204).send();
     } catch (error) {
       next(error);

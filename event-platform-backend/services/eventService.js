@@ -25,7 +25,6 @@ const eventService = {
     if (creatorTag) where.creator_tag = creatorTag;
 
     // Фильтр по текстовому поиску
-    console.log(search);
     if (search) {
       const searchTerm = `%${search.toLowerCase()}%`;
 
@@ -90,15 +89,7 @@ const eventService = {
       if (startDate >= endDate) {
         throw new Error('end_date must be greater than start_date');
       }
-  
-      // 5. Логирование для отладки
-      console.log('Processed dates:', {
-        originalStart: eventData.start_date,
-        convertedStart: startDate,
-        originalEnd: eventData.end_date,
-        convertedEnd: endDate
-      });
-  
+
       // 6. Создаем событие с преобразованными датами
       const event = await Event.create({ 
         ...eventData,
@@ -184,9 +175,10 @@ const eventService = {
   // Удаление мероприятия
   async deleteEvent(id, creator) {
     try {
+      /*Покамесь сделаю так в будущем нужно сделать чтобы удалять нельзя было, можно было-бы поставить метку удалён */
       const event = await Event.findByPk(id);
       if (!event) return false;
-      if (Check_Privilege(event.creator_tag, creator)) {
+      if (!Check_Privilege(event.creator_tag, creator)) {
         throw new Error('У вас нет прав для удаления этого мероприятия');
       }
       await event.destroy();
