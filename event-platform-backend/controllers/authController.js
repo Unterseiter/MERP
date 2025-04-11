@@ -9,7 +9,7 @@ const authController = {
   // Регистрация нового пользователя
   async signup(req, res) {
     try {
-      const { tag_name, name, email, password, city} = req.body;
+      const { tag_name, name, email, password, city } = req.body;
 
       // Проверяем, существует ли пользователь с таким email
       const existingUser = await User.findOne({ where: { email } });
@@ -25,10 +25,8 @@ const authController = {
       // Хешируем пароль
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      console.log(req.body);
-
       // Создаем нового пользователя
-      const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege:"user", city:city });
+      const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege: "user", city: city });
 
       res.status(201).json({ message: 'Пользователь успешно зарегистрирован', created: Created });
     } catch (error) {
@@ -40,26 +38,46 @@ const authController = {
   async login(req, res) {
     try {
       const { tag_name, password } = req.body;
-      console.log(req.body);
       // Ищем пользователя по tag_name
       const user = await User.findOne({ where: { tag_name } });
-      console.log(user);
       if (!user) {
         return res.status(401).json({ message: 'Неверный tag_name или пароль' });
       }
       // Проверяем пароль
       const isPasswordValid = await bcrypt.compare(password, user.password);
-      const isPasswordValid2 = password === user.password;
-
-      if (!isPasswordValid && !isPasswordValid2) {
-        return res.status(401).json({ message: 'Неверный email или пароль' });
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Неверный пароль' });
       }
 
       // Генерируем JWT-токен
-      const token = jwt.sign({ tag_name: user.tag_name }, process.env.JWT_SECRET, { expiresIn: '1h' });
-      console.log(token);
+      const token = jwt.sign({ tag_name: user.tag_name, id: user.id },
+        process.env.JWT_SECRET,
+        { expiresIn: '1d' }
+      );
 
-      res.json({ token: token });
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'Strict',
+        maxAge: 1 * 24 * 60 * 60 * 1000
+      });
+
+      res.json({ message: 'Успешный вход', user: { tag_name: user.tag_name, email: user.email } });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
+  //Выход
+  async logout(req, res) {
+    try {
+      // Очищаем куки
+      res.clearCookie('jwt', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'Strict'
+      });
+
+      res.json({ message: 'Успешный выход' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

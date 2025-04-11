@@ -1,15 +1,18 @@
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 //Middleware(Промежуточные обработчики)
 const corsOptions = {
     origin: '*',
-    allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder']
+    allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder'],
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/api/test', (req, res) => {
     res.json({ message: 'API работает!' });
