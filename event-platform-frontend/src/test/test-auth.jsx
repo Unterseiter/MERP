@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AuthService from '../services/Auth.service/auth.service';
 
 const AuthTestPage = () => {
@@ -8,11 +8,24 @@ const AuthTestPage = () => {
     city: '',
     name: '',
     email: '',
-    password: ''
+    password: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [user, setUser] = useState(null);
+
+  // Проверка аутентификации при загрузке компонента
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const userData = await AuthService.checkAuth(); // Запрос к защищенному маршруту
+        setUser(userData);
+      } catch (err) {
+        setUser(null); // Пользователь не аутентифицирован
+      }
+    };
+    checkAuth();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,25 +33,29 @@ const AuthTestPage = () => {
     setError('');
 
     try {
-      let response;
       if (isLoginForm) {
-        response = await AuthService.login({tag_name:formData.tag_name, password:formData.password});
+        await AuthService.login({ tag_name: formData.tag_name, password: formData.password });
       } else {
-        response = await AuthService.register(formData);
+        await AuthService.register(formData);
       }
-      
-      setUser(response.user);
+      // После успешного входа или регистрации запрашиваем данные пользователя
+      const userData = await AuthService.checkAuth();
+      setUser(userData);
       setFormData({ tag_name: '', city: '', name: '', email: '', password: '' });
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Произошла ошибка');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleLogout = () => {
-    AuthService.logout();
-    setUser(null);
+  const handleLogout = async () => {
+    try {
+      await AuthService.logout();
+      setUser(null);
+    } catch (err) {
+      setError('Ошибка при выходе: ' + err.message);
+    }
   };
 
   return (
@@ -46,7 +63,7 @@ const AuthTestPage = () => {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            {user ? `Welcome, ${user.tag_name}` : (isLoginForm ? 'Вход' : 'Регистрация')}
+            {user ? `Welcome, ${user.tag_name}` : isLoginForm ? 'Вход' : 'Регистрация'}
           </h2>
         </div>
 
@@ -92,7 +109,6 @@ const AuthTestPage = () => {
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     />
                   </div>
-
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                       Имя
@@ -107,7 +123,6 @@ const AuthTestPage = () => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
-
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                       Email
@@ -148,9 +163,7 @@ const AuthTestPage = () => {
                 className="text-sm text-blue-600 hover:text-blue-500"
                 onClick={() => setIsLoginForm(!isLoginForm)}
               >
-                {isLoginForm 
-                  ? "Нет аккаунта? Зарегистрироваться" 
-                  : "Уже есть аккаунт? Войти"}
+                {isLoginForm ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти'}
               </button>
             </div>
 
@@ -159,7 +172,7 @@ const AuthTestPage = () => {
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
             >
-              {loading ? 'Загрузка...' : (isLoginForm ? 'Войти' : 'Зарегистрироваться')}
+              {loading ? 'Загрузка...' : isLoginForm ? 'Войти' : 'Зарегистрироваться'}
             </button>
           </form>
         ) : (

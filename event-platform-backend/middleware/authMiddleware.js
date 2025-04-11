@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authMiddleware = (req, res, next) => {
-  const token = req.cookie.jwt;
+  const token = req.cookies.jwt;
   console.log(`token: ${token}`);
   console.log(`process.env.JWT_SECRET: ${process.env.JWT_SECRET}`);
   if (!token) {

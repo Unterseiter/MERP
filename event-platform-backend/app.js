@@ -5,7 +5,7 @@ const app = express();
 
 //Middleware(Промежуточные обработчики)
 const corsOptions = {
-    origin: '*',
+    origin: 'http://localhost:3000',
     allowedHeaders: ['Content-Type', 'Authorization', 'bypass-tunnel-reminder'],
     credentials: true,
 };

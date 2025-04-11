@@ -7,25 +7,46 @@ export default class AuthService {
     static async login(body) {
         try {
             const res = await instanceAxios.post(this.apiUrl + "/login", body);
-            const token = res.data.token;
-      
-            // Сохраняем токен
-            localStorage.setItem("authToken", token);
-      
-            // Обновляем заголовки Axios
-            instanceAxios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      
             return res.data;
-          } catch (error) {
+        } catch (error) {
             throw new Error("Ошибка авторизации: " + error.message);
-          }
+        }
     }
+
     static async register(body) {
-        const res = await instanceAxios.post(this.apiUrl + "/register", body);
-        return res.data;
+        try {
+            const res = await instanceAxios.post(`${this.apiUrl}/register`, body);
+            return res.data;
+        } catch (error) {
+            throw new Error("Ошибка регистрации: " + error.response?.data?.message || error.message);
+        }
     }
-    static logout() {
-        localStorage.removeItem("authToken");
-        delete instanceAxios.defaults.headers.common["Authorization"];
+
+    static async logout() {
+        try {
+            // Отправляем запрос на выход, чтобы сервер очистил куки
+            await instanceAxios.post(`${this.apiUrl}/logout`);
+
+            // Ничего дополнительно очищать на клиенте не нужно, так как куки HTTP-only
+            return { message: 'Успешный выход' };
+        } catch (error) {
+            throw new Error("Ошибка выхода: " + error.response?.data?.message || error.message);
+        }
+    }
+
+    static async checkAuth() {
+        try {
+            // Проверяем авторизацию через защищенный маршрут
+            const res = await instanceAxios.get(`${this.apiUrl}/profile`);
+
+            // Если запрос успешен, пользователь авторизован
+            return res.data; // Возвращаем данные пользователя
+        } catch (error) {
+            // Если ошибка 401, пользователь не авторизован
+            if (error.response?.status === 401) {
+                return null;
+            }
+            throw new Error("Ошибка проверки авторизации: " + error.response?.data?.message || error.message);
+        }
     }
 }
