@@ -4,6 +4,11 @@ const userController = {
   // Получение профиля пользователя
   async getProfile(req, res) {
     try {
+      const ProfileData = {
+        info:{},
+        events:[],
+        history:[]
+      }
       const user = await userService.getUserByTag(req.user.tag_name);
       if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
       res.json(user);

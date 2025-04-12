@@ -5,6 +5,7 @@ import { AuthContext } from '../../components/authorization/AuthContext'; // П�
 import { Bell, MessageSquare, Plus, ChevronDown, User } from 'lucide-react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import AuthService from '../../services/Auth.service/auth.service';
+import ROTER_PATH from '../../navigation/path';
 
 
 function Header() {
@@ -44,7 +45,9 @@ function Header() {
             </div>
 
             <nav className="flex items-center gap-4">
-                <button className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner">
+                <button className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
+                    onClick={()=>{navigate(ROTER_PATH.eventManage)}}
+                >
                     <Plus size={20} />
                     <span>Создать запись</span>
                 </button>

@@ -48,7 +48,7 @@ const eventController = {
       const eventData = {
         ...value,
         creator_tag: req.user.tag_name,
-        views:0
+        views: 0
       };
 
       const event = await eventService.createEvent(eventData);
@@ -61,40 +61,35 @@ const eventController = {
   // Получение мероприятий с фильтрацией
   async getEvents(req, res, next) {
     try {
-      // Валидация и преобразование параметров
-      console.log("validstart");
-    console.log(req.query);
 
-    // Преобразование параметров
-    const processedQuery = {
-      ...req.query,
-      page: Number(req.query.page) || 1,
-      limited: Number(req.query.limited) || 10,
-      minViews: Number(req.query.minViews) || 0,
-      maxViews: Number(req.query.maxViews) || 0
-    };
+      // Преобразование параметров
+      const processedQuery = {
+        ...req.query,
+        page: Number(req.query.page) || 1,
+        limited: Number(req.query.limited) || 10,
+        minViews: Number(req.query.minViews) || 0,
+        maxViews: Number(req.query.maxViews) || 0
+      };
 
-    // Валидация
-    const { error, value } = getEventsSchema.validate(processedQuery, {
-      abortEarly: false
-    });
+      // Валидация
+      const { error, value } = getEventsSchema.validate(processedQuery, {
+        abortEarly: false
+      });
 
-    if (error) {
-      const details = error.details.map(d => ({
-        field: d.path[0],
-        message: d.message
-      }));
-      throw new ValidationError(details);
-    }
-
-    console.log("validend");
+      if (error) {
+        const details = error.details.map(d => ({
+          field: d.path[0],
+          message: d.message
+        }));
+        throw new ValidationError(details);
+      }
       // Преобразование дат в объекты Date
       const processedParams = {
         ...value,
         startDate: value.startDate ? new Date(value.startDate) : null,
         endDate: value.endDate ? new Date(value.endDate) : null
       };
-  
+
       // Проверка корректности дат
       if (processedParams.startDate && isNaN(processedParams.startDate.getTime())) {
         throw new ValidationError([{
@@ -102,19 +97,19 @@ const eventController = {
           path: ['startDate']
         }]);
       }
-  
+
       if (processedParams.endDate && isNaN(processedParams.endDate.getTime())) {
         throw new ValidationError([{
           message: 'Invalid endDate format',
           path: ['endDate']
         }]);
       }
-  
+
       const result = await eventService.getEvents({
         ...processedParams,
         creatorTag: req.user.tag_name
       });
-  
+
       res.json({
         data: result.rows,
         meta: {
@@ -134,8 +129,8 @@ const eventController = {
     try {
       const event = await eventService.getEventById(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
-      
-      eventService.updateEvent(event.event_id, {views:event.views+1});
+
+      eventService.updateEvent(event.event_id, { views: event.views + 1 });
       res.json(event);
     } catch (error) {
       next(error);
@@ -148,7 +143,7 @@ const eventController = {
       // Проверка прав доступа
       const event = await Event.findByPk(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
-      
+
       if (event.creator_tag !== req.user.tag_name && !req.user.isAdmin) {
         throw new ForbiddenError('Недостаточно прав');
       }
@@ -171,7 +166,7 @@ const eventController = {
       // Проверка прав доступа
       const event = await Event.findByPk(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
-      
+
       if (event.creator_tag !== req.user.tag_name && !req.user.isAdmin) {
         throw new ForbiddenError('Недостаточно прав');
       }

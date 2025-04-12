@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/footer/footer';
 import Home from './Page/Home.page/Home.page';
 import Func from './Page/Func.page/Func.page';
+import EventsManagePage from './Page/Event.page/EventManagePage';
 import Registr from './Page/registration/Registr.page';
 import ROUTER_PATH from './navigation/path';
 import PrivateRoute from './components/authorization/PrivateRoute';
@@ -25,6 +26,7 @@ function App() {
             element={<PrivateRoute element={<Func />} />}
           />
           <Route path={ROUTER_PATH.registration} element={<Registr />} />
+          <Route path={ROUTER_PATH.eventManage} element={<EventsManagePage />} />
         </Routes>
         <Footer />
       </div>
