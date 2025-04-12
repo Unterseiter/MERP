@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   // Проверка аутентификации при загрузке страницы
   useEffect(() => {
@@ -27,8 +27,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Функция входа
-  const login = () => {
+  const login = (userData) => {
     setIsAuthenticated(true);
+    setUser(userData.user);
   };
 
   // Функция выхода

@@ -9,6 +9,7 @@ import AuthService from '../../services/Auth.service/auth.service';
 
 function Header() {
     const navigate = useNavigate();
+    const { logout } = useContext(AuthContext);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
     const { isAuthenticated, user, loading } = useContext(AuthContext); // Получаем статус и данные пользователя
 
@@ -25,6 +26,7 @@ function Header() {
     const handleLogout = async () => {
         try {
             await AuthService.logout();
+            logout();
         } catch (err) {
             console.log('Ошибка при выходе: ' + err.message);
         }
