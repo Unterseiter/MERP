@@ -30,10 +30,6 @@ const AuthPopup = ({ onClose }) => {
     };
     checkAuth();
   }, []);
-  // Перенаправление на страницу регистрации
-  const handleRegistClick = () => {
-    navigate('registr');
-  };
   //Обработка входа и регистрации
   const handleSubmit = async (e) => {
     e.preventDefault();

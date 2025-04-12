@@ -14,6 +14,7 @@ const ProfileTest = () => {
         setError(null);
         try {
             const data = await UserService.getProfile();
+            console.log(data);
             setProfileData(data);
         } catch (err) {
             setError(err.response?.data?.message || 'Ошибка при загрузке профиля');
