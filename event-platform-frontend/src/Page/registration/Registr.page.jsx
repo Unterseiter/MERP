@@ -3,6 +3,7 @@ import ROUTER_PATH from '../../navigation/path';
 import { useState } from "react";
 import EventTester from "../../test/test"
 import AuthTestPage from "../../test/test-auth"
+import ProfileTestPage from "../../test/test-profile"
 
 function Registr(){
     const navigate = useNavigate();
@@ -40,6 +41,7 @@ function Registr(){
         <div>
             <AuthTestPage />
             <EventTester  />
+            <ProfileTestPage />
         </div>
     );
 }

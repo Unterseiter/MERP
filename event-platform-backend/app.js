@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const cron = require('node-cron');
 const cookieParser = require('cookie-parser');
 const app = express();
+
+const moveExpiredEventsToHistory = require('./services/cron/History');
 
 //Middleware(Промежуточные обработчики)
 const corsOptions = {
@@ -18,6 +21,18 @@ app.get('/api/test', (req, res) => {
     res.json({ message: 'API работает!' });
 });
 
+//cron события
+//каждые 00:00
+cron.schedule('0 0 * * *', () => {
+    console.log('Запуск проверки просроченных событий...');
+    moveExpiredEventsToHistory();
+});
+//каждые 60сек
+//cron.schedule('*/20 * * * * *', () => {
+//    console.log('Запуск проверки просроченных событий...');
+//    moveExpiredEventsToHistory();
+//});
+    
 //Подключение маршрутов
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');

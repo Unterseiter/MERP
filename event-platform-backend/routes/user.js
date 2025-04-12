@@ -3,7 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const authMiddleware = require('../middleware/authMiddleware');
 
-router.get('/profil/', authMiddleware, userController.getProfile);
+router.get('/profile', authMiddleware, userController.getProfile);
 router.get('/', userController.getAllProfile);
 router.put('/',authMiddleware, userController.updateProfile);
 

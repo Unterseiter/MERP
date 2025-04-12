@@ -99,6 +99,14 @@ function Header() {
                 >
                     Выйти
                 </button>
+                <button
+                className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
+                    ${showAuthPopup ? 'bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50' : 'hover:bg-[#B08F6E] hover:shadow-lg'}
+                    active:shadow-inner`}
+                    onClick={()=>{navigate(ROTER_PATH.registration)}}
+                >
+                    Тест
+                </button>
             </nav>
         </header>
     );
