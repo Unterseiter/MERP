@@ -38,7 +38,7 @@ export default class AuthService {
         try {
             // Проверяем авторизацию через защищенный маршрут
             const res = await instanceAxios.get(`${this.apiUrl}/profile`);
-
+            console.log(res.data);
             // Если запрос успешен, пользователь авторизован
             return res.data; // Возвращаем данные пользователя
         } catch (error) {
