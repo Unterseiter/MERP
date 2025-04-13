@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cron = require('node-cron');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -16,6 +17,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+// Настройка статических файлов
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/api/test', (req, res) => {
     res.json({ message: 'API работает!' });

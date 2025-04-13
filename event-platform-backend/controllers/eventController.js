@@ -2,6 +2,8 @@ const Joi = require('joi');
 const { Event, RequestEvent } = require('../models');
 const { ValidationError, ForbiddenError, NotFoundError } = require('../utils/errors');
 const eventService = require('../services/eventService');
+const path = require('path');
+const fs = require('fs').promises;
 
 // Схемы валидации
 const eventSchema = Joi.object({
@@ -12,7 +14,7 @@ const eventSchema = Joi.object({
   limited: Joi.number().min(0),
   creator_tag: Joi.string().forbidden(), // Запрещаем ручную установку
   views: Joi.number().forbidden(), // Запрещаем ручную установку
-  photo_url: Joi.string().uri().optional()
+  photo_url: Joi.string()/*.uri().optional()*/
 });
 
 const getEventsSchema = Joi.object({
@@ -33,7 +35,7 @@ const eventUpdateSchema = Joi.object({
   start_date: Joi.date().iso(),
   end_date: Joi.date().iso(),
   limited: Joi.number().min(0),
-  photo_url: Joi.string().uri().optional()
+  photo_url: Joi.string()/*.uri().optional()*/
 }).min(1);
 
 
@@ -179,7 +181,52 @@ const eventController = {
     } catch (error) {
       next(error);
     }
-  }
+  },
+  async uploadEventPhoto(req, res, next) {
+    try {
+      const eventId = parseInt(req.params.id, 10);
+      if (isNaN(eventId)) {
+        throw new ValidationError('Некорректный ID события');
+      }
+
+      const event = await Event.findByPk(eventId);
+      if (!event) {
+        throw new NotFoundError('Мероприятие не найдено');
+      }
+
+      if (event.creator_tag !== req.user.tag_name && !req.user.isAdmin) {
+        throw new ForbiddenError('Недостаточно прав');
+      }
+
+      if (!req.file) {
+        throw new ValidationError('Файл не предоставлен');
+      }
+
+      // Формируем URL для доступа к файлу
+      const photoUrl = `/uploads/events/${req.file.filename}`;
+      console.log('Saved file:', req.file.path);
+
+      // Удаляем старое изображение, если оно есть
+      if (event.photo_url) {
+        const oldPath = path.join(__dirname, '..', event.photo_url);
+        await fs.unlink(oldPath).catch((err) => {
+          console.warn('Failed to delete old file:', err.message);
+        });
+      }
+
+      // Обновляем событие
+      await eventService.updateEvent(eventId, { photo_url: photoUrl });
+
+      res.json({ photo_url: photoUrl });
+    } catch (error) {
+      // Удаляем загруженный файл в случае ошибки
+      if (req.file && req.file.path) {
+        await fs.unlink(req.file.path).catch(() => {});
+      }
+      console.error('Upload Error:', error);
+      next(error);
+    }
+  },
 };
 
 module.exports = eventController;

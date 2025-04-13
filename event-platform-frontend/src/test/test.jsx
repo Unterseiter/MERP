@@ -10,6 +10,7 @@ const EventTester = () => {
     name: '', 
     description: '',
     limited:1,
+    photo_url:'',
     start_date: new Date(),
     end_date: new Date()
   });
