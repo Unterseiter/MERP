@@ -11,7 +11,8 @@ const eventSchema = Joi.object({
   end_date: Joi.date().iso().min(Joi.ref('start_date')).required(),
   limited: Joi.number().min(0),
   creator_tag: Joi.string().forbidden(), // Запрещаем ручную установку
-  views: Joi.number().forbidden() // Запрещаем ручную установку
+  views: Joi.number().forbidden(), // Запрещаем ручную установку
+  photo_url: Joi.string().uri().optional()
 });
 
 const getEventsSchema = Joi.object({
@@ -23,7 +24,7 @@ const getEventsSchema = Joi.object({
   minViews: Joi.number().min(0).default(0),
   maxViews: Joi.number().min(0).default(0),
   startDate: Joi.date().iso().optional(),
-  endDate: Joi.date().iso().optional()
+  endDate: Joi.date().iso().optional(),
 });
 
 const eventUpdateSchema = Joi.object({
@@ -31,7 +32,8 @@ const eventUpdateSchema = Joi.object({
   description: Joi.string().max(1000),
   start_date: Joi.date().iso(),
   end_date: Joi.date().iso(),
-  limited: Joi.number().min(0)
+  limited: Joi.number().min(0),
+  photo_url: Joi.string().uri().optional()
 }).min(1);
 
 
