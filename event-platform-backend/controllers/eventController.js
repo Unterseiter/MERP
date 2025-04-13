@@ -4,6 +4,7 @@ const { ValidationError, ForbiddenError, NotFoundError } = require('../utils/err
 const eventService = require('../services/eventService');
 const path = require('path');
 const fs = require('fs').promises;
+const sharp = require('sharp');
 
 // Схемы валидации
 const eventSchema = Joi.object({
@@ -202,11 +203,19 @@ const eventController = {
         throw new ValidationError('Файл не предоставлен');
       }
 
-      // Формируем URL для доступа к файлу
+      // Сжимаем изображение
+      const compressedImage = await sharp(req.file.path)
+        .resize({ width: 800, withoutEnlargement: true })
+        .jpeg({ quality: 80 })
+        .toBuffer();
+
+      // Перезаписываем файл сжатым изображением
+      await fs.writeFile(req.file.path, compressedImage);
+
       const photoUrl = `/uploads/events/${req.file.filename}`;
       console.log('Saved file:', req.file.path);
 
-      // Удаляем старое изображение, если оно есть
+      // Удаляем старое изображение
       if (event.photo_url) {
         const oldPath = path.join(__dirname, '..', event.photo_url);
         await fs.unlink(oldPath).catch((err) => {
@@ -219,9 +228,8 @@ const eventController = {
 
       res.json({ photo_url: photoUrl });
     } catch (error) {
-      // Удаляем загруженный файл в случае ошибки
       if (req.file && req.file.path) {
-        await fs.unlink(req.file.path).catch(() => {});
+        await fs.unlink(req.file.path).catch(() => { });
       }
       console.error('Upload Error:', error);
       next(error);
