@@ -6,6 +6,12 @@ const path = require('path');
 const fs = require('fs').promises;
 const sharp = require('sharp');
 
+//логер
+const { Logger } = require('../utils/LogFile');
+const logger = new Logger().init();
+const info = async (mess) => { (await logger).info(mess) };
+const err = async (mess) => { (await logger).error(mess) };
+
 // Схемы валидации
 const eventSchema = Joi.object({
   name: Joi.string().min(3).max(100).required(),
@@ -44,47 +50,35 @@ const eventUpdateSchema = Joi.object({
 const eventController = {
   async createEvent(req, res, next) {
     try {
-      //console.log(req);
+      // Валидация
       const { error, value } = eventSchema.validate(req.body);
       if (error) throw new ValidationError(error.details);
-
+  
+      // Формирование данных
       const eventData = {
         ...value,
         creator_tag: req.user.tag_name,
         views: 0,
+        photo_url: req.file ? `/uploads/events/${req.file.filename}` : null
       };
-
-      let photoUrl = null;
-      if (req.file) {
-        console.log("req.file.path");
-        console.log(req.file.path);
-        
-        const compressedImage = await sharp(req.file.path)
-          .resize({ width: 800, withoutEnlargement: true })
-          .webp({ quality: 80 })
-          .toBuffer();
-        console.log(compressedImage);
-      
-        try {
-          photoUrl = `/uploads/events/${req.file.filename}`;
-          eventData.photo_url = photoUrl;
-        } catch (err) {
-          console.error('Failed to process file:', err);
-          throw new Error('Не удалось сохранить изображение');
-        }
-      }
-
+  
+      // Создание события
       const event = await eventService.createEvent(eventData);
-      res.status(201).json({
+      
+      // Успешный ответ
+      return res.status(201).json({
         ...event.toJSON(),
-        photo_url: event.photo_url ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}` : null,
+        photo_url: event.photo_url 
+          ? `${process.env.CORS_ORIGIN}${event.photo_url}`
+          : null
       });
+  
     } catch (error) {
-      if (req.file && req.file.path) {
-        await fs.unlink(req.file.path).catch(() => { });
+      // Удаление файла при ошибке
+      if (req.file?.path) {
+        await fs.unlink(req.file.path).catch(() => {});
       }
-      console.error('Create Event Error:', error);
-      next(error);
+      return next(error);
     }
   },
 
@@ -177,19 +171,39 @@ const eventController = {
 
       let photoUrl = event.photo_url;
       if (req.file) {
-        const compressedImage = await sharp(req.file.path)
-          .resize({ width: 800, withoutEnlargement: true })
-          .jpeg({ quality: 80 })
-          .toBuffer();
+        // Генерируем уникальное имя файла
+        const newFileName = `${crypto.randomUUID()}.webp`; // Изменяем расширение
+        const uploadDir = path.join(__dirname, '..', 'uploads', 'events');
+        const outputPath = path.join(uploadDir, newFileName);
 
-        await fs.writeFile(req.file.path, compressedImage);
+        // Создаем директорию, если не существует
+        await fs.mkdir(uploadDir, { recursive: true });
 
-        photoUrl = `/uploads/events/${req.file.filename}`;
+        // Обработка изображения с WebP
+        await sharp(req.file.path)
+          .resize({
+            width: 800,
+            height: 600,
+            fit: 'inside',
+            withoutEnlargement: true
+          })
+          .webp({  // Меняем формат на WebP
+            quality: 80,
+            alphaQuality: 80,
+            lossless: false,
+            nearLossless: false,
+            smartSubsample: true
+          })
+          .toFile(outputPath);
 
+        photoUrl = `/uploads/events/${newFileName}`;
+        tempFilePath = req.file.path;
+
+        // Удаление старого файла (вне зависимости от формата)
         if (event.photo_url) {
           const oldPath = path.join(__dirname, '..', event.photo_url);
           await fs.unlink(oldPath).catch((err) => {
-            console.warn('Failed to delete old file:', err.message);
+            console.warn('Не удалось удалить старый файл:', err.message);
           });
         }
       }
@@ -286,6 +300,45 @@ const eventController = {
       next(error);
     }
   },
+  // Вспомогательные методы
+  _formatPhotoUrl(photoUrl) {
+    return photoUrl
+      ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${photo_url}`
+      : null;
+  },
+
+  async _processFileUpload(req, existingEvent = null) {
+    if (!req.file) return {};
+
+    try {
+      await logger.info(`Обработка файла: ${req.file.filename}`);
+
+      // Удаляем старое изображение
+      if (existingEvent?.photo_url) {
+        const oldPath = path.join(__dirname, '..', existingEvent.photo_url);
+        await fs.unlink(oldPath).catch(err => {
+          logger.warn(`Не удалось удалить старый файл: ${err.message}`);
+        });
+      }
+
+      return {
+        photo_url: `/uploads/events/${req.file.filename}`
+      };
+    } catch (error) {
+      await logger.error(`Ошибка обработки файла: ${error.message}`);
+      throw error;
+    }
+  },
+
+  async _cleanupFiles(req) {
+    if (req.file?.path) {
+      await fs.unlink(req.file.path).catch(() => { });
+    }
+  },
+
+  _checkPermissions(event, user) {
+    return event.creator_tag === user.tag_name || user.isAdmin;
+  }
 };
 
 module.exports = eventController;

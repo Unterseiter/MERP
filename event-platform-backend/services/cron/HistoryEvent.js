@@ -1,6 +1,13 @@
 const { sequelize, Event, RequestEvent, history } = require('../../models');
 const { Op } = require('sequelize');
 const fs = require('fs').promises;
+const path = require('path');
+
+//логер
+const { Logger } = require('../../utils/LogFile');
+const logger = new Logger().init();
+const info1 = async (mess) => { (await logger).info(mess) };
+const err = async (mess) => { (await logger).error(mess) };
 
 const moveEventToHistoryById = async (eventId) => {
     try {
@@ -11,7 +18,7 @@ const moveEventToHistoryById = async (eventId) => {
         });
 
         if (!event) {
-            throw new Error('Событие не найдено');
+            throw err('Событие не найдено');
         }
 
         const { event_id, creator_tag, name, description, start_date, photo_url } = event;
@@ -58,12 +65,20 @@ const moveEventToHistoryById = async (eventId) => {
             // Удаление файла изображения (если есть)
             if (photo_url) {
                 try {
-                    await fs.unlink(photo_url); // Добавлен await
-                    console.log('Файл успешно удален с сервера');
+                    // Получаем абсолютный путь к файлу
+                    const filePath = path.join(__dirname, '..', '..', photo_url.replace(/^\//, ''));
+                    
+                    // Проверяем существование файла перед удалением
+                    await fs.access(filePath, fs.constants.F_OK);
+                    await fs.unlink(filePath);
+                    info1(`Файл ${filePath} успешно удалён`);
                 } catch (err) {
-                    console.error('Ошибка при удалении файла:', err);
+                    if (err.code !== 'ENOENT') {
+                        console.error('Ошибка при удалении файла:', err);
+                    }
                 }
             }
+
 
             // Удаляем событие и связанные запросы
             await Event.destroy({
@@ -77,12 +92,12 @@ const moveEventToHistoryById = async (eventId) => {
             });
         });
 
-        console.log(`Событие ${name} (ID: ${event_id}) перенесено в историю`);
+        info1(`Событие ${name} (ID: ${event_id}) перенесено в историю`);
         return { success: true, message: 'Событие перенесено в историю' };
 
     } catch (error) {
         console.error('Ошибка при переносе события:', error);
-        throw new Error(error.message || 'Ошибка обработки');
+        err(`Ошибка при переносе события: ${error}`)
     }
 };
 
