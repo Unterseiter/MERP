@@ -1,48 +1,68 @@
 import { instanceAxios } from "../axios-config";
 
 export default class EventService {
-
     static apiUrl = '/api/events';
-    //получения всех событий 
+  
     static async getAllRecords(filters = {}) {
-        console.log("filter");
-        console.log(filters);
-        const params = {
-            ...filters,
-            limited: filters.limited || 10,
-        };
-
-        const res = await instanceAxios.get(this.apiUrl, {
-            params: {
-                ...params,
-                start_date: filters.start_date?.toISOString(),
-                end_date: filters.end_date?.toISOString(),
-            },
-        });
-        return res.data;
+      console.log('Filters:', filters);
+      const params = {
+        ...filters,
+        limited: filters.limited || 10,
+      };
+  
+      const res = await instanceAxios.get(this.apiUrl, {
+        params: {
+          ...params,
+          start_date: filters.start_date?.toISOString(),
+          end_date: filters.end_date?.toISOString(),
+        },
+      });
+      return res.data;
     }
-    //получение мероприятий пользователя 
+  
     static async getUserRecords() {
-
+      // Если нужно, реализуйте, например:
+      const res = await instanceAxios.get(`${this.apiUrl}/user`);
+      return res.data;
     }
-    //получение мероприятия по id
+  
     static async getOneRecord(id) {
-        const res = await instanceAxios.get(this.apiUrl + `/${id}`);
-        return res.data;
+      const res = await instanceAxios.get(`${this.apiUrl}/${id}`);
+      return res.data;
     }
-    //создание мероприятия
-    static async createRecord(body) {
-        const res = await instanceAxios.post(this.apiUrl, body);
-        return res.data;
+  
+    static async createRecord(body, file = null) {
+      const formData = new FormData();
+      for (const key in body) {
+        formData.append(key, body[key]);
+      }
+      if (file) {
+        formData.append('photo', file);
+      }
+      console.log('front eventService');
+      console.log(formData);
+      console.log(body);
+      console.log(file);
+  
+      const res = await instanceAxios.post(this.apiUrl, formData);
+      return res.data;
     }
-    //измениение мероприятия по айди
-    static async updateRecord(id, body) {
-        const res = await instanceAxios.put(`${this.apiUrl}/${id}`, body);
-        return res.data;
+  
+    static async updateRecord(id, body, file = null) {
+      const formData = new FormData();
+      for (const key in body) {
+        formData.append(key, body[key]);
+      }
+      if (file) {
+        formData.append('photo', file);
+      }
+  
+      const res = await instanceAxios.put(`${this.apiUrl}/${id}`, formData);
+      return res.data;
     }
-    //удаление мероприятия
+  
     static async removeRecord(id) {
-        const res = await instanceAxios.delete(`${this.apiUrl}/${id}`);
-        return res.data;
+      const res = await instanceAxios.delete(`${this.apiUrl}/${id}`);
+      return res.data;
     }
-};
+  }

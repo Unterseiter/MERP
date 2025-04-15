@@ -1,6 +1,7 @@
 const userService = require('../services/userService');
 const { sequelize, Event, RequestEvent, history, User } = require('../models');
 const { Op } = require('sequelize');
+const moveExpiredEventsToHistoryUser = require('../services/cron/HistoryUser');
 
 
 const userController = {
@@ -23,6 +24,13 @@ const userController = {
         return res.status(404).json({ message: 'Пользователь не найден' });
       }
   
+      //заносим в историю просроченные мероприятия
+      console.log("\n\n\n\n\n\n");
+      console.log("заносим в историю просроченные мероприятия");
+      console.log("\n\n\n\n\n\n");
+      moveExpiredEventsToHistoryUser(user.tag_name);
+      console.log("\n\n\n\n\n\n");
+
       // Заполняем info
       ProfileData.info = {
         id: user.id,

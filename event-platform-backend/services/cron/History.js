@@ -76,4 +76,5 @@ const moveExpiredEventsToHistory = async () => {
         console.error('Ошибка при переносе событий в историю:', error);
     }
 };
+
 module.exports = moveExpiredEventsToHistory;

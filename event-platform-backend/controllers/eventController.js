@@ -42,110 +42,122 @@ const eventUpdateSchema = Joi.object({
 
 
 const eventController = {
-  // Создание мероприятия
   async createEvent(req, res, next) {
     try {
-      console.log(req.body);
-
+      //console.log(req);
       const { error, value } = eventSchema.validate(req.body);
       if (error) throw new ValidationError(error.details);
 
       const eventData = {
         ...value,
         creator_tag: req.user.tag_name,
-        views: 0
+        views: 0,
       };
 
+      let photoUrl = null;
+      if (req.file) {
+        const compressedImage = await sharp(req.file.path)
+          .resize({ width: 800, withoutEnlargement: true })
+          .jpeg({ quality: 80 })
+          .toBuffer();
+
+        await fs.writeFile(req.file.path, compressedImage);
+
+        photoUrl = `/uploads/events/${req.file.filename}`;
+        eventData.photo_url = photoUrl;
+      }
+
       const event = await eventService.createEvent(eventData);
-      res.status(201).json(event);
+      res.status(201).json({
+        ...event.toJSON(),
+        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+      });
     } catch (error) {
+      if (req.file && req.file.path) {
+        await fs.unlink(req.file.path).catch(() => {});
+      }
+      console.error('Create Event Error:', error);
       next(error);
     }
   },
 
-  // Получение мероприятий с фильтрацией
   async getEvents(req, res, next) {
     try {
-
-      // Преобразование параметров
       const processedQuery = {
         ...req.query,
         page: Number(req.query.page) || 1,
         limited: Number(req.query.limited) || 10,
         minViews: Number(req.query.minViews) || 0,
-        maxViews: Number(req.query.maxViews) || 0
+        maxViews: Number(req.query.maxViews) || 0,
       };
 
-      // Валидация
       const { error, value } = getEventsSchema.validate(processedQuery, {
-        abortEarly: false
+        abortEarly: false,
       });
 
       if (error) {
-        const details = error.details.map(d => ({
+        const details = error.details.map((d) => ({
           field: d.path[0],
-          message: d.message
+          message: d.message,
         }));
         throw new ValidationError(details);
       }
-      // Преобразование дат в объекты Date
+
       const processedParams = {
         ...value,
         startDate: value.startDate ? new Date(value.startDate) : null,
-        endDate: value.endDate ? new Date(value.endDate) : null
+        endDate: value.endDate ? new Date(value.endDate) : null,
       };
 
-      // Проверка корректности дат
       if (processedParams.startDate && isNaN(processedParams.startDate.getTime())) {
-        throw new ValidationError([{
-          message: 'Invalid startDate format',
-          path: ['startDate']
-        }]);
+        throw new ValidationError([{ message: 'Invalid startDate format', path: ['startDate'] }]);
       }
 
       if (processedParams.endDate && isNaN(processedParams.endDate.getTime())) {
-        throw new ValidationError([{
-          message: 'Invalid endDate format',
-          path: ['endDate']
-        }]);
+        throw new ValidationError([{ message: 'Invalid endDate format', path: ['endDate'] }]);
       }
 
       const result = await eventService.getEvents({
-        ...processedParams,
-        creatorTag: req.user.tag_name
+        ...processedParams
       });
 
+      const data = result.rows.map((event) => ({
+        ...event.toJSON(),
+        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+      }));
+
       res.json({
-        data: result.rows,
+        data,
         meta: {
           total: result.count,
           page: value.page,
           totalPages: Math.ceil(result.count / value.limited),
-          limited: value.limited
-        }
+          limited: value.limited,
+        },
       });
     } catch (error) {
       next(error);
     }
   },
 
-  // Получение мероприятия по ID
   async getEventById(req, res, next) {
     try {
       const event = await eventService.getEventById(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
 
-      eventService.updateEvent(event.event_id, { views: event.views + 1 });
-      res.json(event);
+      await eventService.updateEvent(event.event_id, { views: event.views + 1 });
+
+      res.json({
+        ...event.toJSON(),
+        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+      });
     } catch (error) {
       next(error);
     }
   },
 
-  // Обновление мероприятия
   async updateEvent(req, res, next) {
     try {
-      // Проверка прав доступа
       const event = await Event.findByPk(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
 
@@ -153,22 +165,47 @@ const eventController = {
         throw new ForbiddenError('Недостаточно прав');
       }
 
-      // Валидация
       const { error, value } = eventUpdateSchema.validate(req.body);
       if (error) throw new ValidationError(error.details);
 
-      // Обновление
-      const updatedEvent = await eventService.updateEvent(req.params.id, value);
-      res.json(updatedEvent);
+      let photoUrl = event.photo_url;
+      if (req.file) {
+        const compressedImage = await sharp(req.file.path)
+          .resize({ width: 800, withoutEnlargement: true })
+          .jpeg({ quality: 80 })
+          .toBuffer();
+
+        await fs.writeFile(req.file.path, compressedImage);
+
+        photoUrl = `/uploads/events/${req.file.filename}`;
+
+        if (event.photo_url) {
+          const oldPath = path.join(__dirname, '..', event.photo_url);
+          await fs.unlink(oldPath).catch((err) => {
+            console.warn('Failed to delete old file:', err.message);
+          });
+        }
+      }
+
+      const updatedEvent = await eventService.updateEvent(req.params.id, {
+        ...value,
+        photo_url: photoUrl,
+      });
+
+      res.json({
+        ...updatedEvent.toJSON(),
+        photo_url: updatedEvent.photo_url ? `http://localhost:8080${updatedEvent.photo_url}` : null,
+      });
     } catch (error) {
+      if (req.file && req.file.path) {
+        await fs.unlink(req.file.path).catch(() => {});
+      }
       next(error);
     }
   },
 
-  // Удаление мероприятия
   async deleteEvent(req, res, next) {
     try {
-      // Проверка прав доступа
       const event = await Event.findByPk(req.params.id);
       if (!event) throw new NotFoundError('Мероприятие не найдено');
 
@@ -176,13 +213,20 @@ const eventController = {
         throw new ForbiddenError('Недостаточно прав');
       }
 
-      // Удаление
+      if (event.photo_url) {
+        const filePath = path.join(__dirname, '..', event.photo_url);
+        await fs.unlink(filePath).catch((err) => {
+          console.warn('Failed to delete file:', err.message);
+        });
+      }
+
       await eventService.deleteEvent(req.params.id, req.user.tag_name);
       res.status(204).send();
     } catch (error) {
       next(error);
     }
   },
+
   async uploadEventPhoto(req, res, next) {
     try {
       const eventId = parseInt(req.params.id, 10);
