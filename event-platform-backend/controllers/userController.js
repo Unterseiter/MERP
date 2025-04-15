@@ -13,23 +13,19 @@ const userController = {
         events: [],
         history: [],
       };
-  
+
       // Получаем данные пользователя
       const user = await User.findOne({
         where: { tag_name: req.user.tag_name },
-        attributes: { exclude: ['password','privilege'] }, // Исключаем пароль
+        attributes: { exclude: ['password', 'privilege'] }, // Исключаем пароль
       });
-  
+
       if (!user) {
         return res.status(404).json({ message: 'Пользователь не найден' });
       }
-  
+
       //заносим в историю просроченные мероприятия
-      console.log("\n\n\n\n\n\n");
-      console.log("заносим в историю просроченные мероприятия");
-      console.log("\n\n\n\n\n\n");
       moveExpiredEventsToHistoryUser(user.tag_name);
-      console.log("\n\n\n\n\n\n");
 
       // Заполняем info
       ProfileData.info = {
@@ -39,7 +35,7 @@ const userController = {
         name: user.name,
         email: user.email,
       };
-  
+
       // Получаем активные события (создатель или участник)
       const currentDate = new Date().toISOString().split('T')[0];
       const events = await Event.findAll({
@@ -65,7 +61,7 @@ const userController = {
         },
         attributes: ['event_id', 'name', 'limited', 'start_date', 'end_date', 'description', 'creator_tag', 'views'],
       });
-  
+
       // Заполняем events
       ProfileData.events = events.map((event) => ({
         event_id: event.event_id,
@@ -77,8 +73,8 @@ const userController = {
         creator_tag: event.creator_tag,
         views: event.views,
       }));
-  
-      // Получаем историю
+
+      // Получаем историю только
       const historyRecords = await history.findAll({
         where: { user_tag: req.user.tag_name },
         attributes: [
@@ -90,8 +86,10 @@ const userController = {
           'history_status',
           'is_complaint',
         ],
+        order: [['history_id', 'DESC']], 
+        limit: 20
       });
-  
+
       // Заполняем history
       ProfileData.history = historyRecords.map((record) => ({
         history_id: record.history_id,
@@ -101,7 +99,7 @@ const userController = {
         history_status: record.history_status,
         is_complaint: record.is_complaint,
       }));
-  
+
       // Возвращаем полный профиль
       res.json(ProfileData);
     } catch (error) {

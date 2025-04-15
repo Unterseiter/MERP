@@ -1,5 +1,6 @@
 const { sequelize, Event, RequestEvent, history } = require('../../models');
 const { Op } = require('sequelize');
+const fs = require('fs').promises;
 
 const moveExpiredEventsToHistoryUser = async (tag_name) => {
     try {
@@ -17,7 +18,7 @@ const moveExpiredEventsToHistoryUser = async (tag_name) => {
         });
 
         for (const event of expiredEvents) {
-            const { event_id, creator_tag, name, description, start_date } = event;
+            const { event_id, creator_tag, name, description, start_date , photo_url} = event;
 
             // Находим принятых участников
             const participants = await RequestEvent.findAll({
@@ -58,6 +59,13 @@ const moveExpiredEventsToHistoryUser = async (tag_name) => {
                         { transaction: t }
                     );
                 }
+
+                try {
+                    fs.unlink(photo_url);
+                    console.log('Файл успешно удален с сервера');
+                  } catch (err) {
+                    console.error('Ошибка при удалении файла:', err);
+                  }
 
                 // Опционально: удаляем событие
                 await Event.destroy({

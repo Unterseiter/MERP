@@ -70,7 +70,7 @@ const eventController = {
       const event = await eventService.createEvent(eventData);
       res.status(201).json({
         ...event.toJSON(),
-        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+        photo_url: event.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
       });
     } catch (error) {
       if (req.file && req.file.path) {
@@ -123,7 +123,7 @@ const eventController = {
 
       const data = result.rows.map((event) => ({
         ...event.toJSON(),
-        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+        photo_url: event.photo_url ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}` : null,
       }));
 
       res.json({
@@ -149,7 +149,7 @@ const eventController = {
 
       res.json({
         ...event.toJSON(),
-        photo_url: event.photo_url ? `http://localhost:8080${event.photo_url}` : null,
+        photo_url: event.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
       });
     } catch (error) {
       next(error);
@@ -194,7 +194,7 @@ const eventController = {
 
       res.json({
         ...updatedEvent.toJSON(),
-        photo_url: updatedEvent.photo_url ? `http://localhost:8080${updatedEvent.photo_url}` : null,
+        photo_url: updatedEvent.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
       });
     } catch (error) {
       if (req.file && req.file.path) {

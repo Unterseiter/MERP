@@ -2,6 +2,7 @@ const { Event, Message, RequestEvent, User } = require('../models');
 const Sequelize = require('../config/bd');
 const { Op } = require('sequelize');
 const Check_Privilege = require('../utils/privilege');
+const moveEventToHistoryById = require('../services/cron/HistoryEvent');
 
 const eventService = {
 
@@ -178,10 +179,10 @@ const eventService = {
       /*Покамесь сделаю так в будущем нужно сделать чтобы удалять нельзя было, можно было-бы поставить метку удалён */
       const event = await Event.findByPk(id);
       if (!event) return false;
-      if (!Check_Privilege(event.creator_tag, creator)) {
+      /*if (!Check_Privilege(event.creator_tag, creator)) {
         throw new Error('У вас нет прав для удаления этого мероприятия');
-      }
-      await event.destroy();
+      }*/
+      moveEventToHistoryById(event.event_id);
       return true;
     } catch (error) {
       throw error;
