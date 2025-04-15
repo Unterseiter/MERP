@@ -1,37 +1,36 @@
 const multer = require('multer');
 const crypto = require('crypto');
 const path = require('path');
+const fs = require('fs').promises; // Используем promises
 
-// Указываем директорию для хранения файлов
 const uploadDir = path.join(__dirname, '../uploads/events');
 
-// Создаем директорию, если она не существует
-const fs = require('fs');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
+  destination: async (req, file, cb) => {
+    try {
+      await fs.mkdir(uploadDir, { recursive: true });
+      cb(null, uploadDir);
+    } catch (err) {
+      cb(err);
+    }
   },
   filename: (req, file, cb) => {
-    // Создаем уникальное имя файла с хешированием
     const hash = crypto
       .createHash('sha256')
       .update(file.originalname + Date.now())
       .digest('hex');
-    const ext = path.extname(file.originalname);
+    const ext = '.webp';
     cb(null, `${hash}${ext}`);
   },
 });
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Ограничение 5 МБ
+  limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
-    if (!file.mimetype.startsWith('image/')) {
-      return cb(console.log('Только изображения разрешены'), false);
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.mimetype)) {
+      return cb(new Error('Только изображения (PNG, JPEG, GIF, WebP) разрешены'), false);
     }
     cb(null, true);
   },

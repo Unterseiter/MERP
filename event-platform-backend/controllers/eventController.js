@@ -56,25 +56,32 @@ const eventController = {
 
       let photoUrl = null;
       if (req.file) {
+        console.log("req.file.path");
+        console.log(req.file.path);
+        
         const compressedImage = await sharp(req.file.path)
           .resize({ width: 800, withoutEnlargement: true })
-          .jpeg({ quality: 80 })
+          .webp({ quality: 80 })
           .toBuffer();
-
-        await fs.writeFile(req.file.path, compressedImage);
-
-        photoUrl = `/uploads/events/${req.file.filename}`;
-        eventData.photo_url = photoUrl;
+        console.log(compressedImage);
+      
+        try {
+          photoUrl = `/uploads/events/${req.file.filename}`;
+          eventData.photo_url = photoUrl;
+        } catch (err) {
+          console.error('Failed to process file:', err);
+          throw new Error('Не удалось сохранить изображение');
+        }
       }
 
       const event = await eventService.createEvent(eventData);
       res.status(201).json({
         ...event.toJSON(),
-        photo_url: event.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
+        photo_url: event.photo_url ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}` : null,
       });
     } catch (error) {
       if (req.file && req.file.path) {
-        await fs.unlink(req.file.path).catch(() => {});
+        await fs.unlink(req.file.path).catch(() => { });
       }
       console.error('Create Event Error:', error);
       next(error);
@@ -149,7 +156,7 @@ const eventController = {
 
       res.json({
         ...event.toJSON(),
-        photo_url: event.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
+        photo_url: event.photo_url ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}` : null,
       });
     } catch (error) {
       next(error);
@@ -194,11 +201,11 @@ const eventController = {
 
       res.json({
         ...updatedEvent.toJSON(),
-        photo_url: updatedEvent.photo_url ?  `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}`  : null,
+        photo_url: updatedEvent.photo_url ? `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${event.photo_url}` : null,
       });
     } catch (error) {
       if (req.file && req.file.path) {
-        await fs.unlink(req.file.path).catch(() => {});
+        await fs.unlink(req.file.path).catch(() => { });
       }
       next(error);
     }
