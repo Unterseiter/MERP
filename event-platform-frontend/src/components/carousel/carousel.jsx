@@ -11,54 +11,65 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const Carousel = () => {
   return (
     <section className="py-12 px-6">
-      <h2 className="text-3xl font-bold text-center text-[#5A4A42] mb-8">
-        Главные события города
-      </h2>
-      
-      <div className="max-w-6xl mx-auto">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          slidesPerView={1.5}
-          centeredSlides={true}
-          spaceBetween={20}
-          breakpoints={{
-            640: {
-              slidesPerView: 1.8,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 2.2,
-              spaceBetween: 40,
-            }
-          }}
-          className="overflow-visible py-8"
-        >
-          {SLIDES.map((slide) => (
-            <SwiperSlide key={slide.id}>
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden group">
+    <h2 className="text-3xl font-bold text-center text-[#5A4A42] mb-8">
+      Главные события города
+    </h2>
+    
+    <div className="max-w-7xl mx-auto">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        pagination={{ clickable: true }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        slidesPerView={1.3}
+        centeredSlides={true}
+        spaceBetween={20}
+        breakpoints={{
+          640: {
+            slidesPerView: 1.6,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 1.8,
+            spaceBetween: 40,
+          }
+        }}
+        className="overflow-visible py-8"
+      >
+        {SLIDES.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            {({ isActive }) => (
+              <div 
+                className={`
+                  relative aspect-[16/9] rounded-xl overflow-hidden group
+                  transition-all duration-500 cursor-pointer
+                  ${isActive ? 'scale-125 z-10' : 'scale-75 opacity-30 hover:opacity-50'}
+                `}
+              >
                 <img 
                   src={slide.imageUrl}
                   alt={slide.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className={`
+                  absolute bottom-0 left-0 right-0 p-6 text-white
+                  transition-all duration-500
+                  ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}
+                `}>
                   <h3 className="text-2xl font-bold mb-2">{slide.title}</h3>
                   <p className="text-white/90">{slide.description}</p>
                 </div>
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </section>
+            )}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  </section>
   );
   }
   export default Carousel;
