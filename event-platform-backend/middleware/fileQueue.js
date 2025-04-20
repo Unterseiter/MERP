@@ -4,50 +4,80 @@ const { logger } = require('../utils/LogFile');
 
 //модуль для управления временными файлами 
 class FileQueue {
-  constructor(options = {}) {
-    this.queue = new Set();
-    this.isProcessing = false;
-    this.logger = options.logger || logger;
-    this.cleanupInterval = options.cleanupInterval || 60000;
-    
-    this.initInterval();
-    this.logger.info('File Queue initialized');
-  }
-
-  initInterval() {
-    this.interval = setInterval(() => this.processQueue(), this.cleanupInterval);
-    this.interval.unref(); 
-  }
-
-  async addToQueue(filePath) {
-    this.queue.add(filePath);
-    this.logger.debug(`Added to cleanup queue: ${filePath}`);
-    if (!this.isProcessing) {
-      await this.processQueue();
+    constructor(options = {}) {
+      this.queue = new Map();
+      this.isProcessing = false;
+      this.logger = options.logger || logger;
+      this.retryPolicy = {
+        maxRetries: 5,
+        delay: 1000,
+        factor: 2
+      };
+      
+      setInterval(() => this.processQueue(), 30000).unref();
+      this.logger.info('File Queue initialized');
     }
-  }
-
-  async processQueue() {
-    this.isProcessing = true;
-    this.logger.debug(`Processing cleanup queue (${this.queue.size} items)`);
-    
-    for (const filePath of this.queue) {
+  
+    async addToQueue(filePath) {
+      this.queue.set(filePath, {
+        retries: 0,
+        nextTry: Date.now()
+      });
+      this.logger.debug(`Added to cleanup queue: ${filePath}`);
+      this.processQueue();
+    }
+  
+    async processQueue() {
+      if (this.isProcessing) return;
+      this.isProcessing = true;
+  
       try {
-        await fs.unlink(filePath);
-        this.queue.delete(filePath);
-        this.logger.debug(`Successfully cleaned: ${filePath}`);
-      } catch (err) {
-        if (err.code === 'ENOENT') {
-          this.queue.delete(filePath);
-          this.logger.warn(`File not found: ${filePath}`);
-        } else {
-          this.logger.error(`Cleanup error for ${filePath}: ${err.message}`);
+        for (const [filePath, { retries, nextTry }] of this.queue) {
+          if (Date.now() < nextTry) continue;
+  
+          try {
+            await this.safeUnlink(filePath);
+            this.queue.delete(filePath);
+            this.logger.debug(`Successfully cleaned: ${filePath}`);
+          } catch (err) {
+            await this.handleUnlinkError(filePath, err);
+          }
         }
+      } finally {
+        this.isProcessing = false;
       }
     }
-    
-    this.isProcessing = false;
+  
+    async safeUnlink(filePath) {
+      try {
+        await fs.access(filePath);
+      } catch {
+        this.queue.delete(filePath);
+        return;
+      }
+  
+      const stats = await fs.lstat(filePath);
+      if (stats.isDirectory()) {
+        throw new Error('Path is directory');
+      }
+  
+      await fs.unlink(filePath);
+    }
+  
+    async handleUnlinkError(filePath, error) {
+      const entry = this.queue.get(filePath);
+      
+      if (entry.retries >= this.retryPolicy.maxRetries) {
+        this.queue.delete(filePath);
+        this.logger.error(`Permanent failure for ${filePath}: ${error.message}`);
+        return;
+      }
+  
+      entry.retries += 1;
+      entry.nextTry = Date.now() + 
+        this.retryPolicy.delay * Math.pow(this.retryPolicy.factor, entry.retries);
+      
+      this.logger.warn(`Retry scheduled (${entry.retries}/${this.retryPolicy.maxRetries}) for ${filePath}`);
+    }
   }
-}
-
 module.exports = FileQueue;

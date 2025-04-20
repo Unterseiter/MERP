@@ -186,3 +186,77 @@
 [2025-04-20T17:09:43.748Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
 [2025-04-20T17:10:13.746Z] [DEBUG] Processing cleanup queue (1 items)
 [2025-04-20T17:10:13.748Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:10:43.747Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:10:43.748Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:11:13.760Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:11:13.763Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:11:43.767Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:11:43.768Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:12:13.767Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:12:13.769Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:12:43.778Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:12:43.780Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:13:13.785Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:13:13.786Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:13:43.786Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:13:43.788Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:14:13.786Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:14:13.787Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:14:43.788Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:14:43.790Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:15:13.803Z] [DEBUG] Processing cleanup queue (1 items)
+[2025-04-20T17:15:13.804Z] [ERROR] Cleanup error for uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\9a11bf9e-1371-4388-ba84-bb71eca8ea03.jpg'
+[2025-04-20T17:15:21.688Z] [INFO] File Queue initialized
+[2025-04-20T17:15:21.821Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:15:21.821Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:15:38.955Z] [INFO] File Queue initialized
+[2025-04-20T17:15:39.105Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:15:39.105Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:16:17.984Z] [INFO] File Queue initialized
+[2025-04-20T17:16:18.161Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:16:18.160Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:16:49.008Z] [INFO] File Queue initialized
+[2025-04-20T17:16:49.139Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:16:49.140Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:18:08.106Z] [INFO] File Queue initialized
+[2025-04-20T17:18:08.237Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:18:08.237Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:18:34.394Z] [DEBUG] Accepted file type: image/webp
+[2025-04-20T17:18:34.395Z] [DEBUG] Generated filename: 252766a9-750a-4ff2-a8b7-4b1eff9b3acc.webp
+[2025-04-20T17:19:13.187Z] [INFO] File Queue initialized
+[2025-04-20T17:19:13.307Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:19:13.307Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:20:11.962Z] [DEBUG] Accepted file type: image/webp
+[2025-04-20T17:20:11.964Z] [DEBUG] Generated filename: b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:20:11.978Z] [INFO] Processing file: uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:20:12.308Z] [DEBUG] File converted: uploads\events\main\c340a7ef-7ae1-42cd-8692-35eb95b00bad.webp
+[2025-04-20T17:20:12.813Z] [WARN] Temp cleanup failed: uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp - EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp'
+[2025-04-20T17:20:12.814Z] [DEBUG] Added to cleanup queue: uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:20:12.831Z] [WARN] Retry scheduled (1/5) for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:20:43.210Z] [WARN] Retry scheduled (2/5) for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:21:13.217Z] [WARN] Retry scheduled (3/5) for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:21:43.224Z] [WARN] Retry scheduled (4/5) for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:22:13.227Z] [WARN] Retry scheduled (5/5) for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp
+[2025-04-20T17:23:13.248Z] [ERROR] Permanent failure for uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp: EBUSY: resource busy or locked, unlink 'C:\MERP\event-platform-backend\uploads\events\tmp\b7f8ad2e-eafd-4782-b0d4-e2c4045a8e91.webp'
+[2025-04-20T17:24:32.130Z] [INFO] File Queue initialized
+[2025-04-20T17:24:32.251Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:24:32.251Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:24:51.257Z] [DEBUG] Accepted file type: image/png
+[2025-04-20T17:24:51.258Z] [DEBUG] Generated filename: bb05e82a-3b23-4785-b68f-354f252a976c.png
+[2025-04-20T17:26:40.206Z] [INFO] File Queue initialized
+[2025-04-20T17:26:40.484Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:26:40.484Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:27:22.267Z] [INFO] File Queue initialized
+[2025-04-20T17:27:22.414Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:27:22.414Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:28:01.864Z] [INFO] File Queue initialized
+[2025-04-20T17:28:01.987Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-20T17:28:01.987Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-20T17:28:06.422Z] [DEBUG] Accepted file type: image/png
+[2025-04-20T17:28:06.423Z] [DEBUG] Generated filename: 266e33c9-7373-4ed4-9a53-7ec922740758.png
+[2025-04-20T17:28:46.714Z] [DEBUG] Generated filename: 74e4187d-e875-4adf-b0ac-226060587153.jpg
+[2025-04-20T17:28:46.713Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-20T17:29:34.285Z] [DEBUG] Accepted file type: image/png
+[2025-04-20T17:29:34.287Z] [DEBUG] Generated filename: 04f50a1d-1d8c-48aa-8076-a1cae2909b61.png
+[2025-04-20T17:29:50.183Z] [DEBUG] Accepted file type: image/png
+[2025-04-20T17:29:50.183Z] [DEBUG] Generated filename: 5c4d349e-844d-4bf8-91e7-712a28c4b335.png

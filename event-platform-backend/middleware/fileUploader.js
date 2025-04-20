@@ -15,6 +15,7 @@ class FileUploader {
     ];
     this.logger = options.logger || logger;
     this.fileQueue = options.fileQueue;
+    this.finalDir = options.finalDir || path.join(__dirname, '../uploads');
 
     this.initialize().catch(err => {
       this.logger.error(`Initialization failed: ${err.message}`);
@@ -56,19 +57,26 @@ class FileUploader {
   async convertToWebp(req, res, next) {
     if (!req.file) return next();
 
-    const originalPath = req.file.path;
-    this.logger.info(`Processing file: ${originalPath}`);
+    let originalPath = req.file.path;
+    let sharpProcessor = null;
 
     try {
+      // 1. Чтение файла в буфер
+      const inputBuffer = await fs.readFile(originalPath);
+
+      // 2. Инициализация sharp
+      sharpProcessor = sharp(inputBuffer);
+
+      // 3. Генерация путей с использованием this.finalDir
       const newFilename = `${crypto.randomUUID()}.webp`;
       const outputPath = path.join(this.finalDir, newFilename);
-      
-      await sharp(originalPath)
+
+      // 4. Обработка изображения
+      await sharpProcessor
         .webp({ quality: 80 })
         .toFile(outputPath);
 
-      this.logger.debug(`File converted: ${outputPath}`);
-
+      // 5. Обновление метаданных
       req.file = {
         ...req.file,
         filename: newFilename,
@@ -78,24 +86,57 @@ class FileUploader {
         mimetype: 'image/webp'
       };
 
-      await this.cleanupTempFile(originalPath);
-      next();
+      // 6. Задержка перед удалением
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // 7. Удаление временного файла
+      await fs.unlink(originalPath);
+
+      return next();
     } catch (err) {
-      this.logger.error(`Processing failed: ${err.message}`);
-      await this.handleProcessingError(originalPath, err, res);
+      // 8. Обработка ошибок
+      console.error('Ошибка конвертации:', err);
+
+      // 9. Безопасное удаление файла
+      if (originalPath) {
+        try {
+          await fs.access(originalPath);
+          await fs.unlink(originalPath);
+        } catch (unlinkErr) {
+          console.error('Ошибка удаления файла:', unlinkErr);
+          this.fileQueue.addToQueue(originalPath);
+        }
+      }
+
+      return res.status(500).json({
+        error: 'IMAGE_PROCESSING_ERROR',
+        message: 'Не удалось обработать изображение'
+      });
+    } finally {
+      // 10. Корректное закрытие sharpProcessor
+      if (sharpProcessor) {
+        try {
+          sharpProcessor.end();
+        } catch (e) {
+          console.error('Ошибка закрытия sharp:', e);
+        }
+      }
     }
   }
 
   async cleanupTempFile(filePath) {
     try {
+      // Закрываем все возможные дескрипторы
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      const fd = await fs.open(filePath, 'r+');
+      await fd.close();
+      
       await fs.unlink(filePath);
       this.logger.debug(`Temp file cleaned: ${filePath}`);
     } catch (err) {
       this.logger.warn(`Temp cleanup failed: ${filePath} - ${err.message}`);
-      if (this.fileQueue) {
-        this.fileQueue.addToQueue(filePath);
-        this.logger.info(`Added to cleanup queue: ${filePath}`);
-      }
+      this.fileQueue.addToQueue(filePath);
     }
   }
 
