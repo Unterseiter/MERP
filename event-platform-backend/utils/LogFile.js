@@ -9,15 +9,19 @@ class Logger {
   constructor(options = {}) {
     this.logDir = options.logDir || path.join(__dirname, 'logs');
     this.logFile = options.logFile || 'app.log';
-    this.maxFileSize = options.maxFileSize || 5 * 1024 * 1024; // 5MB по умолчанию
-    this.maxFiles = options.maxFiles || 5; // 5 файлов по умолчанию
+    this.maxFileSize = options.maxFileSize || 5 * 1024 * 1024;
+    this.maxFiles = options.maxFiles || 5;
     this.logLevel = options.logLevel || 'info';
-    this.consoleOutput = options.consoleOutput !== false; // Вывод в консоль включен по умолчанию
+    this.consoleOutput = options.consoleOutput !== false;
+    this.initialized = false;
+
+    // Синхронная инициализация
+    this.init();
   }
 
-  async init() {
+  init() {
     try {
-      await mkdir(this.logDir, { recursive: true });
+      fs.mkdirSync(this.logDir, { recursive: true });
       this.initialized = true;
     } catch (err) {
       console.error('Could not create log directory:', err);
@@ -119,10 +123,7 @@ class Logger {
   }
 }
 
-// Создаем экземпляр логгера по умолчанию для удобства
-const defaultLogger = new Logger().init();
-
 module.exports = {
   Logger,
-  logger: defaultLogger
+  logger: new Logger()
 };

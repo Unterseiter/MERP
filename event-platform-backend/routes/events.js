@@ -1,18 +1,34 @@
 const express = require('express');
 const router = express.Router();
-
-const { upload, convertToWebp } = require('../middleware/multer');
+const { 
+  eventMainUploader,
+  eventGalleryUploader
+} = require('../config/fileUploaders');
 
 const eventController = require('../controllers/eventController');
 const authMiddleware = require('../middleware/authMiddleware');
 const organizerMiddleware = require('../middleware/organizerMiddleware');
 
+// Middleware для основной загрузки
+const uploadMainPhoto = [
+  authMiddleware,
+  eventMainUploader.getMulterUpload().single('photo'),
+  eventMainUploader.convertToWebp.bind(eventMainUploader)
+];
+
+// Middleware для дополнительных фото
+const uploadGalleryPhoto = [
+  authMiddleware,
+  eventGalleryUploader.getMulterUpload().single('photo'),
+  eventGalleryUploader.convertToWebp.bind(eventGalleryUploader)
+];
+
 router.get('/', authMiddleware, eventController.getEvents);
-router.get('/:id', /*authMiddleware,*/ eventController.getEventById);
-router.post('/', authMiddleware, upload.single('photo'), convertToWebp, eventController.createEvent);
-router.put('/:id', authMiddleware, organizerMiddleware, upload.single('photo'), convertToWebp, eventController.updateEvent);
+router.get('/:id', eventController.getEventById);
+router.post('/', ...uploadMainPhoto, eventController.createEvent);
+router.put('/:id', authMiddleware, organizerMiddleware, ...uploadMainPhoto, eventController.updateEvent);
 router.delete('/:id', authMiddleware, organizerMiddleware, eventController.deleteEvent);
 
-router.post('/:id/photo', authMiddleware, upload.single('photo'), eventController.uploadEventPhoto);
+router.post('/:id/photo', ...uploadGalleryPhoto, eventController.uploadEventPhoto);
 
 module.exports = router;

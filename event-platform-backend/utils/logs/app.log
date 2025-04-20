@@ -28,3 +28,25 @@
 [2025-04-15T16:16:26.559Z] [INFO] C:\Users\nikol\OneDrive\Документы\GitHub\MERP\event-platform-backend\uploads\events\472cc71f-0e98-45f7-a1cf-f35d099866d3.webp
 [2025-04-15T16:16:26.564Z] [INFO] 1
 [2025-04-15T16:39:03.265Z] [INFO] start
+[2025-04-20T06:35:56.372Z] [ERROR] Ошибка создания директории C:\MERP\event-platform-backend\uploads\events: logger.info is not a function
+[2025-04-20T06:37:13.490Z] [INFO] Создание директории для загрузки: C:\MERP\event-platform-backend\uploads\events
+[2025-04-20T06:37:39.938Z] [INFO] Создание директории для загрузки: C:\MERP\event-platform-backend\uploads\events
+[2025-04-20T09:55:27.137Z] [INFO] Fetched 0 events
+[2025-04-20T17:01:17.230Z] [INFO] Fetched 2 events
+[2025-04-20T17:02:40.010Z] [INFO] Fetched 3 events
+[2025-04-20T17:02:53.325Z] [INFO] Event created: ID 42
+[2025-04-20T17:04:49.863Z] [INFO] Fetched 4 events
+[2025-04-20T17:05:45.962Z] [INFO] Event deleted: ID 42
+[2025-04-20T17:05:46.004Z] [INFO] Событие Тест3 (ID: 42) перенесено в историю
+[2025-04-20T17:06:04.094Z] [INFO] Fetched 3 events
+[2025-04-20T17:06:04.123Z] [INFO] Fetched 3 events
+[2025-04-20T17:06:10.389Z] [INFO] Fetched 3 events
+[2025-04-20T17:06:10.423Z] [INFO] Fetched 3 events
+[2025-04-20T17:07:11.969Z] [INFO] Fetched 3 events
+[2025-04-20T17:07:11.985Z] [INFO] Fetched 3 events
+[2025-04-20T17:07:26.784Z] [INFO] Processing file: 4fb1ee35-ea27-436a-938f-9195c9aa2626.webp
+[2025-04-20T17:07:26.802Z] [INFO] Event updated: ID 41
+[2025-04-20T17:07:53.276Z] [INFO] Processing file: 4ba41528-2f72-49df-b3a0-fa18791e4d52.webp
+[2025-04-20T17:07:53.300Z] [INFO] Event updated: ID 40
+[2025-04-20T17:10:02.914Z] [INFO] Fetched 3 events
+[2025-04-20T17:10:02.934Z] [INFO] Fetched 3 events

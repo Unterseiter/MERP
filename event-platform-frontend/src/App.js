@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/footer/footer';
 import Home from './Page/Home.page/Home.page';
-import Func from './Page/Func.page/Func.page';
+import EventList from './Page/Func.page/FuncEvent.page';
 import EventsManagePage from './Page/Event.page/EventManagePage';
 import Registr from './Page/registration/Registr.page';
 import ProfileCabinet from './Page/Profile.page/ProfileCabinet';
@@ -24,7 +24,7 @@ function App() {
           <Route path={ROUTER_PATH.main_page} element={<Home />} />
           <Route
             path={ROUTER_PATH.func}
-            element={<PrivateRoute element={<Func />} />}
+            element={<PrivateRoute element={<EventList />} />}
           />
           <Route path={ROUTER_PATH.registration} element={<Registr />} />
           <Route path={ROUTER_PATH.eventManage} element={<EventsManagePage />} />
