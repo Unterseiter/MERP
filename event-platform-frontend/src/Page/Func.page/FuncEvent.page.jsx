@@ -8,7 +8,7 @@ const EventList = () => {
   const [error, setError] = useState('');
   const [filters, setFilters] = useState({
     page: 1,
-    limited: 6, // Number of events to load per page
+    limited: 6,
     search: '',
     sortBy: 'start_date',
     sortOrder: 'ASC',
@@ -23,17 +23,20 @@ const EventList = () => {
         ...filters,
         page: reset ? 1 : filters.page,
       };
-      const data = await EventService.getAllRecords(params);
-      console.log(data);
-      if (reset) {
-        setEvents(data.data || []);
-      } else {
-        setEvents((prev) => [...prev, ...(data.data || [])]);
-      }
       
-      // Check if there are more events to load
-      setHasMore(data.data?.length === filters.limited);
-      setError('');
+      const data = await EventService.getAllRecords(params);
+      
+      // Удаление дубликатов
+      const newEvents = data.data || [];
+      const uniqueEvents = reset 
+        ? newEvents 
+        : [...events, ...newEvents].filter(
+            (v, i, a) => a.findIndex(t => t.event_id === v.event_id) === i
+          );
+  
+      setEvents(uniqueEvents);
+      setHasMore(newEvents.length >= filters.limited);
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Error loading events');
     } finally {
