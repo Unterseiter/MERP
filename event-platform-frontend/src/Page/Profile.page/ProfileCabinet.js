@@ -44,64 +44,72 @@ const ProfileCabinet = () => {
   };
 
   return (
-    <div className="ml-10 mt-5">
+    <div className="ml-10 mt-5 mb-5">
       {(loading || authLoading) && (
         <div className="text-center text-gray-500 mb-4">Загрузка...</div>
       )}
-  
+
       {error && !loading && !authLoading && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6">
           Ошибка: {error}
         </div>
       )}
-  
+
       {profileData && !loading && !authLoading && (
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Левая колонка — профиль */}
-          <div className="w-full lg:w-1/5 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col items-center relative ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-1/5 h-1/4 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col items-center relative ring-2 ring-[#d6bda7]">
             <img
               src={image}
               className="w-24 h-24 rounded-full object-cover mb-4"
             />
-            <div className='text-left'>   
-            <h2 className="text-xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
-            <p className="text-sm">@{profileData.info.tag_name}</p>
-            <p className="text-sm mt-2">{profileData.info.city || 'Город не указан'}</p>
-            <p className="text-sm">На сайте с {new Date(profileData.info.created_at).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}</p>
-            <p className="text-sm">{profileData.info.email}</p>
-            </div>  
+            <div className='text-left'>
+              <h2 className="text-xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
+              <p className="text-sm">@{profileData.info.tag_name}</p>
+              <p className="text-sm mt-2">{profileData.info.city || 'Город не указан'}</p>
+              <p className="text-sm">На сайте с {new Date(profileData.info.created_at).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}</p>
+              <p className="text-sm">{profileData.info.email}</p>
+            </div>
             <button onClick={handleLogout} className="mt-6 text-red-600 hover:underline text-sm">
               Выйти
             </button>
           </div>
-  
+
           {/* Правая колонка — история */}
           <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
+
             {profileData.history.length > 0 ? (
-              <ul className="space-y-4">
+              <div className="grid gap-4 overflow-y-auto max-h-[600px] pr-2 ">
                 {profileData.history.map((record) => (
-                  <li key={record.history_id} className="flex gap-4 border-b pb-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-md flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-gray-800">{record.event_name}</p>
-                      <p className="text-sm text-gray-500">{new Date(record.event_date_start).toLocaleString()}</p>
-                      <p className="text-sm text-gray-600">{record.event_description || 'Без описания'}</p>
-                      <p className="text-sm text-gray-600">Статус: {record.history_status}</p>
-                      <p className="text-sm text-gray-600">Жалоба: {record.is_complaint ? 'Да' : 'Нет'}</p>
-                    </div>
-                  </li>
+                  <div
+                    key={record.history_id}
+                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 "
+                  >
+                    <p className="font-semibold text-gray-800">{record.event_name}</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {new Date(record.event_date_start).toLocaleString()}
+                    </p>
+                    <p className="text-sm text-gray-600 mb-1">
+                      {record.event_description || 'Без описания'}
+                    </p>
+                    <p className="text-sm text-gray-600">Статус: {record.history_status}</p>
+                    <p className="text-sm text-gray-600">
+                      Жалоба: {record.is_complaint ? 'Да' : 'Нет'}
+                    </p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             ) : (
               <p className="text-gray-500">История пуста</p>
             )}
           </div>
+
         </div>
       )}
     </div>
   );
-  
+
 };
 
 export default ProfileCabinet;

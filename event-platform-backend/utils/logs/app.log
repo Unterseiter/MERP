@@ -85,3 +85,58 @@
 [2025-04-20T17:37:00.536Z] [INFO] Fetched 4 events
 [2025-04-20T17:40:40.727Z] [INFO] Fetched 4 events
 [2025-04-20T17:40:40.781Z] [INFO] Fetched 4 events
+[2025-04-23T07:29:44.994Z] [INFO] Fetched 0 events
+[2025-04-23T07:29:45.014Z] [INFO] Fetched 0 events
+[2025-04-23T07:30:37.792Z] [INFO] Event created: ID 2
+[2025-04-23T07:30:46.532Z] [INFO] Event deleted: ID 2
+[2025-04-23T07:30:46.568Z] [INFO] Событие 2TEST (ID: 2) перенесено в историю
+[2025-04-23T07:30:50.314Z] [INFO] Fetched 0 events
+[2025-04-23T07:30:50.359Z] [INFO] Fetched 0 events
+[2025-04-23T07:31:05.854Z] [INFO] Event created: ID 3
+[2025-04-23T07:31:07.798Z] [INFO] Event deleted: ID 3
+[2025-04-23T07:31:07.841Z] [INFO] Событие 333 (ID: 3) перенесено в историю
+[2025-04-23T07:31:20.373Z] [INFO] Fetched 0 events
+[2025-04-23T07:31:20.419Z] [INFO] Fetched 0 events
+[2025-04-23T07:31:36.270Z] [INFO] Event created: ID 4
+[2025-04-23T07:31:38.600Z] [INFO] Event deleted: ID 4
+[2025-04-23T07:31:38.630Z] [INFO] Событие QEQWQWWQE (ID: 4) перенесено в историю
+[2025-04-23T07:32:36.514Z] [INFO] Fetched 0 events
+[2025-04-23T07:32:36.564Z] [INFO] Fetched 0 events
+[2025-04-23T07:32:53.123Z] [INFO] Event created: ID 5
+[2025-04-23T07:32:56.146Z] [INFO] Event deleted: ID 5
+[2025-04-23T07:32:56.176Z] [INFO] Событие DSEDEEE (ID: 5) перенесено в историю
+[2025-04-23T07:33:06.758Z] [INFO] Fetched 0 events
+[2025-04-23T07:33:06.814Z] [INFO] Fetched 0 events
+[2025-04-23T07:33:26.691Z] [INFO] Event created: ID 6
+[2025-04-23T07:33:29.499Z] [INFO] Event deleted: ID 6
+[2025-04-23T07:33:29.532Z] [INFO] Событие SDFGHJKL (ID: 6) перенесено в историю
+[2025-04-23T07:37:20.840Z] [INFO] Fetched 0 events
+[2025-04-23T07:37:20.889Z] [INFO] Fetched 0 events
+[2025-04-23T07:37:58.222Z] [INFO] Event created: ID 7
+[2025-04-23T07:38:01.146Z] [INFO] Event deleted: ID 7
+[2025-04-23T07:38:01.170Z] [INFO] Событие sssssssssss222222222222 (ID: 7) перенесено в историю
+[2025-04-23T07:38:13.565Z] [INFO] Fetched 0 events
+[2025-04-23T07:38:13.625Z] [INFO] Fetched 0 events
+[2025-04-23T07:38:31.992Z] [INFO] Event created: ID 8
+[2025-04-23T07:38:46.576Z] [INFO] Fetched 0 events
+[2025-04-23T07:38:46.617Z] [INFO] Fetched 0 events
+[2025-04-23T07:39:07.538Z] [INFO] Event created: ID 9
+[2025-04-23T07:39:12.217Z] [INFO] Event deleted: ID 9
+[2025-04-23T07:39:12.247Z] [INFO] Событие nest 3 (ID: 9) перенесено в историю
+[2025-04-23T07:42:07.293Z] [INFO] Fetched 0 events
+[2025-04-23T07:42:07.310Z] [INFO] Fetched 0 events
+[2025-04-23T07:43:36.217Z] [INFO] Fetched 0 events
+[2025-04-23T07:43:36.270Z] [INFO] Fetched 0 events
+[2025-04-23T07:45:22.370Z] [INFO] Fetched 0 events
+[2025-04-23T07:45:22.415Z] [INFO] Fetched 0 events
+[2025-04-23T07:50:59.171Z] [INFO] Fetched 0 events
+[2025-04-23T07:50:59.186Z] [INFO] Fetched 0 events
+[2025-04-23T07:51:34.483Z] [INFO] Event created: ID 10
+[2025-04-23T07:51:38.084Z] [INFO] Event deleted: ID 10
+[2025-04-23T07:51:38.110Z] [INFO] Событие ек макарек 2 (ID: 10) перенесено в историю
+[2025-04-23T08:00:24.070Z] [INFO] Fetched 0 events
+[2025-04-23T08:00:24.095Z] [INFO] Fetched 0 events
+[2025-04-23T08:05:43.210Z] [INFO] Fetched 0 events
+[2025-04-23T08:05:43.226Z] [INFO] Fetched 0 events
+[2025-04-23T08:05:48.819Z] [INFO] Fetched 0 events
+[2025-04-23T08:05:48.851Z] [INFO] Fetched 0 events

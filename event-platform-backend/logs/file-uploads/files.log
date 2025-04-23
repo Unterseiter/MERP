@@ -266,3 +266,24 @@
 [2025-04-20T17:32:10.512Z] [DEBUG] Accepted file type: image/jpeg
 [2025-04-20T17:36:56.258Z] [DEBUG] Accepted file type: image/jpeg
 [2025-04-20T17:36:56.258Z] [DEBUG] Generated filename: 091480cf-c2c1-4205-bd68-a52afafca85d.jpg
+[2025-04-23T07:06:57.239Z] [INFO] File Queue initialized
+[2025-04-23T07:06:57.489Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-23T07:06:57.490Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-23T07:30:37.423Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:30:37.425Z] [DEBUG] Generated filename: 23f1cb0b-5eaa-4caf-97ed-56141a11e1c0.png
+[2025-04-23T07:31:05.516Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:31:05.516Z] [DEBUG] Generated filename: 9438734f-d1c1-42d6-bdfe-f54f31832a39.png
+[2025-04-23T07:31:35.913Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:31:35.914Z] [DEBUG] Generated filename: 0b4e9932-9f40-411d-85bc-c1ced789662c.png
+[2025-04-23T07:32:52.734Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:32:52.735Z] [DEBUG] Generated filename: e4fec70a-2e6e-4e7a-8589-d5061b4ed983.png
+[2025-04-23T07:33:26.300Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:33:26.301Z] [DEBUG] Generated filename: ba67b6e4-3c28-4cc1-9913-ea047bcd27a1.png
+[2025-04-23T07:37:57.839Z] [DEBUG] Generated filename: 6bf21190-cdff-4a76-8867-967c20b72ee1.png
+[2025-04-23T07:37:57.838Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:38:31.601Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:38:31.601Z] [DEBUG] Generated filename: 64027e44-8481-40b3-8e61-7ed71b9aa25f.png
+[2025-04-23T07:39:07.163Z] [DEBUG] Generated filename: 73f5a97e-a542-4ef3-988e-a25b8d6b069c.png
+[2025-04-23T07:39:07.162Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:51:34.083Z] [DEBUG] Accepted file type: image/png
+[2025-04-23T07:51:34.084Z] [DEBUG] Generated filename: b10e7bd6-2baf-4c90-9aff-bfa8eef9512e.png
