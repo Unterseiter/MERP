@@ -17,10 +17,10 @@ server.listen(PORT, '0.0.0.0', () => {  // Добавлен хост 0.0.0.0
     console.log(`Доступ через: http://176.59.83.69:${PORT}`);
 });
 
-/*sequelize.sync({ force: true })
-    .then(() => {
-        console.log('База данных синхронизирована');
-    })
-    .catch((err) => {
-        console.error('Ошибка синхронизации:', err);
-    });*/
+// sequelize.sync({ force: true })
+//     .then(() => {
+//         console.log('База данных синхронизирована');
+//     })
+//     .catch((err) => {
+//         console.error('Ошибка синхронизации:', err);
+//     });
