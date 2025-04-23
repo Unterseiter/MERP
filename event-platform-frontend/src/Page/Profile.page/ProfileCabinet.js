@@ -80,23 +80,30 @@ const ProfileCabinet = () => {
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
 
             {profileData.history.length > 0 ? (
-              <div className="grid gap-4 overflow-y-auto max-h-[600px] pr-2 ">
+              <div className="grid gap-4 overflow-y-auto max-h-[600px] pr-2">
                 {profileData.history.map((record) => (
                   <div
                     key={record.history_id}
-                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200 "
+                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
                   >
-                    <p className="font-semibold text-gray-800">{record.event_name}</p>
-                    <p className="text-sm text-gray-500 mb-1">
-                      {new Date(record.event_date_start).toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-600 mb-1">
+                    {/* Название и дата */}
+                    <div className="flex justify-between items-center mb-2"> 
+                      <h1 className="font-medium text-black text-2xl">{record.event_name}</h1>
+                      <p className="text-sm text-gray-500"> <span>Дата начала: </span>
+                        {new Date(record.event_date_start).toLocaleString()}
+                      </p>
+                    </div>
+
+                    {/* Описание */}
+                    <p className="text-lg text-black mb-3"> 
                       {record.event_description || 'Без описания'}
                     </p>
-                    <p className="text-sm text-gray-600">Статус: {record.history_status}</p>
-                    <p className="text-sm text-gray-600">
-                      Жалоба: {record.is_complaint ? 'Да' : 'Нет'}
-                    </p>
+
+                    {/* Жалоба и статус */}
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm text-red-600">{record.is_complaint ? 'Есть жалоба' : ' '}</p>
+                      <p className="text-sm text-gray-600">Статус: {record.history_status}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -104,6 +111,7 @@ const ProfileCabinet = () => {
               <p className="text-gray-500">История пуста</p>
             )}
           </div>
+
 
         </div>
       )}
