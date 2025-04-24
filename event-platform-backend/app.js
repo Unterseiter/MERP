@@ -40,9 +40,11 @@ cron.schedule('0 0 * * *', () => {
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
 const userRoutes = require('./routes/user');
+const requestRoutes = require('./routes/requestEvent');
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/requests', requestRoutes);
 
 //Обработка ошибок
 app.use((err, req, res, next) => {

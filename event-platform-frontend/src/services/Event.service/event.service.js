@@ -39,10 +39,6 @@ export default class EventService {
       if (file) {
         formData.append('photo', file);
       }
-      console.log('front eventService');
-      console.log(formData);
-      console.log(body);
-      console.log(file);
   
       const res = await instanceAxios.post(this.apiUrl, formData);
       return res.data;

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ROUTER_PATH from '../../navigation/path';
 import { useState } from "react";
 import EventTester from "../../test/test";
+import EventManager from "../../test/eventManager";
 import ProfileTestPage from "../../test/test-profile";
 import EventPhotoUpload from "../../test/EventPhotoUpload";
 
@@ -39,7 +40,7 @@ function Registr(){
 
     return (
         <div>
-            <EventTester  />
+            <EventManager  />
             <ProfileTestPage />
             <EventPhotoUpload />
         </div>

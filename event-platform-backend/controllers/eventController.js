@@ -38,7 +38,7 @@ const eventUpdateSchema = Joi.object({
   end_date: Joi.date().iso(),
   limited: Joi.number().min(0),
   photo_url: Joi.string()
-}).min(1);
+});
 
 const eventController = {
   // Вспомогательные методы
@@ -46,23 +46,29 @@ const eventController = {
     if (!photoUrl) return null;
     return `${process.env.CORS_ORIGIN_DEV}:${process.env.PORT}${photoUrl}`;
   },
-  
+
   async _handleFileUpload(req, existingEvent = null) {
     if (!req.file) return {};
-    
+
+    const event = await Event.findByPk(req.params.id);
+    if(event.photo_url == req.body.photo_url){
+      return {
+         photo_url: req.body.photo_url
+      };
+    }
     try {
       logger.info(`Processing file: ${req.file.originalname}`);
-      
+
       // Удаление старого файла
       if (existingEvent?.photo_url) {
         const oldFileName = existingEvent.photo_url.split('/').pop();
         const oldPath = path.join(eventMainUploader.finalDir, oldFileName);
-        
-        await fs.unlink(oldPath).catch(err => 
+
+        await fs.unlink(oldPath).catch(err =>
           logger.warn(`Failed to delete old file: ${err.message}`)
         );
       }
-  
+
       return {
         photo_url: `/uploads/events/main/${req.file.filename}`
       };
@@ -71,7 +77,7 @@ const eventController = {
       throw error;
     }
   },
-  
+
   async _handleFileError(req, error) {
     if (req.file?.path) {
       try {
@@ -81,7 +87,7 @@ const eventController = {
       }
     }
   },
-  
+
   _checkPermissions(event, user) {
     if (event.creator_tag !== user.tag_name && !user.isAdmin) {
       logger.warn(`Permission denied for user ${user.tag_name} on event ${event.event_id}`);
@@ -92,21 +98,22 @@ const eventController = {
   async createEvent(req, res, next) {
     try {
       const { error, value } = eventSchema.validate(req.body);
+      console.log(req.body);
       if (error) throw new ValidationError(error.details);
-      
+
       const eventData = {
         ...value,
         creator_tag: req.user.tag_name,
         views: 0,
-        photo_url: req.file ? `/uploads/events/main/${req.file.filename}` : null
+        photo_url: req.file ? eventController._formatPhotoUrl(`/uploads/events/main/${req.file.filename}`) : null
       };
-      
+
       const event = await eventService.createEvent(eventData);
       logger.info(`Event created: ID ${event.event_id}`);
-      
+
       res.status(201).json({
         ...event.toJSON(),
-        photo_url: eventController._formatPhotoUrl(event.photo_url)
+        photo_url:event.photo_url
       });
 
     } catch (error) {
@@ -114,7 +121,7 @@ const eventController = {
       next(error);
     }
   },
-  
+
   async getEvents(req, res, next) {
     try {
       const processedQuery = {
@@ -134,7 +141,7 @@ const eventController = {
       const result = await eventService.getEvents(value);
       const data = result.rows.map(event => ({
         ...event.toJSON(),
-        photo_url: eventController._formatPhotoUrl(event.photo_url)
+        photo_url: event.photo_url
       }));
 
       logger.info(`Fetched ${result.count} events`);
@@ -162,7 +169,7 @@ const eventController = {
 
       res.json({
         ...event.toJSON(),
-        photo_url: eventController._formatPhotoUrl(event.photo_url)
+        photo_url: event.photo_url
       });
     } catch (error) {
       next(error);
@@ -175,19 +182,30 @@ const eventController = {
       if (!event) throw new NotFoundError('Мероприятие не найдено');
       eventController._checkPermissions(event, req.user);
 
-      const { error, value } = eventUpdateSchema.validate(req.body);
+      const validobj = {
+        name: req.body.name,
+        description: req.body.description,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        limited: req.body.limited,
+        photo_url: req.body.photo_url
+      }
+      const { error, value } = eventUpdateSchema.validate(validobj);
+      console.log(req.body);
       if (error) throw new ValidationError(error.details);
 
       const fileData = await eventController._handleFileUpload(req, event);
+
       const updatedEvent = await eventService.updateEvent(req.params.id, {
         ...value,
         ...fileData
       });
+      const validphoto = req.body.photo_url !== event.photo_url;
 
       logger.info(`Event updated: ID ${updatedEvent.event_id}`);
       res.json({
         ...updatedEvent.toJSON(),
-        photo_url: eventController._formatPhotoUrl(updatedEvent.photo_url)
+        photo_url: validphoto ? updatedEvent.photo_url :eventController._formatPhotoUrl(updatedEvent.photo_url)
       });
 
     } catch (error) {
@@ -204,7 +222,7 @@ const eventController = {
 
       if (event.photo_url) {
         const filePath = path.join(eventMainUploader.finalDir, event.photo_url.split('/').pop());
-        await fs.unlink(filePath).catch(err => 
+        await fs.unlink(filePath).catch(err =>
           logger.warn(`Failed to delete file: ${err.message}`)
         );
       }
@@ -231,7 +249,7 @@ const eventController = {
       const updatedEvent = await eventService.updateEvent(eventId, fileData);
 
       logger.info(`Photo uploaded for event: ID ${eventId}`);
-      res.json({ 
+      res.json({
         photo_url: eventController._formatPhotoUrl(updatedEvent.photo_url)
       });
 

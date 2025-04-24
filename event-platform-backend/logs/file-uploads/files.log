@@ -299,3 +299,155 @@
 [2025-04-24T12:10:36.439Z] [INFO] File Queue initialized
 [2025-04-24T12:10:36.634Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
 [2025-04-24T12:10:36.633Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:26:41.480Z] [INFO] File Queue initialized
+[2025-04-24T16:26:41.595Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:26:41.596Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:31:20.682Z] [INFO] File Queue initialized
+[2025-04-24T16:31:20.873Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:31:20.873Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:39:11.491Z] [INFO] File Queue initialized
+[2025-04-24T16:39:11.656Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:39:11.656Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:48:34.299Z] [INFO] File Queue initialized
+[2025-04-24T16:48:34.482Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:48:34.483Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:48:55.099Z] [DEBUG] Generated filename: 8b25a4cc-4792-42ab-8423-5ec2f02187b5.jpg
+[2025-04-24T16:48:55.096Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T16:48:56.295Z] [DEBUG] Temp file cleaned: uploads\events\main\9844440e-5424-4a92-9017-7a54554a9900.webp
+[2025-04-24T16:51:57.144Z] [INFO] File Queue initialized
+[2025-04-24T16:51:57.374Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:51:57.375Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:51:59.154Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T16:51:59.155Z] [DEBUG] Generated filename: 4c0f2d6f-a977-4fd4-8e88-346d0e8dc17b.jpg
+[2025-04-24T16:52:34.292Z] [INFO] File Queue initialized
+[2025-04-24T16:52:34.435Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T16:52:34.434Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T16:52:36.104Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T16:52:36.105Z] [DEBUG] Generated filename: be34fcba-2b31-4b85-9511-2437991b60d9.jpg
+[2025-04-24T16:52:37.093Z] [DEBUG] Temp file cleaned: uploads\events\main\f50003c7-8be5-43a9-a430-f1e6ece2501d.webp
+[2025-04-24T17:00:03.739Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:00:03.740Z] [DEBUG] Generated filename: 7ab8d6e4-4477-4861-8c8a-de6754ea220f.jpg
+[2025-04-24T17:00:04.771Z] [DEBUG] Temp file cleaned: uploads\events\main\3dd9a102-1a1a-41c4-96cc-a42f1efaf6d1.webp
+[2025-04-24T17:00:19.626Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:00:19.627Z] [DEBUG] Generated filename: b0a6218a-da17-40d0-91ac-c416c3abca74.jpg
+[2025-04-24T17:00:20.745Z] [DEBUG] Temp file cleaned: uploads\events\main\3ac3e9de-f0f4-4d8c-9b33-546e564f24a7.webp
+[2025-04-24T17:16:01.714Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:16:01.714Z] [DEBUG] Generated filename: 1769de07-7062-4716-b8c0-932b40f774c0.jpg
+[2025-04-24T17:20:35.322Z] [DEBUG] Generated filename: ebec19e0-119c-4b73-a5e6-3cd215455aec.jpg
+[2025-04-24T17:20:35.321Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:21:33.903Z] [INFO] File Queue initialized
+[2025-04-24T17:21:34.156Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:21:34.157Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:26:09.896Z] [INFO] File Queue initialized
+[2025-04-24T17:26:10.125Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:26:10.126Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:26:51.386Z] [INFO] File Queue initialized
+[2025-04-24T17:26:51.584Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:26:51.584Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:26:53.875Z] [INFO] File Queue initialized
+[2025-04-24T17:26:53.995Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:26:53.996Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:29:48.711Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:29:48.714Z] [DEBUG] Generated filename: 657276b3-d031-4e4e-a6ba-ca3455794af7.jpg
+[2025-04-24T17:29:49.834Z] [DEBUG] Temp file cleaned: uploads\events\main\618eacd3-c01a-434e-bc8d-aacb7e2dcab0.webp
+[2025-04-24T17:30:23.246Z] [INFO] File Queue initialized
+[2025-04-24T17:30:23.420Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:30:23.420Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:30:26.425Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:30:26.425Z] [DEBUG] Generated filename: f250ba46-a9b9-4347-8107-18dabea2d08a.jpg
+[2025-04-24T17:30:27.420Z] [DEBUG] Temp file cleaned: uploads\events\main\83fbd0ce-0ba9-4b7c-b143-e114fb72eddd.webp
+[2025-04-24T17:30:39.244Z] [INFO] File Queue initialized
+[2025-04-24T17:30:39.432Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:30:39.433Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:30:41.232Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:30:41.233Z] [DEBUG] Generated filename: 0ddf5bc3-7b64-4177-84d7-a7e9a8795aba.jpg
+[2025-04-24T17:30:42.230Z] [DEBUG] Temp file cleaned: uploads\events\main\3d7ec944-aacd-4efa-a334-a983bbe7be15.webp
+[2025-04-24T17:30:58.101Z] [INFO] File Queue initialized
+[2025-04-24T17:30:58.229Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:30:58.230Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:31:00.518Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:31:00.519Z] [DEBUG] Generated filename: 21e323c5-4a3f-4ddf-a746-6b52c2fc5972.jpg
+[2025-04-24T17:31:01.508Z] [DEBUG] Temp file cleaned: uploads\events\main\2158ba27-50e2-42e2-b8a3-153224da6c7f.webp
+[2025-04-24T17:31:08.012Z] [INFO] File Queue initialized
+[2025-04-24T17:31:08.128Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:31:08.129Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:31:10.458Z] [DEBUG] Generated filename: b036b843-7186-4f72-8192-77390f76b59b.jpg
+[2025-04-24T17:31:10.457Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:31:11.456Z] [DEBUG] Temp file cleaned: uploads\events\main\41118783-4262-490a-8635-1dd775867b98.webp
+[2025-04-24T17:31:19.165Z] [INFO] File Queue initialized
+[2025-04-24T17:31:19.286Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:31:19.287Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:31:21.684Z] [DEBUG] Generated filename: 2a09627f-4f08-4c2f-a8c8-88a97fe80744.jpg
+[2025-04-24T17:31:21.684Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:31:22.676Z] [DEBUG] Temp file cleaned: uploads\events\main\b59bde06-faa1-4855-a702-e362306851c6.webp
+[2025-04-24T17:31:37.213Z] [INFO] File Queue initialized
+[2025-04-24T17:31:37.366Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:31:37.365Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:31:39.585Z] [DEBUG] Generated filename: d2c686d3-ae26-470f-a65e-d8b38b122741.jpg
+[2025-04-24T17:31:39.584Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:31:40.577Z] [DEBUG] Temp file cleaned: uploads\events\main\c5545456-60a2-4d31-bde1-e413b6cbab8b.webp
+[2025-04-24T17:32:06.503Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:32:06.504Z] [DEBUG] Generated filename: b0c7f1a6-9ce4-4030-a78e-fa3aa095b0a3.jpg
+[2025-04-24T17:35:11.331Z] [INFO] File Queue initialized
+[2025-04-24T17:35:11.471Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:35:11.470Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:35:20.012Z] [INFO] File Queue initialized
+[2025-04-24T17:35:20.137Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:35:20.137Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:37:11.724Z] [DEBUG] Generated filename: fbde9ce3-3cfe-4ced-a182-60a00b1950f8.jpg
+[2025-04-24T17:37:11.722Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:47:18.222Z] [DEBUG] Generated filename: d339f531-6609-409f-8305-3ef26c636a30.jpg
+[2025-04-24T17:47:18.221Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T17:54:37.179Z] [INFO] File Queue initialized
+[2025-04-24T17:54:37.313Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T17:54:37.313Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:58:38.595Z] [INFO] File Queue initialized
+[2025-04-24T17:58:38.712Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T17:58:38.712Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:00:33.431Z] [INFO] File Queue initialized
+[2025-04-24T18:00:33.555Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:00:33.555Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:00:44.301Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:00:44.303Z] [DEBUG] Generated filename: c3d807bd-91d9-4c74-9023-8cfb75f02e50.jpg
+[2025-04-24T18:02:06.752Z] [INFO] File Queue initialized
+[2025-04-24T18:02:06.923Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:02:06.924Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:07:05.969Z] [INFO] File Queue initialized
+[2025-04-24T18:07:06.108Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:07:06.108Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:07:15.126Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:07:15.127Z] [DEBUG] Generated filename: 7920e77a-d496-4360-bea6-9982f517d7b1.jpg
+[2025-04-24T18:08:58.208Z] [INFO] File Queue initialized
+[2025-04-24T18:08:58.362Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:08:58.363Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:09:04.462Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:09:04.462Z] [DEBUG] Generated filename: 45ebb8aa-f35d-4560-8375-234637c9da76.jpg
+[2025-04-24T18:09:44.138Z] [INFO] File Queue initialized
+[2025-04-24T18:09:44.281Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:09:44.281Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:09:52.329Z] [DEBUG] Generated filename: 68658ee5-bc6c-41f7-9ef7-8cf024ddf414.jpg
+[2025-04-24T18:09:52.325Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:11:00.468Z] [INFO] File Queue initialized
+[2025-04-24T18:11:00.632Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:11:00.632Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:11:30.075Z] [INFO] File Queue initialized
+[2025-04-24T18:11:30.198Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:11:30.198Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:11:33.622Z] [INFO] File Queue initialized
+[2025-04-24T18:11:33.736Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:11:33.736Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:11:50.729Z] [INFO] File Queue initialized
+[2025-04-24T18:11:50.856Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:11:50.855Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:14:16.866Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:14:16.868Z] [DEBUG] Generated filename: 88b853d8-2634-4ba4-8d9d-f763d647bb92.jpg
+[2025-04-24T18:15:52.673Z] [INFO] File Queue initialized
+[2025-04-24T18:15:52.816Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:15:52.816Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:16:12.342Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-24T18:16:12.343Z] [DEBUG] Generated filename: dc8026c9-276d-4e8a-be63-cf3fe4fc5aae.jpg
+[2025-04-24T18:16:53.382Z] [INFO] File Queue initialized
+[2025-04-24T18:16:53.517Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-24T18:16:53.518Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-24T18:17:09.792Z] [DEBUG] Accepted file type: image/png
+[2025-04-24T18:17:09.793Z] [DEBUG] Generated filename: ef481e92-f9c3-46a3-abb5-fecd12768adc.png

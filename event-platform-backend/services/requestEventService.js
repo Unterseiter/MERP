@@ -1,96 +1,129 @@
-const { Participation, Event } = require('../models');
+const { RequestEvent, Event, User } = require('../models');
 const Check_Privilege = require('../utils/privilege');
 
-const participationService = {
-  // Создание заявки на участие
-  async createParticipation(participationData) {
-    try {
-      const participation = await Participation.create(participationData);
-      return participation;
-    } catch (error) {
-      if (error.name === 'SequelizeUniqueConstraintError') {
-        throw new Error('Вы уже подавали заявку на это мероприятие');
-      }
-      throw error;
+const requestService = {
+
+  async createRequest(requestData) {
+    const { user_tag, event_id } = requestData;
+
+    // Проверка существования мероприятия
+    const event = await Event.findByPk(event_id);
+    if (!event) throw new Error('Мероприятие не найдено');
+
+    // Проверка что пользователь не создатель
+    if (event.creator_tag === user_tag) {
+      throw new Error('Создатель мероприятия не может подавать заявки');
     }
+
+    // Проверка существующей заявки
+    const existingRequest = await RequestEvent.findOne({
+      where: { user_tag, event_id }
+    });
+    if (existingRequest) throw new Error('Заявка уже существует');
+
+    return RequestEvent.create({
+      ...requestData,
+      status: 'expectation'
+    });
   },
 
-  // Получение заявки по request_id
-  async getParticipationById(request_id) {
-    try {
-      const participation = await Participation.findByPk(request_id, {
-        include: [User, Event],
-      });
-      return participation;
-    } catch (error) {
-      throw error;
-    }
-  },
+  async getRequests(filters = {}) {
+    const { 
+      eventId, 
+      userTag, 
+      status, 
+      isReported, 
+      page = 1, 
+      limit = 10 
+    } = filters;
 
-  // Обновление статуса заявки (только для организатора)
-  async updateParticipationStatus(request_id, newStatus, organizerId) {
-    try {
-      const participation = await Participation.findByPk(request_id, {
-        include: Event,
-      });
-      
-      if (!participation) throw new Error('Заявка не найдена');
-      if (Check_Privilege(participation.Event.creatorId, organizerId)) {
-        throw new Error('Только организатор может изменить статус');
-      }
+    const where = {};
+    if (eventId) where.event_id = eventId;
+    if (userTag) where.user_tag = userTag;
+    if (status) where.status = status;
+    if (isReported !== undefined) where.is_reported = isReported;
 
-      // Проверка лимита участников
-      if (newStatus === 'accept' && participation.Event.limit > 0) {
-        const approvedCount = await Participation.count({
-          where: { event_id: participation.eventId, status: 'accept' },
-        });
-        if (approvedCount >= participation.Event.limit) {
-          throw new Error('Достигнут лимит участников');
+    return RequestEvent.findAndCountAll({
+      where,
+      limit: parseInt(limit),
+      offset: (page - 1) * limit,
+      include: [
+        {
+          model: User,
+          as: 'Requester',
+          attributes: ['tag_name', 'name', 'city']
+        },
+        {
+          model: Event,
+          attributes: ['name', 'creator_tag', 'start_date']
         }
-      }
-
-      participation.status = newStatus;
-      await participation.save();
-      return participation;
-    } catch (error) {
-      throw error;
-    }
+      ]
+    });
   },
 
-  // Получение всех заявок на мероприятие
-  async getParticipationsByEvent(eventId) {
-    try {
-      const participations = await Participation.findAll({
-        where: { eventId },
-        include: User,
-      });
-      return participations;
-    } catch (error) {
-      throw error;
+  async updateRequestStatus(requestId, newStatus, currentUserTag) {
+    const request = await RequestEvent.findByPk(requestId);
+    if (!request) throw new Error('Заявка не найдена');
+
+    const event = await Event.findByPk(request.event_id);
+    if (!event) throw new Error('Мероприятие не найдено');
+
+    // Проверка что текущий пользователь не создатель
+    if (event.creator_tag !== currentUserTag) {
+      throw new Error('только cоздатель мероприятия может изменять статус заявки');
     }
+
+    request.status = newStatus;
+    await request.save();
+    return request;
   },
 
-  // Удаление заявки (пользователь или организатор)
-  async deleteParticipation(request_id, user_tag) {
-    try {
-      const participation = await Participation.findByPk(request_id, {
-        include: Event,
-      });
-      if (!participation) return false;
-      
-      if (
-        Check_Privilege(participation.user_tag , user_tag) &&
-        Check_Privilege(participation.Event.creator_tag, user_tag)
-      ) {
-        throw new Error('У вас нет прав для удаления этой заявки');
-      }
-      
-      await participation.destroy();
-      return true;
-    } catch (error) {
-      throw error;
+  async updateRepost(requestId, repost){
+    const request = RequestEvent.findByPk(requestId);
+    if(!request) throw new Error("заявка не найдена");
+
+    if(request.is_reported === repost){
+      return true
     }
+    request.is_reported = repost;
+    await request.save();
+    return request;
   },
+  async deleteRequest(requestId, currentUserTag) {
+    const request = await RequestEvent.findByPk(requestId);
+    if (!request) throw new Error('Заявка не найдена');
+
+    const user = await User.findOne({ where: { tag_name: currentUserTag } });
+    
+    // Разрешаем удаление только автору заявки или админу
+    if (request.user_tag !== currentUserTag && !Check_Privilege(user.privilege, 'admin')) {
+      throw new Error('Недостаточно прав для удаления');
+    }
+
+    await request.destroy();
+    return true;
+  },
+
+  async getRequestDetails(requestId) {
+    return RequestEvent.findByPk(requestId, {
+      include: [
+        {
+          model: Event,
+          attributes: ['name', 'creator_tag', 'start_date'],
+          include: {
+            model: User,
+            as: 'Creator',
+            attributes: ['tag_name', 'name']
+          }
+        },
+        {
+          model: User,
+          as: 'Requester',
+          attributes: ['tag_name', 'name', 'email']
+        }
+      ]
+    });
+  }
 };
 
-module.exports = participationService;
+module.exports = requestService;
