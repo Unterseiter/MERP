@@ -30,4 +30,6 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows
 /uploads/
 /logs/
-/utils/logs/
+utils/logs/
+event-platform-backend/config/bd.js
+event-platform-backend/logs/file-uploads/files.log
