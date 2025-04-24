@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { EventModal } from './EventModal';
 import Modal from 'react-modal';
+import styles from './style.module.css';
 
 Modal.setAppElement('#root');
 
@@ -23,17 +24,16 @@ export const EventCard = ({ title, description, imageUrl, id }) => {
     };
 
     return (
-        <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer">
-            <div onClick={openModal} className="aspect-[16/9]">
+        <article className={styles['card']}>
+            <div onClick={openModal} className={styles['image-container']}>
                 <img
                     src={imageUrl}
                     alt={title}
-                    className="w-full h-full object-cover"
                 />
             </div>
-            <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#5A4A42] mb-2">{title}</h3>
-                <p className="text-gray-600 line-clamp-2">{description}</p>
+            <div className={styles['text-container']}>
+                <h3>{title}</h3>
+                <p>{description}</p>
             </div>
             
             <EventModal
