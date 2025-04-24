@@ -33,3 +33,5 @@ $RECYCLE.BIN/
 utils/logs/
 event-platform-backend/config/bd.js
 event-platform-backend/logs/file-uploads/files.log
+event-platform-backend/logs/file-uploads/files.log
+event-platform-backend/utils/logs/app.log
