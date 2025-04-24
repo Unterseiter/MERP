@@ -1,0 +1,13 @@
+.event-section__h1{
+    font-size: 38px;
+    font-weight: 500;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vw;
+}
+
+.event-section__card{
+    
+}
