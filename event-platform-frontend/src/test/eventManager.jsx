@@ -38,6 +38,7 @@ const EventManager = () => {
                 setLoading(true);
                 const eventsData = await EventService.getAllRecords(filters);
                 const requestsData = await RequestService.getAllRecords();
+                console.log(requestsData);
                 setEvents(eventsData.data);
                 setRequests(requestsData.data);
             } catch (err) {
@@ -73,7 +74,7 @@ const EventManager = () => {
             switch (action) {
                 case 'create':
                     const newRequest = await RequestService.createRecord(eventId);
-                    setRequests(prev => [...prev, newRequest]);
+                    setRequests(prev => [...prev, newRequest.data]);
                     break;
                 case 'delete':
                     await RequestService.deleteRecord(requestId);

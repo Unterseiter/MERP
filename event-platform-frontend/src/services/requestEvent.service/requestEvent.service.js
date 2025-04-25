@@ -29,7 +29,7 @@ export default class RequestService {
 
   // Создание новой заявки
   static async createRecord(eventId) {
-    const res = await instanceAxios.post(this.apiUrl, { event_id: eventId });
+    const res = await instanceAxios.post(this.apiUrl, { event_id: eventId, status:'expectation', is_reported: false});
     return res.data;
   }
 

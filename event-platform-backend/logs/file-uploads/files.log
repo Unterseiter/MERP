@@ -451,3 +451,56 @@
 [2025-04-24T18:16:53.518Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
 [2025-04-24T18:17:09.792Z] [DEBUG] Accepted file type: image/png
 [2025-04-24T18:17:09.793Z] [DEBUG] Generated filename: ef481e92-f9c3-46a3-abb5-fecd12768adc.png
+[2025-04-25T07:53:54.607Z] [INFO] File Queue initialized
+[2025-04-25T07:53:54.758Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T07:53:54.758Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T07:56:42.778Z] [INFO] File Queue initialized
+[2025-04-25T07:56:42.949Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T07:56:42.949Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T07:58:38.326Z] [INFO] File Queue initialized
+[2025-04-25T07:58:38.517Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T07:58:38.518Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:03:14.438Z] [INFO] File Queue initialized
+[2025-04-25T08:03:14.563Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:03:14.563Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:04:51.570Z] [INFO] File Queue initialized
+[2025-04-25T08:04:51.715Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:04:51.714Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:05:45.960Z] [INFO] File Queue initialized
+[2025-04-25T08:05:46.137Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:05:46.137Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:06:09.752Z] [INFO] File Queue initialized
+[2025-04-25T08:06:09.922Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:06:09.922Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:44:44.595Z] [INFO] File Queue initialized
+[2025-04-25T08:44:44.800Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:44:44.800Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:46:27.944Z] [INFO] File Queue initialized
+[2025-04-25T08:46:28.152Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:46:28.153Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:49:19.865Z] [INFO] File Queue initialized
+[2025-04-25T08:49:20.107Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:49:20.106Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:49:22.235Z] [INFO] File Queue initialized
+[2025-04-25T08:49:22.396Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:49:22.396Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:51:40.611Z] [INFO] File Queue initialized
+[2025-04-25T08:51:40.758Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:51:40.758Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:51:50.710Z] [INFO] File Queue initialized
+[2025-04-25T08:51:50.960Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:51:50.960Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:53:00.200Z] [INFO] File Queue initialized
+[2025-04-25T08:53:00.381Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:53:00.381Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:53:14.678Z] [INFO] File Queue initialized
+[2025-04-25T08:53:14.838Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:53:14.839Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:54:04.541Z] [INFO] File Queue initialized
+[2025-04-25T08:54:04.730Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:54:04.730Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T08:54:53.174Z] [INFO] File Queue initialized
+[2025-04-25T08:54:53.376Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-25T08:54:53.375Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-25T09:51:58.592Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-25T09:51:58.595Z] [DEBUG] Generated filename: d4c458aa-b202-4588-88f6-71315329ce4f.jpg

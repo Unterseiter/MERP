@@ -8,12 +8,14 @@ const requestController = {
     try {
       const requestData = {
         ...req.body,
-        user_tag: req.user.tag_name // Предполагаем, что пользователь авторизован
+        user_tag: req.user.tag_name 
       };
-
+      logger.info(requestData.user_tag);
+      
       const newRequest = await requestService.createRequest(requestData);
       logger.info(`Заявка создана: ${newRequest.request_id}`);
       
+      console.log(newRequest);
       res.status(201).json({
         success: true,
         data: newRequest

@@ -17,14 +17,29 @@ const requestService = {
 
     // Проверка существующей заявки
     const existingRequest = await RequestEvent.findOne({
-      where: { user_tag, event_id }
+      where: { user_tag, event_id },
     });
     if (existingRequest) throw new Error('Заявка уже существует');
 
-    return RequestEvent.create({
+    const newRequest = await RequestEvent.create({
       ...requestData,
       status: 'expectation'
-    });
+  });
+    console.log(newRequest);
+
+    return RequestEvent.findByPk(newRequest.request_id, {
+      include: [
+          {
+              model: User,
+              as: 'Requester',
+              attributes: ['tag_name', 'name', 'city']
+          },
+          {
+              model: Event,
+              attributes: ['name', 'creator_tag', 'start_date']
+          }
+      ]
+  });
   },
 
   async getRequests(filters = {}) {
