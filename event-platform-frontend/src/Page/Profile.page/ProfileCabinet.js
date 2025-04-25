@@ -56,19 +56,19 @@ const ProfileCabinet = () => {
       )}
 
       {profileData && !loading && !authLoading && (
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-7">
           {/* Левая колонка — профиль */}
-          <div className="w-full lg:w-1/5 h-1/4 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col items-center relative ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-1/6 h-1/4 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
             <img
               src={image}
               className="w-24 h-24 rounded-full object-cover mb-4"
             />
             <div className='text-left'>
-              <h2 className="text-xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
-              <p className="text-sm">@{profileData.info.tag_name}</p>
-              <p className="text-sm mt-2">{profileData.info.city || 'Город не указан'}</p>
-              <p className="text-sm">На сайте с {new Date(profileData.info.created_at).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}</p>
-              <p className="text-sm">{profileData.info.email}</p>
+              <h2 className="text-3xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
+              <p className="text-xl text-gray-700">@{profileData.info.tag_name}</p>
+              <p className="text-lg mt-4">{profileData.info.city || 'Город не указан'}</p>
+              <p className="text-lg">На сайте с {new Date(profileData.info.created_at).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}</p>
+              <p className="text-lg">{profileData.info.email}</p>
             </div>
             <button onClick={handleLogout} className="mt-6 text-red-600 hover:underline text-sm">
               Выйти
@@ -76,18 +76,18 @@ const ProfileCabinet = () => {
           </div>
 
           {/* Правая колонка — история */}
-          <div className="w-full lg:w-2/3 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-1/3 h-1/4 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
 
             {profileData.history.length > 0 ? (
-              <div className="grid gap-4 overflow-y-auto max-h-[600px] pr-2">
+              <div className="grid gap-4 overflow-y-auto max-h-[400px] pr-2">
                 {profileData.history.map((record) => (
                   <div
                     key={record.history_id}
                     className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
                   >
                     {/* Название и дата */}
-                    <div className="flex justify-between items-center mb-2"> 
+                    <div className="flex justify-between items-center mb-2">
                       <h1 className="font-medium text-black text-2xl">{record.event_name}</h1>
                       <p className="text-sm text-gray-500"> <span>Дата начала: </span>
                         {new Date(record.event_date_start).toLocaleString()}
@@ -95,9 +95,11 @@ const ProfileCabinet = () => {
                     </div>
 
                     {/* Описание */}
-                    <p className="text-lg text-black mb-3"> 
-                      {record.event_description || 'Без описания'}
-                    </p>
+                    <div className="max-w-[30rem]"> {/* или любая другая ширина */}
+                      <p className="text-lg text-black mb-3 break-words whitespace-pre-wrap">
+                        {record.event_description || 'Без описания'}
+                      </p>
+                    </div>
 
                     {/* Жалоба и статус */}
                     <div className="flex justify-between items-center">
@@ -113,6 +115,38 @@ const ProfileCabinet = () => {
           </div>
 
 
+
+          <div className="w-full lg:w-1/3 h-1/4 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
+            <h2 className="text-2xl font-semibold mb-4">Активные события</h2>
+            {profileData.events.length > 0 ? (
+              <ul className="space-y-4 overflow-y-auto max-h-[400px] pr-2 ">
+                {profileData.events.map((event) => (
+                  <li
+                    key={event.event_id}
+                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
+                  >
+                    <h3 className="text-lg font-medium">{event.name}</h3>
+                    <p className="text-gray-600">Ограничение: {event.limited}</p>
+                    <p className="text-gray-600">
+                      Дата начала: {new Date(event.start_date).toLocaleDateString()}
+                    </p>
+                    <p className="text-gray-600">
+                      Дата окончания: {new Date(event.end_date).toLocaleDateString()}
+                    </p>
+                    <div className="max-w-[30rem]">
+                    <p className="text-gray-600 break-words whitespace-pre-wrap">
+                      Описание: {event.description || 'Нет описания'}
+                    </p>
+                    </div>
+                    <p className="text-gray-600">Создатель: {event.creator_tag}</p>
+                    <p className="text-gray-600">Просмотры: {event.views}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-500">Нет активных событий</p>
+            )}
+          </div>
         </div>
       )}
     </div>

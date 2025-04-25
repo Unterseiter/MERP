@@ -69,11 +69,11 @@ const AuthPopup = ({ onClose }) => {
   return (
     <div
       ref={popupRef}
-      className="absolute top-[calc(100%+40px)] right-1 w-full min-w-[320px] max-w-[400px] bg-white shadow-xl rounded-xl p-6 z-50"
+      className="absolute top-[calc(100%+40px)] right-1 w-full min-w-[320px] max-w-[400px] bg-white shadow-xl rounded-lg ring-[#CAA07D]  ring-2  p-6 z-50"
     >
       <button
         onClick={onClose}
-        className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition text-2xl"
+        className="absolute top-3 right-3 transition text-2xl"
       >
         ×
       </button>
@@ -84,15 +84,18 @@ const AuthPopup = ({ onClose }) => {
           <span className="block sm:inline">{error}</span>
         </div>
       )}
-
+      <label className="block text-sm font-medium text-gray-700">
+        Логин
+      </label>
       <form onSubmit={handleSubmit} className="space-y-5">
+
         <input
           placeholder='Введите логин'
           id="tag_name"
           name="tag_name"
           type="text"
           required
-          className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+          className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
           value={formData.tag_name}
           onChange={(e) => setFormData({ ...formData, tag_name: e.target.value })}
         />
@@ -105,7 +108,7 @@ const AuthPopup = ({ onClose }) => {
                 name="city"
                 type="text"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
               />
@@ -117,7 +120,7 @@ const AuthPopup = ({ onClose }) => {
                 name="name"
                 type="text"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -129,7 +132,7 @@ const AuthPopup = ({ onClose }) => {
                 name="email"
                 type="email"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -145,7 +148,7 @@ const AuthPopup = ({ onClose }) => {
             name="password"
             type="password"
             required
-            className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+            className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D]  focus:z-10 sm:text-sm"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           />
@@ -162,7 +165,7 @@ const AuthPopup = ({ onClose }) => {
         <button
           type="submit"
           disabled={loading}
-          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#CAA07D] hover:bg-[#caa689d7] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
         >
           {loading ? 'Загрузка...' : isLoginForm ? 'Войти' : 'Зарегистрироваться'}
         </button>
