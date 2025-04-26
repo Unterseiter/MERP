@@ -66,6 +66,7 @@ const requestController = {
       const { id } = req.params;
       const { status } = req.body;
       const currentUser = req.user.tag_name;
+      //console.log(req.body);
 
       const updatedRequest = await requestService.updateRequestStatus(
         id,
@@ -134,7 +135,6 @@ const requestController = {
   // Получение детальной информации о заявке
   async getRequestDetails(req, res) {
     try {
-      console.log(req.params);
       const { id } = req.params;
       const request = await requestService.getRequestDetails(id);
 

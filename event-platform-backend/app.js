@@ -5,6 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const app = express();
 
+const { requestLogger, errorLogger } = require('./middleware/loggerMiddleware');
+
 const moveExpiredEventsToHistory = require('./services/cron/History');
 
 //Middleware(Промежуточные обработчики)
@@ -41,11 +43,14 @@ const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
 const userRoutes = require('./routes/user');
 const requestRoutes = require('./routes/requestEvent');
+app.use(requestLogger);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/requests', requestRoutes);
 
+
+app.use(errorLogger);
 //Обработка ошибок
 app.use((err, req, res, next) => {
     console.error(err.stack);

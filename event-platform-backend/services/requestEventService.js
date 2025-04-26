@@ -69,6 +69,7 @@ const requestService = {
     const request = await RequestEvent.findByPk(requestId);
     if (!request) throw new Error('Заявка не найдена');
 
+    console.log(`request ${request}`);
     const event = await Event.findByPk(request.event_id);
     if (!event) throw new Error('Мероприятие не найдено');
 

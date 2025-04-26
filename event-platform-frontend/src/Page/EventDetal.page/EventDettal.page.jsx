@@ -16,6 +16,15 @@ const EventDetailsPage = () => {
     const [loadingRequests, setLoadingRequests] = useState(false);
     const [error, setError] = useState('');
 
+    const filters =
+    {
+        event_id: '',
+        user_tag: '',
+        status: '',
+        is_reported: ''
+    };
+
+
     const fetchEvents = async () => {
         try {
             setLoadingEvents(true);
@@ -34,14 +43,11 @@ const EventDetailsPage = () => {
     const fetchRequests = async (eventId) => {
         try {
             setLoadingRequests(true);
-            const requestsData = await RequestService.getEventRequests(eventId);
-            setEventRequests(prev => {
-                const updated = [requestsData.data, ...prev];
-                console.log('UPDATED EVENT REQUESTS', updated);
-                return updated;
-              });
-            console.log(requestsData.data);
-            console.log(eventRequests);
+            filters.event_id = eventId;
+            console.log(`event ${eventId}`)
+            const requestsData = await RequestService.getAllRecords(filters);
+            console.log(requestsData);
+            setEventRequests(requestsData.data ? requestsData.data : []);
         } catch (err) {
             setError(err.response?.data?.message || 'Error loading requests');
         } finally {
@@ -49,16 +55,15 @@ const EventDetailsPage = () => {
         }
     };
     useEffect(() => {
-        console.log('Обновился eventRequests', eventRequests);
-      }, [eventRequests]);
-
-    useEffect(() => {
         fetchEvents();
     }, []);
 
     useEffect(() => {
         if (selectedEvent) {
+            // console.log(selectedEvent);
+            setEventRequests([]);
             fetchRequests(selectedEvent.event_id);
+            console.log(eventRequests);
             setSelectedRequest(null);
         }
     }, [selectedEvent]);
@@ -66,9 +71,9 @@ const EventDetailsPage = () => {
     const handleRequestAction = async (requestId, action) => {
         try {
             if (action === 'accept') {
-                await RequestService.updateStatus(requestId, 'accepted');
+                await RequestService.updateStatus(requestId, 'accept');
             } else if (action === 'reject') {
-                await RequestService.updateStatus(requestId, 'rejected');
+                await RequestService.updateStatus(requestId, 'rejection');
             }
             fetchRequests(selectedEvent.event_id);
         } catch (err) {
@@ -77,11 +82,11 @@ const EventDetailsPage = () => {
     };
 
     const getRequestStats = () => ({
-        pending: eventRequests.filter(r => r.status === 'pending').length,
-        accepted: eventRequests.filter(r => r.status === 'accepted').length,
-        rejected: eventRequests.filter(r => r.status === 'rejected').length,
+        pending: eventRequests.filter(r => r.status === 'expectation').length,
+        accepted: eventRequests.filter(r => r.status === 'accept').length,
+        rejected: eventRequests.filter(r => r.status === 'rejection').length,
     });
-
+    // 'expectation', 'accept', 'rejection'
     const isCreator = selectedEvent && selectedEvent.creator_tag === user.tag_name;
 
     return (
@@ -108,8 +113,8 @@ const EventDetailsPage = () => {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => setSelectedEvent(event)}
                                         className={`p-4 rounded-lg cursor-pointer transition ${selectedEvent?.event_id === event.event_id
-                                                ? 'bg-indigo-100'
-                                                : 'hover:bg-gray-100'
+                                            ? 'bg-indigo-100'
+                                            : 'hover:bg-gray-100'
                                             }`}
                                     >
                                         <h3 className="font-semibold">{event.name}</h3>
@@ -178,9 +183,9 @@ const EventDetailsPage = () => {
                                                 <div className="space-y-6">
                                                     <div>
                                                         <h4 className="font-semibold">Pending</h4>
-                                                        {eventRequests.filter(r => r.status === 'pending').length ? (
+                                                        {eventRequests.filter(r => r.status === 'expectation').length ? (
                                                             eventRequests
-                                                                .filter(r => r.status === 'pending')
+                                                                .filter(r => r.status === 'expectation')
                                                                 .map(request => (
                                                                     <motion.div
                                                                         key={request.request_id}
@@ -198,9 +203,9 @@ const EventDetailsPage = () => {
                                                     </div>
                                                     <div>
                                                         <h4 className="font-semibold">Accepted</h4>
-                                                        {eventRequests.filter(r => r.status === 'accepted').length ? (
+                                                        {eventRequests.filter(r => r.status === 'accept').length ? (
                                                             eventRequests
-                                                                .filter(r => r.status === 'accepted')
+                                                                .filter(r => r.status === 'accept')
                                                                 .map(request => (
                                                                     <div key={request.request_id} className="p-4 border border-gray-200 rounded-lg">
                                                                         <p className="font-medium">{request.user_tag}</p>
