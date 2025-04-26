@@ -517,3 +517,17 @@
 [2025-04-26T11:06:27.295Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
 [2025-04-26T11:09:01.716Z] [DEBUG] Accepted file type: image/png
 [2025-04-26T11:09:01.725Z] [DEBUG] Generated filename: 1de1bf4c-7201-4003-8ae2-ff11ac7f340b.png
+[2025-04-26T13:41:10.656Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:41:10.657Z] [DEBUG] Generated filename: c2dab642-2003-453f-9650-d40ba89cd76b.jfif
+[2025-04-26T13:41:40.094Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:41:40.095Z] [DEBUG] Generated filename: 84dda061-7051-4545-a9f7-ff5dfa174170.jpg
+[2025-04-26T13:41:58.511Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:41:58.511Z] [DEBUG] Generated filename: b65d3fa7-5ef7-4529-b77f-141f7d773e2f.jfif
+[2025-04-26T13:42:17.168Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:42:17.174Z] [DEBUG] Generated filename: 42a83ec2-bd40-476f-8821-f845eff630f2.jpg
+[2025-04-26T13:42:43.218Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:42:43.219Z] [DEBUG] Generated filename: 3c072206-1b45-497e-856b-4f74f981bac2.jfif
+[2025-04-26T13:43:19.112Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:43:19.113Z] [DEBUG] Generated filename: 89bf52ce-c26f-41da-a9dd-107a5736fbf0.jfif
+[2025-04-26T13:45:11.134Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-26T13:45:11.135Z] [DEBUG] Generated filename: 541b927a-720b-4eb1-8bb3-a7b02f64ad79.jfif

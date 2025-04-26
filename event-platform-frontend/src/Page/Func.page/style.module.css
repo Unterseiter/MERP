@@ -22,3 +22,58 @@
     justify-content: center;
     box-shadow: 3rem black;
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .eventContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .error {
+    color: #dc3545;
+    padding: 15px;
+    margin: 20px 0;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  
+  .loadMore {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 40px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .loadMore:hover {
+    background: #0056b3;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .eventContainer {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .loadMore {
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
