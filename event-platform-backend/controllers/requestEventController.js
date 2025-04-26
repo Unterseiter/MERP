@@ -134,6 +134,7 @@ const requestController = {
   // Получение детальной информации о заявке
   async getRequestDetails(req, res) {
     try {
+      console.log(req.params);
       const { id } = req.params;
       const request = await requestService.getRequestDetails(id);
 

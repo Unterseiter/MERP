@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        photo_url:{
+        photo_url: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -56,16 +56,8 @@ module.exports = (sequelize) => {
     });
 
     Event.associate = (models) => {
-        Event.belongsToMany(models.User, { through: models.RequestEvent, foreignKey: 'event_id' });
-        Event.hasMany(models.Message, {
-            foreignKey: 'event_id',
-            as: 'Messages'
-        });
-        Event.hasMany(models.RequestEvent, {
-            foreignKey: 'event_id',
-            as: 'Requests'
-        });
-    };
-
+        Event.belongsTo(models.User, { foreignKey: 'creator_tag', targetKey: 'tag_name', as: 'Creator' });
+        Event.hasMany(models.RequestEvent, { foreignKey: 'event_id' });
+      };
     return Event;
 };

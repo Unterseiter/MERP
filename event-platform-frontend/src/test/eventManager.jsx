@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { FiPlus, FiEdit, FiTrash, FiCheck, FiX, FiCalendar, FiUsers } from 'react-icons/fi';
+import { FiPlus, FiEdit, FiTrash, FiCheck, FiX, FiCalendar, FiUsers, FiEdit2 } from 'react-icons/fi';
 import EventService from '../services/Event.service/event.service';
 import RequestService from '../services/requestEvent.service/requestEvent.service';
 import { AuthContext } from '../components/authorization/AuthContext';
@@ -79,6 +79,10 @@ const EventManager = () => {
                 case 'delete':
                     await RequestService.deleteRecord(requestId);
                     setRequests(prev => prev.filter(r => r.request_id !== requestId));
+                    break;
+                case 'status':
+                    await RequestService.updateStatus(requestId, 'accept');
+                    setRequests(prev => prev.filter(r => r.request_id === requestId));
                     break;
                 default:
                     throw new Error('Неизвестное действие');
@@ -203,18 +207,6 @@ const EventManager = () => {
         }
     };
 
-    // Добавьте этот метод в компонент
-    const handleEdit = (event) => {
-        setSelectedEvent(event);
-        setFormData({
-            ...event,
-            start_date: new Date(event.start_date),
-            end_date: new Date(event.end_date)
-        });
-        setPreview(event.photo_url); // Показываем текущее фото
-        setShowModal(true);
-    };
-
     const resetForm = () => {
         setValidationErrors({});
         setSelectedEvent(null);
@@ -334,7 +326,7 @@ const EventManager = () => {
                                                 start_date: new Date(event.start_date),
                                                 end_date: new Date(event.end_date)
                                             });
-                                            setPreview(event.photo_url); 
+                                            setPreview(event.photo_url);
                                             setShowModal(true);
                                         }}
                                         className="p-2 hover:bg-gray-100 rounded-lg"
@@ -358,7 +350,7 @@ const EventManager = () => {
                     <h2 className="text-xl font-semibold mb-4">My Requests</h2>
                     <div className="space-y-4">
                         {requests.map(request => (
-                            <div key={request.request_id} className="border rounded-lg p-4">
+                            <div key={request.request_id} className={request.user_tag !== user.tag_name ? "border rounded-lg p-4 border-green-500" : "border rounded-lg p-4 border-blue-500"}/*"border rounded-lg p-4"*/>
                                 <div className="flex items-center justify-between mb-2">
                                     <span className="font-medium">{request.Event?.name}</span>
                                     <span className={`px-2 py-1 rounded-full text-sm ${request.status === 'accepted' ? 'bg-green-100 text-green-800' :
@@ -376,6 +368,14 @@ const EventManager = () => {
                                                 className="text-red-600 hover:text-red-800"
                                             >
                                                 <FiX />
+                                            </button>
+                                        )}
+                                        {request.user_tag !== user.tag_name && (
+                                            <button
+                                                onClick={() => handleRequest(null, 'status', request.request_id)}
+                                                className="text-red-600 hover:text-red-800"
+                                            >
+                                                <FiEdit2 />
                                             </button>
                                         )}
                                     </div>

@@ -1,0 +1,142 @@
+/* Базовые стили */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .eventContainer {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .twoColumns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .threeColumns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .searchWrapper {
+    margin: 30px 0;
+  }
+  
+  .searchForm {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 16px;
+  }
+  
+  .dateGroup {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .datePicker {
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    width: 150px;
+  }
+  
+  .sortSelect {
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    background: white;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .searchButton {
+    padding: 12px 30px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .searchButton:hover {
+    background: #0056b3;
+  }
+  
+  .resetButton {
+    padding: 12px 30px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .resetButton:hover {
+    background: #5a6268;
+  }
+  
+  /* Адаптация */
+  @media (max-width: 992px) {
+    .eventContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .searchForm {
+      flex-direction: column;
+    }
+    
+    .searchInput {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .eventContainer {
+      grid-template-columns: 1fr;
+    }
+    
+    .dateGroup {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .datePicker {
+      width: 100%;
+    }
+    
+    .buttonGroup {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .searchButton, .resetButton {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .searchButton, .resetButton {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    
+    .datePicker {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }

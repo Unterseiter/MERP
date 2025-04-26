@@ -24,13 +24,8 @@ module.exports = (sequelize) => {
   });
 
   RequestEvent.associate = (models) => {
-    RequestEvent.belongsTo(models.User, { 
-      foreignKey: 'user_tag',
-      as: 'Requester'
-    });
-    RequestEvent.belongsTo(models.Event, { 
-      foreignKey: 'event_id' 
-    });
+    RequestEvent.belongsTo(models.User, { foreignKey: 'user_tag', targetKey: 'tag_name', as: 'Requester' });
+    RequestEvent.belongsTo(models.Event, { foreignKey: 'event_id' });
   };
 
   return RequestEvent;

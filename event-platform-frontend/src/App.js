@@ -9,6 +9,7 @@ import Registr from './Page/registration/Registr.page';
 import ProfileCabinet from './Page/Profile.page/ProfileCabinet';
 import ROUTER_PATH from './navigation/path';
 import PrivateRoute from './components/authorization/PrivateRoute';
+import EventDetailsPage from './Page/EventDetal.page/EventDettal.page';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path={ROUTER_PATH.registration} element={<Registr />} />
           <Route path={ROUTER_PATH.eventManage} element={<EventsManagePage />} />
           <Route path={ROUTER_PATH.ProfileCabinet} element={<ProfileCabinet />} />
+          <Route path={ROUTER_PATH.EventDetail} element={<EventDetailsPage />} />
         </Routes>
         <Footer />
       </div>

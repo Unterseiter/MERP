@@ -53,7 +53,7 @@ export default class RequestService {
 
   // Получение заявок для конкретного мероприятия
   static async getEventRequests(eventId, filters = {}) {
-    const res = await instanceAxios.get(`${this.apiUrl}/event/${eventId}`, { params: filters });
+    const res = await instanceAxios.get(`${this.apiUrl}/${eventId}`, { params: filters });
     return res.data;
   }
 }

@@ -18,7 +18,10 @@ module.exports = (sequelize) => {
     },
     privilege: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isIn: [['admin', 'user']] // Здесь указываются допустимые значения
+        }
     },
     city: {
         type: DataTypes.STRING,
@@ -44,11 +47,19 @@ module.exports = (sequelize) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.Event, { foreignKey: 'creator_tag' });
-    User.belongsToMany(models.Event, { through: models.RequestEvent, foreignKey: 'user_tag' });
-    User.hasMany(models.Message, { foreignKey: 'sender' });
-    User.hasMany(models.Message, { foreignKey: 'recipient' });
+    // Создатель события ссылается на пользователя
+    User.hasMany(models.Event, { foreignKey: 'creator_tag', sourceKey: 'tag_name' });
+    
+    // Пользователь может подавать заявки на мероприятия
+    User.belongsToMany(models.Event, { 
+      through: models.RequestEvent, 
+      foreignKey: 'user_tag', 
+      otherKey: 'event_id'
+    });
+  
+    // Сообщения, отправляемые пользователем
+    User.hasMany(models.Message, { foreignKey: 'sender', sourceKey: 'tag_name' });
+    User.hasMany(models.Message, { foreignKey: 'recipient', sourceKey: 'tag_name' });
   };
-
   return User;
 };

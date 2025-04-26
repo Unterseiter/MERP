@@ -59,7 +59,7 @@ const eventService = {
     return Event.findAndCountAll({
       where,
       order: [[sortBy, sortOrder]],
-      limited: parseInt(limited),
+      limit: parseInt(limited),
       offset: (page - 1) * limited,
       distinct: true,
     });

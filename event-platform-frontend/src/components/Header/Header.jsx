@@ -51,7 +51,8 @@ function Header() {
                     <Plus size={20} />
                     <span>Создать запись</span>
                 </button>
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
+                    onClick={()=>navigate(ROTER_PATH.EventDetail)}>
                     <Bell size={20} />
                 </button>
                 <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">

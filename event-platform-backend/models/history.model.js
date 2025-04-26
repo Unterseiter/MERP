@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
     },
   }, {
     tableName: 'history',
-    timestamps: false, // Отключаем createdAt/updatedAt
+    timestamps: true,
     indexes: [
       {
         unique: true,
