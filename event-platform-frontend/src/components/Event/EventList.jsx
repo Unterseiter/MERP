@@ -1,70 +1,66 @@
 import React from 'react';
-import { Search, Filter, SortAsc } from 'lucide-react';
 import { EventCard } from './EventCard';
-import { useNavigate } from 'react-router-dom';
-// import ROUTER_PATH from '../../navigation/path';
+import EventSearch from '../../components/search/EventSearch';
 
-
-export const EventsList = ({eventList = [], isVisibleSearth = false, handleMoreClick}) => {
-
-  const events = eventList || [];
-  // const navigate = useNavigate();
-
-  /*handleMoreClick = () => {
-    navigate(ROUTER_PATH.func);
-  }*/
+export const EventsList = ({
+  eventList = [],
+  loading = false,
+  error = null,
+  hasSearch = false,
+  onSearch = () => {},
+  onReset = () => {},
+  handleMoreClick = () => {},
+}) => {
   return (
-    <section className="px-6 py-12">
+    <section className="px-6 py-12 bg-[#fef6f1]">
       <div className="max-w-6xl mx-auto">
-      {isVisibleSearth && (  // Условный рендеринг
-          <header className="mb-8">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold text-[#5A4A42] mb-6">Частные объявления</h2>
+            <EventSearch 
+              onSearch={onSearch}
+              onReset={onReset}
+              hasSearch={hasSearch}
+            />
+          </div>
 
-            <div className="flex flex-wrap gap-4 items-center">
-              <div className="flex-1 relative">
-                <input
-                  type="text"
-                  placeholder="Поиск"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#CAA07D] pl-10"
-                />
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-              </div>
-
-              <div className="flex gap-4">
-                <button className="bg-[#CAA07D] text-white px-6 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2">
-                  <Filter size={20} />
-                  <span>Фильтр</span>
-                </button>
-                <button className="bg-[#CAA07D] text-white px-6 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2">
-                  <SortAsc size={20} />
-                  <span>Сортировка</span>
-                </button>
-              </div>
-            </div>
-          </header>
+        {error && (
+          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg">
+            {error}
+          </div>
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event) => (
+          {eventList.map((event) => (
             <EventCard
-              key={event.id}
-              title={event.title}
+              key={event.event_id || event.id}
+              title={event.name || event.title}
               description={event.description}
-              imageUrl={event.imageUrl}
-              id={event.id}
+              imageUrl={event.photo_url || event.imageUrl || './images.png'}
+              id={event.event_id || event.id}
             />
           ))}
         </div>
 
-        <div className="text-center mt-8">
-          <button
-            onClick={handleMoreClick}
-            className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition w-80">
-            Больше
-          </button>
-        </div>
+        {loading && (
+          <div className="text-center my-8">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#CAA07D] border-t-transparent"></div>
+          </div>
+        )}
+
+        {eventList.length > 0 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={handleMoreClick}
+              className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition w-80"
+              disabled={loading}
+            >
+              {loading ? 'Загрузка...' : 'Больше'}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
-}
+};
+
 export default EventsList;

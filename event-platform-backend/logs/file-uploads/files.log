@@ -534,3 +534,15 @@
 [2025-04-26T15:07:03.509Z] [INFO] File Queue initialized
 [2025-04-26T15:07:03.908Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
 [2025-04-26T15:07:03.909Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-26T17:33:04.535Z] [INFO] File Queue initialized
+[2025-04-26T17:33:04.684Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-26T17:33:04.685Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-26T17:33:39.538Z] [INFO] File Queue initialized
+[2025-04-26T17:33:39.682Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-26T17:33:39.682Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-26T17:37:27.781Z] [INFO] File Queue initialized
+[2025-04-26T17:37:28.031Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-26T17:37:28.032Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-26T20:12:31.294Z] [INFO] File Queue initialized
+[2025-04-26T20:12:31.386Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-26T20:12:31.386Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
