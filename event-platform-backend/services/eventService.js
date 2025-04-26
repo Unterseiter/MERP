@@ -9,7 +9,7 @@ const eventService = {
   async getEvents(filters = {}) {
     const {
       page = 1,
-      limited = 10,
+      limited = 6,
       search,
       startDate,
       endDate,

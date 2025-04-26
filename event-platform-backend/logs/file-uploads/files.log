@@ -531,3 +531,6 @@
 [2025-04-26T13:43:19.113Z] [DEBUG] Generated filename: 89bf52ce-c26f-41da-a9dd-107a5736fbf0.jfif
 [2025-04-26T13:45:11.134Z] [DEBUG] Accepted file type: image/jpeg
 [2025-04-26T13:45:11.135Z] [DEBUG] Generated filename: 541b927a-720b-4eb1-8bb3-a7b02f64ad79.jfif
+[2025-04-26T15:07:03.509Z] [INFO] File Queue initialized
+[2025-04-26T15:07:03.908Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-26T15:07:03.909Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery

@@ -9,9 +9,8 @@ const EventList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [hasSearch, setHasSearch] = useState(false);
+  const [page, setPage] = useState(1);
   const [filters, setFilters] = useState({
-    page: 1,
-    limited: 6,
     search: '',
     start_date: null,
     end_date: null,
@@ -19,28 +18,35 @@ const EventList = () => {
     sortOrder: 'ASC',
   });
   const [hasMore, setHasMore] = useState(true);
+  const limited = 6; // Фиксированный лимит элементов на странице
 
-  // Первоначальная загрузка данных
   useEffect(() => {
-    fetchEvents(true);
-  }, []);
+    // Сбрасываем на первую страницу при изменении фильтров
+    setPage(1);
+  }, [filters]);
 
-  const fetchEvents = async (reset = false) => {
+  useEffect(() => {
+    fetchEvents();
+  }, [page, filters]);
+
+  const fetchEvents = async () => {
     try {
       setLoading(true);
       const params = {
         ...filters,
-        page: reset ? 1 : filters.page,
+        page,
+        limited,
         start_date: hasSearch ? filters.start_date?.toISOString() : undefined,
         end_date: hasSearch ? filters.end_date?.toISOString() : undefined,
       };
 
       const data = await EventService.getAllRecords(params);
-      console.log(data);
       const newEvents = data.data || [];
       
-      setEvents(prev => reset ? newEvents : [...prev, ...newEvents]);
-      setHasMore(newEvents.length >= filters.limited);
+      setEvents(prev => 
+        page === 1 ? newEvents : [...prev, ...newEvents]
+      );
+      setHasMore(newEvents.length >= limited);
 
     } catch (err) {
       setError(err.response?.data?.message || 'Ошибка загрузки событий');
@@ -54,15 +60,12 @@ const EventList = () => {
     setFilters(prev => ({
       ...prev,
       ...searchFilters,
-      page: 1
     }));
   };
 
   const handleReset = () => {
     setHasSearch(false);
     setFilters({
-      page: 1,
-      limited: 6,
       search: '',
       start_date: null,
       end_date: null,
@@ -70,10 +73,6 @@ const EventList = () => {
       sortOrder: 'ASC',
     });
   };
-
-  useEffect(() => {
-    fetchEvents(true);
-  }, [filters.page, filters.search, filters.start_date, filters.end_date, filters.sortBy, filters.sortOrder]);
 
   return (
     <section className={styles.container}>
@@ -99,7 +98,7 @@ const EventList = () => {
 
       {hasMore && !loading && (
         <button 
-          onClick={() => setFilters(prev => ({...prev, page: prev.page + 1}))}
+          onClick={() => setPage(prev => prev + 1)}
           className={styles.loadMore}
         >
           Показать еще
