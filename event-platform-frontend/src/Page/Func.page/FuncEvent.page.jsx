@@ -56,28 +56,25 @@ const EventList = () => {
   }, [filters.page]);
 
   return (
-    <section>
-      <h1 className={styles['event-section__h1']}>СОБЫТИЯ</h1>
+    <section className={styles['container']}>
+      <h1>СОБЫТИЯ</h1>
       
-      {error && <div className="text-red-500 mb-4">{error}</div>}
-      {loading && events.length === 0 && (
-        <div className="text-blue-500 mb-4">Loading...</div>
-      )} {/* Доделать стили для этой части чтобы не выбивалисьь из этой части. При перезагрузке страницы можно увидеть в чем проблема */}
+      {error && <div>{error}</div>}
+      {loading && events.length === 0 && <div>Loading...</div>}
 
-      <div className={styles['event-section__card']}>
-      {events.map((event) => (
-          <EventCard
-            key={event.event_id}
-            id={event.event_id}
-            title={event.name}
-            description={event.description}
-            imageUrl={event.photo_url || './images.png'}
-          />
-        ))}
+      <div className={styles['event-container']}>
+        {events.map((event) => (
+            <EventCard
+              key={event.event_id}
+              id={event.event_id}
+              title={event.name}
+              description={event.description}
+              imageUrl={event.photo_url || './images.png'}
+            />
+          ))}
       </div>
-    
     </section>
-  );
+);
 };
 
 export default EventList;
