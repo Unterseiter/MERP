@@ -30,8 +30,13 @@ const EventList = () => {
   }, [page, filters]);
 
   const fetchEvents = async () => {
+    let errorTimer;
+    
     try {
       setLoading(true);
+      // Очищаем предыдущий таймер, если он есть
+      if (errorTimer) clearTimeout(errorTimer);
+      
       const params = {
         ...filters,
         page,
@@ -50,6 +55,12 @@ const EventList = () => {
 
     } catch (err) {
       setError(err.response?.data?.message || 'Ошибка загрузки событий');
+      
+      // Устанавливаем новый таймер
+      errorTimer = setTimeout(() => {
+        setError(null);
+      }, 5000);
+      
     } finally {
       setLoading(false);
     }

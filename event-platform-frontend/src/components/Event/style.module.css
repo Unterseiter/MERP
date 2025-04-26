@@ -123,3 +123,164 @@
       -webkit-line-clamp: 3;
     }
   }
+
+
+
+  /* для модальных окон*/
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+  
+  .modalOverlay--after-open {
+    opacity: 1;
+  }
+  
+  .modalOverlay--before-close {
+    opacity: 0;
+  }
+  
+  /* Основные стили модального окна */
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.65);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: max-content;
+    margin: 20px auto;
+    position: relative;
+    border: none;
+    outline: none;
+    overflow: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .modal-content.expanded {
+    max-width: 1200px;
+    width: 95%;
+  }
+  
+  /* Контейнер и секции */
+  .event-modal-container {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
+  
+  .main-section {
+    transition: all 0.3s;
+    min-width: 300px;
+    width: 100%; /* Занимает всю ширину по умолчанию */
+  }
+  
+  .main-section.expanded {
+    width: 50%;
+    padding-right: 16px;
+  }
+  
+  .details-section {
+    width: 50%;
+    background-color: white;
+    padding-left: 24px;
+    border-left: 2px solid #e5e7eb;
+    overflow-y: auto;
+  }
+  
+  /* Элементы контента */
+  .event-image {
+    width: 100%;
+    min-height: 384px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  
+  .event-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .event-description {
+    color: #374151;
+    margin-bottom: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word; 
+  }
+  
+  .details-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .detail-item {
+    margin-bottom: 12px;
+  }
+  
+  .detail-label {
+    font-weight: 600;
+  }
+  
+  /* Кнопки */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    align-items: center;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+  }
+  
+  .button-gray {
+    background-color: #e5e7eb;
+    color: #1f2937;
+  }
+  
+  .button-gray:hover {
+    background-color: #d1d5db;
+  }
+  
+  .button-green {
+    background-color: #16a34a;
+    color: white;
+  }
+  
+  .button-green:hover {
+    background-color: #15803d;
+  }
