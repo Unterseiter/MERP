@@ -79,7 +79,7 @@ function Home() {
     };
 
     return (
-        <div className="bg-[#fef6f1]">
+        <div className="bg-[#fef6f1] ">
             <Carousel/>
             <EventsList 
                 eventList={events} 

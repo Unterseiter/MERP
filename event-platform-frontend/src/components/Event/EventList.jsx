@@ -12,10 +12,12 @@ export const EventsList = ({
   handleMoreClick = () => {},
 }) => {
   return (
-    <section className="px-6 py-12 bg-[#fef6f1]">
+    <section className="px-6 py-2 sm:py-8 bg-[#fef6f1]">
       <div className="max-w-6xl mx-auto">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-[#5A4A42] mb-6">Частные объявления</h2>
+            <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold text-center text-[#5A4A42] mb-2 xs:mb-3 sm:mb-5">
+              Частные объявления
+            </h2>
             <EventSearch 
               onSearch={onSearch}
               onReset={onReset}
@@ -51,7 +53,7 @@ export const EventsList = ({
           <div className="text-center mt-8">
             <button
               onClick={handleMoreClick}
-              className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition w-80"
+              className="bg-[#CAA07D] text-white px-8 py-3 rounded-full hover:bg-[#B08F6E] transition min-w-10 w-[60%]"
               disabled={loading}
             >
               {loading ? 'Загрузка...' : 'Больше'}
