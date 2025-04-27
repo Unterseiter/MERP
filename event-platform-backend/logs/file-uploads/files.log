@@ -546,3 +546,9 @@
 [2025-04-26T20:12:31.294Z] [INFO] File Queue initialized
 [2025-04-26T20:12:31.386Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
 [2025-04-26T20:12:31.386Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-27T19:05:06.587Z] [INFO] File Queue initialized
+[2025-04-27T19:05:06.766Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-27T19:05:06.767Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-27T19:10:24.853Z] [INFO] File Queue initialized
+[2025-04-27T19:10:25.041Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-27T19:10:25.040Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
