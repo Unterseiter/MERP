@@ -47,15 +47,15 @@ export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
             return;
         }
 
-        // Если пользователь не создатель события, делаем "виртуальную заявку"
+        // Если пользователь не является создателем события, создаём "виртуальную заявку"
         if (selectedEvent.isCreator === false) {
             setCurrentRequest({
                 user_tag: selectedEvent.creator_tag,
-                status: 'Owner',
+                status: 'Организатор',
                 createdAt: selectedEvent.start_date,
             });
         } else {
-            // Иначе ставим реальную выбранную заявку
+            // Иначе используем реальную выбранную заявку
             setCurrentRequest(selectedRequest);
         }
     }, [selectedEvent, selectedRequest]);
@@ -72,7 +72,7 @@ export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
                 <div>
                     <div className="font-semibold">{selectedEvent.name}</div>
                     {currentRequest && (
-                        <div className="text-sm text-gray-600">Partner: {currentRequest.user_tag}</div>
+                        <div className="text-sm text-gray-600">Партнёр: {currentRequest.user_tag}</div>
                     )}
                 </div>
             </div>
@@ -83,21 +83,21 @@ export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
-                    {/* Event Details */}
+                    {/* Информация о событии */}
                     <div className="p-2 bg-white border rounded shadow">
                         <ul>
-                            <li><strong>Start:</strong> {new Date(selectedEvent.start_date).toLocaleString()}</li>
-                            <li><strong>End:</strong> {new Date(selectedEvent.end_date).toLocaleString()}</li>
-                            <li><strong>Creator:</strong> {selectedEvent.creator_tag}</li>
+                            <li><strong>Начало:</strong> {new Date(selectedEvent.start_date).toLocaleString()}</li>
+                            <li><strong>Окончание:</strong> {new Date(selectedEvent.end_date).toLocaleString()}</li>
+                            <li><strong>Создатель:</strong> {selectedEvent.creator_tag}</li>
                         </ul>
                     </div>
 
-                    {/* Request Details */}
+                    {/* Информация о заявке */}
                     {currentRequest && (
                         <div className="p-2 bg-white border rounded shadow">
                             <ul>
-                                <li><strong>Status:</strong> {currentRequest.status}</li>
-                                <li><strong>Requested On:</strong> {new Date(currentRequest.createdAt).toLocaleString()}</li>
+                                <li><strong>Статус:</strong> {currentRequest.status}</li>
+                                <li><strong>Дата подачи:</strong> {new Date(currentRequest.createdAt).toLocaleString()}</li>
                             </ul>
                         </div>
                     )}
@@ -106,14 +106,15 @@ export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
         </div>
     );
 }
+
 export function ChatPanel({ selectedRequest, isCreator, onAction }) {
     return (
         <div className="p-4 bg-white rounded-lg shadow flex flex-col h-full">
             {selectedRequest ? (
                 <>
-                    <h3 className="font-semibold mb-2">Chat with {selectedRequest.user_tag}</h3>
+                    <h3 className="font-semibold mb-2">Чат с {selectedRequest.user_tag}</h3>
                     <div className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto">
-                        <p className="text-gray-500">Chat placeholder</p>
+                        <p className="text-gray-500">Заглушка для чата</p>
                     </div>
                     {isCreator && (
                         <div className="flex space-x-2">
@@ -121,19 +122,19 @@ export function ChatPanel({ selectedRequest, isCreator, onAction }) {
                                 onClick={() => onAction(selectedRequest.request_id, 'accept')}
                                 className="flex-1 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
                             >
-                                <FiCheck className="inline-block mr-1" /> Accept
+                                <FiCheck className="inline-block mr-1" /> Принять
                             </button>
                             <button
                                 onClick={() => onAction(selectedRequest.request_id, 'reject')}
                                 className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
                             >
-                                <FiX className="inline-block mr-1" /> Reject
+                                <FiX className="inline-block mr-1" /> Отклонить
                             </button>
                         </div>
                     )}
                 </>
             ) : (
-                <p className="text-gray-400">Select a request to start chat</p>
+                <p className="text-gray-400">Выберите заявку для начала чата</p>
             )}
         </div>
     );
@@ -150,15 +151,12 @@ const EventDetailsPage = () => {
     const [error, setError] = useState('');
     const [requestsCollapsed, setRequestsCollapsed] = useState(false);
 
-    const filters =
-    {
+    const filters = {
         event_id: '',
         user_tag: '',
         status: '',
         is_reported: ''
     };
-
-
 
     const userTag = user?.tag_name;
 
@@ -186,7 +184,6 @@ const EventDetailsPage = () => {
             try {
                 filters.event_id = selectedEvent.event_id;
                 const res = await RequestService.getAllRecords(filters);
-                console.log(res);
                 const list = res.data || [];
                 setEventRequests(list);
             } catch (e) {
@@ -197,10 +194,6 @@ const EventDetailsPage = () => {
         }
         loadRequests();
     }, [selectedEvent]);
-
-    const OnSelectEvent = (event) => {
-
-    }
 
     const handleAction = async (requestId, action) => {
         try {
@@ -213,7 +206,7 @@ const EventDetailsPage = () => {
             setEventRequests(list);
             setSelectedRequest(null);
         } catch (err) {
-            setError(err.response?.data?.message || 'Error processing request');
+            setError(err.response?.data?.message || 'Ошибка при обработке запроса');
         } finally {
             setLoadingRequests(false);
         }
@@ -222,7 +215,7 @@ const EventDetailsPage = () => {
     const isCreator = selectedEvent && userTag && selectedEvent.creator_tag === userTag;
 
     if (!userTag) {
-        return <div className="flex items-center justify-center min-h-screen">Loading user...</div>;
+        return <div className="flex items-center justify-center min-h-screen">Загрузка пользователя...</div>;
     }
 
     return (
@@ -234,7 +227,7 @@ const EventDetailsPage = () => {
                     setSelectedEvent(evt);
                     setSelectedRequest(null);
                     if (requestsCollapsed === false) {
-                        setRequestsCollapsed(true); // авто-скрыть заявки
+                        setRequestsCollapsed(true); // автоматически скрыть заявки
                     }
                 }}
             />
@@ -266,10 +259,10 @@ const EventDetailsPage = () => {
                                                 onClick={() => setSelectedRequest(req)}
                                                 whileHover={{ scale: 1.01 }}
                                                 className={`p-2 w-auto border rounded cursor-pointer ${selectedRequest?.request_id === req.request_id
-                                                        ? 'border-indigo-500'
-                                                        : req.status === 'accept'
-                                                            ? 'border-green-400'
-                                                            : 'border-blue-300'
+                                                    ? 'border-indigo-500'
+                                                    : req.status === 'accept'
+                                                        ? 'border-green-400'
+                                                        : 'border-blue-300'
                                                     }`}
                                             >
                                                 {req.user_tag} - {req.status}
