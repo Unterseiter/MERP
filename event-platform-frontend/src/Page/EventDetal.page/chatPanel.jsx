@@ -7,6 +7,8 @@ import MessageService from '../../services/message.service/message.service';
 export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  console.log("selectedRequest");
+  console.log(selectedRequest);
 
   useEffect(() => {
     if (!selectedRequest) return;
@@ -17,7 +19,7 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
     }
 
     // Входим в комнату события (по request_id или event_id)
-    socket.emit('join_event', selectedRequest.event_id);
+    socket.emit('join_event', selectedRequest.request_id);
 
     // Слушаем новые сообщения
     socket.on('receive_message', (message) => {

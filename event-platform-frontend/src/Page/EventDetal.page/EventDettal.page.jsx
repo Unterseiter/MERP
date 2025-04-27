@@ -136,6 +136,8 @@ const EventDetailsPage = () => {
             setLoadingEvents(true);
             try {
                 const res = await EventService.getUserRelatedEvents(userTag);
+                console.log("res");
+                console.log(res);
                 setEvents(res.data);
                 if (res.data.length) setSelectedEvent(res.data[0]);
             } catch (e) {
@@ -190,7 +192,7 @@ const EventDetailsPage = () => {
 
 
     const userVirtualRequest = !isCreator && selectedEvent ? {
-        request_id: selectedEvent.event_id, // используем event_id вместо request_id
+        request_id: selectedEvent.Requests[0].request_id,
         event_id: selectedEvent.event_id,
         user_tag: userTag,
     } : null;

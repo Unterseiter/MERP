@@ -12,9 +12,9 @@ function socketInit(server) {
   io.on('connection', (socket) => {
     console.log('Новый пользователь:', socket.id);
 
-    socket.on('join_event', (eventId) => {
-      socket.join(eventId.toString());
-      console.log(`Пользователь ${socket.id} зашел в комнату события ${eventId}`);
+    socket.on('join_event', (request_id) => {
+      socket.join(request_id.toString());
+      console.log(`Пользователь ${socket.id} зашел в комнату события ${request_id}`);
     });
 
     socket.on('send_message', async (data) => {
