@@ -15,12 +15,15 @@ const messageService = {
   },
 
   // Получение сообщений мероприятия
-  async getMessagesByEvent(eventId) {
+  async getMessagesByRequest(request_id) {
     try {
       const messages = await Message.findAll({
-        where: { eventId },
-        include: User,
-        order: [['timestamp', 'ASC']],
+        where: { request_id },
+        include: [
+          { model: User, as: 'Sender' },
+          { model: User, as: 'Recipient' } 
+        ],
+        order: [['createdAt', 'ASC']],
       });
       return messages;
     } catch (error) {

@@ -11,11 +11,11 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    event_id: {
+    request_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Event',
-            key: 'event_id' // Исправлено на правильный ключ
+            model: 'request_event',
+            key: 'request_id' // Исправлено на правильный ключ
         }
     },
 
@@ -37,14 +37,15 @@ module.exports = (sequelize) => {
     }
 
   }, {
+    timestamps: true,
     tableName: 'Message'
   });
 
   Message.associate = (models) => {
-    Message.belongsTo(models.Event, { 
-      foreignKey: 'event_id',
-      targetKey: 'event_id',
-      as: 'Event'
+    Message.belongsTo(models.RequestEvent, { 
+      foreignKey: 'request_id',
+      targetKey: 'request_id',
+      as: 'Request'
     });
   
     Message.belongsTo(models.User, { 

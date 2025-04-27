@@ -1,4 +1,5 @@
 const messageService = require('../services/messageService');
+const { Event, RequestEvent } = require('../models');  // Импортируем необходимые модели
 
 const chatController = {
   // Отправка сообщения
@@ -6,7 +7,6 @@ const chatController = {
     try {
       const message = await messageService.createMessage({
         ...req.body,
-        userId: req.user.id,
       });
       res.status(201).json(message);
     } catch (error) {
@@ -17,9 +17,32 @@ const chatController = {
   // Получение сообщений мероприятия
   async getMessages(req, res) {
     try {
-      const messages = await messageService.getMessagesByEvent(req.params.eventId);
+      const RequestId = req.params.RequestId;
+      console.log("RequestId:", RequestId);
+      console.log("User tag_name:", req.user.tag_name);
+      
+      // Проверка, является ли пользователь создателем заявки
+      const request = await RequestEvent.findByPk(RequestId,{
+        where: {user_tag: req.user.tag_name},
+      });
+      console.log("Request check result:", request);
+  
+      const event = await Event.findByPk(request.event_id,{
+        where: {creator_tag: req.user.tag_name },
+      });
+      console.log("Event check result:", event);
+  
+      if (!request && !event) {
+        // Если пользователь не создатель заявки и не создатель мероприятия, запрещаем доступ
+        return res.status(403).json({ message: 'Нет прав на доступ к сообщениям этого события' });
+      }
+  
+      // Если проверка пройдена, получаем сообщения
+      const messages = await messageService.getMessagesByRequest(RequestId);
+      console.log("Messages:", messages);
       res.json(messages);
     } catch (error) {
+      console.error('Error occurred:', error);
       res.status(500).json({ message: error.message });
     }
   },

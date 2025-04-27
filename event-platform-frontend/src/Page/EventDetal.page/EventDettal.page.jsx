@@ -5,6 +5,7 @@ import { FiCheck, FiX, FiChevronLeft, FiChevronRight, FiInfo } from 'react-icons
 import { AuthContext } from '../../components/authorization/AuthContext';
 import EventService from '../../services/Event.service/event.service';
 import RequestService from '../../services/requestEvent.service/requestEvent.service';
+import ChatPanel from './chatPanel';
 
 export function EventsList({ events, selectedEvent, onSelect }) {
     const [collapsed, setCollapsed] = useState(false);
@@ -107,38 +108,6 @@ export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
     );
 }
 
-export function ChatPanel({ selectedRequest, isCreator, onAction }) {
-    return (
-        <div className="p-4 bg-white rounded-lg shadow flex flex-col h-full">
-            {selectedRequest ? (
-                <>
-                    <h3 className="font-semibold mb-2">Чат с {selectedRequest.user_tag}</h3>
-                    <div className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto">
-                        <p className="text-gray-500">Заглушка для чата</p>
-                    </div>
-                    {isCreator && (
-                        <div className="flex space-x-2">
-                            <button
-                                onClick={() => onAction(selectedRequest.request_id, 'accept')}
-                                className="flex-1 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                            >
-                                <FiCheck className="inline-block mr-1" /> Принять
-                            </button>
-                            <button
-                                onClick={() => onAction(selectedRequest.request_id, 'reject')}
-                                className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                            >
-                                <FiX className="inline-block mr-1" /> Отклонить
-                            </button>
-                        </div>
-                    )}
-                </>
-            ) : (
-                <p className="text-gray-400">Выберите заявку для начала чата</p>
-            )}
-        </div>
-    );
-}
 
 const EventDetailsPage = () => {
     const { user } = useContext(AuthContext);
@@ -159,6 +128,7 @@ const EventDetailsPage = () => {
     };
 
     const userTag = user?.tag_name;
+
 
     useEffect(() => {
         if (!userTag) return;
@@ -218,6 +188,13 @@ const EventDetailsPage = () => {
         return <div className="flex items-center justify-center min-h-screen">Загрузка пользователя...</div>;
     }
 
+
+    const userVirtualRequest = !isCreator && selectedEvent ? {
+        request_id: selectedEvent.event_id, // используем event_id вместо request_id
+        event_id: selectedEvent.event_id,
+        user_tag: userTag,
+    } : null;
+
     return (
         <div className="flex min-h-screen">
             <EventsList
@@ -234,8 +211,8 @@ const EventDetailsPage = () => {
             <div className="flex-1 p-6 space-y-6">
                 <EventAndRequestInfo selectedEvent={selectedEvent} selectedRequest={selectedRequest} />
 
-                <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6">
-                    <motion.div
+                <div className={`grid grid-cols-1 ${isCreator ?'lg:grid-cols-[auto_1fr]':'lg:grid-cols-1'} gap-6`}>
+                    {isCreator && (<motion.div
                         animate={{ width: requestsCollapsed ? '40px' : '300px' }}
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden bg-white rounded-lg shadow-sm p-2 flex flex-col"
@@ -272,10 +249,10 @@ const EventDetailsPage = () => {
                                 )}
                             </>
                         )}
-                    </motion.div>
+                    </motion.div>)}
 
                     <ChatPanel
-                        selectedRequest={selectedRequest}
+                        selectedRequest={isCreator ? selectedRequest : userVirtualRequest}
                         isCreator={isCreator}
                         onAction={handleAction}
                     />

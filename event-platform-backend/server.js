@@ -1,16 +1,13 @@
 const app = require('./app');
 const http = require('http');
 const server = http.createServer(app);
-const { Server } = require('socket.io');
-const io = new Server(server, {
-  cors: {
-    origin: "*"
-  }
-});
+const socketInit = require('./services/Sockets/Message'); 
+
 const sequelize = require('./config/bd');
 
 const PORT = process.env.PORT || 8080;
 
+const chat = socketInit(server);
 // Важное изменение для доступа извне
 server.listen(PORT, '0.0.0.0', () => {  // Добавлен хост 0.0.0.0
     console.log(`Сервер запущен на порту ${PORT}`);

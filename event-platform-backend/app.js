@@ -43,11 +43,13 @@ const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
 const userRoutes = require('./routes/user');
 const requestRoutes = require('./routes/requestEvent');
+const chatRoutes = require('./routes/chat');
 app.use(requestLogger);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/requests', requestRoutes);
+app.use('/api/chat', chatRoutes);
 
 
 app.use(errorLogger);
