@@ -23,7 +23,8 @@ function socketInit(server) {
 
         const newMessage = await MessageService.createMessage({ request_id: request_id, sender: sender, recipient: recipient, context: context });
 
-        io.to(request_id.toString()).emit('receive_message', newMessage);
+        //io.to(request_id.toString()).emit('receive_message', newMessage);
+        io.emit('receive_message', newMessage);
       } catch (error) {
         console.error('Ошибка при отправке сообщения:', error);
       }
