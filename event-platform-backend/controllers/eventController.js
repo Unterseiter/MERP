@@ -51,9 +51,9 @@ const eventController = {
     if (!req.file) return {};
 
     const event = await Event.findByPk(req.params.id);
-    if(event.photo_url == req.body.photo_url){
+    if (event.photo_url == req.body.photo_url) {
       return {
-         photo_url: req.body.photo_url
+        photo_url: req.body.photo_url
       };
     }
     try {
@@ -113,7 +113,7 @@ const eventController = {
 
       res.status(201).json({
         ...event.toJSON(),
-        photo_url:event.photo_url
+        photo_url: event.photo_url
       });
 
     } catch (error) {
@@ -205,7 +205,7 @@ const eventController = {
       logger.info(`Event updated: ID ${updatedEvent.event_id}`);
       res.json({
         ...updatedEvent.toJSON(),
-        photo_url: validphoto ? updatedEvent.photo_url :eventController._formatPhotoUrl(updatedEvent.photo_url)
+        photo_url: validphoto ? updatedEvent.photo_url : eventController._formatPhotoUrl(updatedEvent.photo_url)
       });
 
     } catch (error) {
@@ -231,6 +231,19 @@ const eventController = {
       logger.info(`Event deleted: ID ${event.event_id}`);
       res.status(204).send();
 
+    } catch (error) {
+      next(error);
+    }
+  },
+  async getUserRelatedEvents(req, res, next) {
+    try {
+      const userTag = req.user.tag_name;
+
+      const events = await eventService.getUserRelatedEvents(userTag);
+
+      res.json({
+        data: events
+      });
     } catch (error) {
       next(error);
     }

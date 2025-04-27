@@ -77,6 +77,19 @@ const requestService = {
       throw new Error('Только создатель мероприятия может изменять статус заявки');
     }
 
+    if (newStatus === 'accept') {
+      const approvedRequestsCount = await RequestEvent.count({
+        where: {
+          event_id: request.event_id,
+          status: 'accept'
+        }
+      });
+  
+      if (approvedRequestsCount >= event.limited) {
+        throw new Error('Достигнут лимит участников на мероприятие');
+      }
+    }
+
     request.status = newStatus;
     await request.save();
     return request;

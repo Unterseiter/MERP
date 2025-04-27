@@ -57,7 +57,7 @@ module.exports = (sequelize) => {
 
     Event.associate = (models) => {
         Event.belongsTo(models.User, { foreignKey: 'creator_tag', targetKey: 'tag_name', as: 'Creator' });
-        Event.hasMany(models.RequestEvent, { foreignKey: 'event_id' });
+        Event.hasMany(models.RequestEvent, {as: 'Requests', foreignKey: 'event_id' });
       };
     return Event;
 };

@@ -61,4 +61,9 @@ export default class EventService {
       const res = await instanceAxios.delete(`${this.apiUrl}/${id}`);
       return res.data;
     }
+
+    static async getUserRelatedEvents() {
+      const res = await instanceAxios.get(`${this.apiUrl}/user`);
+      return res.data;
+    }
   }

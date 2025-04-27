@@ -72,32 +72,32 @@ const eventService = {
       if (!eventData.start_date || !eventData.end_date) {
         throw new Error('Missing required date fields');
       }
-  
+
       // 2. Преобразуем даты в объекты Date
       const startDate = new Date(eventData.start_date);
       const endDate = new Date(eventData.end_date); // Исправлено с end_date на eventData.end_date
-  
+
       // 3. Валидация корректности дат
       if (isNaN(startDate.getTime())) {
         throw new Error('Invalid start_date format');
       }
-      
+
       if (isNaN(endDate.getTime())) {
         throw new Error('Invalid end_date format');
       }
-  
+
       // 4. Проверка логики дат
       if (startDate >= endDate) {
         throw new Error('end_date must be greater than start_date');
       }
 
       // 6. Создаем событие с преобразованными датами
-      const event = await Event.create({ 
+      const event = await Event.create({
         ...eventData,
         start_date: startDate,
         end_date: endDate
       });
-  
+
       return event;
     } catch (error) {
       // 7. Улучшенная обработка ошибок
@@ -234,6 +234,46 @@ const eventService = {
       });
     } catch (error) {
       throw new Error(`Ошибка получения заявок: ${error.message}`);
+    }
+  },
+
+  async getUserRelatedEvents(userTag) {
+    try {
+      const events = await Event.findAll({
+        where: {
+          [Op.or]: [
+            { creator_tag: userTag },
+            Sequelize.literal(`EXISTS (
+              SELECT 1
+              FROM request_event AS re
+              WHERE re.event_id = Event.event_id
+                AND re.user_tag = '${userTag}'
+            )`)
+          ]
+        },
+        attributes: ['event_id', 'name', 'description', 'start_date', 'end_date', 'views', 'creator_tag'],
+        include: [
+          {
+            model: RequestEvent,
+            as: 'Requests',
+            where: { user_tag: userTag },
+            required: false,
+            attributes: ['request_id', 'status']
+          }
+        ]
+      });
+  
+      // Формируем ответ с пометкой кто пользователь (создатель или нет)
+      return events.map(event => {
+        const isCreator = event.creator_tag === userTag;
+        return {
+          ...event.toJSON(),
+          isCreator,
+          hasRequest: event.Requests && event.Requests.length > 0
+        };
+      });
+    } catch (error) {
+      throw new Error(`Ошибка получения мероприятий пользователя: ${error.message}`);
     }
   }
 };

@@ -24,6 +24,7 @@ const uploadGalleryPhoto = [
 ];
 
 router.get('/', authMiddleware, eventController.getEvents);
+router.get('/user', authMiddleware, eventController.getUserRelatedEvents);
 router.get('/:id', eventController.getEventById);
 router.post('/', ...uploadMainPhoto, eventController.createEvent);
 router.put('/:id', authMiddleware, organizerMiddleware, ...uploadMainPhoto, eventController.updateEvent);
