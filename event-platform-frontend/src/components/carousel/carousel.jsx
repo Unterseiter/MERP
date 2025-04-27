@@ -49,7 +49,7 @@ const Carousel = () => {
             }}
             loop={true}
             slidesPerView={1} // Изменили с 1.1 на 1
-            centeredSlides={false} // Отключили центрирование для мобильных
+            centeredSlides={true} // Отключили центрирование для мобильных
             spaceBetween={0} // Убрали промежутки для мобильных
             breakpoints={{
               320: {

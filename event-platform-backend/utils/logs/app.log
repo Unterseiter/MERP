@@ -2074,3 +2074,57 @@
 [2025-04-27T20:02:47.552Z] [INFO] POST /api/auth/login 200 - 64ms
 [2025-04-27T20:02:47.558Z] [INFO] GET /api/auth/profile 200 - 2ms
 [2025-04-27T20:02:47.592Z] [INFO] GET /api/user/profile 304 - 24ms
+[2025-04-27T20:13:30.031Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:30.032Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 15ms
+[2025-04-27T20:13:30.041Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 8ms
+[2025-04-27T20:13:30.040Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:38.060Z] [INFO] GET /api/user/profile 304 - 14ms
+[2025-04-27T20:13:38.086Z] [INFO] GET /api/user/profile 304 - 23ms
+[2025-04-27T20:13:42.165Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-04-27T20:13:42.164Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:42.172Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:42.173Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-04-27T20:13:44.356Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:44.357Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 200 - 10ms
+[2025-04-27T20:13:44.382Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:44.384Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 19ms
+[2025-04-27T20:13:44.397Z] [INFO] GET /api/user/profile 304 - 45ms
+[2025-04-27T20:13:44.408Z] [INFO] Получено заявок: 1
+[2025-04-27T20:13:44.413Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:44.409Z] [INFO] GET /api/requests?limit=10&page=1 200 - 20ms
+[2025-04-27T20:13:44.414Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 11ms
+[2025-04-27T20:13:44.439Z] [INFO] Получено заявок: 1
+[2025-04-27T20:13:44.440Z] [INFO] GET /api/requests?limit=10&page=1 304 - 13ms
+[2025-04-27T20:13:44.454Z] [INFO] GET /api/user/profile 304 - 31ms
+[2025-04-27T20:13:44.456Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:44.457Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 9ms
+[2025-04-27T20:13:44.473Z] [INFO] Получено заявок: 1
+[2025-04-27T20:13:44.474Z] [INFO] GET /api/requests?limit=10&page=1 304 - 17ms
+[2025-04-27T20:13:44.514Z] [INFO] Получено заявок: 1
+[2025-04-27T20:13:44.515Z] [INFO] GET /api/requests?limit=10&page=1 304 - 10ms
+[2025-04-27T20:13:58.021Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:58.022Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-27T20:13:58.030Z] [INFO] Fetched 12 events
+[2025-04-27T20:13:58.031Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 7ms
+[2025-04-27T20:14:30.891Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-27T20:14:30.890Z] [INFO] Fetched 12 events
+[2025-04-27T20:14:30.900Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 7ms
+[2025-04-27T20:14:30.898Z] [INFO] Fetched 12 events
+[2025-04-27T20:14:44.012Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-27T20:14:44.024Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-27T20:14:44.030Z] [INFO] Fetched 12 events
+[2025-04-27T20:14:44.034Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 30ms
+[2025-04-27T20:14:44.047Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-04-27T20:14:44.045Z] [INFO] Fetched 12 events
+[2025-04-27T20:15:28.501Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-27T20:15:28.501Z] [INFO] Fetched 12 events
+[2025-04-27T20:15:43.437Z] [INFO] Fetched 12 events
+[2025-04-27T20:15:43.438Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-04-27T20:15:56.309Z] [INFO] Fetched 12 events
+[2025-04-27T20:15:56.309Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 9ms
+[2025-04-27T20:15:56.316Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-04-27T20:15:56.315Z] [INFO] Fetched 12 events
+[2025-04-27T20:16:07.851Z] [INFO] Fetched 12 events
+[2025-04-27T20:16:07.852Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-04-27T20:16:07.857Z] [INFO] Fetched 12 events
+[2025-04-27T20:16:07.858Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms

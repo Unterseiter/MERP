@@ -20,7 +20,7 @@ function Header() {
     useEffect(() => {
         const handleClickOutside = (e) => {
           if (
-            !showAuthPopup && // 🔴 Не закрываем меню если открыт попап
+            !showAuthPopup &&
             menuRef.current && 
             !menuRef.current.contains(e.target) &&
             burgerRef.current && 
