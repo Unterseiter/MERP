@@ -21,7 +21,6 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
 
     // Слушаем новые сообщения
     socket.on('receive_message', (message) => {
-      // Фильтрация по ивенту (чтобы случайно не поймать чужие сообщения)
       console.log(message);
       if (message.request_id === selectedRequest.request_id) {
         setMessages(prev => [...prev, message]);
@@ -39,7 +38,7 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
   const fetchMessages = async (RequestId) => {
     try {
       const data = await MessageService.getRequestRecords(RequestId);
-      console.log(data);
+      //console.log(data);
       setMessages(data);
     } catch (err) {
       console.error('Ошибка загрузки сообщений:', err);
@@ -61,7 +60,7 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
 
     socket.emit('send_message', newMsg);
 
-    setMessages(prev => [...prev, newMsg]);
+    //setMessages(prev => [...prev, newMsg]);
 
     setNewMessage('');
   };
