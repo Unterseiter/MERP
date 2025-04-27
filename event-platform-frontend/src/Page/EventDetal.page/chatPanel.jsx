@@ -23,12 +23,11 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
     socket.on('receive_message', (message) => {
       // Фильтрация по ивенту (чтобы случайно не поймать чужие сообщения)
       console.log(message);
-      if (message.event_id === selectedRequest.event_id) {
+      if (message.request_id === selectedRequest.request_id) {
         setMessages(prev => [...prev, message]);
       }
     });
 
-    // При загрузке можно запросить старые сообщения с сервера (если нужно)
     fetchMessages(selectedRequest.request_id);
 
     return () => {

@@ -18,19 +18,19 @@ const chatController = {
   async getMessages(req, res) {
     try {
       const RequestId = req.params.RequestId;
-      console.log("RequestId:", RequestId);
-      console.log("User tag_name:", req.user.tag_name);
+      //console.log("RequestId:", RequestId);
+      //console.log("User tag_name:", req.user.tag_name);
       
       // Проверка, является ли пользователь создателем заявки
       const request = await RequestEvent.findByPk(RequestId,{
         where: {user_tag: req.user.tag_name},
       });
-      console.log("Request check result:", request);
+      //console.log("Request check result:", request);
   
       const event = await Event.findByPk(request.event_id,{
         where: {creator_tag: req.user.tag_name },
       });
-      console.log("Event check result:", event);
+      //console.log("Event check result:", event);
   
       if (!request && !event) {
         // Если пользователь не создатель заявки и не создатель мероприятия, запрещаем доступ
@@ -39,7 +39,7 @@ const chatController = {
   
       // Если проверка пройдена, получаем сообщения
       const messages = await messageService.getMessagesByRequest(RequestId);
-      console.log("Messages:", messages);
+      //console.log("Messages:", messages);
       res.json(messages);
     } catch (error) {
       console.error('Error occurred:', error);
