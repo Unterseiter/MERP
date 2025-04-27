@@ -57,11 +57,16 @@ const AuthPopup = ({ onClose }) => {
   // Закрытие попапа при клике вне его
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (popupRef.current && !popupRef.current.contains(e.target)) {
+      // Закрываем только если клик вне попапа И НЕ на элементах формы
+      if (
+        popupRef.current && 
+        !popupRef.current.contains(e.target) &&
+        !e.target.closest('input, button, label')
+      ) {
         onClose();
       }
     };
-
+  
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [onClose]);
@@ -69,7 +74,8 @@ const AuthPopup = ({ onClose }) => {
   return (
     <div
       ref={popupRef}
-      className="absolute top-[calc(100%+40px)] right-1 w-full min-w-[320px] max-w-[400px] bg-white shadow-xl rounded-lg ring-[#CAA07D]  ring-2  p-6 z-50"
+      className="absolute top-[calc(100%+40px)] right-1 w-full min-w-[320px] max-w-[400px] bg-white shadow-xl rounded-lg ring-[#CAA07D] ring-2 p-6 z-50"
+      onClick={(e) => e.stopPropagation()}
     >
       <button
         onClick={onClose}

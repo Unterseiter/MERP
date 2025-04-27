@@ -11,12 +11,12 @@ const Carousel = () => {
   const swiperRef = useRef(null);
 
   return (
-    <section className="py-8 sm:py-12 px-4 sm:px-6">
+    <section className="py-2 sm:py-8 px-0 sm:px-6">
       <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#5A4A42] mb-3 sm:mb-5">
         Главные события города
       </h2>
       
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto  relative">
         {/* Адаптивные кнопки навигации */}
         <button 
           className="absolute left-1 sm:left-4 top-1/2 z-20 -translate-y-1/2 bg-white/80 hover:bg-white p-1.5 sm:p-2 rounded-full shadow-lg transition-all duration-300"
@@ -48,24 +48,20 @@ const Carousel = () => {
               pauseOnMouseEnter: true,
             }}
             loop={true}
-            slidesPerView={1.1}
-            centeredSlides={true}
-            spaceBetween={15}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
+            slidesPerView={1} // Изменили с 1.1 на 1
+            centeredSlides={true} // Отключили центрирование для мобильных
+            spaceBetween={0} // Убрали промежутки для мобильных
             breakpoints={{
-              // Mobile (320px+)
               320: {
-                slidesPerView: 2.8,
-                spaceBetween: 15
+                slidesPerView: 1,
+                spaceBetween: 0, // Убрали промежутки
+                centeredSlides: false // Отключили центрирование
               },
-              // Small tablets (480px+)
               480: {
                 slidesPerView: 1,
-                spaceBetween: 20
+                spaceBetween: 0,
+                centeredSlides: true // Включаем центрирование с 480px
               },
-              // Tablets (640px+)
               640: {
                 slidesPerView: 1.4,
                 spaceBetween: 25

@@ -89,7 +89,7 @@
   
   @media (max-width: 992px) {
     .card {
-      max-width: 300px;
+      max-width: 40vw;
       margin: 0.6rem;
     }
   }
@@ -98,7 +98,7 @@
     .card {
       max-width: 100%;
       aspect-ratio: 3/3.5;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0; 
     }
     
     .image-container {
