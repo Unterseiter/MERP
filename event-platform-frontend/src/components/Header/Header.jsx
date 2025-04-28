@@ -34,6 +34,7 @@ function Header() {
 
     const handleHomeClick = () => navigate('home');
     const handleProfileClick = () => navigate('profile');
+    const handleMessageClick = () => navigate('details')
     
     const handleLogout = async () => {
         try {
@@ -81,10 +82,10 @@ function Header() {
                     <span>Создать запись</span>
                 </button>
                 {/* <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
-                    onClick={()=>navigate(ROTER_PATH.EventDetail)}>
                     <Bell size={20} />
                 </button> */}
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
+                onClick={()=>navigate(ROTER_PATH.EventDetail)}>
                     <MessageSquare size={20} />
                 </button>
 
@@ -158,8 +159,10 @@ function Header() {
                         
                         <button 
                             className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
+                            onClick={() => {
+                                handleMessageClick();
+                                setIsMenuOpen(false);
+                            }}>
                             <MessageSquare size={20} />
                             <span>Сообщения</span>
                         </button>
