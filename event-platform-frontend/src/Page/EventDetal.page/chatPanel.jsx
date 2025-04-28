@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FiCheck, FiX } from 'react-icons/fi';
+import { motion } from 'framer-motion'; // Нужен framer-motion для анимаций
 import socket from '../../services/socket';
 import EventService from '../../services/Event.service/event.service';
 import MessageService from '../../services/message.service/message.service';
@@ -7,6 +8,7 @@ import MessageService from '../../services/message.service/message.service';
 export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const messagesContainerRef = useRef(null);
   console.log("selectedRequest");
   console.log(selectedRequest);
 
@@ -67,25 +69,77 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
     setNewMessage('');
   };
 
+  const scrollToBottom = () => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+  
+    const start = container.scrollTop;
+    const end = container.scrollHeight - container.clientHeight;
+    const change = end - start;
+    const duration = 400; // Длительность анимации (мс)
+    let startTime = null;
+  
+    // Функция easing для плавности (easeOutQuad)
+    const easeOutQuad = (t) => t * (2 - t);
+  
+    const animateScroll = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+  
+      const easedProgress = easeOutQuad(progress);
+  
+      container.scrollTop = start + change * easedProgress;
+  
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+  
+    requestAnimationFrame(animateScroll);
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
-    <div className="p-4 bg-white rounded-lg shadow flex flex-col h-full">
+    <div className="p-4 bg-white rounded-lg shadow flex flex-col h-[65vh]">
       {selectedRequest ? (
         <>
           <h3 className="font-semibold mb-2">Чат с {selectedRequest.user_tag}</h3>
 
-          <div className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto space-y-2">
+          <div ref={messagesContainerRef}  className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto space-y-2 h-[500px]">
             {messages.length ? (
-              messages.map((msg) => (
-                <div
-                  key={msg.message_id}
-                  className={`p-2 rounded ${msg.recipient === selectedRequest.user_tag
-                    ? 'bg-blue-200 self-start'
-                    : 'bg-green-200 self-end'
-                    }`}
-                >
-                  <p className="text-sm">{msg.context}</p>
-                </div>
-              ))
+              messages.map((msg) => {
+                const isOwnMessage = msg.sender === selectedRequest.user_tag;
+                const time = new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                return (
+                  <motion.div
+                    key={msg.message_id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={`flex ${isOwnMessage ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div
+                      className={`
+                  relative max-w-[70%] p-3 rounded-2xl min-h-[3.4rem] min-w-20
+                  ${isOwnMessage
+                          ? 'bg-green-500 text-white rounded-br-none'
+                          : 'bg-blue-500 text-white rounded-bl-none'
+                        }
+                `}
+                    >
+                      <p className="text-sm break-words">{msg.context}</p>
+                      <span className="absolute text-[10px] text-gray-200 bottom-1 right-2">
+                        {time}
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })
             ) : (
               <p className="text-gray-500">Нет сообщений</p>
             )}

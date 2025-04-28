@@ -1,6 +1,7 @@
 const { sequelize, Event, RequestEvent, history } = require('../../models');
 const { Op } = require('sequelize');
 const fs = require('fs').promises;
+const { logger } = require('../../utils/LogFile');
 
 const moveExpiredEventsToHistoryUser = async (tag_name) => {
     try {
@@ -14,18 +15,19 @@ const moveExpiredEventsToHistoryUser = async (tag_name) => {
                 },
                 creator_tag: tag_name,
             },
-            attributes: ['event_id', 'creator_tag', 'name', 'description', 'start_date'],
+            attributes: ['event_id', 'creator_tag', 'name', 'description', 'start_date','photo_url'],
         });
 
+
         for (const event of expiredEvents) {
-            const { event_id, creator_tag, name, description, start_date , photo_url} = event;
+            const { event_id, creator_tag, name, description, start_date, photo_url } = event;
 
             // Находим принятых участников
             const participants = await RequestEvent.findAll({
                 where: {
                     event_id,
                     status: 'accept',
-                    user_tag:tag_name
+                    user_tag: tag_name
                 },
                 attributes: ['user_tag', 'is_reported'],
             });
@@ -63,21 +65,21 @@ const moveExpiredEventsToHistoryUser = async (tag_name) => {
                 try {
                     fs.unlink(photo_url);
                     console.log('Файл успешно удален с сервера');
-                  } catch (err) {
+                } catch (err) {
                     console.error('Ошибка при удалении файла:', err);
-                  }
-
-                // Опционально: удаляем событие
-                await Event.destroy({
-                    where: { event_id },
-                    transaction: t,
-                });
+                }
 
                 // Опционально: удаляем связанные запросы
                 await RequestEvent.destroy({
                     where: { event_id },
                     transaction: t,
                 });
+                // Опционально: удаляем событие
+                await Event.destroy({
+                    where: { event_id },
+                    transaction: t,
+                });
+
             });
 
             console.log(`Событие ${name} перенесено в историю`);
