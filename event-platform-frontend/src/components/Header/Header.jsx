@@ -16,7 +16,6 @@ function Header() {
     const menuRef = useRef();
     const burgerRef = useRef();
 
-    // Закрытие меню при клике вне области
     useEffect(() => {
         const handleClickOutside = (e) => {
           if (
@@ -43,6 +42,11 @@ function Header() {
         } catch (err) {
             console.log('Ошибка при выходе: ' + err.message);
         }
+    };
+
+    const handleAuthButtonClick = () => {
+        setShowAuthPopup(prev => !prev);
+        setIsMenuOpen(false);
     };
 
     return (
@@ -102,7 +106,7 @@ function Header() {
                             className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
                 ${showAuthPopup ? 'bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50' : 'hover:bg-[#B08F6E] hover:shadow-lg'}
                 active:shadow-inner`}
-                            onClick={() => setShowAuthPopup(!showAuthPopup)}
+                            onClick={handleAuthButtonClick}
                         >
                             <User size={20} />
                             <span>Вход</span>
@@ -111,10 +115,6 @@ function Header() {
                                 className={`transition-transform duration-200 ${showAuthPopup ? 'rotate-180' : ''}`}
                             />
                         </button>
-                    )}
-
-                    {showAuthPopup && !isAuthenticated && (
-                        <AuthPopup onClose={() => setShowAuthPopup(false)} />
                     )}
                 </div>
                 <button
@@ -127,85 +127,114 @@ function Header() {
                 </button>
                 </nav>
 
-{/* Мобильное меню */}
-{isMenuOpen && (
-    <div 
-        ref={menuRef}
-        className="absolute top-full right-0 w-full bg-[#dec3ae] shadow-lg md:hidden z-50"
-    >
-        <div className="flex flex-col p-4 gap-4">
-            <button 
-                className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                onClick={() => {
-                    navigate(ROTER_PATH.eventManage);
-                    setIsMenuOpen(false);
-                }}
-            >
-                <Plus size={20} />
-                <span>Создать запись</span>
-            </button>
-            
-            <button 
-                className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                onClick={() => {
-                    navigate(ROTER_PATH.EventDetail);
-                    setIsMenuOpen(false);
-                }}
-            >
-                <Bell size={20} />
-                <span>Уведомления</span>
-            </button>
-            
-            <button 
-                className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                onClick={() => setIsMenuOpen(false)}
-            >
-                <MessageSquare size={20} />
-                <span>Сообщения</span>
-            </button>
-
-            {isAuthenticated ? (
-                <>
-                    <button
-                        className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                        onClick={() => {
-                            handleProfileClick();
-                            setIsMenuOpen(false);
-                        }}
-                    >
-                        <User size={20} />
-                        <span>Профиль</span>
-                    </button>
-                </>
-            ) : (
-                <button
-                    className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
-                    onClick={() => {
-                        setShowAuthPopup(true);
-                        setIsMenuOpen(false);
-                    }}
+            {/* Мобильное меню */}
+            {isMenuOpen && (
+                <div 
+                    ref={menuRef}
+                    className="absolute top-full right-0 w-full bg-[#dec3ae] shadow-lg md:hidden z-50"
                 >
-                    <User size={20} />
-                    <span>Войти</span>
-                </button>
-            )}
-        </div>
-    </div>
-)}
+                    <div className="flex flex-col p-4 gap-4">
+                        <button 
+                            className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                            onClick={() => {
+                                navigate(ROTER_PATH.eventManage);
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <Plus size={20} />
+                            <span>Создать запись</span>
+                        </button>
+                        
+                        <button 
+                            className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                            onClick={() => {
+                                navigate(ROTER_PATH.EventDetail);
+                                setIsMenuOpen(false);
+                            }}
+                        >
+                            <Bell size={20} />
+                            <span>Уведомления</span>
+                        </button>
+                        
+                        <button 
+                            className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            <MessageSquare size={20} />
+                            <span>Сообщения</span>
+                        </button>
 
-{/* Остальная часть кода (AuthPopup и т.д.) */}
+                        {isAuthenticated ? (
+                            <>
+                                <button
+                                    className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                                    onClick={() => {
+                                        handleProfileClick();
+                                        setIsMenuOpen(false);
+                                    }}
+                                >
+                                    <User size={20} />
+                                    <span>Профиль</span>
+                                </button>
+                            </>
+                        ) : (
+                            <button
+                                className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                                onClick={handleAuthButtonClick}
+                            >
+                                <User size={20} />
+                                <span>Войти</span>
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
+
+            {/* Единый попап авторизации */}
 {showAuthPopup && !isAuthenticated && (
-    <AuthPopup onClose={() => setShowAuthPopup(false)} />
+    <>
+        {/* Затемнение фона для мобильных устройств */}
+        <div className="fixed inset-0 bg-black/50 z-[999] md:hidden" />
+
+        {/* Контейнер попапа */}
+        <div className="fixed z-[1000] 
+            md:absolute md:right-4 md:top-14 md:transform-none 
+            top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 
+            w-[400px] max-w-[95%] md:w-auto
+            md:bg-[#CAA07D] md:text-white md:rounded-full md:shadow-md">
+
+            <div className="md:hidden"> {/* Обертка для мобильной версии */}
+                <AuthPopup onClose={() => setShowAuthPopup(false)} />
+            </div>
+
+            {/* Десктопная версия с обработчиком клика */}
+            <div className="text-black"
+                onClick={() => navigate(ROTER_PATH.registration)}>
+                <AuthPopup onClose={() => setShowAuthPopup(false)} />
+            </div>
+        </div>
+    </>
 )}
-</header>
-);
+        </header>
+    );
 }
 
-// Компонент иконки меню
 const MenuIcon = () => (
-<svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-</svg>
+    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg>
 );
 
 export default Header;
+
+// hidden
+//  md:block 
+// px-4 
+// py-2 
+// transition-all
+//  duration-300 
+// hover:bg-[#B08F6E]
+//  hover:shadow-lg
+//  active:shadow-inner 
+// cursor-pointer
+//  shadow-[#B08F6E]/50

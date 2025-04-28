@@ -69,7 +69,7 @@ const AuthPopup = ({ onClose }) => {
   
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onClose]);
+  }, [onClose]);  
 
   return (
     <div
