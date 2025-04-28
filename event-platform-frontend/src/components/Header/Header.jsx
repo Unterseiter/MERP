@@ -68,21 +68,6 @@ function Header() {
                 </div>
             </div>
 
-<<<<<<< Updated upstream
-            {/* Десктопное меню */}
-            <nav className="hidden md:flex items-center gap-4">
-                <button className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
-                    onClick={()=>{navigate(ROTER_PATH.eventManage)}}
-                >
-                    <Plus size={20} />
-                    <span>Создать запись</span>
-                </button>
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
-                    onClick={()=>navigate(ROTER_PATH.EventDetail)}>
-                    <Bell size={20} />
-                </button>
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
-=======
             <nav className="flex items-center gap-4">
                     <button
                         className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
@@ -105,7 +90,6 @@ function Header() {
                 </button> */}
                 <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
                     onClick={() => navigate(ROTER_PATH.EventDetail)}>
->>>>>>> Stashed changes
                     <MessageSquare size={20} />
                 </button>
 
