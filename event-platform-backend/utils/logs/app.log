@@ -1541,3 +1541,135 @@
 [2025-04-28T18:01:05.213Z] [INFO] GET /api/auth/profile 304 - 6ms
 [2025-04-28T18:01:05.221Z] [INFO] GET /api/auth/profile 304 - 5ms
 [2025-04-28T18:01:05.277Z] [INFO] GET /api/user/profile 304 - 35ms
+[2025-04-28T18:51:11.157Z] [INFO] GET /api/auth/profile 304 - 10ms
+[2025-04-28T18:51:11.143Z] [INFO] GET /api/auth/profile 304 - 13ms
+[2025-04-28T18:51:11.298Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 223ms
+[2025-04-28T18:51:11.296Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:11.328Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:11.336Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 30ms
+[2025-04-28T18:51:11.359Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 4ms
+[2025-04-28T18:51:30.365Z] [INFO] GET /api/auth/profile 304 - 10ms
+[2025-04-28T18:51:30.370Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T18:51:31.953Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:31.955Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 25ms
+[2025-04-28T18:51:31.976Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:31.980Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 23ms
+[2025-04-28T18:51:31.991Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:51:33.598Z] [INFO] GET /api/user/profile 200 - 36ms
+[2025-04-28T18:51:33.616Z] [INFO] GET /api/user/profile 304 - 14ms
+[2025-04-28T18:51:35.037Z] [INFO] GET /api/events/user 200 - 20ms
+[2025-04-28T18:51:35.053Z] [INFO] GET /api/events/user 304 - 14ms
+[2025-04-28T18:51:35.088Z] [INFO] Получено заявок: 2
+[2025-04-28T18:51:35.093Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 19ms
+[2025-04-28T18:51:35.114Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 17ms
+[2025-04-28T18:51:35.113Z] [INFO] Получено заявок: 2
+[2025-04-28T18:51:36.089Z] [INFO] GET /api/user/profile 304 - 17ms
+[2025-04-28T18:51:36.115Z] [INFO] GET /api/user/profile 304 - 24ms
+[2025-04-28T18:51:36.854Z] [INFO] GET /api/events/user 304 - 7ms
+[2025-04-28T18:51:36.872Z] [INFO] GET /api/events/user 304 - 17ms
+[2025-04-28T18:51:36.895Z] [INFO] Получено заявок: 2
+[2025-04-28T18:51:36.897Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 16ms
+[2025-04-28T18:51:36.919Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 17ms
+[2025-04-28T18:51:36.916Z] [INFO] Получено заявок: 2
+[2025-04-28T18:51:37.983Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:37.985Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-04-28T18:51:37.998Z] [INFO] Fetched 5 events
+[2025-04-28T18:51:38.000Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-28T18:51:38.029Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:53:40.784Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-04-28T18:53:40.776Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T18:53:40.808Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 43ms
+[2025-04-28T18:53:40.804Z] [INFO] Fetched 5 events
+[2025-04-28T18:53:40.824Z] [INFO] Fetched 5 events
+[2025-04-28T18:53:40.825Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 16ms
+[2025-04-28T18:53:40.841Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:53:43.590Z] [INFO] Fetched 5 events
+[2025-04-28T18:53:43.591Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 7ms
+[2025-04-28T18:53:43.607Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-28T18:53:43.606Z] [INFO] Fetched 5 events
+[2025-04-28T18:53:43.623Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 3ms
+[2025-04-28T18:56:30.926Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:30.927Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 20ms
+[2025-04-28T18:56:30.940Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:30.941Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-28T18:56:30.954Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:56:31.925Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-28T18:56:31.928Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:31.934Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-04-28T18:56:31.932Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-28T18:56:31.941Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:31.942Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 7ms
+[2025-04-28T18:56:31.999Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 4ms
+[2025-04-28T18:56:44.320Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:44.321Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 16ms
+[2025-04-28T18:56:44.330Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 7ms
+[2025-04-28T18:56:44.328Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:44.341Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:56:45.937Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:45.938Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-04-28T18:56:45.954Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-28T18:56:45.953Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:45.975Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:56:59.544Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-04-28T18:56:59.543Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:59.555Z] [INFO] Fetched 5 events
+[2025-04-28T18:56:59.556Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-04-28T18:56:59.561Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 0ms
+[2025-04-28T18:57:08.868Z] [INFO] Fetched 5 events
+[2025-04-28T18:57:08.869Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-04-28T18:57:08.877Z] [INFO] Fetched 5 events
+[2025-04-28T18:57:08.880Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-04-28T18:57:08.896Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 0ms
+[2025-04-28T18:58:19.620Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-04-28T18:58:19.633Z] [INFO] GET /api/auth/profile 304 - 10ms
+[2025-04-28T18:58:19.662Z] [INFO] Fetched 5 events
+[2025-04-28T18:58:19.669Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 64ms
+[2025-04-28T18:58:19.688Z] [INFO] Fetched 5 events
+[2025-04-28T18:58:19.689Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 19ms
+[2025-04-28T18:58:19.719Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 4ms
+[2025-04-28T18:59:05.961Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-28T18:59:05.969Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-28T18:59:05.987Z] [INFO] Fetched 5 events
+[2025-04-28T18:59:05.988Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 36ms
+[2025-04-28T18:59:06.000Z] [INFO] Fetched 5 events
+[2025-04-28T18:59:06.003Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-28T18:59:06.019Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 0ms
+[2025-04-28T18:59:20.191Z] [INFO] POST /api/events 201 - 423ms
+[2025-04-28T18:59:20.189Z] [INFO] Event created: ID 10
+[2025-04-28T18:59:22.886Z] [INFO] GET /api/auth/profile 304 - 15ms
+[2025-04-28T18:59:22.869Z] [INFO] GET /api/auth/profile 304 - 14ms
+[2025-04-28T18:59:22.894Z] [INFO] Fetched 6 events
+[2025-04-28T18:59:22.896Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 50ms
+[2025-04-28T18:59:22.913Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-28T18:59:22.911Z] [INFO] Fetched 6 events
+[2025-04-28T18:59:22.993Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:59:48.632Z] [INFO] Event created: ID 11
+[2025-04-28T18:59:48.632Z] [INFO] POST /api/events 201 - 342ms
+[2025-04-28T18:59:50.034Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:50.036Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 19ms
+[2025-04-28T18:59:50.062Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 24ms
+[2025-04-28T18:59:50.061Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:50.066Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T18:59:52.747Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-28T18:59:52.753Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T18:59:52.802Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:52.812Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 29ms
+[2025-04-28T18:59:52.822Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:52.824Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 9ms
+[2025-04-28T18:59:52.877Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 0ms
+[2025-04-28T18:59:55.255Z] [INFO] GET /api/user/profile 200 - 14ms
+[2025-04-28T18:59:55.271Z] [INFO] GET /api/user/profile 304 - 13ms
+[2025-04-28T18:59:58.535Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:58.540Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-04-28T18:59:58.550Z] [INFO] Fetched 7 events
+[2025-04-28T18:59:58.551Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 9ms
+[2025-04-28T18:59:58.577Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 1ms
+[2025-04-28T19:00:12.634Z] [INFO] Event created: ID 12
+[2025-04-28T19:00:12.635Z] [INFO] POST /api/events 201 - 344ms
+[2025-04-28T19:00:14.513Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 7ms
+[2025-04-28T19:00:14.512Z] [INFO] Fetched 8 events
+[2025-04-28T19:00:14.520Z] [INFO] Fetched 8 events
+[2025-04-28T19:00:14.521Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-04-28T19:00:14.525Z] [INFO] GET /uploads/events/main/e2abf772-52ce-4c5c-8aa7-d7dbb3ac9c19.webp 404 - 0ms
+[2025-04-28T19:00:15.729Z] [INFO] Fetched 8 events
+[2025-04-28T19:00:15.729Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 200 - 16ms
