@@ -64,7 +64,7 @@
   
   .searchButton {
     padding: 12px 30px;
-    background: #007bff;
+    background: #CAA07D;
     color: white;
     border: none;
     border-radius: 30px;
@@ -73,12 +73,12 @@
   }
   
   .searchButton:hover {
-    background: #0056b3;
+    background: #B08F6E;
   }
   
   .resetButton {
     padding: 12px 30px;
-    background: #6c757d;
+    background: #8e8b78;
     color: white;
     border: none;
     border-radius: 30px;
