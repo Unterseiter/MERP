@@ -1423,3 +1423,7 @@
 [2025-04-26T21:49:53.014Z] [INFO] GET /api/auth/profile 304 - 3ms
 [2025-04-26T21:49:53.020Z] [INFO] Fetched 12 events
 [2025-04-26T21:49:53.021Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-04-28T08:40:35.267Z] [INFO] Fetched 2 events
+[2025-04-28T08:40:35.269Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 119ms
+[2025-04-28T08:40:35.280Z] [INFO] Fetched 2 events
+[2025-04-28T08:40:35.281Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
