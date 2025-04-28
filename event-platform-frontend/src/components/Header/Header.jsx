@@ -71,17 +71,16 @@ function Header() {
             {/* Десктопное меню */}
             <nav className="hidden md:flex items-center gap-4">
                 <button className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
-                    onClick={() => { navigate(ROTER_PATH.eventManage) }}
+                    onClick={()=>{navigate(ROTER_PATH.eventManage)}}
                 >
                     <Plus size={20} />
                     <span>Создать запись</span>
                 </button>
-                {/* <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
-                >
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
+                    onClick={()=>navigate(ROTER_PATH.EventDetail)}>
                     <Bell size={20} />
-                </button> */}
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner" 
-                onClick={() => navigate(ROTER_PATH.EventDetail)}>
+                </button>
+                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner">
                     <MessageSquare size={20} />
                 </button>
 
@@ -119,10 +118,10 @@ function Header() {
                     )}
                 </div>
                 <button
-                    className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
+                className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
                     ${showAuthPopup ? 'bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50' : 'hover:bg-[#B08F6E] hover:shadow-lg'}
                     active:shadow-inner`}
-                    onClick={() => { navigate(ROTER_PATH.registration) }}
+                    onClick={()=>{navigate(ROTER_PATH.registration)}}
                 >
                     Тест
                 </button>
