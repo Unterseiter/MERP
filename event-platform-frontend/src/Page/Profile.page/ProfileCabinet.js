@@ -44,7 +44,7 @@ const ProfileCabinet = () => {
   };
 
   return (
-    <div className="ml-10 mt-5 mb-5">
+    <div className="">
       {(loading || authLoading) && (
         <div className="text-center text-gray-500 mb-4">Загрузка...</div>
       )}
@@ -58,7 +58,7 @@ const ProfileCabinet = () => {
       {profileData && !loading && !authLoading && (
         <div className="flex flex-col lg:flex-row gap-7">
           {/* Левая колонка — профиль */}
-          <div className="w-full lg:w-1/6 h-1/4 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-2/6 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
             <img
               src={image}
               className="w-24 h-24 rounded-full object-cover mb-4"
@@ -76,7 +76,7 @@ const ProfileCabinet = () => {
           </div>
 
           {/* Правая колонка — история */}
-          <div className="w-full lg:w-1/3 h-1/4 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
+          <div className="w-full bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
 
             {profileData.history.length > 0 ? (

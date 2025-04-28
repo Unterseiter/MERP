@@ -1509,3 +1509,35 @@
 [2025-04-28T17:01:14.783Z] [INFO] Получено заявок: 0
 [2025-04-28T17:01:14.814Z] [INFO] Получено заявок: 0
 [2025-04-28T17:01:14.816Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 304 - 17ms
+[2025-04-28T17:05:32.873Z] [INFO] GET /api/user/profile 304 - 82ms
+[2025-04-28T17:05:32.907Z] [INFO] GET /api/user/profile 304 - 28ms
+[2025-04-28T17:42:48.203Z] [INFO] Fetched 12 events
+[2025-04-28T17:42:48.207Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 50ms
+[2025-04-28T17:42:48.233Z] [INFO] Fetched 12 events
+[2025-04-28T17:42:48.237Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 26ms
+[2025-04-28T17:45:12.749Z] [INFO] GET /api/user/profile 304 - 130ms
+[2025-04-28T17:45:12.795Z] [INFO] GET /api/user/profile 304 - 30ms
+[2025-04-28T17:54:39.052Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T17:54:39.057Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T17:54:39.170Z] [INFO] GET /api/user/profile 304 - 83ms
+[2025-04-28T17:55:35.452Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-28T17:55:35.457Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T17:55:35.587Z] [INFO] GET /api/user/profile 304 - 68ms
+[2025-04-28T17:57:07.655Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-28T17:57:07.661Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T17:57:07.782Z] [INFO] GET /api/user/profile 304 - 99ms
+[2025-04-28T17:57:23.076Z] [INFO] GET /api/auth/profile 304 - 16ms
+[2025-04-28T17:57:23.097Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-28T17:57:23.236Z] [INFO] GET /api/user/profile 304 - 114ms
+[2025-04-28T17:57:30.223Z] [INFO] GET /api/auth/profile 200 - 5ms
+[2025-04-28T17:57:30.256Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-28T17:57:30.337Z] [INFO] GET /api/user/profile 304 - 38ms
+[2025-04-28T18:00:44.694Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-28T18:00:44.705Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-28T18:00:44.826Z] [INFO] GET /api/user/profile 304 - 99ms
+[2025-04-28T18:00:56.182Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-28T18:00:56.198Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-28T18:00:56.326Z] [INFO] GET /api/user/profile 304 - 90ms
+[2025-04-28T18:01:05.213Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-28T18:01:05.221Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-28T18:01:05.277Z] [INFO] GET /api/user/profile 304 - 35ms
