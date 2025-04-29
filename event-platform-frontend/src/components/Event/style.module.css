@@ -1,7 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
-    border: 2px solid #000;
+    border: 2px solid #CAA07D;
     border-radius: 25px;
     width: 100%;
     max-width: 400px;
@@ -166,7 +166,8 @@
     overflow-y: auto;
   }
   
-  .modal-content {
+  .modal-content { 
+    border: 2px solid #CAA07D;
     background-color: white;
     border-radius: 15px;
     padding: 20px;
@@ -175,13 +176,13 @@
     max-height: max-content;
     margin: 20px auto;
     position: relative;
-    border: none;
     outline: none;
     overflow: auto;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .modal-content.expanded {
+    border: 2px solid #CAA07D;
     max-width: 1200px;
     width: 95%;
   }
@@ -268,19 +269,19 @@
   }
   
   .button-gray {
-    background-color: #e5e7eb;
-    color: #1f2937;
+    background-color: #8e8b78;
+    color: #ffffff;
   }
   
   .button-gray:hover {
-    background-color: #d1d5db;
+    background-color: #5a6268;
   }
   
   .button-green {
-    background-color: #16a34a;
+    background-color: #CAA07D;
     color: white;
   }
   
   .button-green:hover {
-    background-color: #15803d;
+    background-color: #B08F6E;
   }
