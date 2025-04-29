@@ -67,7 +67,7 @@ const ProfileCabinet = () => {
               <h2 className="text-3xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
               <p className="text-xl text-gray-700">@{profileData.info.tag_name}</p>
               <p className="text-lg mt-4">{profileData.info.city || 'Город не указан'}</p>
-              <p className="text-lg">На сайте с {new Date(profileData.info.created_at).toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })}</p>
+              <p className="text-lg">На сайте с {new Date(profileData.info.CreateAt).toLocaleDateString('ru-RU', {day:'numeric', month: 'long', year: 'numeric' })}</p>
               <p className="text-lg">{profileData.info.email}</p>
             </div>
             <button onClick={handleLogout} className="mt-6 text-red-600 hover:underline text-sm">

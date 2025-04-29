@@ -34,6 +34,7 @@ const userController = {
         city: user.city,
         name: user.name,
         email: user.email,
+        CreateAt: user.createdAt
       };
 
       // Получаем активные события (создатель или участник)
