@@ -13,7 +13,7 @@ const sequelize = new Sequelize({
     dialect: 'mysql', // Меняем на вашу СУБД
     host: 'localhost',
     username: 'root',
-    password: '130_Sql_82!',
+    password: 'qwerty',
     database: 'web_applications',
     define: {
       timestamps: true, // Включаем автоматические временные метки

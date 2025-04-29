@@ -563,3 +563,49 @@
 [2025-04-29T08:10:01.709Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
 [2025-04-29T08:11:00.401Z] [DEBUG] Generated filename: e118350c-3024-4f47-aa8a-e056b3d814a3.jpg
 [2025-04-29T08:11:00.398Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:47:54.831Z] [INFO] File Queue initialized
+[2025-04-29T12:47:55.160Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-29T12:47:55.161Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-29T12:49:53.524Z] [INFO] File Queue initialized
+[2025-04-29T12:49:53.902Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-04-29T12:49:53.903Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-29T12:55:14.320Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:55:14.322Z] [DEBUG] Generated filename: 41b60ccb-5697-4126-8a5b-7d9717b44eff.jpg
+[2025-04-29T12:56:46.309Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:56:46.310Z] [DEBUG] Generated filename: d3f23427-78fe-47df-a8ed-44582d57025d.jpg
+[2025-04-29T12:57:17.104Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:57:17.104Z] [DEBUG] Generated filename: cc77c564-c76a-4634-b7ed-a794de78c2e1.jpg
+[2025-04-29T12:58:12.318Z] [DEBUG] Generated filename: 920b4e09-f81b-40f8-8a43-0518a098eb9c.jpg
+[2025-04-29T12:58:12.317Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:58:52.255Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:58:52.256Z] [DEBUG] Generated filename: 687ba0a4-7846-4c4e-852e-ec9a6fc92677.jpg
+[2025-04-29T12:59:49.754Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T12:59:49.755Z] [DEBUG] Generated filename: e6584aee-fb85-4d52-8562-3021493b7d3b.jpg
+[2025-04-29T13:01:31.873Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:01:31.874Z] [DEBUG] Generated filename: 6605759d-cf44-47fa-99a8-613b98677605.jpg
+[2025-04-29T13:02:43.871Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:02:43.872Z] [DEBUG] Generated filename: 9779a873-eb68-4ef5-bf0c-5d5ca7c9d633.jpg
+[2025-04-29T13:03:35.785Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:03:35.786Z] [DEBUG] Generated filename: 4028be64-8af4-45c5-abf4-376a8153a188.jpg
+[2025-04-29T13:04:12.743Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:04:12.744Z] [DEBUG] Generated filename: c90265dc-ca6a-45f9-914f-06201082a69f.jpg
+[2025-04-29T13:05:35.468Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:05:35.469Z] [DEBUG] Generated filename: 3e9116df-b514-41d7-8918-1416b96cd7a2.jpg
+[2025-04-29T13:06:17.170Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:06:17.170Z] [DEBUG] Generated filename: 5319ac16-7f3b-491f-956d-c14665010901.jpg
+[2025-04-29T13:06:59.150Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:06:59.150Z] [DEBUG] Generated filename: fd552b76-4d7a-4037-88f3-2b709cd3b49e.jpg
+[2025-04-29T13:07:34.030Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:07:34.030Z] [DEBUG] Generated filename: 4f0d33cd-734b-49e5-a422-4431f74b3e6c.jpg
+[2025-04-29T13:08:09.914Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:08:09.915Z] [DEBUG] Generated filename: 6ebb19c7-a2fe-4f19-ba49-b6b0f99dce49.jpg
+[2025-04-29T13:08:44.605Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:08:44.606Z] [DEBUG] Generated filename: 7fd49b9e-a55b-4f74-b18b-024fdd6fe8c3.jpg
+[2025-04-29T13:09:20.081Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:09:20.082Z] [DEBUG] Generated filename: 8c83a755-8792-4c3a-9a48-db806e8a33dd.jpg
+[2025-04-29T13:09:49.191Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:09:49.191Z] [DEBUG] Generated filename: 20bce016-5680-4292-b97c-54ef8d11aa39.jpg
+[2025-04-29T13:10:28.526Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:10:28.527Z] [DEBUG] Generated filename: ff992fcf-1b59-44de-9a0e-0b3f11715925.jpg
+[2025-04-29T13:10:59.790Z] [DEBUG] Accepted file type: image/jpeg
+[2025-04-29T13:10:59.791Z] [DEBUG] Generated filename: 1234c03f-3c65-4fdc-b2dd-a0ba65876ba6.jpg
