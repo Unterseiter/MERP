@@ -49,7 +49,7 @@
     display: block;
     margin: 30px auto;
     padding: 12px 40px;
-    background: #007bff;
+    background: #CAA07D;
     color: white;
     border: none;
     border-radius: 25px;
@@ -58,7 +58,7 @@
   }
   
   .loadMore:hover {
-    background: #0056b3;
+    background: #B08F6E;
   }
   
   .loading {

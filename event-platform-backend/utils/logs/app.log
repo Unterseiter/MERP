@@ -2532,3 +2532,367 @@
 [2025-04-29T14:24:04.144Z] [INFO] POST /api/auth/logout 200 - 1ms
 [2025-04-29T14:24:07.450Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
 [2025-04-29T14:24:07.453Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 1ms
+[2025-04-29T14:27:19.242Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:27:19.247Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:27:19.253Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:27:19.259Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:27:34.330Z] [INFO] POST /api/auth/login 401 - 11ms
+[2025-04-29T14:27:41.217Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:27:41.222Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:27:41.227Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:27:41.233Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:28:28.530Z] [INFO] POST /api/auth/register 201 - 143ms
+[2025-04-29T14:28:28.537Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:28:39.192Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 5ms
+[2025-04-29T14:28:39.197Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:28:39.222Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 8ms
+[2025-04-29T14:28:39.229Z] [INFO] GET /api/auth/profile 401 - 4ms
+[2025-04-29T14:28:40.228Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:28:40.239Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:28:40.248Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:28:40.269Z] [INFO] GET /api/auth/profile 401 - 7ms
+[2025-04-29T14:28:47.607Z] [INFO] POST /api/auth/login 200 - 119ms
+[2025-04-29T14:28:47.615Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-04-29T14:28:56.502Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T14:28:56.526Z] [INFO] GET /api/auth/profile 304 - 10ms
+[2025-04-29T14:28:56.532Z] [INFO] Fetched 20 events
+[2025-04-29T14:28:56.536Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 62ms
+[2025-04-29T14:28:56.580Z] [INFO] Fetched 20 events
+[2025-04-29T14:28:56.584Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 34ms
+[2025-04-29T14:29:17.230Z] [INFO] Fetched 0 events
+[2025-04-29T14:29:17.232Z] [INFO] GET /api/events?search=%D0%B4%D0%B5%D1%80%D1%8C%D0%BC%D0%BE&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 61ms
+[2025-04-29T14:29:22.071Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:22.074Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-29T14:29:28.095Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:28.096Z] [INFO] GET /api/events?search=&sortBy=end_date&sortOrder=ASC&page=1&limited=6 200 - 10ms
+[2025-04-29T14:29:43.333Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:43.338Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 37ms
+[2025-04-29T14:29:43.366Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:43.368Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 18ms
+[2025-04-29T14:29:46.638Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:46.641Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 304 - 16ms
+[2025-04-29T14:29:49.487Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:49.489Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=3&limited=6 304 - 12ms
+[2025-04-29T14:29:52.494Z] [INFO] Fetched 20 events
+[2025-04-29T14:29:52.496Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=4&limited=6 304 - 11ms
+[2025-04-29T14:30:12.591Z] [INFO] GET /api/events/user 200 - 33ms
+[2025-04-29T14:30:12.619Z] [INFO] GET /api/events/user 304 - 17ms
+[2025-04-29T14:30:22.119Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:22.122Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 17ms
+[2025-04-29T14:30:22.137Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:22.139Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-29T14:30:24.999Z] [INFO] Получено заявок: 0
+[2025-04-29T14:30:25.001Z] [INFO] GET /api/requests?limit=10&page=1 304 - 18ms
+[2025-04-29T14:30:49.900Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:49.902Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 31ms
+[2025-04-29T14:30:49.954Z] [INFO] GET /api/user/profile 200 - 44ms
+[2025-04-29T14:30:49.987Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:49.989Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 21ms
+[2025-04-29T14:30:50.005Z] [INFO] Получено заявок: 0
+[2025-04-29T14:30:50.008Z] [INFO] GET /api/requests?limit=10&page=1 304 - 16ms
+[2025-04-29T14:30:50.047Z] [INFO] GET /api/user/profile 304 - 37ms
+[2025-04-29T14:30:50.064Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:50.066Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 13ms
+[2025-04-29T14:30:50.079Z] [INFO] Получено заявок: 0
+[2025-04-29T14:30:50.082Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-04-29T14:30:50.095Z] [INFO] Fetched 20 events
+[2025-04-29T14:30:50.097Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 13ms
+[2025-04-29T14:30:50.151Z] [INFO] Получено заявок: 0
+[2025-04-29T14:30:50.152Z] [INFO] GET /api/requests?limit=10&page=1 304 - 13ms
+[2025-04-29T14:30:50.167Z] [INFO] Получено заявок: 0
+[2025-04-29T14:30:50.169Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-04-29T14:31:12.332Z] [INFO] GET /api/user/profile 304 - 36ms
+[2025-04-29T14:31:12.361Z] [INFO] GET /api/user/profile 304 - 21ms
+[2025-04-29T14:31:23.300Z] [INFO] GET /api/events/user 304 - 26ms
+[2025-04-29T14:31:23.335Z] [INFO] GET /api/events/user 304 - 23ms
+[2025-04-29T14:31:30.016Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 31ms
+[2025-04-29T14:31:30.014Z] [INFO] Fetched 20 events
+[2025-04-29T14:31:30.067Z] [INFO] Fetched 20 events
+[2025-04-29T14:31:30.071Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 43ms
+[2025-04-29T14:31:30.079Z] [INFO] Получено заявок: 0
+[2025-04-29T14:31:30.081Z] [INFO] GET /api/requests?limit=10&page=1 304 - 39ms
+[2025-04-29T14:31:30.115Z] [INFO] Fetched 20 events
+[2025-04-29T14:31:30.129Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 43ms
+[2025-04-29T14:31:30.134Z] [INFO] GET /api/user/profile 304 - 138ms
+[2025-04-29T14:31:30.140Z] [INFO] Получено заявок: 0
+[2025-04-29T14:31:30.141Z] [INFO] GET /api/requests?limit=10&page=1 304 - 43ms
+[2025-04-29T14:31:30.170Z] [INFO] Fetched 20 events
+[2025-04-29T14:31:30.173Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 29ms
+[2025-04-29T14:31:30.210Z] [INFO] Получено заявок: 0
+[2025-04-29T14:31:30.222Z] [INFO] GET /api/requests?limit=10&page=1 304 - 35ms
+[2025-04-29T14:31:30.235Z] [INFO] GET /api/user/profile 304 - 78ms
+[2025-04-29T14:31:30.266Z] [INFO] Получено заявок: 0
+[2025-04-29T14:31:30.267Z] [INFO] GET /api/requests?limit=10&page=1 304 - 12ms
+[2025-04-29T14:31:34.847Z] [INFO] dude
+[2025-04-29T14:31:34.869Z] [ERROR] Ошибка создания заявки: Incorrect integer value: 'dude' for column 'user_tag' at row 1
+[2025-04-29T14:31:34.871Z] [INFO] POST /api/requests 400 - 29ms
+[2025-04-29T14:31:38.354Z] [INFO] GET /api/user/profile 304 - 30ms
+[2025-04-29T14:31:38.441Z] [INFO] GET /api/user/profile 304 - 26ms
+[2025-04-29T14:31:41.457Z] [INFO] GET /api/events/user 304 - 19ms
+[2025-04-29T14:31:41.476Z] [INFO] GET /api/events/user 304 - 13ms
+[2025-04-29T14:31:45.127Z] [INFO] GET /api/user/profile 304 - 41ms
+[2025-04-29T14:31:45.167Z] [INFO] GET /api/user/profile 304 - 29ms
+[2025-04-29T14:31:46.856Z] [INFO] POST /api/auth/logout 200 - 1ms
+[2025-04-29T14:31:49.330Z] [INFO] GET /api/auth/profile 401 - 5ms
+[2025-04-29T14:31:49.343Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:31:49.361Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:31:49.376Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:32:00.871Z] [INFO] POST /api/auth/login 401 - 120ms
+[2025-04-29T14:32:08.452Z] [INFO] POST /api/auth/login 200 - 121ms
+[2025-04-29T14:32:08.461Z] [INFO] GET /api/auth/profile 200 - 4ms
+[2025-04-29T14:32:08.555Z] [INFO] GET /api/user/profile 200 - 44ms
+[2025-04-29T14:32:16.939Z] [INFO] GET /api/events/user 200 - 21ms
+[2025-04-29T14:32:16.959Z] [INFO] GET /api/events/user 304 - 16ms
+[2025-04-29T14:32:17.006Z] [INFO] Получено заявок: 0
+[2025-04-29T14:32:17.009Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 20ms
+[2025-04-29T14:32:17.048Z] [INFO] Получено заявок: 0
+[2025-04-29T14:32:17.050Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 16ms
+[2025-04-29T14:32:25.368Z] [INFO] Получено заявок: 0
+[2025-04-29T14:32:25.370Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 14ms
+[2025-04-29T14:32:26.360Z] [INFO] Получено заявок: 0
+[2025-04-29T14:32:26.362Z] [INFO] GET /api/requests?event_id=3&user_tag=&status=&is_reported=&limit=10&page=1 304 - 20ms
+[2025-04-29T14:32:29.683Z] [INFO] Получено заявок: 0
+[2025-04-29T14:32:29.685Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 21ms
+[2025-04-29T14:32:55.637Z] [INFO] GET /api/user/profile 304 - 53ms
+[2025-04-29T14:32:55.724Z] [INFO] GET /api/user/profile 304 - 68ms
+[2025-04-29T14:32:57.880Z] [INFO] POST /api/auth/logout 200 - 2ms
+[2025-04-29T14:32:59.495Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:32:59.506Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 3ms
+[2025-04-29T14:34:03.340Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:34:03.345Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:34:03.349Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:34:03.357Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:35:23.059Z] [INFO] POST /api/auth/register 201 - 129ms
+[2025-04-29T14:35:23.063Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-04-29T14:35:29.959Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 3ms
+[2025-04-29T14:35:29.964Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:35:29.975Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:35:29.980Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:35:32.521Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:35:32.539Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:35:32.568Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:35:32.572Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:35:39.440Z] [INFO] POST /api/auth/login 200 - 128ms
+[2025-04-29T14:35:39.449Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-04-29T14:35:47.005Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 26ms
+[2025-04-29T14:35:47.002Z] [INFO] Fetched 20 events
+[2025-04-29T14:35:47.013Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-29T14:35:47.033Z] [INFO] Fetched 20 events
+[2025-04-29T14:35:47.036Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 21ms
+[2025-04-29T14:35:47.044Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-29T14:35:59.683Z] [INFO] Получено заявок: 0
+[2025-04-29T14:35:59.686Z] [INFO] GET /api/requests?limit=10&page=1 304 - 27ms
+[2025-04-29T14:36:47.030Z] [INFO] Fetched 20 events
+[2025-04-29T14:36:47.032Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 30ms
+[2025-04-29T14:36:47.046Z] [INFO] Fetched 20 events
+[2025-04-29T14:36:47.048Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-29T14:36:50.724Z] [INFO] Fetched 20 events
+[2025-04-29T14:36:50.726Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 304 - 14ms
+[2025-04-29T14:36:54.305Z] [INFO] Fetched 20 events
+[2025-04-29T14:36:54.307Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=3&limited=6 304 - 12ms
+[2025-04-29T14:36:56.388Z] [INFO] Fetched 20 events
+[2025-04-29T14:36:56.389Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=4&limited=6 304 - 10ms
+[2025-04-29T14:37:32.251Z] [INFO] Fetched 0 events
+[2025-04-29T14:37:32.253Z] [INFO] GET /api/events?search=%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9&sortBy=start_date&sortOrder=ASC&page=4&limited=6 200 - 51ms
+[2025-04-29T14:37:32.268Z] [INFO] Fetched 0 events
+[2025-04-29T14:37:32.270Z] [INFO] GET /api/events?search=%D0%BD%D0%BE%D0%B2%D1%8B%D0%B9&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 12ms
+[2025-04-29T14:37:39.665Z] [INFO] Fetched 1 events
+[2025-04-29T14:37:39.669Z] [INFO] GET /api/events?search=%D0%B3%D0%BE%D1%80%D0%BE%D0%B4&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 15ms
+[2025-04-29T14:37:52.539Z] [INFO] Получено заявок: 0
+[2025-04-29T14:37:52.540Z] [INFO] GET /api/requests?limit=10&page=1 304 - 26ms
+[2025-04-29T14:38:10.462Z] [INFO] Получено заявок: 0
+[2025-04-29T14:38:10.465Z] [INFO] GET /api/requests?limit=10&page=1 304 - 25ms
+[2025-04-29T14:38:38.339Z] [INFO] GET /api/user/profile 200 - 46ms
+[2025-04-29T14:38:38.365Z] [INFO] GET /api/user/profile 304 - 20ms
+[2025-04-29T14:38:40.259Z] [INFO] POST /api/auth/logout 200 - 1ms
+[2025-04-29T14:38:42.279Z] [INFO] GET /api/auth/profile 401 - 6ms
+[2025-04-29T14:38:42.296Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:38:42.303Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:38:42.315Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-04-29T14:38:58.097Z] [INFO] POST /api/auth/login 401 - 114ms
+[2025-04-29T14:38:59.904Z] [INFO] POST /api/auth/login 401 - 109ms
+[2025-04-29T14:39:10.490Z] [INFO] POST /api/auth/login 200 - 113ms
+[2025-04-29T14:39:10.498Z] [INFO] GET /api/auth/profile 200 - 2ms
+[2025-04-29T14:39:10.553Z] [INFO] GET /api/user/profile 304 - 27ms
+[2025-04-29T14:39:15.321Z] [INFO] Fetched 20 events
+[2025-04-29T14:39:15.323Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 17ms
+[2025-04-29T14:39:15.343Z] [INFO] Fetched 20 events
+[2025-04-29T14:39:15.345Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 15ms
+[2025-04-29T14:40:08.912Z] [INFO] Fetched 20 events
+[2025-04-29T14:40:08.916Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 52ms
+[2025-04-29T14:40:08.938Z] [INFO] Fetched 20 events
+[2025-04-29T14:40:08.942Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 16ms
+[2025-04-29T14:40:11.372Z] [INFO] Fetched 20 events
+[2025-04-29T14:40:11.375Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 304 - 17ms
+[2025-04-29T14:40:18.271Z] [INFO] Fetched 20 events
+[2025-04-29T14:40:18.273Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=3&limited=6 304 - 12ms
+[2025-04-29T14:40:34.179Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:34.181Z] [INFO] GET /api/events?search=%D0%B3%D0%B5%D0%B9+%D0%BF%D0%B0%D1%82%D0%B8&sortBy=start_date&sortOrder=ASC&page=3&limited=6 200 - 26ms
+[2025-04-29T14:40:34.221Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:34.224Z] [INFO] GET /api/events?search=%D0%B3%D0%B5%D0%B9+%D0%BF%D0%B0%D1%82%D0%B8&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 27ms
+[2025-04-29T14:40:41.881Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:41.883Z] [INFO] GET /api/events?search=%D0%B1%D0%B0%D1%81%D1%81%D0%B5%D0%B9%D0%BD&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 9ms
+[2025-04-29T14:40:46.614Z] [INFO] GET /api/events?search=%D0%B1%D0%B0%D0%BD%D1%8F&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 8ms
+[2025-04-29T14:40:46.613Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:49.148Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:49.150Z] [INFO] GET /api/events?search=%D0%B1%D0%B0%D0%BD%D1%8F&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-29T14:40:55.794Z] [INFO] Fetched 0 events
+[2025-04-29T14:40:55.795Z] [INFO] GET /api/events?search=%D1%88%D0%BA%D0%BE%D0%BB%D0%B0&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 9ms
+[2025-04-29T14:41:03.415Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:03.416Z] [INFO] GET /api/events?search=%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 8ms
+[2025-04-29T14:41:04.839Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:04.843Z] [INFO] GET /api/events?search=%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 15ms
+[2025-04-29T14:41:05.585Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:05.588Z] [INFO] GET /api/events?search=%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-29T14:41:05.762Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:05.764Z] [INFO] GET /api/events?search=%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-29T14:41:05.983Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:05.985Z] [INFO] GET /api/events?search=%D0%BC%D0%B5%D1%80%D0%BE%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-29T14:41:13.275Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:13.276Z] [INFO] GET /api/events?search=%D1%80%D1%8B%D1%86%D0%B0%D1%80%D1%8C&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 8ms
+[2025-04-29T14:41:14.653Z] [INFO] Fetched 1 events
+[2025-04-29T14:41:14.654Z] [INFO] GET /api/events?search=%D1%80%D1%8B%D1%86%D0%B0%D1%80&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 8ms
+[2025-04-29T14:41:26.459Z] [INFO] Fetched 0 events
+[2025-04-29T14:41:26.461Z] [INFO] GET /api/events?search=%D0%A3%D1%84%D0%B0&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 51ms
+[2025-04-29T14:41:27.870Z] [INFO] Fetched 1 events
+[2025-04-29T14:41:27.872Z] [INFO] GET /api/events?search=%D0%A3%D1%84&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 10ms
+[2025-04-29T14:41:31.201Z] [INFO] Получено заявок: 0
+[2025-04-29T14:41:31.203Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-04-29T14:42:21.097Z] [INFO] Fetched 20 events
+[2025-04-29T14:42:21.100Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 31ms
+[2025-04-29T14:42:21.141Z] [INFO] Fetched 20 events
+[2025-04-29T14:42:21.144Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 32ms
+[2025-04-29T14:43:56.952Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T14:43:56.966Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-29T14:43:56.988Z] [INFO] Fetched 20 events
+[2025-04-29T14:43:56.994Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 59ms
+[2025-04-29T14:43:57.024Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 20ms
+[2025-04-29T14:43:57.021Z] [INFO] Fetched 20 events
+[2025-04-29T14:44:02.447Z] [INFO] GET /api/user/profile 304 - 31ms
+[2025-04-29T14:44:02.472Z] [INFO] GET /api/user/profile 304 - 23ms
+[2025-04-29T14:44:05.622Z] [INFO] POST /api/auth/logout 200 - 1ms
+[2025-04-29T14:44:08.719Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:08.724Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:10.364Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:44:10.374Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 3ms
+[2025-04-29T14:44:17.320Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 4ms
+[2025-04-29T14:44:17.329Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:44:23.510Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:44:23.514Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:23.529Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-04-29T14:44:23.533Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:27.432Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:27.436Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:27.442Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T14:44:27.447Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T14:44:38.475Z] [INFO] POST /api/auth/login 200 - 114ms
+[2025-04-29T14:44:38.484Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-04-29T14:44:53.598Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-29T14:44:53.604Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T14:44:53.615Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T14:44:53.621Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T14:45:03.075Z] [INFO] POST /api/auth/login 200 - 124ms
+[2025-04-29T14:45:03.083Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-04-29T14:45:08.680Z] [INFO] Fetched 20 events
+[2025-04-29T14:45:08.685Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 28ms
+[2025-04-29T14:45:08.699Z] [INFO] GET /api/auth/profile 304 - 8ms
+[2025-04-29T14:45:08.718Z] [INFO] Fetched 20 events
+[2025-04-29T14:45:08.719Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 15ms
+[2025-04-29T14:45:08.725Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-29T14:45:15.581Z] [INFO] GET /api/user/profile 304 - 27ms
+[2025-04-29T14:45:15.613Z] [INFO] GET /api/user/profile 304 - 27ms
+[2025-04-29T14:45:27.093Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T14:45:27.106Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T14:45:27.178Z] [INFO] GET /api/user/profile 304 - 40ms
+[2025-04-29T14:45:39.311Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 23ms
+[2025-04-29T14:45:39.309Z] [INFO] Fetched 20 events
+[2025-04-29T14:45:39.330Z] [INFO] Fetched 20 events
+[2025-04-29T14:45:39.332Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-29T14:45:45.182Z] [INFO] GET /api/user/profile 304 - 31ms
+[2025-04-29T14:45:45.212Z] [INFO] GET /api/user/profile 304 - 21ms
+[2025-04-29T14:45:57.880Z] [INFO] Получено заявок: 0
+[2025-04-29T14:45:57.882Z] [INFO] GET /api/requests?limit=10&page=1 304 - 23ms
+[2025-04-29T14:46:12.533Z] [INFO] Fetched 20 events
+[2025-04-29T14:46:12.535Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 55ms
+[2025-04-29T14:46:12.564Z] [INFO] Fetched 20 events
+[2025-04-29T14:46:12.566Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 15ms
+[2025-04-29T14:46:15.931Z] [INFO] Получено заявок: 0
+[2025-04-29T14:46:15.932Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-04-29T16:38:39.912Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-29T16:38:39.929Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T16:38:39.958Z] [INFO] Fetched 20 events
+[2025-04-29T16:38:39.962Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 84ms
+[2025-04-29T16:38:39.991Z] [INFO] Fetched 20 events
+[2025-04-29T16:38:39.993Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 22ms
+[2025-04-29T16:38:41.491Z] [INFO] GET /api/user/profile 304 - 28ms
+[2025-04-29T16:38:41.531Z] [INFO] GET /api/user/profile 304 - 27ms
+[2025-04-29T16:38:43.281Z] [INFO] POST /api/auth/logout 200 - 1ms
+[2025-04-29T16:38:44.719Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T16:38:44.723Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-04-29T16:38:44.730Z] [INFO] GET /api/auth/profile 401 - 4ms
+[2025-04-29T16:38:44.744Z] [INFO] GET /api/auth/profile 401 - 3ms
+[2025-04-29T16:38:56.189Z] [INFO] POST /api/auth/login 200 - 122ms
+[2025-04-29T16:38:56.197Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-04-29T16:38:56.278Z] [INFO] GET /api/user/profile 200 - 35ms
+[2025-04-29T16:43:33.994Z] [INFO] Fetched 20 events
+[2025-04-29T16:43:33.998Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 41ms
+[2025-04-29T16:43:34.024Z] [INFO] Fetched 20 events
+[2025-04-29T16:43:34.026Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 18ms
+[2025-04-29T16:45:33.526Z] [INFO] GET /api/auth/profile 304 - 8ms
+[2025-04-29T16:45:33.548Z] [INFO] GET /api/auth/profile 304 - 13ms
+[2025-04-29T16:45:33.572Z] [INFO] Fetched 20 events
+[2025-04-29T16:45:33.578Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 76ms
+[2025-04-29T16:45:33.610Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 23ms
+[2025-04-29T16:45:33.604Z] [INFO] Fetched 20 events
+[2025-04-29T16:46:02.758Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 25ms
+[2025-04-29T16:46:02.756Z] [INFO] Fetched 20 events
+[2025-04-29T16:46:02.785Z] [INFO] Fetched 20 events
+[2025-04-29T16:46:02.787Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 20ms
+[2025-04-29T16:46:51.316Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T16:46:51.328Z] [INFO] GET /api/auth/profile 304 - 7ms
+[2025-04-29T16:46:51.390Z] [INFO] Fetched 20 events
+[2025-04-29T16:46:51.396Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 32ms
+[2025-04-29T16:46:51.414Z] [INFO] Fetched 20 events
+[2025-04-29T16:46:51.417Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 19ms
+[2025-04-29T16:46:59.053Z] [INFO] GET /api/events/user 304 - 19ms
+[2025-04-29T16:46:59.099Z] [INFO] GET /api/events/user 304 - 21ms
+[2025-04-29T16:46:59.228Z] [INFO] Получено заявок: 0
+[2025-04-29T16:46:59.230Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 21ms
+[2025-04-29T16:46:59.310Z] [INFO] Получено заявок: 0
+[2025-04-29T16:46:59.312Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 20ms
+[2025-04-29T16:47:19.781Z] [INFO] Fetched 20 events
+[2025-04-29T16:47:19.791Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 50ms
+[2025-04-29T16:47:19.813Z] [INFO] Fetched 20 events
+[2025-04-29T16:47:19.814Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-04-29T16:47:23.897Z] [INFO] Fetched 20 events
+[2025-04-29T16:47:23.906Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 37ms
+[2025-04-29T16:47:23.931Z] [INFO] Fetched 20 events
+[2025-04-29T16:47:23.933Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-29T16:49:57.655Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T16:49:57.661Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-04-29T16:49:57.725Z] [INFO] Fetched 20 events
+[2025-04-29T16:49:57.728Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 32ms
+[2025-04-29T16:49:57.760Z] [INFO] Fetched 20 events
+[2025-04-29T16:49:57.762Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 24ms
+[2025-04-29T16:50:00.309Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:00.312Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 304 - 14ms
+[2025-04-29T16:50:20.800Z] [INFO] GET /api/auth/profile 304 - 5ms
+[2025-04-29T16:50:20.808Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T16:50:20.908Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:20.910Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 24ms
+[2025-04-29T16:50:20.922Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:20.924Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-04-29T16:50:26.168Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T16:50:26.178Z] [INFO] GET /api/auth/profile 304 - 6ms
+[2025-04-29T16:50:26.252Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:26.254Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-29T16:50:26.285Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:26.294Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 34ms
+[2025-04-29T16:50:40.477Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-29T16:50:40.482Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-04-29T16:50:40.533Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:40.540Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 34ms
+[2025-04-29T16:50:40.550Z] [INFO] Fetched 20 events
+[2025-04-29T16:50:40.555Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 13ms
+[2025-04-29T16:50:43.257Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=2&limited=6 304 - 11ms
+[2025-04-29T16:50:43.255Z] [INFO] Fetched 20 events

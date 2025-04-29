@@ -112,7 +112,7 @@ const EventList = () => {
           onClick={() => setPage(prev => prev + 1)}
           className={styles.loadMore}
         >
-          Показать еще
+          Больше
         </button>
       )}
 
