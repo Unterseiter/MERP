@@ -16,8 +16,8 @@ const Carousel = () => {
         Главные события города
       </h2>
       
-      <div className="max-w-7xl mx-auto  relative">
-        {/* Адаптивные кнопки навигации */}
+      <div className="max-w-7xl mx-auto relative">
+        {/* Кнопки навигации */}
         <button 
           className="absolute left-1 sm:left-4 top-1/2 z-20 -translate-y-1/2 bg-white/80 hover:bg-white p-1.5 sm:p-2 rounded-full shadow-lg transition-all duration-300"
           onClick={() => swiperRef.current?.slidePrev()}
@@ -37,6 +37,7 @@ const Carousel = () => {
           onMouseLeave={() => swiperRef.current?.autoplay.start()}
         >
           <Swiper
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
             modules={[Pagination, Autoplay, Navigation]}
             pagination={{ 
               clickable: true,
@@ -47,41 +48,18 @@ const Carousel = () => {
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            loop={true}
-            slidesPerView={1} // Изменили с 1.1 на 1
-            centeredSlides={true} // Отключили центрирование для мобильных
-            spaceBetween={0} // Убрали промежутки для мобильных
+            loop={false}
+            slidesPerView={1}
+            centeredSlides={true}
+            spaceBetween={0}
             breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 0, // Убрали промежутки
-                centeredSlides: false // Отключили центрирование
-              },
-              480: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                centeredSlides: true // Включаем центрирование с 480px
-              },
-              640: {
-                slidesPerView: 1.4,
-                spaceBetween: 25
-              },
-              // Large tablets (768px+)
-              768: {
-                slidesPerView: 1.7,
-                spaceBetween: 30
-              },
-              // Laptops (1024px+)
-              1024: {
-                slidesPerView: 1.8,
-                spaceBetween: 40
-              },
-              // Large screens (1280px+)
-              1280: {
-                slidesPerView: 2,
-                spaceBetween: 50
-              }
-            }}
+                320: { slidesPerView: 1.1, spaceBetween: 15 },
+                480: { slidesPerView: 1.2, spaceBetween: 20 },
+                640: { slidesPerView: 1.3, spaceBetween: 25 },
+                768: { slidesPerView: 1.4, spaceBetween: 30 },
+                1024: { slidesPerView: 1.5, spaceBetween: 40 },
+                1280: { slidesPerView: 1.7, spaceBetween: 50 }
+              }}
             className="overflow-visible py-6 sm:py-8"
           >
             {SLIDES.map((slide) => (
