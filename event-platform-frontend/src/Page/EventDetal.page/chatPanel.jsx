@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import { FiCheck, FiX } from 'react-icons/fi';
+import { FiCheck, FiX, FiSend } from 'react-icons/fi';
 import { motion } from 'framer-motion'; // Нужен framer-motion для анимаций
 import socket from '../../services/socket';
 import EventService from '../../services/Event.service/event.service';
 import MessageService from '../../services/message.service/message.service';
+import DropdownMenu from './DropdownMenu';
 
 export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
   const [messages, setMessages] = useState([]);
@@ -72,30 +73,30 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
   const scrollToBottom = () => {
     const container = messagesContainerRef.current;
     if (!container) return;
-  
+
     const start = container.scrollTop;
     const end = container.scrollHeight - container.clientHeight;
     const change = end - start;
     const duration = 400; // Длительность анимации (мс)
     let startTime = null;
-  
+
     // Функция easing для плавности (easeOutQuad)
     const easeOutQuad = (t) => t * (2 - t);
-  
+
     const animateScroll = (currentTime) => {
       if (!startTime) startTime = currentTime;
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-  
+
       const easedProgress = easeOutQuad(progress);
-  
+
       container.scrollTop = start + change * easedProgress;
-  
+
       if (progress < 1) {
         requestAnimationFrame(animateScroll);
       }
     };
-  
+
     requestAnimationFrame(animateScroll);
   };
 
@@ -107,9 +108,25 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
     <div className="p-4 bg-white rounded-lg shadow flex flex-col h-[65vh]">
       {selectedRequest ? (
         <>
-          <h3 className="font-semibold mb-2">Чат с {selectedRequest.user_tag}</h3>
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="font-semibold">Чат с {isCreator ? selectedRequest.user_tag : 'организатором'}</h3>
+            {isCreator && (
+              <DropdownMenu
+                actions={[
+                  {
+                    label: 'Принять',
+                    onClick: () => onAction(selectedRequest.request_id, 'accept'),
+                  },
+                  {
+                    label: 'Отклонить',
+                    onClick: () => onAction(selectedRequest.request_id, 'reject'),
+                  },
+                ]}
+              />
+            )}
+          </div>
 
-          <div ref={messagesContainerRef}  className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto space-y-2 h-[500px]">
+          <div ref={messagesContainerRef} className="flex-1 bg-gray-100 rounded p-2 mb-4 overflow-y-auto space-y-2 h-[500px]">
             {messages.length ? (
               messages.map((msg) => {
                 const isOwnMessage = msg.sender === selectedRequest.user_tag;
@@ -157,26 +174,9 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
               onClick={handleSendMessage}
               className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
-              Отправить
+              <FiSend />
             </button>
           </div>
-
-          {isCreator && (
-            <div className="flex space-x-2">
-              <button
-                onClick={() => onAction(selectedRequest.request_id, 'accept')}
-                className="flex-1 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-              >
-                <FiCheck className="inline-block mr-1" /> Принять
-              </button>
-              <button
-                onClick={() => onAction(selectedRequest.request_id, 'reject')}
-                className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                <FiX className="inline-block mr-1" /> Отклонить
-              </button>
-            </div>
-          )}
         </>
       ) : (
         <p className="text-gray-400">Выберите заявку для начала чата</p>
