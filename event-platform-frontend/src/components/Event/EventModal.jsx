@@ -18,7 +18,8 @@ export const EventModal = ({ isOpen, event, onClose }) => {
         };
     }, [isOpen]);
 
-    const handleClose = () => {
+    const handleClose = (e) => {
+        e?.stopPropagation(); // Важно!
         setIsExpanded(false);
         onClose();
     };
