@@ -19,13 +19,14 @@ export const EventCard = ({ title, description, imageUrl, id }) => {
         setModalIsOpen(true);
     };
 
-    const closeModal = () => {
+    const closeModal = (e) => {
+        e?.stopPropagation();
         setModalIsOpen(false);
     };
 
     return (
-        <article className={styles['card']}>
-            <div onClick={openModal} className={styles['image-container']}>
+        <article onClick={openModal}  className={styles['card']}>
+            <div className={styles['image-container']}>
                 <img
                     src={imageUrl}
                     alt={title}
