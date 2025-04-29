@@ -51,7 +51,10 @@ const eventController = {
     if (!req.file) return {};
 
     const event = await Event.findByPk(req.params.id);
-    if (event.photo_url == req.body.photo_url) {
+    console.log("переделка");
+    console.log(event.photo_url);
+    console.log(req.body.photo_url);
+    if (event.photo_url !== req.body.photo_url) {
       return {
         photo_url: req.body.photo_url
       };
@@ -191,14 +194,17 @@ const eventController = {
         photo_url: req.body.photo_url
       }
       const { error, value } = eventUpdateSchema.validate(validobj);
+      console.log("пришло");
       console.log(req.body);
       if (error) throw new ValidationError(error.details);
 
       const fileData = await eventController._handleFileUpload(req, event);
+      value.photo_url = eventController._formatPhotoUrl(fileData.photo_url);
+      console.log("cтало");
+      console.log(fileData);
 
       const updatedEvent = await eventService.updateEvent(req.params.id, {
         ...value,
-        ...fileData
       });
       const validphoto = req.body.photo_url !== event.photo_url;
 

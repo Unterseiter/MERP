@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import EventService from '../../services/Event.service/event.service';
 import DatePicker from 'react-datepicker';
 import Cropper from 'react-easy-crop';
-import getCroppedImg from './getCroppedImg'; // путь к утилит
+import getCroppedImg from '../crop/getCroppedImg'; // путь к утилит
 
 import 'react-datepicker/dist/react-datepicker.css';
 

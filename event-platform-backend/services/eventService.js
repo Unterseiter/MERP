@@ -166,6 +166,7 @@ const eventService = {
       if (creator != null && Check_Privilege(event.creator_tag, creator)) {
         throw new Error('У вас нет прав для обновления этого мероприятия');
       }
+      console.log(eventData);
       await event.update(eventData);
       return event;
     } catch (error) {
@@ -251,7 +252,7 @@ const eventService = {
             )`)
           ]
         },
-        attributes: ['event_id', 'name', 'description', 'start_date', 'end_date', 'views', 'creator_tag'],
+        attributes: ['event_id', 'name', 'description', 'start_date', 'end_date', 'views', 'creator_tag', 'photo_url'],
         include: [
           {
             model: RequestEvent,

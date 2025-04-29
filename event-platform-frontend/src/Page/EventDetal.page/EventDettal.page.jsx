@@ -5,6 +5,8 @@ import { FiCheck, FiX, FiChevronLeft, FiChevronRight, FiInfo } from 'react-icons
 import { AuthContext } from '../../components/authorization/AuthContext';
 import EventService from '../../services/Event.service/event.service';
 import RequestService from '../../services/requestEvent.service/requestEvent.service';
+import { EventAndRequestInfo } from './EventAndRequestInfo';
+import ModalEditEvent from './ModalEditEvent';
 import ChatPanel from './chatPanel';
 
 export function EventsList({ events, selectedEvent, onSelect, collapsed, setCollapsed }) {
@@ -19,7 +21,7 @@ export function EventsList({ events, selectedEvent, onSelect, collapsed, setColl
                 onClick={() => setCollapsed(!collapsed)}
                 className="mb-2 p-1 hover:bg-gray-200 rounded"
             >
-                {collapsed ? <FiChevronRight /> :  <div className='flex items-baseline'><FiChevronLeft /> <h1 className="font-semibold">Заявки и мероприятия</h1></div>}
+                {collapsed ? <FiChevronRight /> : <div className='flex items-baseline'><FiChevronLeft /> <h1 className="font-semibold">Заявки и мероприятия</h1></div>}
             </button>
 
             <AnimatePresence>
@@ -39,7 +41,7 @@ export function EventsList({ events, selectedEvent, onSelect, collapsed, setColl
                                 onClick={() => onSelect(evt)}
                                 className={`p-2 rounded-lg cursor-pointer flex items-center border transition ${selectedEvent?.event_id === evt.event_id ? 'bg-indigo-100' : 'hover:bg-gray-100'
                                     }
-                                    ${evt.isCreator ? 'border-green-500': 'border-blue-500'}`}
+                                    ${evt.isCreator ? 'border-green-500' : 'border-blue-500'}`}
                             >
                                 <div className="flex-1">
                                     <h3 className="font-medium">{evt.name}</h3>
@@ -56,90 +58,6 @@ export function EventsList({ events, selectedEvent, onSelect, collapsed, setColl
     );
 }
 
-export function EventAndRequestInfo({ selectedEvent, selectedRequest }) {
-  const [expanded, setExpanded] = useState(false);
-  const [currentRequest, setCurrentRequest] = useState(null);
-
-  useEffect(() => {
-    if (!selectedEvent) {
-      setCurrentRequest(null);
-      return;
-    }
-
-    if (selectedEvent.isCreator === false) {
-      setCurrentRequest({
-        user_tag: selectedEvent.creator_tag,
-        status: 'Организатор',
-        createdAt: selectedEvent.start_date,
-      });
-    } else {
-      setCurrentRequest(selectedRequest);
-    }
-  }, [selectedEvent, selectedRequest]);
-
-  if (!selectedEvent) return null;
-
-  return (
-    <div
-      onClick={() => setExpanded(!expanded)}
-      className="p-4 rounded-2xl shadow transition hover:shadow-md cursor-pointer"
-      style={{ backgroundColor: '#dec3ae' }}
-    >
-      <div className="flex items-center space-x-3">
-        <FiInfo size={20} style={{ color: '#5A4A42' }} />
-        <div>
-          <div className="font-semibold text-[#5A4A42] text-lg">{selectedEvent.name}</div>
-          {currentRequest && (
-            <div className="text-sm text-[#6d5847]">
-              Партнёр: {currentRequest.user_tag}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {expanded && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
-        >
-          {/* Событие */}
-          <div
-            className="rounded-xl shadow-sm p-4"
-            style={{
-              backgroundColor: '#fef6f1',
-              border: '1px solid #dec3ae',
-            }}
-          >
-            <ul className="text-sm text-[#4b3621] space-y-1">
-              <li><strong>Начало:</strong> {new Date(selectedEvent.start_date).toLocaleString()}</li>
-              <li><strong>Окончание:</strong> {new Date(selectedEvent.end_date).toLocaleString()}</li>
-              <li><strong>Создатель:</strong> {selectedEvent.creator_tag}</li>
-            </ul>
-          </div>
-
-          {/* Заявка */}
-          {currentRequest && (
-            <div
-              className="rounded-xl shadow-sm p-4"
-              style={{
-                backgroundColor:'#fef6f1',
-                border: '1px solid #dec3ae',
-              }}
-            >
-              <ul className="text-sm text-[#4b3621] space-y-1">
-                <li><strong>Статус:</strong> {currentRequest.status}</li>
-                <li><strong>Дата подачи:</strong> {new Date(currentRequest.createdAt).toLocaleString()}</li>
-              </ul>
-            </div>
-          )}
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
 
 const EventDetailsPage = () => {
     const { user } = useContext(AuthContext);
@@ -147,10 +65,12 @@ const EventDetailsPage = () => {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [eventRequests, setEventRequests] = useState([]);
     const [selectedRequest, setSelectedRequest] = useState(null);
+
     const [loadingEvents, setLoadingEvents] = useState(false);
     const [loadingRequests, setLoadingRequests] = useState(false);
     const [error, setError] = useState('');
     const [requestsCollapsed, setRequestsCollapsed] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const [collapsedEvent, setCollapsedEvent] = useState(false);
 
@@ -232,6 +152,39 @@ const EventDetailsPage = () => {
         user_tag: userTag,
     } : null;
 
+    const handleEdit = (event) => {
+        console.log("Редактирование события:", event);
+        setShowModal(true);
+    };
+
+    const HandleEditNewData = async (updatedEvent, file = null) => {
+        try {
+            // Отправляем данные на сервер с использованием updateRecord
+            const updatedData = await EventService.updateRecord(updatedEvent.event_id, updatedEvent, file);
+            
+            // После успешного обновления события обновляем состояние
+            setSelectedEvent(updatedData);
+    
+            // Закрытие модального окна
+            setShowModal(false);
+            console.log("Событие успешно обновлено:", updatedData);
+        } catch (error) {
+            console.error("Ошибка при обновлении события:", error.message);
+            setError("Не удалось обновить событие. Попробуйте снова.");
+        }
+    };
+
+    const handleDelete = async (event) => {
+        try {
+            await EventService.removeRecord(event.event_id);
+            setEvents((prevEvents) => prevEvents.filter((evt) => evt.event_id !== event.event_id));
+            setSelectedEvent(null);
+            console.log("Событие удалено");
+        } catch (error) {
+            setError('Ошибка при удалении события');
+        }
+    };
+
     return (
         <div className="flex min-h-screen">
             <EventsList
@@ -245,7 +198,7 @@ const EventDetailsPage = () => {
                 setCollapsed={setCollapsedEvent}
             />
             <div className="flex-1 p-6 space-y-6">
-                <EventAndRequestInfo selectedEvent={selectedEvent} selectedRequest={selectedRequest} />
+                <EventAndRequestInfo selectedEvent={selectedEvent} selectedRequest={selectedRequest} isCreator={isCreator} onDelete={handleDelete} onEdit={handleEdit} />
 
                 <div className={`grid grid-cols-1 ${isCreator ? 'lg:grid-cols-[auto_1fr]' : 'lg:grid-cols-1'} gap-6`}
                 >
@@ -262,7 +215,7 @@ const EventDetailsPage = () => {
                                         className="p-1 hover:bg-gray-200 rounded"
                                     >
                                         {requestsCollapsed ? <FiChevronRight /> : <div className='flex items-baseline'><FiChevronLeft /> <h1 className="font-semibold">Заявки</h1></div>}
-                                        
+
                                     </button>
                                 </div>
 
@@ -299,6 +252,9 @@ const EventDetailsPage = () => {
                         onAction={handleAction}
                     />
                 </div>
+                {showModal && (
+                    <ModalEditEvent onClose={()=>setShowModal(false)} onSuccess={HandleEditNewData} selectedEvent={selectedEvent} />
+                )}
             </div>
         </div>
     );
