@@ -8,6 +8,7 @@ import RequestService from '../../services/requestEvent.service/requestEvent.ser
 import ChatPanel from './chatPanel';
 
 export function EventsList({ events, selectedEvent, onSelect, collapsed, setCollapsed }) {
+    console.log(events);
     return (
         <motion.div
             animate={{ width: collapsed ? 48 : 256 }}
@@ -18,7 +19,7 @@ export function EventsList({ events, selectedEvent, onSelect, collapsed, setColl
                 onClick={() => setCollapsed(!collapsed)}
                 className="mb-2 p-1 hover:bg-gray-200 rounded"
             >
-                {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
+                {collapsed ? <FiChevronRight /> :  <div className='flex items-baseline'><FiChevronLeft /> <h1 className="font-semibold">Заявки и мероприятия</h1></div>}
             </button>
 
             <AnimatePresence>
@@ -36,8 +37,9 @@ export function EventsList({ events, selectedEvent, onSelect, collapsed, setColl
                                 key={evt.event_id}
                                 whileHover={{ scale: 1.02 }}
                                 onClick={() => onSelect(evt)}
-                                className={`p-2 rounded-lg cursor-pointer flex items-center transition ${selectedEvent?.event_id === evt.event_id ? 'bg-indigo-100' : 'hover:bg-gray-100'
-                                    }`}
+                                className={`p-2 rounded-lg cursor-pointer flex items-center border transition ${selectedEvent?.event_id === evt.event_id ? 'bg-indigo-100' : 'hover:bg-gray-100'
+                                    }
+                                    ${evt.isCreator ? 'border-green-500': 'border-blue-500'}`}
                             >
                                 <div className="flex-1">
                                     <h3 className="font-medium">{evt.name}</h3>
@@ -259,7 +261,8 @@ const EventDetailsPage = () => {
                                         onClick={() => setRequestsCollapsed(prev => !prev)}
                                         className="p-1 hover:bg-gray-200 rounded"
                                     >
-                                        {requestsCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+                                        {requestsCollapsed ? <FiChevronRight /> : <div className='flex items-baseline'><FiChevronLeft /> <h1 className="font-semibold">Заявки</h1></div>}
+                                        
                                     </button>
                                 </div>
 
