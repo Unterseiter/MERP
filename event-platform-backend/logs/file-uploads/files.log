@@ -609,3 +609,6 @@
 [2025-04-29T13:10:28.527Z] [DEBUG] Generated filename: ff992fcf-1b59-44de-9a0e-0b3f11715925.jpg
 [2025-04-29T13:10:59.790Z] [DEBUG] Accepted file type: image/jpeg
 [2025-04-29T13:10:59.791Z] [DEBUG] Generated filename: 1234c03f-3c65-4fdc-b2dd-a0ba65876ba6.jpg
+[2025-04-29T13:39:54.192Z] [INFO] File Queue initialized
+[2025-04-29T13:39:54.457Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-04-29T13:39:54.458Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery

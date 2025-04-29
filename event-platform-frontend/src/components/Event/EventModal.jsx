@@ -1,20 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-modal';
 import styles from './style.module.css';
+import RequestService from '../../services/requestEvent.service/requestEvent.service'; // Добавляем импорт сервиса
+import { AuthContext } from '../../components/authorization/AuthContext';
 
 export const EventModal = ({ isOpen, event, onClose }) => {
+    const { user } = useContext(AuthContext); // Получаем пользователя из контекста
     const [isExpanded, setIsExpanded] = useState(false);
+    const [requests, setRequests] = useState([]); // Добавляем состояние для запросов
+    const [loading, setLoading] = useState(false); // Добавляем состояние загрузки
+    const [error, setError] = useState(''); // Добавляем состояние ошибки
 
     useEffect(() => {
+        const fetchRequests = async () => {
+            try {
+                const response = await RequestService.getAllRecords();
+                setRequests(response.data);
+            } catch (err) {
+                setError('Ошибка загрузки запросов');
+            }
+        };
+
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            fetchRequests();
         } else {
             document.body.style.overflow = 'unset';
         }
 
         return () => {
             document.body.style.overflow = 'unset';
-            setIsExpanded(false); // Сбрасываем состояние при закрытии
+            setIsExpanded(false);
         };
     }, [isOpen]);
 
@@ -24,6 +40,32 @@ export const EventModal = ({ isOpen, event, onClose }) => {
         onClose();
     };
 
+    const handleRequest = async (eventId, action, requestId) => {
+        try {
+            setLoading(true);
+            switch (action) {
+                case 'create':
+                    const newRequest = await RequestService.createRecord(eventId);
+                    setRequests(prev => [...prev, newRequest.data]);
+                    break;
+                case 'delete':
+                    await RequestService.deleteRecord(requestId);
+                    setRequests(prev => prev.filter(r => r.request_id !== requestId));
+                    break;
+                case 'status':
+                    await RequestService.updateStatus(requestId, 'accept');
+                    setRequests(prev => prev.filter(r => r.request_id === requestId));
+                    break;
+                default:
+                    throw new Error('Неизвестное действие');
+            }
+        } catch (err) {
+            setError(err.response?.data?.message || 'Ошибка операции');
+        } finally {
+            setLoading(false);
+        }
+    };
+    
     return (
         <Modal
             isOpen={isOpen}
@@ -117,10 +159,11 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                                     Назад
                                 </button>
                                 <button
-                                    onClick={() => alert('Успешная регистрация!')}
+                                    nClick={() => handleRequest('create')}
                                     className={`${styles.button} ${styles['button-green']}`}
+                                    disabled={loading}
                                 >
-                                    Подтвердить участие
+                                    {loading ? 'Отправка...' : 'Подтвердить участие'}
                                 </button>
                             </div>
                         </div>
