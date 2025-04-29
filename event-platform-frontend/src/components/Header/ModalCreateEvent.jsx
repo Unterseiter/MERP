@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import EventService from '../../services/Event.service/event.service';
 import DatePicker from 'react-datepicker';
+import Cropper from 'react-easy-crop';
+import getCroppedImg from './getCroppedImg'; // путь к утилит
+
 import 'react-datepicker/dist/react-datepicker.css';
 
 const ModalCreateEvent = ({ onClose, onSuccess }) => {
@@ -18,6 +21,11 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
+    const [crop, setCrop] = useState({ x: 0, y: 0 });
+    const [zoom, setZoom] = useState(1);
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+    const [showCropper, setShowCropper] = useState(false);
+
     const handleClickOutside = (e) => {
         if (modalRef.current && !modalRef.current.contains(e.target)) {
             closeModal();
@@ -30,7 +38,7 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
             onClose();
         }, 300); // Должно совпадать с duration анимации
     };
-    // Обработка выбора файла
+
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile && selectedFile.type.startsWith('image/')) {
@@ -38,16 +46,53 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
                 setError('Файл слишком большой (макс. 5 МБ)');
                 return;
             }
-            setFile(selectedFile);
             const reader = new FileReader();
-            reader.onloadend = () => setPreview(reader.result);
+            reader.onloadend = () => {
+                setPreview(reader.result);
+                setShowCropper(true); // Показываем cropper
+            };
             reader.readAsDataURL(selectedFile);
         } else {
             setError('Выберите изображение');
             setFile(null);
             setPreview(null);
+            setShowCropper(false);
         }
     };
+
+    const onCropCompleteHandler = (_, croppedPixels) => {
+        setCroppedAreaPixels(croppedPixels);
+    };
+
+    const applyCrop = async () => {
+        try {
+            const blob = await getCroppedImg(preview, croppedAreaPixels);
+            setFile(new File([blob], 'cropped.jpg', { type: 'image/jpeg' }));
+            setPreview(URL.createObjectURL(blob));
+            setShowCropper(false);
+        } catch (err) {
+            setError('Ошибка обрезки изображения');
+        }
+    };
+
+    // Обработка выбора файла
+    // const handleFileChange = (e) => {
+    //     const selectedFile = e.target.files[0];
+    //     if (selectedFile && selectedFile.type.startsWith('image/')) {
+    //         if (selectedFile.size > 5 * 1024 * 1024) {
+    //             setError('Файл слишком большой (макс. 5 МБ)');
+    //             return;
+    //         }
+    //         setFile(selectedFile);
+    //         const reader = new FileReader();
+    //         reader.onloadend = () => setPreview(reader.result);
+    //         reader.readAsDataURL(selectedFile);
+    //     } else {
+    //         setError('Выберите изображение');
+    //         setFile(null);
+    //         setPreview(null);
+    //     }
+    // };
 
     // Создание события
     const handleCreate = async () => {
@@ -92,7 +137,7 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
     };
 
     return (
-        
+
         <div
             className={`fixed inset-0  bg-black bg-opacity-50 flex items-center justify-center p-4 z-[9999] transition-opacity duration-300  ${isClosing ? 'opacity-0' : 'opacity-100'
                 }`}
@@ -103,7 +148,7 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
                 className={`bg-white ring-[#CAA07D] ring-2  rounded-lg p-6 w-full max-w-2xl relative z-[10000] transition-all duration-300 ${isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'
                     }`}
             >
-               <div className="flex justify-between items-center mb-4">
+                <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Создать новое событие</h2>
                     <button
                         onClick={closeModal}
@@ -182,14 +227,33 @@ const ModalCreateEvent = ({ onClose, onSuccess }) => {
                         />
                     </div>
 
-                    {preview && (
-                        <div>
-                            <p className="text-gray-600 mb-1">Превью:</p>
-                            <img
-                                src={preview}
-                                alt="Preview"
-                                className="max-w-full h-auto max-h-48 object-contain rounded"
+                    {showCropper && preview && (
+                        <div className="relative w-full h-96 bg-gray-200 rounded overflow-hidden">
+                            <Cropper
+                                image={preview}
+                                crop={crop}
+                                zoom={zoom}
+                                aspect={4 / 3} // или 1 / 1
+                                onCropChange={setCrop}
+                                onZoomChange={setZoom}
+                                onCropComplete={onCropCompleteHandler}
                             />
+                            <div className="absolute bottom-2 left-0 right-0 flex justify-between items-center bg-white p-2">
+                                <input
+                                    type="range"
+                                    min={1}
+                                    max={3}
+                                    step={0.1}
+                                    value={zoom}
+                                    onChange={(e) => setZoom(Number(e.target.value))}
+                                />
+                                <button
+                                    onClick={applyCrop}
+                                    className="bg-[#CAA07D] text-white px-4 py-1 rounded"
+                                >
+                                    Обрезать
+                                </button>
+                            </div>
                         </div>
                     )}
 
