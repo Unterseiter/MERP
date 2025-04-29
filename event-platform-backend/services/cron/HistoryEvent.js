@@ -1,4 +1,4 @@
-const { sequelize, Event, RequestEvent, history } = require('../../models');
+const { sequelize, Event, RequestEvent, history, Message} = require('../../models');
 const { Op } = require('sequelize');
 const fs = require('fs').promises;
 const path = require('path');
@@ -14,7 +14,6 @@ const moveEventToHistoryById = async (eventId) => {
         // Находим событие по ID
         const event = await Event.findOne({
             where: { event_id: eventId },
-            attributes: ['event_id', 'creator_tag', 'name', 'description', 'start_date', 'photo_url'],
         });
 
         if (!event) {
@@ -23,13 +22,12 @@ const moveEventToHistoryById = async (eventId) => {
 
         const { event_id, creator_tag, name, description, start_date, photo_url } = event;
 
-        // Находим принятых участников
+        // Находим всех участников
         const participants = await RequestEvent.findAll({
             where: {
                 event_id,
-                status: 'accept',
             },
-            attributes: ['user_tag', 'is_reported'],
+            attributes: ['request_id', 'user_tag', 'is_reported'],
         });
 
         // Начинаем транзакцию
@@ -78,18 +76,24 @@ const moveEventToHistoryById = async (eventId) => {
                     }
                 }
             }
-
+            //удаляю все сообщения и чаты этого эвента
+            for (const participant of participants) {
+                await Message.destroy({
+                    where:{ request_id: participant.request_id}
+                })
+            }
 
             // Удаляем событие и связанные запросы
+            await RequestEvent.destroy({
+                where: { event_id },
+                transaction: t,
+            });
+
             await Event.destroy({
                 where: { event_id },
                 transaction: t,
             });
 
-            await RequestEvent.destroy({
-                where: { event_id },
-                transaction: t,
-            });
         });
 
         info1(`Событие ${name} (ID: ${event_id}) перенесено в историю`);
