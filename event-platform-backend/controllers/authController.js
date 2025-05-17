@@ -1,7 +1,8 @@
 
+// Контроллер для аутентификации пользователей
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models'); // Подразумевается, что у вас есть модель User
+const { User } = require('../models'); // Модель User
 const userService = require('../services/userService');
 require('dotenv').config();
 
@@ -16,7 +17,7 @@ const authController = {
       if (existingUser) {
         return res.status(400).json({ message: 'Пользователь с таким email уже существует' });
       }
-      // Проверяем, существует ли пользователь с таким email
+      // Проверяем, существует ли пользователь с таким tag_name
       const existingTags = await User.findOne({ where: { tag_name } });
       if (existingTags) {
         return res.status(400).json({ message: 'Пользователь с таким tag_name уже существует' });
@@ -25,7 +26,7 @@ const authController = {
       // Хешируем пароль
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Создаем нового пользователя
+      // Создаем нового пользователя через сервис
       const Created = userService.createUser({ tag_name: tag_name, name: name, email: email, password: hashedPassword, privilege: "user", city: city });
 
       res.status(201).json({ message: 'Пользователь успешно зарегистрирован', created: Created });
@@ -55,6 +56,7 @@ const authController = {
         { expiresIn: '1d' }
       );
 
+      // Устанавливаем токен в httpOnly cookie
       res.cookie('jwt', token, {
         httpOnly: true,
         secure: true,
@@ -67,7 +69,7 @@ const authController = {
       res.status(500).json({ message: error.message });
     }
   },
-  //Выход
+  // Выход пользователя
   async logout(req, res) {
     try {
       // Очищаем куки
