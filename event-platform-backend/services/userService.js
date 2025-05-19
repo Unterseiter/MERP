@@ -45,9 +45,7 @@ const userService = {
   // Получение пользователя по tag_user
   async getUserByTag(tag_user) {
     try {
-      // console.log(tag_user); // Удален для чистоты кода
       const user = await User.scope('withoutPassword').findOne({ where: { tag_name: tag_user } });
-      // console.log(user); // Удален для чистоты кода
       return user;
     } catch (error) {
       throw error;
@@ -65,11 +63,36 @@ const userService = {
   },
 
   // Получение всех пользователей
-  async getAllUser() {
+  async getAllUser(page = 1, sortDirection = 'ASC') { // sortDirection: ASC/DESC
     try {
-      // console.log(user); // Удален для чистоты кода
-      const user = await User.scope('withoutPassword').findAll();
-      return user;
+      // Фиксированный размер страницы
+      const pageSize = 10;
+      
+      // Валидация параметров
+      page = Math.max(1, parseInt(page));
+      sortDirection = ['ASC', 'DESC'].includes(sortDirection.toUpperCase()) 
+        ? sortDirection.toUpperCase() 
+        : 'ASC';
+  
+      const offset = (page - 1) * pageSize;
+  
+      const { count, rows: users } = await User.scope('withoutPassword').findAndCountAll({
+        limit: pageSize,
+        offset: offset,
+        order: [['tags', sortDirection]] // Сортировка по полю tags
+      });
+  
+      return {
+        users,
+        meta: {
+          total: count,
+          totalPages: Math.ceil(count / pageSize),
+          page: page,
+          pageSize: pageSize, // Фиксированное значение 10
+          sortBy: 'tags',     // Информация о сортировке
+          sortDirection: sortDirection
+        }
+      };
     } catch (error) {
       throw error;
     }

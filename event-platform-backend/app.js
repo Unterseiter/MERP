@@ -5,8 +5,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const app = express();
 
-const { requestLogger, errorLogger } = require('./middleware/loggerMiddleware');
-
 const moveExpiredEventsToHistory = require('./services/cron/History');
 
 //Middleware(Промежуточные обработчики)
@@ -39,20 +37,9 @@ cron.schedule('0 0 * * *', () => {
 //});
     
 //Подключение маршрутов
-const authRoutes = require('./routes/auth');
-const eventRoutes = require('./routes/events');
-const userRoutes = require('./routes/user');
-const requestRoutes = require('./routes/requestEvent');
-const chatRoutes = require('./routes/chat');
-app.use(requestLogger);
-app.use('/api/auth', authRoutes);
-app.use('/api/events', eventRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/requests', requestRoutes);
-app.use('/api/chat', chatRoutes);
+const RouterController = require('./routes');
+new RouterController(app);
 
-
-app.use(errorLogger);
 //Обработка ошибок
 app.use((err, req, res, next) => {
     console.error(err.stack);

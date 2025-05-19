@@ -5,7 +5,8 @@ const models = {
   Event: require('./event.model')(sequelize),
   RequestEvent: require('./requestEvent.model')(sequelize),
   Message: require('./message.model')(sequelize),
-  history: require('./history.model')(sequelize)
+  history: require('./history.model')(sequelize),
+  Subscriber: require('./subscriber.model')(sequelize)
 };
 
 // Установка связей

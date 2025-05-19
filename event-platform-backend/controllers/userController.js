@@ -1,8 +1,13 @@
 const userService = require('../services/userService');
+const Joi = require('joi');
 const { sequelize, Event, RequestEvent, history, User } = require('../models');
 const { Op } = require('sequelize');
 const moveExpiredEventsToHistoryUser = require('../services/cron/HistoryUser');
 
+const getUsersSchema = Joi.object({
+  page: Joi.number().min(1).default(1),
+  sortDirection: Joi.string().valid('ASC', 'DESC').default('ASC'),
+});
 
 const userController = {
   // Получение профиля пользователя
@@ -111,7 +116,18 @@ const userController = {
   //получение всех пользователей
   async getAllProfile(req, res) {
     try {
-      const user = await userService.getAllUser();
+      const query = {
+        page: req.query.page,
+        sortDirection: req.query.sort
+      }
+
+      const {error, value } = getUsersSchema.validate(query, { abortEarly: false });
+      if (error) throw new ValidationError(error.details.map(d => ({
+        field: d.path[0],
+        message: d.message
+      })));
+
+      const user = await userService.getAllUser(value.page, value.sortDirection);
       if (!user) return res.status(404).json({ message: 'Пользователь не найден' });
       res.json(user);
     } catch (error) {
@@ -133,6 +149,45 @@ const userController = {
     }
   },
 
+  async getUserByTagController(req, res) {
+    try {
+      const { tag_user } = req.params;
+  
+      // Валидация входных данных
+      if (!tag_user || typeof tag_user !== 'string') {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid or missing tag parameter'
+        });
+      }
+  
+      // Очистка и нормализация тега
+      const normalizedTag = tag_user.trim().toLowerCase();
+  
+      const user = await getUserByTag(normalizedTag);
+  
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: 'User with specified tag not found'
+        });
+      }
+  
+      return res.status(200).json({
+        success: true,
+        data: user
+      });
+  
+    } catch (error) {
+      console.error('Error in getUserByTagController:', error);
+      
+      return res.status(500).json({
+        success: false,
+        message: 'Internal server error',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
+    }
+  },
   // Удаление профиля
   async deleteProfile(req, res) {
     try {

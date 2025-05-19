@@ -109,7 +109,7 @@ const eventController = {
         creator_tag: req.user.tag_name,
         views: 0,
         photo_url: req.file ? eventController._formatPhotoUrl(`/uploads/events/main/${req.file.filename}`) : null
-      };
+      };6
 
       const event = await eventService.createEvent(eventData);
       logger.info(`Event created: ID ${event.event_id}`);
