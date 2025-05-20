@@ -134,7 +134,6 @@ const userController = {
       res.status(500).json({ message: error.message });
     }
   },
-
   // Обновление профиля
   async updateProfile(req, res) {
     try {
@@ -151,7 +150,7 @@ const userController = {
 
   async getUserByTagController(req, res) {
     try {
-      const { tag_user } = req.params;
+      const { tag_user } = req.user.tag_name;
   
       // Валидация входных данных
       if (!tag_user || typeof tag_user !== 'string') {
@@ -164,7 +163,7 @@ const userController = {
       // Очистка и нормализация тега
       const normalizedTag = tag_user.trim().toLowerCase();
   
-      const user = await getUserByTag(normalizedTag);
+      const user = await userService.getUserByTag(normalizedTag);
   
       if (!user) {
         return res.status(404).json({

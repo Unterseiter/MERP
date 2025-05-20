@@ -2656,3 +2656,244 @@
 [2025-05-18T14:28:46.213Z] [INFO] GET /api/user/profile 304 - 173ms
 [2025-05-18T14:28:46.215Z] [INFO] Получено заявок: 0
 [2025-05-18T14:28:46.217Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-05-19T17:14:09.977Z] [INFO] GET /api/auth/profile 401 - 4ms
+[2025-05-19T17:14:09.941Z] [INFO] GET /api/auth/profile 401 - 88ms
+[2025-05-19T17:14:10.003Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 4ms
+[2025-05-19T17:14:10.009Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 2ms
+[2025-05-19T17:14:13.283Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:14:13.288Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-05-19T17:14:13.292Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:14:13.295Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:14:15.109Z] [INFO] POST /api/auth/login 200 - 344ms
+[2025-05-19T17:14:15.122Z] [INFO] GET /api/auth/profile 200 - 5ms
+[2025-05-19T17:14:17.170Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 200 - 55ms
+[2025-05-19T17:14:17.169Z] [INFO] Fetched 0 events
+[2025-05-19T17:14:17.190Z] [INFO] Fetched 0 events
+[2025-05-19T17:14:17.191Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 18ms
+[2025-05-19T17:14:17.217Z] [INFO] Получено заявок: 0
+[2025-05-19T17:14:17.218Z] [INFO] GET /api/requests?limit=10&page=1 200 - 18ms
+[2025-05-19T17:14:17.223Z] [INFO] GET /api/user/profile 200 - 81ms
+[2025-05-19T17:14:17.245Z] [INFO] Fetched 0 events
+[2025-05-19T17:14:17.247Z] [INFO] Получено заявок: 0
+[2025-05-19T17:14:17.246Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 21ms
+[2025-05-19T17:14:17.248Z] [INFO] GET /api/requests?limit=10&page=1 304 - 14ms
+[2025-05-19T17:14:17.259Z] [INFO] Fetched 0 events
+[2025-05-19T17:14:17.259Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 7ms
+[2025-05-19T17:14:17.264Z] [INFO] GET /api/user/profile 304 - 15ms
+[2025-05-19T17:14:17.290Z] [INFO] Получено заявок: 0
+[2025-05-19T17:14:17.290Z] [INFO] GET /api/requests?limit=10&page=1 304 - 9ms
+[2025-05-19T17:14:17.301Z] [INFO] GET /api/requests?limit=10&page=1 304 - 10ms
+[2025-05-19T17:14:17.300Z] [INFO] Получено заявок: 0
+[2025-05-19T17:15:09.375Z] [INFO] Event created: ID 13
+[2025-05-19T17:15:09.376Z] [INFO] POST /api/events 201 - 866ms
+[2025-05-19T17:15:12.493Z] [INFO] Fetched 1 events
+[2025-05-19T17:15:12.494Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 10ms
+[2025-05-19T17:15:12.509Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-05-19T17:15:12.508Z] [INFO] Fetched 1 events
+[2025-05-19T17:15:13.867Z] [INFO] GET /api/requests?limit=10&page=1 304 - 9ms
+[2025-05-19T17:15:13.866Z] [INFO] Получено заявок: 0
+[2025-05-19T17:15:49.635Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:15:49.625Z] [INFO] GET /api/auth/profile 401 - 10ms
+[2025-05-19T17:15:49.640Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 1ms
+[2025-05-19T17:15:49.642Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 401 - 1ms
+[2025-05-19T17:15:51.790Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:15:51.791Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-19T17:15:51.793Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:15:51.795Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-19T17:15:53.290Z] [INFO] POST /api/auth/login 200 - 114ms
+[2025-05-19T17:15:53.299Z] [INFO] GET /api/auth/profile 200 - 3ms
+[2025-05-19T17:15:57.164Z] [INFO] Fetched 1 events
+[2025-05-19T17:15:57.165Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 26ms
+[2025-05-19T17:15:58.278Z] [INFO] Получено заявок: 0
+[2025-05-19T17:15:58.279Z] [INFO] GET /api/requests?limit=10&page=1 200 - 12ms
+[2025-05-19T17:16:07.343Z] [INFO] GET /api/events/user 200 - 17ms
+[2025-05-19T17:16:07.349Z] [INFO] GET /api/events/user 304 - 4ms
+[2025-05-19T17:16:12.469Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:12.470Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-05-19T17:16:12.484Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:12.485Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms
+[2025-05-19T17:16:14.083Z] [INFO] Получено заявок: 0
+[2025-05-19T17:16:14.084Z] [INFO] GET /api/requests?limit=10&page=1 304 - 14ms
+[2025-05-19T17:16:20.529Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:20.530Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 200 - 9ms
+[2025-05-19T17:16:20.547Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 11ms
+[2025-05-19T17:16:20.546Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:20.555Z] [INFO] GET /api/user/profile 200 - 29ms
+[2025-05-19T17:16:20.557Z] [INFO] Получено заявок: 0
+[2025-05-19T17:16:20.558Z] [INFO] GET /api/requests?limit=10&page=1 304 - 8ms
+[2025-05-19T17:16:20.568Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:20.570Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 11ms
+[2025-05-19T17:16:20.582Z] [INFO] Получено заявок: 0
+[2025-05-19T17:16:20.583Z] [INFO] GET /api/requests?limit=10&page=1 304 - 8ms
+[2025-05-19T17:16:20.594Z] [INFO] GET /api/user/profile 304 - 29ms
+[2025-05-19T17:16:20.595Z] [INFO] Fetched 1 events
+[2025-05-19T17:16:20.596Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 9ms
+[2025-05-19T17:16:20.603Z] [INFO] Получено заявок: 0
+[2025-05-19T17:16:20.605Z] [INFO] GET /api/requests?limit=10&page=1 304 - 8ms
+[2025-05-19T17:16:20.612Z] [INFO] Получено заявок: 0
+[2025-05-19T17:16:20.614Z] [INFO] GET /api/requests?limit=10&page=1 304 - 7ms
+[2025-05-19T17:16:22.375Z] [INFO] Niki
+[2025-05-19T17:16:22.404Z] [INFO] Заявка создана: 11
+[2025-05-19T17:16:22.412Z] [INFO] POST /api/requests 201 - 40ms
+[2025-05-19T17:16:24.784Z] [INFO] GET /api/events/user 200 - 7ms
+[2025-05-19T17:16:24.791Z] [INFO] GET /api/events/user 304 - 5ms
+[2025-05-19T17:16:24.819Z] [INFO] GET /api/chat/11 200 - 21ms
+[2025-05-19T17:16:24.825Z] [INFO] Получено заявок: 1
+[2025-05-19T17:16:24.826Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 200 - 5ms
+[2025-05-19T17:16:24.834Z] [INFO] GET /api/chat/11 304 - 6ms
+[2025-05-19T17:16:24.840Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 5ms
+[2025-05-19T17:16:24.839Z] [INFO] Получено заявок: 1
+[2025-05-19T17:16:24.849Z] [INFO] GET /api/chat/11 304 - 8ms
+[2025-05-19T17:16:24.856Z] [INFO] GET /api/chat/11 304 - 7ms
+[2025-05-19T17:16:30.953Z] [INFO] GET /api/events/user 200 - 10ms
+[2025-05-19T17:16:30.971Z] [INFO] GET /api/events/user 304 - 9ms
+[2025-05-19T17:16:31.043Z] [INFO] Получено заявок: 1
+[2025-05-19T17:16:31.045Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 200 - 16ms
+[2025-05-19T17:16:31.069Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 20ms
+[2025-05-19T17:16:31.067Z] [INFO] Получено заявок: 1
+[2025-05-19T17:16:32.155Z] [INFO] GET /api/chat/11 200 - 28ms
+[2025-05-19T17:16:41.757Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:16:41.763Z] [INFO] GET /api/events/13 200 - 35ms
+[2025-05-19T17:16:53.747Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:16:53.748Z] [INFO] GET /api/events/13 200 - 26ms
+[2025-05-19T17:17:39.924Z] [INFO] GET /api/events/13 200 - 17ms
+[2025-05-19T17:17:39.923Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:18:00.754Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:18:00.755Z] [INFO] GET /api/events/13 200 - 19ms
+[2025-05-19T17:18:12.817Z] [INFO] GET /api/events/13 200 - 17ms
+[2025-05-19T17:18:12.817Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:18:30.030Z] [INFO] GET /api/events/13 200 - 14ms
+[2025-05-19T17:18:30.029Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:18:41.650Z] [INFO] GET /api/events/13 200 - 13ms
+[2025-05-19T17:18:41.649Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:20:55.518Z] [INFO] GET /api/events/13 200 - 237ms
+[2025-05-19T17:20:55.511Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:21:05.402Z] [INFO] GET /api/events/13 200 - 20ms
+[2025-05-19T17:21:05.399Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:21:32.073Z] [INFO] GET /api/events/13 200 - 46ms
+[2025-05-19T17:21:32.072Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:21:53.406Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:21:53.407Z] [INFO] GET /api/events/13 200 - 69ms
+[2025-05-19T17:23:53.479Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:23:53.481Z] [INFO] GET /api/events/13 200 - 33ms
+[2025-05-19T17:23:57.780Z] [INFO] GET /api/events/13 200 - 14ms
+[2025-05-19T17:23:57.778Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:24:08.831Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:24:08.832Z] [INFO] GET /api/events/13 200 - 33ms
+[2025-05-19T17:24:49.979Z] [INFO] GET /api/events/13 200 - 34ms
+[2025-05-19T17:24:49.978Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:25:17.836Z] [INFO] GET /api/events/13 200 - 39ms
+[2025-05-19T17:25:17.835Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:26:03.615Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:26:03.617Z] [INFO] GET /api/events/13 200 - 46ms
+[2025-05-19T17:26:59.931Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:26:59.932Z] [INFO] GET /api/events/13 200 - 43ms
+[2025-05-19T17:27:27.583Z] [INFO] GET /api/events/13 200 - 41ms
+[2025-05-19T17:27:27.578Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:27:47.502Z] [INFO] GET /api/events/13 200 - 29ms
+[2025-05-19T17:27:47.500Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:28:59.458Z] [INFO] Event viewed: ID 13
+[2025-05-19T17:28:59.459Z] [INFO] GET /api/events/13 200 - 31ms
+[2025-05-19T20:13:18.049Z] [INFO] POST /api/events 201 - 2280ms
+[2025-05-19T20:13:18.033Z] [INFO] Event created: ID 14
+[2025-05-19T20:13:22.265Z] [INFO] GET /api/chat/11 200 - 154ms
+[2025-05-19T20:13:23.015Z] [INFO] GET /api/user/profile 200 - 66ms
+[2025-05-19T20:13:23.056Z] [INFO] GET /api/user/profile 304 - 37ms
+[2025-05-19T20:13:24.528Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:24.530Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 200 - 75ms
+[2025-05-19T20:13:24.551Z] [INFO] GET /api/user/profile 304 - 73ms
+[2025-05-19T20:13:24.564Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 21ms
+[2025-05-19T20:13:24.562Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:24.590Z] [INFO] GET /api/requests?limit=10&page=1 200 - 25ms
+[2025-05-19T20:13:24.588Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:24.610Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:24.611Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 13ms
+[2025-05-19T20:13:24.636Z] [INFO] GET /api/user/profile 304 - 55ms
+[2025-05-19T20:13:24.638Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 25ms
+[2025-05-19T20:13:24.636Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:24.652Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:24.653Z] [INFO] GET /api/requests?limit=10&page=1 304 - 15ms
+[2025-05-19T20:13:24.663Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:24.667Z] [INFO] GET /api/requests?limit=10&page=1 304 - 12ms
+[2025-05-19T20:13:24.675Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:24.676Z] [INFO] GET /api/requests?limit=10&page=1 304 - 8ms
+[2025-05-19T20:13:25.235Z] [INFO] GET /api/events/user 200 - 13ms
+[2025-05-19T20:13:25.249Z] [INFO] GET /api/events/user 304 - 12ms
+[2025-05-19T20:13:25.281Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:25.282Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 11ms
+[2025-05-19T20:13:25.297Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:25.299Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 11ms
+[2025-05-19T20:13:25.309Z] [INFO] GET /api/chat/11 304 - 46ms
+[2025-05-19T20:13:25.330Z] [INFO] GET /api/chat/11 304 - 15ms
+[2025-05-19T20:13:25.353Z] [INFO] GET /api/chat/11 304 - 21ms
+[2025-05-19T20:13:25.368Z] [INFO] GET /api/chat/11 304 - 14ms
+[2025-05-19T20:13:29.207Z] [INFO] Получено заявок: 0
+[2025-05-19T20:13:29.208Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 200 - 7ms
+[2025-05-19T20:13:34.040Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:34.042Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 10ms
+[2025-05-19T20:13:34.063Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:34.064Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 11ms
+[2025-05-19T20:13:35.527Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:35.529Z] [INFO] GET /api/requests?limit=10&page=1 200 - 14ms
+[2025-05-19T20:13:43.131Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:43.133Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 200 - 17ms
+[2025-05-19T20:13:43.156Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:43.159Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 18ms
+[2025-05-19T20:13:43.173Z] [INFO] GET /api/user/profile 200 - 47ms
+[2025-05-19T20:13:43.176Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:43.178Z] [INFO] GET /api/requests?limit=10&page=1 304 - 14ms
+[2025-05-19T20:13:43.188Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:43.191Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 11ms
+[2025-05-19T20:13:43.211Z] [INFO] GET /api/requests?limit=10&page=1 304 - 13ms
+[2025-05-19T20:13:43.210Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:43.223Z] [INFO] GET /api/user/profile 304 - 38ms
+[2025-05-19T20:13:43.224Z] [INFO] Fetched 2 events
+[2025-05-19T20:13:43.226Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&limited=10 304 - 10ms
+[2025-05-19T20:13:43.234Z] [INFO] GET /api/requests?limit=10&page=1 304 - 7ms
+[2025-05-19T20:13:43.233Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:43.243Z] [INFO] GET /api/requests?limit=10&page=1 304 - 8ms
+[2025-05-19T20:13:43.242Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:46.571Z] [INFO] Nais
+[2025-05-19T20:13:46.594Z] [INFO] Заявка создана: 12
+[2025-05-19T20:13:46.600Z] [INFO] POST /api/requests 201 - 30ms
+[2025-05-19T20:13:48.702Z] [INFO] GET /api/events/user 200 - 10ms
+[2025-05-19T20:13:48.722Z] [INFO] GET /api/events/user 304 - 7ms
+[2025-05-19T20:13:48.743Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:48.745Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 11ms
+[2025-05-19T20:13:48.751Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:48.752Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 6ms
+[2025-05-19T20:13:51.357Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 200 - 23ms
+[2025-05-19T20:13:51.354Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:51.360Z] [INFO] GET /api/chat/12 200 - 30ms
+[2025-05-19T20:13:51.380Z] [INFO] GET /api/chat/12 304 - 16ms
+[2025-05-19T20:13:51.401Z] [INFO] GET /api/chat/12 304 - 12ms
+[2025-05-19T20:13:56.933Z] [INFO] Event viewed: ID 14
+[2025-05-19T20:13:56.935Z] [INFO] GET /api/events/14 200 - 52ms
+[2025-05-19T20:13:59.886Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 16ms
+[2025-05-19T20:13:59.885Z] [INFO] Получено заявок: 1
+[2025-05-19T20:13:59.906Z] [INFO] GET /api/chat/11 304 - 42ms
+[2025-05-19T20:13:59.928Z] [INFO] GET /api/chat/11 304 - 19ms
+[2025-05-19T20:13:59.953Z] [INFO] GET /api/chat/11 304 - 20ms
+[2025-05-19T20:14:00.087Z] [INFO] Получено заявок: 1
+[2025-05-19T20:14:00.089Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 200 - 9ms
+[2025-05-19T20:14:01.234Z] [INFO] GET /api/chat/12 200 - 33ms
+[2025-05-19T20:14:07.865Z] [INFO] Event viewed: ID 14
+[2025-05-19T20:14:07.866Z] [INFO] GET /api/events/14 200 - 14ms
+[2025-05-19T20:14:13.496Z] [INFO] Event viewed: ID 14
+[2025-05-19T20:14:13.501Z] [INFO] GET /api/events/14 200 - 26ms
+[2025-05-19T20:14:15.527Z] [INFO] Статус заявки 12 обновлен на: rejection
+[2025-05-19T20:14:15.529Z] [INFO] PATCH /api/requests/12/status 200 - 28ms
+[2025-05-19T20:14:15.550Z] [INFO] Получено заявок: 1
+[2025-05-19T20:14:15.554Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 200 - 21ms
+[2025-05-19T20:14:29.240Z] [INFO] Получено заявок: 1
+[2025-05-19T20:14:29.242Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 82ms
+[2025-05-19T20:14:29.266Z] [INFO] GET /api/chat/11 304 - 111ms
+[2025-05-19T20:14:29.298Z] [INFO] GET /api/chat/11 304 - 27ms
+[2025-05-19T20:14:29.316Z] [INFO] GET /api/chat/11 304 - 13ms
+[2025-05-19T20:14:32.993Z] [INFO] Получено заявок: 1
+[2025-05-19T20:14:33.008Z] [INFO] GET /api/requests?event_id=14&user_tag=&status=&is_reported=&limit=10&page=1 304 - 26ms
+[2025-05-19T20:14:35.046Z] [INFO] Получено заявок: 1
+[2025-05-19T20:14:35.047Z] [INFO] GET /api/requests?event_id=13&user_tag=&status=&is_reported=&limit=10&page=1 304 - 6ms
+[2025-05-19T20:14:36.252Z] [INFO] GET /api/chat/11 200 - 25ms
+[2025-05-19T20:20:17.652Z] [INFO] GET /api/user/profile 304 - 331ms
+[2025-05-19T20:20:17.679Z] [INFO] GET /api/user/profile 304 - 24ms

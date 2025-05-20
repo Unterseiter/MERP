@@ -78,7 +78,7 @@ const subscriberController = {
             const { userTag } = req.user.tag_name;
             const { type = 'subscriptions', page = 1, search = '' } = req.query;
 
-            const result = await this.subscriptionService.getSubscriptions(
+            const result = await subscriptionService.getSubscriptions(
                 userTag,
                 type,
                 parseInt(page),

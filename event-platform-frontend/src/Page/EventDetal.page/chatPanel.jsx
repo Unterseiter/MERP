@@ -167,6 +167,12 @@ export default function ChatPanel({ selectedRequest, isCreator, onAction }) {
               type="text"
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendMessage();
+                }
+              }}
               className="flex-1 px-4 py-2 border rounded"
               placeholder="Введите сообщение..."
             />

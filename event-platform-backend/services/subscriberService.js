@@ -2,96 +2,96 @@
 const { Subscriber, User } = require('../models');
 
 const subscriberService = {
-    constructor() {
-        this.models = {
-            Subscriber: Subscriber,
-            User: User
-        };
-    },
+  constructor() {
+    this.models = {
+      Subscriber: Subscriber,
+      User: User
+    };
+  },
 
-    // Получение подписок с пагинацией и фильтрами
-    async getSubscriptions({
-        userTag,
-        page = 1,
-        search = '',
-        type = 'subscriptions' // 'subscriptions'(подписки) или 'subscribers'(подписчики)
-    }) {
-        try {
-            const { Op } = require('sequelize');
-            const limit = 10; // Фиксированный лимит
+  // Получение подписок с пагинацией и фильтрами
+  async getSubscriptions({
+    userTag,
+    page = 1,
+    search = '',
+    type = 'subscriptions' // 'subscriptions'(подписки) или 'subscribers'(подписчики)
+  }) {
+    try {
+      const { Op } = require('sequelize');
+      const limit = 10; // Фиксированный лимит
 
-            // Валидация типа запроса
-            if (!['subscriptions', 'subscribers'].includes(type)) {
-                throw new Error('Invalid type parameter');
-            }
+      // Валидация типа запроса
+      if (!['subscriptions', 'subscribers'].includes(type)) {
+        throw new Error('Invalid type parameter');
+      }
 
-            // Проверка существования пользователя
-            const user = await this.models.User.findOne({
-                where: { tag_name: userTag },
-                attributes: ['tag_name']
-            });
+      // Проверка существования пользователя
+      const user = await this.models.User.findOne({
+        where: { tag_name: userTag },
+        attributes: ['tag_name']
+      });
 
-            if (!user) {
-                throw new Error('User not found');
-            }
+      if (!user) {
+        throw new Error('User not found');
+      }
 
-            // Настройка условий запроса
-            const where = {};
-            const include = [];
-            let searchField;
+      // Настройка условий запроса
+      const where = {};
+      const include = [];
+      let searchField;
 
-            if (type === 'subscriptions') {
-                where.subscriber_tag = userTag;
-                include.push({
-                    model: this.models.User,
-                    as: 'SubscribedUser', // Те, на кого подписан пользователь
-                    attributes: ['tag_name', 'name', 'city'],
-                    where: {}
-                });
-                searchField = 'SubscribedUser';
-            } else {
-                where.subscribed_tag = userTag;
-                include.push({
-                    model: this.models.User,
-                    as: 'SubscriberUser', // Те, кто подписан на пользователя
-                    attributes: ['tag_name', 'name', 'city'],
-                    where: {}
-                });
-                searchField = 'SubscriberUser';
-            }
+      if (type === 'subscriptions') {
+        where.subscriber_tag = userTag;
+        include.push({
+          model: this.models.User,
+          as: 'SubscribedUser', // Те, на кого подписан пользователь
+          attributes: ['tag_name', 'name', 'city'],
+          where: {}
+        });
+        searchField = 'SubscribedUser';
+      } else {
+        where.subscribed_tag = userTag;
+        include.push({
+          model: this.models.User,
+          as: 'SubscriberUser', // Те, кто подписан на пользователя
+          attributes: ['tag_name', 'name', 'city'],
+          where: {}
+        });
+        searchField = 'SubscriberUser';
+      }
 
-            // Добавляем поиск если есть search
-            if (search) {
-                include[0].where[Op.or] = [
-                    { name: { [Op.iLike]: `%${search}%` } },
-                    { tag_name: { [Op.iLike]: `%${search}%` } }
-                ];
-            }
+      // Добавляем поиск если есть search
+      if (search) {
+        include[0].where[Op.or] = [
+          { name: { [Op.iLike]: `%${search}%` } },
+          { tag_name: { [Op.iLike]: `%${search}%` } }
+        ];
+      }
 
-            const result = await this.models.Subscriber.findAndCountAll({
-                where,
-                include,
-                limit,
-                offset: (page - 1) * limit,
-                order: [[searchField, 'name', 'ASC']],
-                distinct: true
-            });
+      const result = await this.models.Subscriber.findAndCountAll({
+        where,
+        include,
+        limit,
+        offset: (page - 1) * limit,
+        order: [[searchField, 'name', 'ASC']],
+        distinct: true
+      });
 
-            return {
-                total: result.count,
-                page: parseInt(page),
-                totalPages: Math.ceil(result.count / limit),
-                data: result.rows.map(item => item[searchField])
-            };
-        } catch (error) {
-            throw new Error(`Failed to get ${type}: ${error.message}`);
-        }
-    },
+      return {
+        total: result.count,
+        page: parseInt(page),
+        totalPages: Math.ceil(result.count / limit),
+        data: result.rows.map(item => item[searchField])
+      };
+    } catch (error) {
+      throw new Error(`Failed to get ${type}: ${error.message}`);
+    }
+  },
 
-    // Создание подписки
+  // Создание подписки
   async createSubscription(subscriberTag, subscribedTag) {
     const t = await this.models.sequelize.transaction();
-    
+
     try {
       // Проверка на самоподписку
       if (subscriberTag === subscribedTag) {
