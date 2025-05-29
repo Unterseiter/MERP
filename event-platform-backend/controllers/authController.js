@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models'); // Модель User
 const userService = require('../services/userService');
+const { counters } = require('sharp');
 require('dotenv').config();
 
 const authController = {
@@ -51,7 +52,7 @@ const authController = {
       }
 
       // Генерируем JWT-токен
-      const token = jwt.sign({ tag_name: user.tag_name, id: user.id },
+      const token = jwt.sign({ tag_name: user.tag_name, id: user.id, city:user.city},
         process.env.JWT_SECRET,
         { expiresIn: '1d' }
       );
