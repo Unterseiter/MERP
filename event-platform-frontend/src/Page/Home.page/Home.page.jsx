@@ -46,12 +46,7 @@ function Home() {
             setHasMore(newEvents.length >= limited);
 
         } catch (err) {
-            setError(err.response?.data?.message || 'Ошибка загрузки событий');
-            
-            setTimeout(() => {
-                setError(null);
-            }, 5000);
-            
+            setError(err.response?.data?.message || 'Ошибка загрузки событий');            
         } finally {
             setLoading(false);
         }
