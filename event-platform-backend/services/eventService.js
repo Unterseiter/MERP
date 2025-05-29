@@ -24,6 +24,8 @@ const eventService = {
 
     // Фильтр по создателю
     if (creatorTag) where.creator_tag = creatorTag;
+    const creatorCity = await User.findOne({ where: { tag_name: creatorTag } }).city;
+    if (creatorCity) where.city = creatorCity;
 
     // Фильтр по текстовому поиску
     if (search) {
@@ -91,7 +93,10 @@ const eventService = {
         throw new Error('end_date must be greater than start_date');
       }
 
+
       // 6. Создаем событие с преобразованными датами
+      console.log("eventData");
+      console.log(eventData);
       const event = await Event.create({
         ...eventData,
         start_date: startDate,
@@ -166,7 +171,6 @@ const eventService = {
       if (creator != null && Check_Privilege(event.creator_tag, creator)) {
         throw new Error('У вас нет прав для обновления этого мероприятия');
       }
-      console.log(eventData);
       await event.update(eventData);
       return event;
     } catch (error) {

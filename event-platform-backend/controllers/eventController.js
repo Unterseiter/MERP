@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { Event } = require('../models');
+const { Event, User } = require('../models');
 const { ValidationError, ForbiddenError, NotFoundError } = require('../utils/errors');
 const eventService = require('../services/eventService');
 const { logger } = require('../utils/LogFile');
@@ -106,10 +106,11 @@ const eventController = {
 
       const eventData = {
         ...value,
+        city: req.user.city,
         creator_tag: req.user.tag_name,
         views: 0,
         photo_url: req.file ? eventController._formatPhotoUrl(`/uploads/events/main/${req.file.filename}`) : null
-      };
+      };6
 
       const event = await eventService.createEvent(eventData);
       logger.info(`Event created: ID ${event.event_id}`);
@@ -182,6 +183,7 @@ const eventController = {
   async updateEvent(req, res, next) {
     try {
       const event = await Event.findByPk(req.params.id);
+      const city = req.user.city;
       if (!event) throw new NotFoundError('Мероприятие не найдено');
       eventController._checkPermissions(event, req.user);
 
@@ -191,17 +193,14 @@ const eventController = {
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         limited: req.body.limited,
-        photo_url: req.body.photo_url
+        photo_url: req.body.photo_url,
+        city: city
       }
       const { error, value } = eventUpdateSchema.validate(validobj);
-      console.log("пришло");
-      console.log(req.body);
       if (error) throw new ValidationError(error.details);
 
       const fileData = await eventController._handleFileUpload(req, event);
       value.photo_url = eventController._formatPhotoUrl(fileData.photo_url);
-      console.log("cтало");
-      console.log(fileData);
 
       const updatedEvent = await eventService.updateEvent(req.params.id, {
         ...value,

@@ -1,0 +1,549 @@
+openapi: 3.0.0
+info:
+  title: Event Platform API
+  version: 1.0.0
+  description: >
+    API для платформы управления мероприятиями.
+    Авторизация осуществляется через JWT, который сохраняется в httpOnly cookie после входа.
+
+servers:
+  - url: http://localhost:8080/api
+    description: Локальный сервер
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: jwt
+  schemas:
+    User:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        tag_name:
+          type: string
+        name:
+          type: string
+        privilege:
+          type: string
+          enum: [admin, user]
+        city:
+          type: string
+        email:
+          type: string
+    Event:
+      type: object
+      properties:
+        event_id:
+          type: integer
+        photo_url:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        limited:
+          type: integer
+        views:
+          type: integer
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        creator_tag:
+          type: string
+    Message:
+      type: object
+      properties:
+        message_id:
+          type: integer
+        context:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        sender:
+          type: string
+        recipient:
+          type: string
+        event_id:
+          type: integer
+        request_id:
+          type: integer
+    RequestEvent:
+      type: object
+      properties:
+        request_id:
+          type: integer
+        status:
+          type: string
+          enum: [expectation, accept, rejection]
+        user_tag:
+          type: string
+        is_reported:
+          type: boolean
+
+security:
+  - cookieAuth: []
+
+paths:
+  /auth/register:
+    post:
+      summary: Регистрация пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tag_name, name, email, password, city]
+              properties:
+                tag_name:
+                  type: string
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                city:
+                  type: string
+      responses:
+        '201':
+          description: Пользователь успешно зарегистрирован
+        '400':
+          description: Пользователь с таким email или tag_name уже существует
+
+  /auth/login:
+    post:
+      summary: Вход пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tag_name, password]
+              properties:
+                tag_name:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Успешный вход, JWT сохранён в httpOnly cookie
+        '401':
+          description: Неверный tag_name или пароль
+
+  /auth/logout:
+    post:
+      summary: Выход пользователя (очистка cookie)
+      responses:
+        '200':
+          description: Успешный выход
+
+  /auth/profile:
+    get:
+      summary: Получить профиль текущего пользователя
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Профиль пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /events:
+    get:
+      summary: Получить список мероприятий
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Номер страницы
+        - in: query
+          name: limited
+          schema:
+            type: integer
+          description: Количество элементов на странице
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Поисковый запрос
+        - in: query
+          name: startDate
+          schema:
+            type: string
+            format: date-time
+          description: Дата начала фильтра
+        - in: query
+          name: endDate
+          schema:
+            type: string
+            format: date-time
+          description: Дата окончания фильтра
+        - in: query
+          name: sortBy
+          schema:
+            type: string
+            enum: [start_date, end_date, views]
+          description: Поле сортировки
+        - in: query
+          name: sortOrder
+          schema:
+            type: string
+            enum: [ASC, DESC]
+          description: Порядок сортировки
+        - in: query
+          name: minViews
+          schema:
+            type: integer
+          description: Минимальное количество просмотров
+        - in: query
+          name: maxViews
+          schema:
+            type: integer
+          description: Максимальное количество просмотров
+      responses:
+        '200':
+          description: Список мероприятий с пагинацией
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      page:
+                        type: integer
+                      totalPages:
+                        type: integer
+                      limited:
+                        type: integer
+
+    post:
+      summary: Создать мероприятие
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                start_date:
+                  type: string
+                  format: date-time
+                end_date:
+                  type: string
+                  format: date-time
+                limited:
+                  type: integer
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Мероприятие создано
+
+  /events/user:
+    get:
+      summary: Получить мероприятия, связанные с пользователем
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Список мероприятий пользователя
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+
+  /events/{id}:
+    get:
+      summary: Получить мероприятие по ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Мероприятие
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+
+    put:
+      summary: Обновить мероприятие
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                start_date:
+                  type: string
+                  format: date-time
+                end_date:
+                  type: string
+                  format: date-time
+                limited:
+                  type: integer
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Мероприятие обновлено
+
+    delete:
+      summary: Удалить мероприятие
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Мероприятие удалено
+
+  /events/{id}/photo:
+    post:
+      summary: Загрузить фото мероприятия
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Фото загружено
+
+  /requests:
+    get:
+      summary: Получить список заявок
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Список заявок
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestEvent'
+
+    post:
+      summary: Подать заявку на участие
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event_id]
+              properties:
+                event_id:
+                  type: integer
+      responses:
+        '201':
+          description: Заявка подана
+
+  /requests/{id}:
+    get:
+      summary: Получить детали заявки
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Детали заявки
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestEvent'
+
+    patch:
+      summary: Обновить статус заявки
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum: [expectation, accept, rejection]
+      responses:
+        '200':
+          description: Статус заявки обновлен
+
+    patch:
+      summary: Обновить отчет по заявке
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report:
+                  type: string
+      responses:
+        '200':
+          description: Отчет обновлен
+
+    delete:
+      summary: Удалить заявку
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Заявка удалена
+
+  /user/profile:
+    get:
+      summary: Получить профиль текущего пользователя
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: Профиль пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /user:
+    get:
+      summary: Получить список всех пользователей
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+    put:
+      summary: Обновить профиль текущего пользователя
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Профиль обновлен
+
+  /chat/{RequestId}:
+    get:
+      summary: Получить сообщения чата по ID заявки
+      security:
+        - cookieAuth: []
+      parameters:
+        - in: path
+          name: RequestId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Список сообщений
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
