@@ -62,6 +62,7 @@ const AuthPopup = ({ onClose }) => {
         await AuthService.login({ tag_name: formData.tag_name, password: formData.password });
       } else {
         await AuthService.register(formData);
+        await AuthService.login({tag_name: formData.tag_name, password: formData.password })
       }
       const userData = await AuthService.checkAuth();
       login(userData);

@@ -21,6 +21,7 @@ const subscriberController = {
             const currentUser = req.user.tag_name; // Аутентифицированный пользователь
             const { subscribedTag } = req.body;
 
+
             if (!subscribedTag) {
                 return res.status(400).json({ error: 'subscribedTag is required' });
             }
@@ -75,15 +76,15 @@ const subscriberController = {
     // Получение подписок/подписчиков
     async getSubscriptions(req, res) {
         try {
-            const { userTag } = req.user.tag_name;
+            const tag_name  = req.user.tag_name;
             const { type = 'subscriptions', page = 1, search = '' } = req.query;
 
-            const result = await subscriptionService.getSubscriptions(
-                userTag,
-                type,
-                parseInt(page),
-                search
-            );
+            const result = await subscriptionService.getSubscriptions({
+                userTag : tag_name,
+                type:type,
+                page:parseInt(page),
+                search:search
+        });
 
             res.status(200).json(result);
         } catch (error) {

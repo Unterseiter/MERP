@@ -5,16 +5,10 @@ import styles from './style.module.css';
 
 Modal.setAppElement('#root');
 
-export const EventCard = ({ title, description, imageUrl, id }) => {
+export const EventCard = (Event) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const event = Event.Event;
     
-    const event = {
-        id,
-        title,
-        description,
-        imageUrl
-    };
-
     const openModal = () => {
         setModalIsOpen(true);
     };
@@ -28,13 +22,13 @@ export const EventCard = ({ title, description, imageUrl, id }) => {
         <article onClick={openModal}  className={styles['card']}>
             <div className={styles['image-container']}>
                 <img
-                    src={imageUrl}
-                    alt={title}
+                    src={event.photo_url}
+                    alt={event.name}
                 />
             </div>
             <div className={styles['text-container']}>
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <h3>{event.name}</h3>
+                <p>{event.description}</p>
             </div>
             
             <EventModal

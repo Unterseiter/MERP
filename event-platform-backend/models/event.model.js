@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE,
             allowNull: false, // Дата окончания события обязательна
         },
+        city:{
+            type: DataTypes.STRING,
+            allowNull: false // город обязательна
+        },
         creator_tag: {
             type: DataTypes.STRING,
             allowNull: false, // Тег создателя события обязателен

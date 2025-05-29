@@ -26,7 +26,7 @@ export const EventsList = ({
           </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg">
+          <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg text-center">
             {error}
           </div>
         )}
@@ -34,11 +34,7 @@ export const EventsList = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {eventList.map((event) => (
             <EventCard
-              key={event.event_id || event.id}
-              title={event.name || event.title}
-              description={event.description}
-              imageUrl={event.photo_url || event.imageUrl || './images.png'}
-              id={event.event_id || event.id}
+              Event={event}
             />
           ))}
         </div>
@@ -66,3 +62,5 @@ export const EventsList = ({
 };
 
 export default EventsList;
+
+// 

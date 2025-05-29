@@ -99,10 +99,7 @@ const EventList = () => {
         {events.map((event) => (
           <EventCard
             key={event.event_id}
-            id={event.event_id}
-            title={event.name}
-            description={event.description}
-            imageUrl={event.photo_url || './images.png'}
+            Event={event}
           />
         ))}
       </div>
@@ -112,7 +109,7 @@ const EventList = () => {
           onClick={() => setPage(prev => prev + 1)}
           className={styles.loadMore}
         >
-          Показать еще
+          Больше
         </button>
       )}
 

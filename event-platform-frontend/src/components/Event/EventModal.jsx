@@ -40,32 +40,18 @@ export const EventModal = ({ isOpen, event, onClose }) => {
         onClose();
     };
 
-    const handleRequest = async (eventId, action, requestId) => {
+    const handleRequestCreate = async (eventId) => {
         try {
             setLoading(true);
-            switch (action) {
-                case 'create':
-                    const newRequest = await RequestService.createRecord(eventId);
-                    setRequests(prev => [...prev, newRequest.data]);
-                    break;
-                case 'delete':
-                    await RequestService.deleteRecord(requestId);
-                    setRequests(prev => prev.filter(r => r.request_id !== requestId));
-                    break;
-                case 'status':
-                    await RequestService.updateStatus(requestId, 'accept');
-                    setRequests(prev => prev.filter(r => r.request_id === requestId));
-                    break;
-                default:
-                    throw new Error('Неизвестное действие');
-            }
+            const newRequest = await RequestService.createRecord(eventId);
+            onClose();
         } catch (err) {
             setError(err.response?.data?.message || 'Ошибка операции');
         } finally {
             setLoading(false);
         }
     };
-    
+
     return (
         <Modal
             isOpen={isOpen}
@@ -100,16 +86,19 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                 <div className={styles['event-modal-container']}>
                     {/* Основная секция */}
                     <div className={`${styles['main-section']} ${isExpanded ? styles['expanded'] : ''}`}>
-                        {event.imageUrl && (
+                        {event.photo_url && (
                             <img
-                                src={event.imageUrl}
-                                alt={event.title}
+                                src={event.photo_url}
+                                alt={event.name}
                                 className={styles['event-image']}
                             />
                         )}
-                        <h1 className={styles['event-title']}>{event.title}</h1>
-                        <p className={styles['event-description']}>{event.description}</p>
-                        
+                        {!isExpanded && (
+                            <div>
+                                <h1 className={styles['event-title']}>{event.name}</h1>
+                                <p className={styles['event-description']}>{event.description}</p>
+                            </div>
+                        )}
                         <div className={styles['button-group']}>
                             <button
                                 onClick={handleClose}
@@ -131,26 +120,30 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                     {/* Расширенная секция - изначально скрыта */}
                     {isExpanded && (
                         <div className={styles['details-section']}>
-                            <h2 className={styles['details-title']}>Детали участия</h2>
+                                <h1 className={styles['event-title']}>{event.name}</h1>  
                             <div>
                                 <div className={styles['detail-item']}>
-                                    <p className={styles['detail-label']}>Дата и время:</p>
-                                    <p>{event.date}</p>
+                                    <p className={styles['detail-label']}>Дата и время начала: </p>
+                                    <p>{new Date(event.start_date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
                                 </div>
                                 <div className={styles['detail-item']}>
-                                    <p className={styles['detail-label']}>Место проведения:</p>
-                                    <p>{event.location}</p>
+                                    <p className={styles['detail-label']}>Дата и время конца: </p>
+                                    <p>{new Date(event.end_date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' })}</p>
                                 </div>
                                 <div className={styles['detail-item']}>
-                                    <p className={styles['detail-label']}>Контакты:</p>
-                                    <p>{event.contacts}</p>
+                                    <p className={styles['detail-label']}>Создатель: </p>
+                                    <p>@{event.creator_tag}</p>
                                 </div>
                                 <div className={styles['detail-item']}>
-                                    <p className={styles['detail-label']}>Требования:</p>
-                                    <p>{event.requirements || 'Отсутствуют'}</p>
+                                    <p className={styles['detail-label']}>Количество участников: </p>
+                                    <p>{event.limited}</p>
+                                </div>
+                                <div className={styles['detail-item']}>
+                                    <p className={styles['detail-label']}>Описание:</p>
+                                    <p>{event.description || 'Отсутствуют'}</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles['button-group']}>
                                 <button
                                     onClick={() => setIsExpanded(false)}
@@ -159,7 +152,7 @@ export const EventModal = ({ isOpen, event, onClose }) => {
                                     Назад
                                 </button>
                                 <button
-                                    nClick={() => handleRequest('create')}
+                                    onClick={() => handleRequestCreate(event.event_id)}
                                     className={`${styles.button} ${styles['button-green']}`}
                                     disabled={loading}
                                 >
