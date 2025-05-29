@@ -81,7 +81,7 @@ function Header() {
             {/* Десктопное меню */}
             <nav className="hidden md:flex items-center gap-4">
                 <button
-                    className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
+                    className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner "
                     onClick={() => setOpenModal(true)}
                 >
                     <Plus size={20} />
@@ -131,7 +131,7 @@ function Header() {
                     )}
                     
                 </div>
-                <button
+                {/* <button
                         className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
                         onClick={() => {
                             navigate(ROTER_PATH.test);
@@ -139,7 +139,7 @@ function Header() {
                     >
                         <User size={20} />
                         <span>таст</span>
-                    </button>
+                    </button> */}
                 {/* <button
                 className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
                     ${showAuthPopup ? 'bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50' : 'hover:bg-[#B08F6E] hover:shadow-lg'}
