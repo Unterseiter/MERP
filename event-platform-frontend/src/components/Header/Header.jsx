@@ -81,7 +81,7 @@ function Header() {
             {/* Десктопное меню */}
             <nav className="hidden md:flex items-center gap-4">
                 <button
-                    className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner "
+                    className={isAuthenticated ? "bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner " : "hidden"}
                     onClick={() => setOpenModal(true)}
                 >
                     <Plus size={20} />
@@ -96,7 +96,7 @@ function Header() {
                 {/* <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
                     <Bell size={20} />
                 </button> */}
-                <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
+                <button className={isAuthenticated ? "bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner" : "hidden"}
                     onClick={() => navigate(ROTER_PATH.EventDetail)}>
                     <MessageSquare size={20} />
                 </button>
@@ -158,7 +158,7 @@ function Header() {
                 >
                     <div className="flex flex-col p-4 gap-4">
                         <button
-                            className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                            className={isAuthenticated ? "w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2" : "hidden"}
                             onClick={() => {
                                 navigate(ROTER_PATH.eventManage);
                                 setIsMenuOpen(false);
@@ -179,8 +179,9 @@ function Header() {
                             <span>Уведомления</span>
                         </button> */}
 
+                        
                         <button
-                            className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                            className={isAuthenticated ? "w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2" : "hidden"}
                             onClick={() => {
                                 handleMessageClick();
                                 setIsMenuOpen(false);

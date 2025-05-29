@@ -69,6 +69,7 @@ const AuthPopup = ({ onClose }) => {
       setUser(userData);
       setFormData({ tag_name: '', city: '', name: '', email: '', password: '' });
       onClose();
+      window.location.reload()
     } catch (err) {
       setError(err.message || 'Произошла ошибка');
     } finally {

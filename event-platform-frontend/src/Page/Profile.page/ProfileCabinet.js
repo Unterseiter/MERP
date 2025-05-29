@@ -58,7 +58,7 @@ const ProfileCabinet = () => {
       {profileData && !loading && !authLoading && (
         <div className="flex flex-col lg:flex-row gap-7">
           {/* Левая колонка — профиль */}
-          <div className="w-full lg:w-2/6 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
             <img
               src={image}
               className="w-24 h-24 rounded-full object-cover mb-4"
@@ -74,9 +74,45 @@ const ProfileCabinet = () => {
               Выйти
             </button>
           </div>
+          
+          {/* центральная колонка с активными событиями и подписками */}
+          <div className="w-full lg:h-1/4 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
+            <div className='flex gap-4 justify-center m-2'>
+              <button className="bg-[#CAA07D] text-white px-8 py-2 rounded-full hover:bg-[#B08F6E] transition min-w-5 w-[60%]">Активные события</button>
+              <button className="bg-[#CAA07D] text-white px-8 py-2 rounded-full hover:bg-[#B08F6E] transition min-w-5 w-[60%]">Подписки</button>
+            </div>
+            {profileData.events.length > 0 ? (
+              <ul className="space-y-4 overflow-y-auto max-h-[400px] pr-2 ">
+                {profileData.events.map((event) => (
+                  <li
+                    key={event.event_id}
+                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
+                  >
+                    <h3 className="text-lg font-medium">{event.name}</h3>
+                    <p className="text-gray-600">Ограничение: {event.limited}</p>
+                    <p className="text-gray-600">
+                      Дата начала: {new Date(event.start_date).toLocaleDateString()}
+                    </p>
+                    <p className="text-gray-600">
+                      Дата окончания: {new Date(event.end_date).toLocaleDateString()}
+                    </p>
+                    <div className="max-w-[30rem]">
+                    <p className="text-gray-600 break-words whitespace-pre-wrap">
+                      Описание: {event.description || 'Нет описания'}
+                    </p>
+                    </div>
+                    <p className="text-gray-600">Создатель: {event.creator_tag}</p>
+                    <p className="text-gray-600">Просмотры: {event.views}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-500">Нет активных событий</p>
+            )}
+          </div>
 
           {/* Правая колонка — история */}
-          <div className="w-full bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
+          <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
 
             {profileData.history.length > 0 ? (
@@ -111,40 +147,6 @@ const ProfileCabinet = () => {
               </div>
             ) : (
               <p className="text-gray-500">История пуста</p>
-            )}
-          </div>
-
-
-
-          <div className="w-full lg:w-1/3 h-1/4 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7]">
-            <h2 className="text-2xl font-semibold mb-4">Активные события</h2>
-            {profileData.events.length > 0 ? (
-              <ul className="space-y-4 overflow-y-auto max-h-[400px] pr-2 ">
-                {profileData.events.map((event) => (
-                  <li
-                    key={event.event_id}
-                    className="border border-[#d6bda7] rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
-                  >
-                    <h3 className="text-lg font-medium">{event.name}</h3>
-                    <p className="text-gray-600">Ограничение: {event.limited}</p>
-                    <p className="text-gray-600">
-                      Дата начала: {new Date(event.start_date).toLocaleDateString()}
-                    </p>
-                    <p className="text-gray-600">
-                      Дата окончания: {new Date(event.end_date).toLocaleDateString()}
-                    </p>
-                    <div className="max-w-[30rem]">
-                    <p className="text-gray-600 break-words whitespace-pre-wrap">
-                      Описание: {event.description || 'Нет описания'}
-                    </p>
-                    </div>
-                    <p className="text-gray-600">Создатель: {event.creator_tag}</p>
-                    <p className="text-gray-600">Просмотры: {event.views}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">Нет активных событий</p>
             )}
           </div>
         </div>
