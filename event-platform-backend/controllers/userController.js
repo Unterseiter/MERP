@@ -92,7 +92,7 @@ const userController = {
           'history_status',
           'is_complaint',
         ],
-        order: [['history_id', 'DESC']], 
+        order: [['history_id', 'DESC']],
         limit: 20
       });
 
@@ -121,7 +121,7 @@ const userController = {
         sortDirection: req.query.sort
       }
 
-      const {error, value } = getUsersSchema.validate(query, { abortEarly: false });
+      const { error, value } = getUsersSchema.validate(query, { abortEarly: false });
       if (error) throw new ValidationError(error.details.map(d => ({
         field: d.path[0],
         message: d.message
@@ -150,36 +150,82 @@ const userController = {
 
   async getUserByTagController(req, res) {
     try {
-      const { tag_user } = req.user.tag_name;
-  
+      const { tag_user  } = req.params; // Получаем тег из параметров URL
+
       // Валидация входных данных
-      if (!tag_user || typeof tag_user !== 'string') {
+      if (!tag_user  || typeof tag_user  !== 'string') {
         return res.status(400).json({
           success: false,
           message: 'Invalid or missing tag parameter'
         });
       }
-  
+
       // Очистка и нормализация тега
-      const normalizedTag = tag_user.trim().toLowerCase();
-  
-      const user = await userService.getUserByTag(normalizedTag);
-  
+      const normalizedTag = tag_user .trim().toLowerCase();
+
+      // Получаем базовую информацию о пользователе
+      const user = await User.findOne({
+        where: { tag_name: normalizedTag },
+        attributes: [ 'tag_name', 'city', 'name', 'createdAt'] // Только публичные поля
+      });
+
       if (!user) {
         return res.status(404).json({
           success: false,
           message: 'User with specified tag not found'
         });
       }
-  
+
+      // Перемещаем просроченные события в историю
+      await moveExpiredEventsToHistoryUser(normalizedTag);
+
+      // Получаем активные события пользователя
+      const currentDate = new Date().toISOString().split('T')[0];
+      const events = await Event.findAll({
+        where: {
+          [Op.or]: [
+            { creator_tag: normalizedTag },
+            {
+              event_id: {
+                [Op.in]: sequelize.literal(`(
+                SELECT event_id FROM request_event 
+                WHERE user_tag = '${normalizedTag}' 
+                AND status = 'accept'
+              )`)
+              }
+            }
+          ],
+          end_date: { [Op.gte]: currentDate }
+        },
+        attributes: ['event_id', 'name', 'limited', 'start_date', 'end_date', 'description', 'views']
+      });
+
+      // Формируем ответ
+      const publicProfile = {
+        info: {
+          tag_name: user.tag_name,
+          city: user.city,
+          name: user.name,
+          createdAt: user.createdAt,
+        },
+        events: events.map(event => ({
+          event_id: event.event_id,
+          name: event.name,
+          limited: event.limited,
+          start_date: event.start_date,
+          end_date: event.end_date,
+          description: event.description,
+          views: event.views
+        }))
+      };
+
       return res.status(200).json({
         success: true,
-        data: user
+        data: publicProfile
       });
-  
+
     } catch (error) {
       console.error('Error in getUserByTagController:', error);
-      
       return res.status(500).json({
         success: false,
         message: 'Internal server error',

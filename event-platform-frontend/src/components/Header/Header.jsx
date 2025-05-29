@@ -35,7 +35,7 @@ function Header() {
     }, [showAuthPopup]);
 
     const handleHomeClick = () => navigate('home');
-    const handleProfileClick = () => navigate('profile');
+    const handleProfileClick = () => navigate(ROTER_PATH.ProfileCabinet.replace(':tag_name', user?.tag_name));
     const handleMessageClick = () => navigate('details')
     const handleSuccessCreate = () => {
 

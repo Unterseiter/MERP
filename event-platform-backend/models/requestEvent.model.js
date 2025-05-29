@@ -8,16 +8,20 @@ module.exports = (sequelize) => {
       autoIncrement: true
     },
     status: {
-        type: DataTypes.ENUM('expectation', 'accept', 'rejection'),
-        defaultValue: 'expectation'
+      type: DataTypes.ENUM('expectation', 'accept', 'rejection'),
+      defaultValue: 'expectation'
     },
     user_tag: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    event_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     is_reported: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   }, {
     tableName: 'request_event'

@@ -29,7 +29,9 @@ export default class UserService {
     // Получение пользователя по тегу
     static async getUserByTag(tagUser) {
         const res = await instanceAxios.get(`${this.apiUrl}/${tagUser}`);
-        return res.data;
+        console.log("res.data");
+        console.log(res.data.data);
+        return res.data.data;
     }
 
     // Удаление профиля (если endpoint доступен)

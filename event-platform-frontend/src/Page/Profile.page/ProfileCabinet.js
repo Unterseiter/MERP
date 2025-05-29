@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import { useParams } from 'react-router-dom';
 import UserService from '../../services/User.service/user.service';
 import SubscriptionService from '../../services/Subscriber.service/subscriber.service';
 import { AuthContext } from '../../components/authorization/AuthContext';
 import image from '../../assets/defuser.png';
 
+
 const ProfileCabinet = () => {
-  const { isAuthenticated, loading: authLoading, logout } = useContext(AuthContext);
+  const { isAuthenticated, loading: authLoading, logout, user } = useContext(AuthContext);
   const [profileData, setProfileData] = useState(null);
+  const {tag_name} = useParams();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   
@@ -143,15 +146,15 @@ const ProfileCabinet = () => {
               {/* Статистика профиля */}
               <div className="mt-4 grid grid-cols-3 gap-2 text-center">
                 <div className="bg-gray-100 p-2 rounded-lg">
-                  <p className="font-bold">{profileData.events.length}</p>
+                  {/* <p className="font-bold">{profileData.events.length}</p> */}
                   <p className="text-sm">Событий</p>
                 </div>
                 <div className="bg-gray-100 p-2 rounded-lg">
-                  <p className="font-bold">{followers.length}</p>
+                  {/* <p className="font-bold">{followers.length}</p> */}
                   <p className="text-sm">Подписчиков</p>
                 </div>
                 <div className="bg-gray-100 p-2 rounded-lg">
-                  <p className="font-bold">{subscriptions.length}</p>
+                  {/* <p className="font-bold">{subscriptions.length}</p> */}
                   <p className="text-sm">Подписок</p>
                 </div>
               </div>

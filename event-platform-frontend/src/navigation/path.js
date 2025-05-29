@@ -3,8 +3,7 @@ const ROTER_PATH = {
     func:'/func',
     registration:'/registr',
     eventManage:'/event_manage',
-    ProfileCabinet:'/profile',
-    EventDetail:'/details',
-    test:'/test'
+    ProfileCabinet:'/profile/:tag_name',
+    EventDetail:'/details'
 }
 export default ROTER_PATH;
