@@ -1,0 +1,52 @@
+/* src/components/CitySelect.css */
+.city-select {
+  position: relative;
+  width: 100%;
+}
+
+/* Основные стили инпута (преобразованные из Tailwind) */
+.city-select input {
+  /* margin-top: 0.25rem; mt-1 */
+  appearance: none; /* appearance-none */
+  position: relative; /* relative */
+  display: block; /* block */
+  width: 100%; /* w-full */
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  border: 1px solid #d1d5db; /* border border-gray-300 */
+  border-radius: 0.375rem; /* rounded-md */
+  outline: none; /* focus:outline-none */
+  font-size: 0.875rem; /* sm:text-sm */
+  line-height: 1.25rem; /* sm:text-sm */
+}
+
+/* Стили инпута при фокусе (преобразованные из Tailwind) */
+.city-select input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #CAA07D; /* focus:ring-[#CAA07D] */
+  border-color: #CAA07D; /* focus:border-[#CAA07D] */
+  z-index: 10; /* focus:z-10 */
+}
+
+/* Остальные стили (оставлены без изменений) */
+.city-suggestions {
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  background: white;
+  z-index: 1000;
+  margin-top: 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+  background-color: #f5f5f5;
+}

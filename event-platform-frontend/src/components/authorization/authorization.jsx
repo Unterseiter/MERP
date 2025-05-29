@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../components/authorization/AuthContext';
-import AuthService from '../../services/Auth.service/auth.service'; // Предполагается, что у вас есть сервис для работы с сервером
+import AuthService from '../../services/Auth.service/auth.service';
+import { CitySelect } from './CitySelect';
+import { Info } from 'lucide-react';
+import TooltipButton from '../base/TooltipButton';
 
 const AuthPopup = ({ onClose }) => {
   const popupRef = useRef(null);
@@ -19,18 +22,36 @@ const AuthPopup = ({ onClose }) => {
   const [error, setError] = useState('');
   const [user, setUser] = useState(null);
 
+  // Проверка авторизации при монтировании
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const userData = await AuthService.checkAuth(); // Запрос к защищенному маршруту
+        const userData = await AuthService.checkAuth();
         setUser(userData);
       } catch (err) {
-        setUser(null); // Пользователь не аутентифицирован
+        setUser(null);
       }
     };
     checkAuth();
   }, []);
-  //Обработка входа и регистрации
+
+  // Закрытие попапа при клике вне его
+  // useEffect(() => {
+  //   const handleClickOutside = (e) => {
+  //     if (
+  //       popupRef.current &&
+  //       !popupRef.current.contains(e.target) &&
+  //       !e.target.closest('input, button, label')
+  //     ) {
+  //       onClose();
+  //     }
+  //   };
+
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => document.removeEventListener('mousedown', handleClickOutside);
+  // }, [onClose]);
+
+  // Обработчик формы
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -42,7 +63,6 @@ const AuthPopup = ({ onClose }) => {
       } else {
         await AuthService.register(formData);
       }
-      // После успешного входа или регистрации запрашиваем данные пользователя
       const userData = await AuthService.checkAuth();
       login(userData);
       setUser(userData);
@@ -54,22 +74,11 @@ const AuthPopup = ({ onClose }) => {
       setLoading(false);
     }
   };
-  // Закрытие попапа при клике вне его
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      // Закрываем только если клик вне попапа И НЕ на элементах формы
-      if (
-        popupRef.current && 
-        !popupRef.current.contains(e.target) &&
-        !e.target.closest('input, button, label')
-      ) {
-        onClose();
-      }
-    };
-  
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onClose]);
+
+  // Обработчик выбора города
+  const handleCitySelect = (city) => {
+    setFormData({ ...formData, city });
+  };
 
   return (
     <div
@@ -83,68 +92,88 @@ const AuthPopup = ({ onClose }) => {
       >
         ×
       </button>
-      <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Авторизация</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+        {isLoginForm ? 'Авторизация' : 'Регистрация'}
+      </h3>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
           <span className="block sm:inline">{error}</span>
         </div>
       )}
-      <label className="block text-sm font-medium text-gray-700">
-        Логин
-      </label>
-      <form onSubmit={handleSubmit} className="space-y-5">
 
-        <input
-          placeholder='Введите логин'
-          id="tag_name"
-          name="tag_name"
-          type="text"
-          required
-          className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
-          value={formData.tag_name}
-          onChange={(e) => setFormData({ ...formData, tag_name: e.target.value })}
-        />
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Логин
+          </label>
+          <input
+            placeholder='Введите логин'
+            id="tag_name"
+            name="tag_name"
+            type="text"
+            required
+            className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D] focus:border-[#CAA07D] focus:z-10 sm:text-sm"
+            value={formData.tag_name}
+            onChange={(e) => setFormData({ ...formData, tag_name: e.target.value })}
+          />
+        </div>
+
         {!isLoginForm && (
           <>
             <div>
-              <input
-                placeholder='Введите город'
-                id="city"
-                name="city"
-                type="text"
-                required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
+              <div className='flex gap-1'>
+                <label className="mb-1 text-sm font-medium text-gray-700">
+                  Город
+                </label>
+                <TooltipButton
+                  icon={Info}
+                  tooltipContent="Выбирайте свой город из выпадающего списка (поиск города начинается со 2 буквы введенной вами)"
+                  iconColor="#4285F4"
+                  iconSize={17}
+                />
+
+                
+              </div>
+              <CitySelect
                 value={formData.city}
-                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                onChange={(city) => setFormData({ ...formData, city })}
               />
             </div>
             <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Имя
+              </label>
               <input
                 placeholder='Введите имя'
                 id="name"
                 name="name"
                 type="text"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D] focus:border-[#CAA07D] focus:z-10 sm:text-sm"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
+
             <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
               <input
                 placeholder='Введите электронную почту'
                 id="email"
                 name="email"
                 type="email"
                 required
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D] focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D] focus:border-[#CAA07D] focus:z-10 sm:text-sm"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
           </>
         )}
+
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             Пароль
@@ -154,11 +183,12 @@ const AuthPopup = ({ onClose }) => {
             name="password"
             type="password"
             required
-            className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D]  focus:border-[#CAA07D]  focus:z-10 sm:text-sm"
+            className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#CAA07D] focus:border-[#CAA07D] focus:z-10 sm:text-sm"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           />
         </div>
+
         <div className="flex items-center justify-between">
           <button
             type="button"
@@ -168,6 +198,7 @@ const AuthPopup = ({ onClose }) => {
             {isLoginForm ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти'}
           </button>
         </div>
+
         <button
           type="submit"
           disabled={loading}
