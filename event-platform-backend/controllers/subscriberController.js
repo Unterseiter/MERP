@@ -21,8 +21,6 @@ const subscriberController = {
             const currentUser = req.user.tag_name; // Аутентифицированный пользователь
             const { subscribedTag } = req.body;
 
-            console.log( currentUser);
-            console.log( subscribedTag);
 
             if (!subscribedTag) {
                 return res.status(400).json({ error: 'subscribedTag is required' });

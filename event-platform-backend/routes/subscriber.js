@@ -11,7 +11,7 @@ router.get('/',
 );
 
 // Создание подписки
-router.post('/:subscribedTag',
+router.post('/',
   authMiddleware,
   SubscriptionController.createSubscriber
 );
