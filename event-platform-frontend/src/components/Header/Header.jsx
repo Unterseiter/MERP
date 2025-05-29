@@ -37,7 +37,7 @@ function Header() {
     const handleHomeClick = () => navigate('home');
     const handleProfileClick = () => navigate('profile');
     const handleMessageClick = () => navigate('details')
-    const handleSuccessCreate = () =>{
+    const handleSuccessCreate = () => {
 
     }
     const handleLogout = async () => {
@@ -59,15 +59,15 @@ function Header() {
             {/* Логотип и бургер */}
             <div className="flex items-center gap-4">
                 <div className="md:hidden cursor-pointer" ref={burgerRef}>
-                <button
+                    <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="text-[#5A4A42] hover:text-[#6B5B53] transition"
                     >
                         {isMenuOpen ? <X size={32} /> : <MenuIcon />}
                     </button>
                 </div>
-            
-                
+
+
                 <div className="flex items-center gap-4 cursor-pointer" onClick={handleHomeClick}>
                     <div className="relative w-12 h-12 bg-[#bb916f] rounded-full shadow-md flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 flex items-center justify-center transform scale-75">
@@ -80,7 +80,7 @@ function Header() {
 
             {/* Десктопное меню */}
             <nav className="hidden md:flex items-center gap-4">
-            <button
+                <button
                     className="bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2 shadow-md hover:shadow-lg active:shadow-inner"
                     onClick={() => setOpenModal(true)}
                 >
@@ -97,7 +97,7 @@ function Header() {
                     <Bell size={20} />
                 </button> */}
                 <button className="bg-[#CAA07D] text-white p-2 rounded-full hover:bg-[#B08F6E] transition flex items-center justify-center w-10 h-10 shadow-md hover:shadow-lg active:shadow-inner"
-                onClick={()=>navigate(ROTER_PATH.EventDetail)}>
+                    onClick={() => navigate(ROTER_PATH.EventDetail)}>
                     <MessageSquare size={20} />
                 </button>
 
@@ -131,23 +131,33 @@ function Header() {
                     )}
                 </div>
                 <button
-                className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
+                    className={`bg-[#CAA07D] text-white px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md
                     ${showAuthPopup ? 'bg-[#B08F6E] shadow-lg shadow-[#B08F6E]/50' : 'hover:bg-[#B08F6E] hover:shadow-lg'}
                     active:shadow-inner`}
-                    onClick={()=>{navigate(ROTER_PATH.registration)}}
+                    onClick={() => { navigate(ROTER_PATH.registration) }}
                 >
                     Тест
                 </button>
-                </nav>
+                <button
+                    className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
+                    onClick={() => {
+                        navigate(ROTER_PATH.test);
+                    }}
+                >
+                    <User size={20} />
+                    <span>таст</span>
+                </button>
+
+            </nav>
 
             {/* Мобильное меню */}
             {isMenuOpen && (
-                <div 
+                <div
                     ref={menuRef}
                     className="absolute top-full right-0 w-full bg-[#dec3ae] shadow-lg md:hidden z-50"
                 >
                     <div className="flex flex-col p-4 gap-4">
-                        <button 
+                        <button
                             className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
                             onClick={() => {
                                 navigate(ROTER_PATH.eventManage);
@@ -157,7 +167,7 @@ function Header() {
                             <Plus size={20} />
                             <span>Создать запись</span>
                         </button>
-                        
+
                         {/* <button 
                             className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
                             onClick={() => {
@@ -168,8 +178,9 @@ function Header() {
                             <Bell size={20} />
                             <span>Уведомления</span>
                         </button> */}
-                        
-                        <button 
+
+
+                        <button
                             className="w-full bg-[#CAA07D] text-white px-4 py-2 rounded-full hover:bg-[#B08F6E] transition flex items-center gap-2"
                             onClick={() => {
                                 handleMessageClick();
@@ -202,54 +213,55 @@ function Header() {
                             </button>
                         )}
                     </div>
+
                 </div>
             )}
 
             {/* Единый попап авторизации */}
-{showAuthPopup && !isAuthenticated && (
-    <>
-        {/* Затемнение фона для мобильных устройств */}
-        <div className="fixed inset-0 bg-black/50 z-[999] md:hidden" />
+            {showAuthPopup && !isAuthenticated && (
+                <>
+                    {/* Затемнение фона для мобильных устройств */}
+                    <div className="fixed inset-0 bg-black/50 z-[999] md:hidden" />
 
-        {/* Контейнер попапа */}
-        <div className="fixed z-[1000] 
+                    {/* Контейнер попапа */}
+                    <div className="fixed z-[1000] 
             md:absolute md:right-4 md:top-14 md:transform-none 
             top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 
             w-[400px] max-w-[95%] md:w-auto
             md:bg-[#CAA07D] md:text-white md:rounded-full md:shadow-md">
 
-            <div className="md:hidden"> {/* Обертка для мобильной версии */}
-                <AuthPopup onClose={() => setShowAuthPopup(false)} />
-            </div>
+                        <div className="md:hidden"> {/* Обертка для мобильной версии */}
+                            <AuthPopup onClose={() => setShowAuthPopup(false)} />
+                        </div>
 
-            {/* Десктопная версия с обработчиком клика */}
-            <div className="text-black"
-                onClick={() => navigate(ROTER_PATH.registration)}>
-                <AuthPopup onClose={() => setShowAuthPopup(false)} />
-            </div>
-        </div>
-    </>
-)}
+                        {/* Десктопная версия с обработчиком клика */}
+                        <div className="text-black"
+                            onClick={() => navigate(ROTER_PATH.registration)}>
+                            <AuthPopup onClose={() => setShowAuthPopup(false)} />
+                        </div>
+                    </div>
+                </>
+            )}
         </header>
     );
 }
 
 const MenuIcon = () => (
     <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
     </svg>
 );
 
 export default Header;
 
 // hidden
-//  md:block 
-// px-4 
-// py-2 
+//  md:block
+// px-4
+// py-2
 // transition-all
-//  duration-300 
+//  duration-300
 // hover:bg-[#B08F6E]
 //  hover:shadow-lg
-//  active:shadow-inner 
+//  active:shadow-inner
 // cursor-pointer
 //  shadow-[#B08F6E]/50

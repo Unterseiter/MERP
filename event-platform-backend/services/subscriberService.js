@@ -20,30 +20,30 @@ const subscriberService = {
       const { Op } = require('sequelize');
       const limit = 10; // Фиксированный лимит
 
+
       // Валидация типа запроса
       if (!['subscriptions', 'subscribers'].includes(type)) {
         throw new Error('Invalid type parameter');
       }
 
       // Проверка существования пользователя
-      const user = await this.models.User.findOne({
-        where: { tag_name: userTag },
-        attributes: ['tag_name']
+      const user = await User.findOne({
+        where: { tag_name: userTag }
       });
-
+      
       if (!user) {
         throw new Error('User not found');
       }
-
+      
       // Настройка условий запроса
       const where = {};
       const include = [];
       let searchField;
-
+      
       if (type === 'subscriptions') {
         where.subscriber_tag = userTag;
         include.push({
-          model: this.models.User,
+          model: User,
           as: 'SubscribedUser', // Те, на кого подписан пользователь
           attributes: ['tag_name', 'name', 'city'],
           where: {}
@@ -52,14 +52,14 @@ const subscriberService = {
       } else {
         where.subscribed_tag = userTag;
         include.push({
-          model: this.models.User,
+          model: User,
           as: 'SubscriberUser', // Те, кто подписан на пользователя
           attributes: ['tag_name', 'name', 'city'],
           where: {}
         });
         searchField = 'SubscriberUser';
       }
-
+      
       // Добавляем поиск если есть search
       if (search) {
         include[0].where[Op.or] = [
@@ -67,8 +67,8 @@ const subscriberService = {
           { tag_name: { [Op.iLike]: `%${search}%` } }
         ];
       }
-
-      const result = await this.models.Subscriber.findAndCountAll({
+      
+      const result = await Subscriber.findAndCountAll({
         where,
         include,
         limit,
@@ -76,7 +76,7 @@ const subscriberService = {
         order: [[searchField, 'name', 'ASC']],
         distinct: true
       });
-
+      
       return {
         total: result.count,
         page: parseInt(page),
@@ -90,7 +90,7 @@ const subscriberService = {
 
   // Создание подписки
   async createSubscription(subscriberTag, subscribedTag) {
-    const t = await this.models.sequelize.transaction();
+    const t = await sequelize.transaction();
 
     try {
       // Проверка на самоподписку
@@ -100,12 +100,12 @@ const subscriberService = {
 
       // Поиск пользователей с блокировкой
       const [subscriber, subscribed] = await Promise.all([
-        this.models.User.findOne({
+        User.findOne({
           where: { tag_name: subscriberTag },
           transaction: t,
           lock: t.LOCK.UPDATE
         }),
-        this.models.User.findOne({
+        User.findOne({
           where: { tag_name: subscribedTag },
           transaction: t,
           lock: t.LOCK.UPDATE
@@ -117,7 +117,7 @@ const subscriberService = {
       }
 
       // Проверка существующей подписки
-      const existing = await this.models.Subscriber.findOne({
+      const existing = await Subscriber.findOne({
         where: {
           subscriber_tag: subscriberTag,
           subscribed_tag: subscribedTag
@@ -130,7 +130,7 @@ const subscriberService = {
       }
 
       // Создание подписки
-      const newSubscription = await this.models.Subscriber.create({
+      const newSubscription = await Subscriber.create({
         subscriber_tag: subscriberTag,
         subscribed_tag: subscribedTag
       }, { transaction: t });
@@ -146,11 +146,11 @@ const subscriberService = {
 
   // Удаление подписки (только для инициатора)
   async deleteSubscription(subscriberTag, subscribedTag) {
-    const t = await this.models.sequelize.transaction();
+    const t = await sequelize.transaction();
 
     try {
       // Поиск подписки с блокировкой
-      const subscription = await this.models.Subscriber.findOne({
+      const subscription = await Subscriber.findOne({
         where: {
           subscriber_tag: subscriberTag,
           subscribed_tag: subscribedTag

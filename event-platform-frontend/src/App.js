@@ -10,6 +10,7 @@ import ProfileCabinet from './Page/Profile.page/ProfileCabinet';
 import ROUTER_PATH from './navigation/path';
 import PrivateRoute from './components/authorization/PrivateRoute';
 import EventDetailsPage from './Page/EventDetal.page/EventDettal.page';
+import SubscriptionManager from './Page/Subscriber.page/test';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path={ROUTER_PATH.eventManage} element={<EventsManagePage />} />
               <Route path={ROUTER_PATH.ProfileCabinet} element={<ProfileCabinet />} />
               <Route path={ROUTER_PATH.EventDetail} element={<EventDetailsPage />} />
+              <Route path={ROUTER_PATH.test} element={<SubscriptionManager />} />
             </Routes>
           </div>
         </main>

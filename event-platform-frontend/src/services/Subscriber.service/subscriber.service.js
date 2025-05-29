@@ -1,7 +1,7 @@
 import { instanceAxios } from "../axios-config";
 
 export default class SubscriptionService {
-  static apiUrl = '/api/subscriptions';
+  static apiUrl = '/api/subscriber';
 
   // Получение подписок/подписчиков
   static async getSubscriptions(type = 'subscriptions', page = 1, search = '') {
@@ -12,6 +12,8 @@ export default class SubscriptionService {
     };
 
     const res = await instanceAxios.get(`${this.apiUrl}`, { params });
+    console.log("res");
+    console.log(res);
     return res.data;
   }
 

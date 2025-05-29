@@ -5,20 +5,19 @@ const SubscriptionController = require('../controllers/subscriberController');
 
 
 // Получение подписок/подписчиков
-router.get('/:userTag', 
+router.get('/', 
   authMiddleware,
-  SubscriptionController.checkSubscriptionOwnership,
   SubscriptionController.getSubscriptions
 );
 
 // Создание подписки
-router.post('/',
+router.post('/:subscribedTag',
   authMiddleware,
   SubscriptionController.createSubscriber
 );
 
 // Удаление подписки
-router.delete('/:userTag',
+router.delete('/:subscribedTag',
   authMiddleware,
   SubscriptionController.deleteSubscription
 );
