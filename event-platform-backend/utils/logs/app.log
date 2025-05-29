@@ -4052,3 +4052,231 @@
 [2025-05-29T20:16:48.011Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
 [2025-05-29T20:17:57.971Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 16ms
 [2025-05-29T20:17:57.982Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 9ms
+[2025-05-29T20:57:59.857Z] [INFO] Fetched 9 events
+[2025-05-29T20:57:59.857Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 10ms
+[2025-05-29T20:57:59.865Z] [INFO] Fetched 9 events
+[2025-05-29T20:57:59.867Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 9ms
+[2025-05-29T20:57:59.884Z] [INFO] GET /uploads/events/main/b5ab0364-3127-423f-9d81-293bb6fa03eb.webp 404 - 1ms
+[2025-05-29T20:58:00.116Z] [INFO] GET /uploads/events/main/a715eb29-c258-4653-8645-6701d7631f6a.webp 404 - 0ms
+[2025-05-29T20:58:00.196Z] [INFO] GET /uploads/events/main/223cff1a-1118-45db-b042-d802b1b43ff6.webp 404 - 1ms
+[2025-05-29T20:58:00.196Z] [INFO] GET /uploads/events/main/8e27bbd9-9dc3-409f-9d92-e4ccc8e48098.webp 404 - 1ms
+[2025-05-29T20:58:00.197Z] [INFO] GET /uploads/events/main/1053147d-9992-4ef9-b97a-9083e9360e74.webp 404 - 0ms
+[2025-05-29T20:58:02.731Z] [INFO] GET /api/events/user 304 - 5ms
+[2025-05-29T20:58:02.740Z] [INFO] GET /api/events/user 304 - 7ms
+[2025-05-29T20:58:02.761Z] [INFO] Получено заявок: 0
+[2025-05-29T20:58:02.762Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 10ms
+[2025-05-29T20:58:02.777Z] [INFO] Получено заявок: 0
+[2025-05-29T20:58:02.778Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 8ms
+[2025-05-29T20:58:05.216Z] [INFO] Fetched 9 events
+[2025-05-29T20:58:05.217Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 4ms
+[2025-05-29T20:58:05.222Z] [INFO] Fetched 9 events
+[2025-05-29T20:58:05.223Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-05-29T20:58:05.242Z] [INFO] GET /uploads/events/main/b5ab0364-3127-423f-9d81-293bb6fa03eb.webp 404 - 0ms
+[2025-05-29T20:58:05.550Z] [INFO] GET /uploads/events/main/a715eb29-c258-4653-8645-6701d7631f6a.webp 404 - 0ms
+[2025-05-29T20:58:05.551Z] [INFO] GET /uploads/events/main/223cff1a-1118-45db-b042-d802b1b43ff6.webp 404 - 1ms
+[2025-05-29T20:58:05.552Z] [INFO] GET /uploads/events/main/8e27bbd9-9dc3-409f-9d92-e4ccc8e48098.webp 404 - 2ms
+[2025-05-29T20:58:05.552Z] [INFO] GET /uploads/events/main/1053147d-9992-4ef9-b97a-9083e9360e74.webp 404 - 2ms
+[2025-05-29T20:58:42.826Z] [INFO] GET /api/user/profile 304 - 39ms
+[2025-05-29T20:58:42.836Z] [INFO] GET /api/user/profile 304 - 8ms
+[2025-05-29T20:58:59.034Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 15ms
+[2025-05-29T20:58:59.307Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T20:58:59.565Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T20:58:59.831Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T20:59:00.147Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T20:59:00.815Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
+[2025-05-29T20:59:01.160Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:00:35.794Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-05-29T21:00:35.797Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:00:35.826Z] [INFO] GET /api/user/profile 304 - 19ms
+[2025-05-29T21:00:36.903Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:00:36.908Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-05-29T21:00:36.931Z] [INFO] GET /api/user/profile 304 - 9ms
+[2025-05-29T21:00:44.402Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:00:44.404Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:00:44.436Z] [INFO] GET /api/user/profile 304 - 17ms
+[2025-05-29T21:01:38.520Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 19ms
+[2025-05-29T21:01:38.534Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 13ms
+[2025-05-29T21:01:38.781Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:01:45.472Z] [INFO] GET /api/events/user 304 - 6ms
+[2025-05-29T21:01:45.479Z] [INFO] GET /api/events/user 304 - 6ms
+[2025-05-29T21:01:45.502Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 9ms
+[2025-05-29T21:01:45.501Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:45.519Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:45.522Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 14ms
+[2025-05-29T21:01:47.223Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:47.224Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 200 - 5ms
+[2025-05-29T21:01:47.592Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:47.593Z] [INFO] GET /api/requests?event_id=3&user_tag=&status=&is_reported=&limit=10&page=1 200 - 5ms
+[2025-05-29T21:01:48.380Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:48.381Z] [INFO] GET /api/requests?event_id=2&user_tag=&status=&is_reported=&limit=10&page=1 304 - 5ms
+[2025-05-29T21:01:48.694Z] [INFO] Получено заявок: 0
+[2025-05-29T21:01:48.694Z] [INFO] GET /api/requests?event_id=1&user_tag=&status=&is_reported=&limit=10&page=1 304 - 4ms
+[2025-05-29T21:01:49.825Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-05-29T21:01:49.824Z] [INFO] Fetched 9 events
+[2025-05-29T21:01:49.832Z] [INFO] Fetched 9 events
+[2025-05-29T21:01:49.833Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-05-29T21:01:49.857Z] [INFO] GET /uploads/events/main/b5ab0364-3127-423f-9d81-293bb6fa03eb.webp 404 - 1ms
+[2025-05-29T21:01:49.858Z] [INFO] GET /uploads/events/main/a715eb29-c258-4653-8645-6701d7631f6a.webp 404 - 1ms
+[2025-05-29T21:01:50.165Z] [INFO] GET /uploads/events/main/8e27bbd9-9dc3-409f-9d92-e4ccc8e48098.webp 404 - 2ms
+[2025-05-29T21:01:50.164Z] [INFO] GET /uploads/events/main/223cff1a-1118-45db-b042-d802b1b43ff6.webp 404 - 1ms
+[2025-05-29T21:01:50.166Z] [INFO] GET /uploads/events/main/1053147d-9992-4ef9-b97a-9083e9360e74.webp 404 - 3ms
+[2025-05-29T21:02:40.326Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:02:40.328Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:02:40.338Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 17ms
+[2025-05-29T21:02:40.337Z] [INFO] Fetched 2 events
+[2025-05-29T21:02:40.343Z] [INFO] Fetched 2 events
+[2025-05-29T21:02:40.344Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 4ms
+[2025-05-29T21:02:40.355Z] [INFO] GET /uploads/events/main/c9954af9-a92a-48b6-94ae-104b7d5b87b2.webp 404 - 0ms
+[2025-05-29T21:02:40.356Z] [INFO] GET /uploads/events/main/75794e78-425d-4a9f-ae53-a2728f1ad5f3.webp 404 - 0ms
+[2025-05-29T21:03:06.733Z] [INFO] Fetched 0 events
+[2025-05-29T21:03:06.734Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 200 - 14ms
+[2025-05-29T21:03:06.736Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:03:06.742Z] [INFO] Fetched 0 events
+[2025-05-29T21:03:06.743Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 6ms
+[2025-05-29T21:03:06.746Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:03:25.138Z] [INFO] GET /api/user/profile 200 - 14ms
+[2025-05-29T21:03:25.155Z] [INFO] GET /api/user/profile 304 - 15ms
+[2025-05-29T21:03:26.470Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:03:26.730Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
+[2025-05-29T21:03:26.983Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:03:27.585Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:03:27.940Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
+[2025-05-29T21:03:28.850Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:03:29.517Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
+[2025-05-29T21:03:33.387Z] [INFO] GET /api/events/user 200 - 5ms
+[2025-05-29T21:03:33.394Z] [INFO] GET /api/events/user 304 - 5ms
+[2025-05-29T21:03:46.028Z] [INFO] Fetched 0 events
+[2025-05-29T21:03:46.029Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 8ms
+[2025-05-29T21:03:46.034Z] [INFO] Fetched 0 events
+[2025-05-29T21:03:46.035Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-05-29T21:04:31.799Z] [INFO] GET /api/events/user 304 - 9ms
+[2025-05-29T21:04:31.806Z] [INFO] GET /api/events/user 304 - 5ms
+[2025-05-29T21:04:43.517Z] [INFO] GET /api/user/profile 304 - 26ms
+[2025-05-29T21:04:43.528Z] [INFO] GET /api/user/profile 304 - 9ms
+[2025-05-29T21:04:45.417Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:04:45.822Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T21:04:46.452Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:05:28.999Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:05:29.005Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-05-29T21:05:29.109Z] [INFO] GET /api/user/profile 304 - 28ms
+[2025-05-29T21:05:51.256Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:05:51.259Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:05:51.282Z] [INFO] GET /api/user/profile 304 - 16ms
+[2025-05-29T21:05:57.969Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:05:57.972Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:05:58.048Z] [INFO] GET /api/user/profile 304 - 10ms
+[2025-05-29T21:05:59.380Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-05-29T21:05:59.382Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:05:59.451Z] [INFO] GET /api/user/profile 304 - 9ms
+[2025-05-29T21:22:10.343Z] [INFO] Fetched 0 events
+[2025-05-29T21:22:10.344Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 12ms
+[2025-05-29T21:22:10.349Z] [INFO] Fetched 0 events
+[2025-05-29T21:22:10.350Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 5ms
+[2025-05-29T21:25:02.087Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-05-29T21:25:02.090Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:25:02.145Z] [INFO] Fetched 0 events
+[2025-05-29T21:25:02.146Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 82ms
+[2025-05-29T21:25:02.154Z] [INFO] Fetched 0 events
+[2025-05-29T21:25:02.156Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 9ms
+[2025-05-29T21:25:04.439Z] [INFO] GET /api/user/profile 404 - 7ms
+[2025-05-29T21:25:04.445Z] [INFO] GET /api/user/profile 404 - 5ms
+[2025-05-29T21:25:20.516Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:25:20.514Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-05-29T21:25:21.662Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:25:21.664Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:25:21.665Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:25:21.666Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:26:01.556Z] [INFO] POST /api/auth/register 201 - 75ms
+[2025-05-29T21:26:01.636Z] [INFO] POST /api/auth/login 200 - 70ms
+[2025-05-29T21:26:01.642Z] [INFO] GET /api/auth/profile 200 - 2ms
+[2025-05-29T21:26:01.757Z] [INFO] GET /api/auth/profile 304 - 4ms
+[2025-05-29T21:26:01.761Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:26:01.800Z] [INFO] GET /api/user/profile 200 - 23ms
+[2025-05-29T21:26:05.601Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 15ms
+[2025-05-29T21:26:05.997Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T21:26:18.183Z] [INFO] POST /api/auth/logout 200 - 2ms
+[2025-05-29T21:26:19.400Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:26:19.402Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:26:19.403Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:26:19.404Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:26:37.911Z] [INFO] POST /api/auth/register 201 - 70ms
+[2025-05-29T21:26:37.923Z] [INFO] POST /api/auth/login 401 - 7ms
+[2025-05-29T21:27:31.020Z] [INFO] GET /api/auth/profile 401 - 2ms
+[2025-05-29T21:27:31.022Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:27:31.588Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:27:31.590Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:27:31.591Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:27:31.592Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:27:49.462Z] [INFO] POST /api/auth/register 201 - 65ms
+[2025-05-29T21:27:49.522Z] [INFO] POST /api/auth/login 200 - 54ms
+[2025-05-29T21:27:49.527Z] [INFO] GET /api/auth/profile 200 - 1ms
+[2025-05-29T21:27:49.935Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:27:49.938Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:27:49.967Z] [INFO] GET /api/user/profile 200 - 20ms
+[2025-05-29T21:27:55.918Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T21:27:56.896Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T21:27:57.357Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T21:28:07.959Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 25ms
+[2025-05-29T21:28:07.963Z] [INFO] GET /api/auth/profile 304 - 3ms
+[2025-05-29T21:28:07.982Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 18ms
+[2025-05-29T21:28:07.986Z] [INFO] GET /api/auth/profile 304 - 2ms
+[2025-05-29T21:28:11.800Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%40 200 - 7ms
+[2025-05-29T21:28:13.284Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:28:16.104Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84 200 - 9ms
+[2025-05-29T21:28:16.323Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84%D0%B2 200 - 8ms
+[2025-05-29T21:28:16.988Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84%D0%B2%D1%8C 200 - 8ms
+[2025-05-29T21:28:17.097Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84%D0%B2%D1%8C%D1%89 200 - 8ms
+[2025-05-29T21:28:17.498Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84%D0%B2%D1%8C 304 - 9ms
+[2025-05-29T21:28:17.745Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84%D0%B2 304 - 6ms
+[2025-05-29T21:28:17.874Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=%D1%84 304 - 8ms
+[2025-05-29T21:28:17.996Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
+[2025-05-29T21:28:18.765Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=a 200 - 7ms
+[2025-05-29T21:28:19.689Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=ad 200 - 10ms
+[2025-05-29T21:28:19.754Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=adm 200 - 9ms
+[2025-05-29T21:28:19.915Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=admi 200 - 7ms
+[2025-05-29T21:28:20.052Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=admin 200 - 9ms
+[2025-05-29T21:28:29.298Z] [INFO] POST /api/subscriber 201 - 17ms
+[2025-05-29T21:28:29.316Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=admin 200 - 12ms
+[2025-05-29T21:28:42.177Z] [INFO] POST /api/subscriber 201 - 18ms
+[2025-05-29T21:28:42.195Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search=admin 304 - 14ms
+[2025-05-29T21:28:45.167Z] [INFO] GET /api/user/profile 304 - 14ms
+[2025-05-29T21:28:45.183Z] [INFO] GET /api/user/profile 304 - 15ms
+[2025-05-29T21:28:59.444Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 200 - 20ms
+[2025-05-29T21:28:59.460Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 11ms
+[2025-05-29T21:29:01.597Z] [INFO] GET /api/user/profile 304 - 13ms
+[2025-05-29T21:29:01.608Z] [INFO] GET /api/user/profile 304 - 10ms
+[2025-05-29T21:29:02.236Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:29:03.070Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T21:29:11.615Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 7ms
+[2025-05-29T21:29:22.726Z] [INFO] POST /api/auth/logout 200 - 0ms
+[2025-05-29T21:29:23.715Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:29:23.717Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:29:23.719Z] [INFO] GET /api/auth/profile 401 - 1ms
+[2025-05-29T21:29:23.720Z] [INFO] GET /api/auth/profile 401 - 0ms
+[2025-05-29T21:29:30.105Z] [INFO] POST /api/auth/login 200 - 64ms
+[2025-05-29T21:29:30.110Z] [INFO] GET /api/auth/profile 200 - 1ms
+[2025-05-29T21:29:30.133Z] [INFO] GET /api/user/profile 200 - 12ms
+[2025-05-29T21:29:30.557Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:29:30.560Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:29:30.595Z] [INFO] GET /api/user/profile 304 - 21ms
+[2025-05-29T21:29:32.182Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 200 - 7ms
+[2025-05-29T21:29:35.128Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 200 - 8ms
+[2025-05-29T21:29:51.700Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:29:51.702Z] [INFO] GET /api/auth/profile 304 - 1ms
+[2025-05-29T21:29:51.715Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 21ms
+[2025-05-29T21:29:51.724Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 8ms
+[2025-05-29T21:30:01.684Z] [INFO] POST /api/subscriber 500 - 12ms
+[2025-05-29T21:30:09.835Z] [INFO] POST /api/subscriber 201 - 18ms
+[2025-05-29T21:30:09.847Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 200 - 8ms
+[2025-05-29T21:30:12.113Z] [INFO] GET /api/user/profile 304 - 9ms
+[2025-05-29T21:30:12.125Z] [INFO] GET /api/user/profile 304 - 10ms
+[2025-05-29T21:30:13.542Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 7ms
+[2025-05-29T21:30:14.072Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 8ms
+[2025-05-29T21:30:58.554Z] [INFO] GET /api/events/user 304 - 13ms
+[2025-05-29T21:30:58.569Z] [INFO] GET /api/events/user 304 - 14ms
+[2025-05-29T21:31:04.277Z] [INFO] GET /api/user/profile 304 - 14ms
+[2025-05-29T21:31:04.293Z] [INFO] GET /api/user/profile 304 - 15ms
+[2025-05-29T21:33:28.401Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 18ms
+[2025-05-29T21:33:28.400Z] [INFO] Fetched 0 events
+[2025-05-29T21:33:28.417Z] [INFO] Fetched 0 events
+[2025-05-29T21:33:28.417Z] [INFO] GET /api/events?search=&sortBy=start_date&sortOrder=ASC&page=1&limited=6 304 - 14ms

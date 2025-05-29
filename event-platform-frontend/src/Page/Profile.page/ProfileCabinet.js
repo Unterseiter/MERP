@@ -131,7 +131,7 @@ const ProfileCabinet = () => {
           <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-md text-black p-6 flex flex-col relative ring-2 ring-[#d6bda7]">
             <img
               src={image}
-              className="w-24 h-24 rounded-full object-cover mb-4"
+              className="w-24 h-24 rounded-[15px] object-cover mb-4 border-[#d6bda7] border-2"
             />
             <div className='text-left'>
               <h2 className="text-3xl font-semibold">{profileData.info.name || 'Имя не указано'}</h2>
@@ -310,7 +310,7 @@ const ProfileCabinet = () => {
           </div>
 
           {/* Правая колонка — история */}
-          <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7] flex flex-col">
+          <div className="w-full min-h-[400px] lg:w-1/3 bg-white rounded-2xl shadow-md p-6 ring-2 ring-[#d6bda7] flex flex-col">
             <h2 className="text-2xl font-semibold mb-4 text-[#5e4c3f]">История посещения</h2>
             
             <div className="flex-grow overflow-hidden">

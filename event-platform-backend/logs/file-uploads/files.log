@@ -622,3 +622,18 @@
 [2025-05-29T20:01:49.380Z] [INFO] File Queue initialized
 [2025-05-29T20:01:49.505Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
 [2025-05-29T20:01:49.505Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T21:23:58.717Z] [INFO] File Queue initialized
+[2025-05-29T21:23:58.847Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T21:23:58.848Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T21:24:21.275Z] [INFO] File Queue initialized
+[2025-05-29T21:24:21.365Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T21:24:21.365Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T21:24:34.011Z] [INFO] File Queue initialized
+[2025-05-29T21:24:34.107Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T21:24:34.108Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T21:24:51.548Z] [INFO] File Queue initialized
+[2025-05-29T21:24:51.640Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T21:24:51.641Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T21:24:56.651Z] [INFO] File Queue initialized
+[2025-05-29T21:24:56.739Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T21:24:56.740Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
