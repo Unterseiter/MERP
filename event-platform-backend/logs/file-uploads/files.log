@@ -612,3 +612,6 @@
 [2025-04-29T13:39:54.192Z] [INFO] File Queue initialized
 [2025-04-29T13:39:54.457Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
 [2025-04-29T13:39:54.458Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
+[2025-05-29T15:42:10.100Z] [INFO] File Queue initialized
+[2025-05-29T15:42:10.261Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/main
+[2025-05-29T15:42:10.262Z] [INFO] Upload directories initialized: ./uploads/events/tmp, ./uploads/events/gallery
