@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
         },
         city:{
             type: DataTypes.STRING,
-            allowNull: false // город обязательна
+            allowNull: true // город обязательна
         },
         creator_tag: {
             type: DataTypes.STRING,

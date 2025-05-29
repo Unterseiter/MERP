@@ -38,3 +38,4 @@ event-platform-backend/utils/logs/app.log
 /event-platform-backend/uploads
 event-platform-backend/config/bd.js
 /event-platform-backend/logs
+/event-platform-backend/config

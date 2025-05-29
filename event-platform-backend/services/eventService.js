@@ -23,14 +23,27 @@ const eventService = {
     const where = {};
 
     // Фильтр по создателю
-    if (creatorTag) where.creator_tag = creatorTag;
-    const creatorCity = await User.findOne({ where: { tag_name: creatorTag } }).city;
-    if (creatorCity) where.city = creatorCity;
+    if (creatorTag) {
+        // where.creator_tag = creatorTag;
+        
+        // Ищем пользователя и его город
+        const creator = await User.findOne({ 
+            where: { tag_name: creatorTag },
+            attributes: ['city'] // Выбираем только город
+        });
+        
+        // Добавляем фильтр по городу ТОЛЬКО если город найден
+        if (creator && creator.city) {
+            where.city = creator.city;
+        }
+    }
 
+    console.log("where.city")
+    console.log(where.city)
+    console.log(creatorTag)
     // Фильтр по текстовому поиску
     if (search) {
       const searchTerm = `%${search.toLowerCase()}%`;
-
       where[Op.or] = [
         Sequelize.where(
           Sequelize.fn('LOWER', Sequelize.col('name')),
@@ -93,10 +106,13 @@ const eventService = {
         throw new Error('end_date must be greater than start_date');
       }
 
+       // 5. Валидация и преобразование просмотров
+      if(!eventData.city){
+        eventData.city = '';
+      }
+
 
       // 6. Создаем событие с преобразованными датами
-      console.log("eventData");
-      console.log(eventData);
       const event = await Event.create({
         ...eventData,
         start_date: startDate,

@@ -6,6 +6,7 @@ export default class AuthService {
 
     static async login(body) {
         try {
+            console.log(body);
             const res = await instanceAxios.post(this.apiUrl + "/login", body);
             return res.data;
         } catch (error) {

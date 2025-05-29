@@ -9,7 +9,7 @@ const fs = require('fs').promises;
 
 // Схемы валидации
 const eventSchema = Joi.object({
-  name: Joi.string().min(3).max(100).required(),
+  name: Joi.string().min(2).max(100).required(),
   description: Joi.string().max(1000).required(),
   start_date: Joi.date().iso().required(),
   end_date: Joi.date().iso().min(Joi.ref('start_date')).required(),
@@ -101,6 +101,7 @@ const eventController = {
   async createEvent(req, res, next) {
     try {
       const { error, value } = eventSchema.validate(req.body);
+      console.log("req.body");
       console.log(req.body);
       if (error) throw new ValidationError(error.details);
 
