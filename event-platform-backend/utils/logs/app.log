@@ -4050,3 +4050,5 @@
 [2025-05-29T20:16:42.056Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
 [2025-05-29T20:16:47.690Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 6ms
 [2025-05-29T20:16:48.011Z] [INFO] GET /api/subscriber?type=subscribers&page=1&search= 304 - 6ms
+[2025-05-29T20:17:57.971Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 16ms
+[2025-05-29T20:17:57.982Z] [INFO] GET /api/subscriber?type=subscriptions&page=1&search= 304 - 9ms
