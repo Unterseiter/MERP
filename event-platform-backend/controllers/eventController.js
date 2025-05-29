@@ -135,12 +135,14 @@ const eventController = {
         minViews: Number(req.query.minViews) || 0,
         maxViews: Number(req.query.maxViews) || 0,
       };
+      const createtag_name = req.user.tag_name;
 
       const { error, value } = getEventsSchema.validate(processedQuery, { abortEarly: false });
       if (error) throw new ValidationError(error.details.map(d => ({
         field: d.path[0],
         message: d.message
       })));
+      value.creatorTag = createtag_name;
 
       const result = await eventService.getEvents(value);
       const data = result.rows.map(event => ({
